@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Quản lý nhà phân phối')
+@section('title', 'Quản lý khách hàng')
 
 @section('styles')
 
@@ -10,7 +10,7 @@
 
 @include('admin.components.messages')
 <p>
-	<a href="{{ route('admin.distributions.create') }}" class="btn btn-primary">Thêm nhà phân phối</a> &emsp; <span class="pull-right marT15">Tổng số: {{ $distributions->total() }}</span>
+	<a href="{{ route('admin.users.create') }}" class="btn btn-primary">Thêm khách hàng</a> &emsp; <span class="pull-right marT15">Tổng số: {{ $users->total() }}</span>
 </p>
 <div class="box">
 	<div class="box-header">
@@ -22,38 +22,38 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>Nhà phân phối</th>
-					<th>Email</th>
+					<th>Khách hàng</th>
+					{{-- <th>Username</th> --}}
 					<th>Điện thoại</th>
+					<th>Email</th>
 					<th>Địa chỉ</th>
-					<th>Mô tả</th>
 					<th>Trạng thái</th>
 					<th>Tham gia</th>
 					<th>Hành động</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($distributions as $distribute)
+				@foreach($users as $user)
 				<tr role="row" class="align-middle">
-					<td>{{ index_row($distributions, $loop->index) }}</td>
-					<td>{{$distribute->name}}</td>
-					<td>{{ str_limit($distribute->email, 22, '...') }}</td>
-					<td>{{$distribute->phone}}</td>
-					<td>{{ str_limit($distribute->address, 40, '...') }}</td>
-					<td>{{ str_limit($distribute->description, 40, '...') }}</td>
+					<td>{{ index_row($users, $loop->index) }}</td>
+					<td>{{$user->name}}</td>
+					{{-- <td>{{$user->username}}</td> --}}
+					<td>{{$user->phone}}</td>
+					<td>{{ str_limit($user->email, 22, '...') }}</td>
+					<td>{{ str_limit($user->address, 40, '...') }}</td>
 					<td>
-						@if($distribute->status == '0')
+						@if($user->status == '0')
 						{{"Tạm dừng hoạt động"}}
-						@elseif($distribute->status == '1')
+						@elseif($user->status == '1')
 						{{"Hoạt động"}}
-						@elseif($distribute->status == '2')
+						@elseif($user->status == '2')
 						{{"Dừng hoạt động"}}
 						@endif
 					</td>
-					<td>{{$distribute->created_at->format('d/m/Y')}}</td>
+					<td>{{$user->created_at->format('d/m/Y')}}</td>
 					<td>
-						<a href="{{ route('admin.distributions.edit', ['id' => $distribute->id], false) }}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
-						<a href="{{ route('admin.distributions.destroy', ['id' => $distribute->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+						<a href="{{ route('admin.users.edit', ['id' => $user->id], false) }}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+						<a href="{{ route('admin.users.destroy', ['id' => $user->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
 					</td>
 				</tr>
 				@endforeach
@@ -62,7 +62,7 @@
 	</div>
 	<!-- /.box-body -->
 	<div class="box-footer clearfix">
-		{{ $distributions->links('admin.paginations.pagination_sm') }}
+		{{ $users->links('admin.paginations.pagination_sm') }}
 	</div>
 	<!-- box-footer -->
 </div>
@@ -75,7 +75,7 @@
 			<form method="POST">
 				<div class="modal-body">
 					{{ csrf_field() }} {{ method_field('DELETE') }}
-					<h4>Bạn có muốn xóa nhà phân phối này?</h4>
+					<h4>Bạn có muốn xóa khách hàng này?</h4>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>

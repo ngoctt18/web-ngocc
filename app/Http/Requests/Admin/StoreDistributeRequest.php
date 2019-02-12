@@ -13,7 +13,7 @@ class StoreDistributeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class StoreDistributeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:distributions,name', 
+            'email' => 'required|unique:distributions,email|email', 
+            'phone' => 'required|unique:distributions,phone|regex:/(0)[0-9]{9}/',
+            'address' => 'required|max:200', 
+            'description' => 'required', 
+            'status' => 'required', 
         ];
     }
 }

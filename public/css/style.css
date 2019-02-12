@@ -1,2 +1,45 @@
 .marT15 {margin-top: 15px;}
 textarea {resize: vertical;}
+
+
+/* Upload hiện ảnh lên luôn! */
+.upload-image {
+	position: relative;
+	text-align: center;
+	border: 1px dashed #d2d6de;
+	border-radius: 10px;
+	overflow: hidden;
+	height: 300px;
+}
+
+.upload-image::before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.upload-image img{
+	display: inline-block;
+	max-height: 90%;
+	vertical-align: middle;
+}
+
+.upload-image input[type=file]{
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+input[type="file"] {
+	width: 100%;
+}
+
+.table-bordered {color: #000;}
+.table-bordered>tbody>tr>td, .table-bordered>thead>tr>th {border: 1px solid #c1c1c1 !important;}
+.table-bordered>thead>tr>th {background: #dadada;}

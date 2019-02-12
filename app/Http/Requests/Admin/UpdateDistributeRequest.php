@@ -13,7 +13,7 @@ class UpdateDistributeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class UpdateDistributeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:distributions,name,'.request('id'), 
+            'email' => 'required|email|unique:distributions,email,'.request('id'), 
+            'phone' => 'required|regex:/(0)[0-9]{9}/|unique:distributions,phone,'.request('id'),
+            'address' => 'required|max:200', 
+            'description' => 'required', 
+            'status' => 'required', 
         ];
     }
 }

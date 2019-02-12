@@ -37,12 +37,12 @@
 			</div>
 			<div class="form-group">
 				<label for="description">Mô tả</label>
-				<textarea class="form-control" rows="3" id="description" placeholder="Mô tả" name="description" >{{old('description')}}</textarea>
+				<textarea class="form-control" rows="4" id="description" placeholder="Mô tả" name="description" >{{old('description')}}</textarea>
 				<small class="text-danger">{{ $errors->first('description') }}</small>
 			</div>
 			<div class="form-group">
 				<label for="status">Trạng thái</label>
-				<select class="form-control" style="width: 20%;" name="status">
+				<select class="form-control" style="width: 20%;" name="status" id="status">
 					<option value="">Chọn trạng thái</option>
 					<option value="0" {{old('status') == '0' ? 'selected' : ''}}>Tạm dừng hoạt động</option>
 					<option value="1" {{old('status') == '1' ? 'selected' : ''}}>Hoạt động</option>
@@ -62,4 +62,16 @@
 </div>
 <!-- /.box -->
 
+@endsection
+
+@section('scripts')
+<!-- CK Editor -->
+<script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript">
+	$(function () {
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('description')
+})
+</script>
 @endsection

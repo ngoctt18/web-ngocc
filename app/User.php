@@ -5,10 +5,15 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use Notifiable;
+    use HasMediaTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -33,7 +38,22 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+
+    //Media lib.
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+        ->width(200)
+        ->height(200)
+        ->sharpen(10);
+    }
+
     // Defining An Accessor
+    public function getThumbUserAttribute(){
+        $thumb = optional($this->getFirstMedia('user_avatar'))->getFullUrl('thumb');
+        return  $thumb ?? asset('images/employee.png');
+    }
+
 
 
     // Relationships

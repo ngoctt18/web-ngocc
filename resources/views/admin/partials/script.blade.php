@@ -30,7 +30,7 @@
 <!-- FastClick -->
 {{-- <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script> --}}
 <!-- AdminLTE App -->
-{{-- <script src="{{ asset('dist/js/adminlte.min.js') }}"></script> --}}
+<script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{-- <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script> --}}
 <!-- AdminLTE for demo purposes -->

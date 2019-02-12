@@ -26,6 +26,7 @@ class CatagoryTypeController extends Controller
 	{
 		$data = $request->all();
 		$data['slug'] = $request->name;
+		// dd($data);
 		CatagoriesType::create($data);
 		Session::flash('success', 'Tạo loại danh mục thành công');
 		return redirect()->route('admin.catagory-types.index');

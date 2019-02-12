@@ -4,7 +4,9 @@ $menus_admin = [
     ['type' => 'single', 'route' => 'admin.dashboard', 'icon' => 'fa fa-dashboard', 'name' => 'Trang điều khiển'],
     ['type' => 'single', 'route' => 'admin.catagory-types.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Quản lý nhóm danh mục'],
     ['type' => 'single', 'route' => 'admin.catagories.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Quản lý danh mục'],
-    ['type' => 'single', 'route' => 'admin.distributions.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Quản lý nhà phân phối'],
+    ['type' => 'single', 'route' => 'admin.distributions.index', 'icon' => 'fa fa-industry', 'name' => 'Quản lý nhà phân phối'],
+    ['type' => 'single', 'route' => 'admin.products.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Quản lý sản phẩm'],
+    ['type' => 'single', 'route' => 'admin.users.index', 'icon' => 'fa fa-users', 'name' => 'Quản lý khách hàng'],
     [
         'type' => 'multi', 'name' => 'Quản lý đơn hàng', 'icon' => 'fa fa-calendar',
         'children' => [
@@ -25,18 +27,18 @@ $menus_writer = [
         ]
     ],
 ];  
- 
+
 ?>
 <ul class="sidebar-menu" data-widget="tree">
     @if(get_guard() == 'admin')
-        @foreach($menus_admin as $menu)
-            @component('admin.components.menu_item', ['menu' => $menu])
-            @endcomponent
-        @endforeach
+    @foreach($menus_admin as $menu)
+    @component('admin.components.menu_item', ['menu' => $menu])
+    @endcomponent
+    @endforeach
     @elseif(get_guard() == 'writer')
     @foreach($menus_writer as $menu)
-            @component('admin.components.menu_item', ['menu' => $menu])
-            @endcomponent
-        @endforeach
+    @component('admin.components.menu_item', ['menu' => $menu])
+    @endcomponent
+    @endforeach
     @endif
 </ul>
