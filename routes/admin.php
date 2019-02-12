@@ -19,7 +19,7 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 	// 
-
+	Route::resource('catagory-types', 'CatagoryType\CatagoryTypeController');
 
 
 });

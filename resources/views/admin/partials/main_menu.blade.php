@@ -2,15 +2,15 @@
 $menus_admin = [
     ['type' => 'header', 'name' => 'Menu chính'],
     ['type' => 'single', 'route' => 'admin.dashboard', 'icon' => 'fa fa-dashboard', 'name' => 'Trang điều khiển'],
+    ['type' => 'single', 'route' => 'admin.catagory-types.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Loại danh mục'],
     [
-        'type' => 'multi', 'name' => 'Quản lý đặt lịch', 'icon' => 'fa fa-calendar',
+        'type' => 'multi', 'name' => 'Quản lý đơn hàng', 'icon' => 'fa fa-calendar',
         'children' => [
             ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Danh sách đặt lịch'],
             ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Danh sách lịch hẹn tái khám'],
             ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Thiết lập thời gian tái khám'],
         ]
     ],
-    ['type' => 'single', 'route' => '', 'icon' => 'fa fa-plus-square-o', 'name' => 'Danh sách phòng khám'],
 ];  
 
 $menus_writer = [
