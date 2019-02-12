@@ -21,8 +21,8 @@ class CreateDistributionsTable extends Migration
             $table->string('phone')->unique()->nullable();
             $table->string('address')->nullable();
             $table->text('description')->nullable();
-            $table->enum('status',[0, 1])->default(1);
-            // 0: Ẩn, 1: Hiển thị
+            $table->enum('status',[0, 1, 2])->default(1);
+            // 0: Tạm dừng hoạt động, 1: Đang hoạt động, 2: Dừng hoạt động
             $table->timestamps();
         });
     }

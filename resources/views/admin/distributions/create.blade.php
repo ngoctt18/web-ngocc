@@ -1,0 +1,65 @@
+@extends('admin.layouts.master')
+
+@section('title', 'Tạo nhà phân phối')
+
+@section('content')
+
+@include('admin.components.messages')
+
+<div class="box box-primary">
+	<div class="box-header with-border">
+		<h3 class="box-title"></h3>
+	</div>
+	<!-- /.box-header -->
+	<!-- form start -->
+	<form role="form" method="POST" action="{{ route('admin.distributions.store', [], false) }}">
+		<div class="box-body">
+			{{ csrf_field() }}
+			<div class="form-group">
+				<label for="name">Tên nhà phân phối</label>
+				<input type="text" class="form-control" id="name" placeholder="Tên nhà phân phối" name="name" value="{{old('name')}}">
+				<small class="text-danger">{{ $errors->first('name') }}</small>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{old('email')}}">
+				<small class="text-danger">{{ $errors->first('email') }}</small>
+			</div>
+			<div class="form-group">
+				<label for="phone">Phone</label>
+				<input type="text" class="form-control" id="phone" placeholder="phone" name="phone" value="{{old('phone')}}">
+				<small class="text-danger">{{ $errors->first('phone') }}</small>
+			</div>
+			<div class="form-group">
+				<label for="address">Địa chỉ</label>
+				<textarea class="form-control" rows="2" id="address" placeholder="Địa chỉ" name="address" >{{old('address')}}</textarea>
+				<small class="text-danger">{{ $errors->first('address') }}</small>
+			</div>
+			<div class="form-group">
+				<label for="description">Mô tả</label>
+				<textarea class="form-control" rows="3" id="description" placeholder="Mô tả" name="description" >{{old('description')}}</textarea>
+				<small class="text-danger">{{ $errors->first('description') }}</small>
+			</div>
+			<div class="form-group">
+				<label for="status">Trạng thái</label>
+				<select class="form-control" style="width: 20%;" name="status">
+					<option value="">Chọn trạng thái</option>
+					<option value="0" {{old('status') == '0' ? 'selected' : ''}}>Tạm dừng hoạt động</option>
+					<option value="1" {{old('status') == '1' ? 'selected' : ''}}>Hoạt động</option>
+					<option value="2" {{old('status') == '2' ? 'selected' : ''}}>Dừng hoạt động</option>
+				</select>
+				<small class="text-danger">{{ $errors->first('status') }}</small>
+			</div>
+		</div>
+		<!-- /.box-body -->
+
+		<div class="box-footer">
+			<button type="submit" class="btn btn-info">Tạo</button>
+			&emsp;
+			<a href="{{ route('admin.distributions.index') }}" class="btn btn-primary">Trở về</a>
+		</div>
+	</form>
+</div>
+<!-- /.box -->
+
+@endsection

@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Quản lý nhóm danh mục')
+@section('title', 'Quản lý danh mục')
 
 @section('styles')
 
@@ -10,7 +10,7 @@
 
 @include('admin.components.messages')
 <p>
-	<a href="{{ route('admin.catagory-types.create') }}" class="btn btn-primary">Thêm nhóm danh mục</a> &emsp; <span class="pull-right marT15">Tổng số: {{ $catagoryTypes->total() }}</span>
+	<a href="{{ route('admin.catagories.create') }}" class="btn btn-primary">Thêm danh mục</a> &emsp; <span class="pull-right marT15">Tổng số: {{ $catagories->total() }}</span>
 </p>
 <div class="box">
 	<div class="box-header">
@@ -22,6 +22,8 @@
 			<thead>
 				<tr>
 					<th>#</th>
+					<th>Danh mục</th>
+					<th>Mô tả</th>
 					<th>Nhóm danh mục</th>
 					<th>Trạng thái</th>
 					<th>Thời gian tạo</th>
@@ -29,21 +31,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($catagoryTypes as $catagoryType)
+				@foreach($catagories as $catagory)
 				<tr role="row" class="align-middle">
-					<td>{{ index_row($catagoryTypes, $loop->index) }}</td>
-					<td>{{$catagoryType->name}}</td>
+					<td>{{ index_row($catagories, $loop->index) }}</td>
+					<td>{{$catagory->name}}</td>
+					<td>{{ str_limit($catagory->description, 50, '...') }}</td>
+					<td>{{$catagory->catagoryType->name}}</td>
 					<td>
-						@if($catagoryType->status == '0')
+						@if($catagory->status == '0')
 						{{"Ẩn"}}
-						@elseif($catagoryType->status == '1')
+						@elseif($catagory->status == '1')
 						{{"Hiển thị"}}
 						@endif
 					</td>
-					<td>{{$catagoryType->created_at->format('H:i - d/m/Y')}}</td>
+					<td>{{$catagory->created_at->format('H:i - d/m/Y')}}</td>
 					<td>
-						<a href="{{ route('admin.catagory-types.edit', ['id' => $catagoryType->id], false) }}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
-						<a href="{{ route('admin.catagory-types.destroy', ['id' => $catagoryType->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+						<a href="{{ route('admin.catagories.edit', ['id' => $catagory->id], false) }}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
+						<a href="{{ route('admin.catagories.destroy', ['id' => $catagory->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
 					</td>
 				</tr>
 				@endforeach
@@ -52,7 +56,7 @@
 	</div>
 	<!-- /.box-body -->
 	<div class="box-footer clearfix">
-		{{ $catagoryTypes->links('admin.paginations.pagination_sm') }}
+		{{ $catagories->links('admin.paginations.pagination_sm') }}
 	</div>
 	<!-- box-footer -->
 </div>
@@ -65,7 +69,7 @@
 			<form method="POST">
 				<div class="modal-body">
 					{{ csrf_field() }} {{ method_field('DELETE') }}
-					<h4>Bạn có muốn xóa nhóm danh mục này?</h4>
+					<h4>Bạn có muốn xóa danh mục này?</h4>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>

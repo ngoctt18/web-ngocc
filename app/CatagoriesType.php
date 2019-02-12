@@ -20,6 +20,7 @@ class CatagoriesType extends Model
 	}
 
     // Defining An Accessor
+
     
 
     // Relationships

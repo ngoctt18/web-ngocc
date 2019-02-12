@@ -2,7 +2,9 @@
 $menus_admin = [
     ['type' => 'header', 'name' => 'Menu chính'],
     ['type' => 'single', 'route' => 'admin.dashboard', 'icon' => 'fa fa-dashboard', 'name' => 'Trang điều khiển'],
-    ['type' => 'single', 'route' => 'admin.catagory-types.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Loại danh mục'],
+    ['type' => 'single', 'route' => 'admin.catagory-types.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Quản lý nhóm danh mục'],
+    ['type' => 'single', 'route' => 'admin.catagories.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Quản lý danh mục'],
+    ['type' => 'single', 'route' => 'admin.distributions.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Quản lý nhà phân phối'],
     [
         'type' => 'multi', 'name' => 'Quản lý đơn hàng', 'icon' => 'fa fa-calendar',
         'children' => [

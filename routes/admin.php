@@ -20,6 +20,8 @@ Route::middleware(['auth:admin'])->group(function(){
 
 	// 
 	Route::resource('catagory-types', 'CatagoryType\CatagoryTypeController');
+	Route::resource('catagories', 'Catagory\CatagoryController');
+	Route::resource('distributions', 'Distribute\DistributeController');
 
 
 });
