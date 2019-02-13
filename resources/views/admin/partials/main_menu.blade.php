@@ -2,13 +2,13 @@
 $menus_admin = [
     ['type' => 'header', 'name' => 'Menu chính'],
     ['type' => 'single', 'route' => 'admin.dashboard', 'icon' => 'fa fa-dashboard', 'name' => 'Trang điều khiển'],
-    ['type' => 'single', 'route' => 'admin.catagory-types.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Quản lý nhóm danh mục'],
-    ['type' => 'single', 'route' => 'admin.catagories.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Quản lý danh mục'],
+    ['type' => 'single', 'route' => 'admin.catagory-types.index', 'icon' => 'fa fa-server', 'name' => 'Quản lý nhóm danh mục'],
+    ['type' => 'single', 'route' => 'admin.catagories.index', 'icon' => 'fa fa-align-justify', 'name' => 'Quản lý danh mục'],
     ['type' => 'single', 'route' => 'admin.distributions.index', 'icon' => 'fa fa-industry', 'name' => 'Quản lý nhà phân phối'],
-    ['type' => 'single', 'route' => 'admin.products.index', 'icon' => 'fa fa-plus-square-o', 'name' => 'Quản lý sản phẩm'],
+    ['type' => 'single', 'route' => 'admin.products.index', 'icon' => 'fa fa-product-hunt', 'name' => 'Quản lý sản phẩm'],
     ['type' => 'single', 'route' => 'admin.users.index', 'icon' => 'fa fa-users', 'name' => 'Quản lý khách hàng'],
     [
-        'type' => 'multi', 'name' => 'Quản lý đơn hàng', 'icon' => 'fa fa-calendar',
+        'type' => 'multi', 'name' => 'Quản lý đơn hàng', 'icon' => 'fa fa-cart-plus',
         'children' => [
             ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Danh sách đặt lịch'],
             ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Danh sách lịch hẹn tái khám'],
