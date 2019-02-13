@@ -48,7 +48,7 @@
 		<!-- /.box-body -->
 
 		<div class="box-footer">
-			<button type="submit" class="btn btn-info">Tạo</button>
+			<button type="submit" class="btn btn-info">Tạo danh mục</button>
 			&emsp;
 			<a href="{{ route('admin.catagories.index') }}" class="btn btn-primary">Trở về</a>
 		</div>

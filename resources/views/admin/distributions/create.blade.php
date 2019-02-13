@@ -54,7 +54,7 @@
 		<!-- /.box-body -->
 
 		<div class="box-footer">
-			<button type="submit" class="btn btn-info">Tạo</button>
+			<button type="submit" class="btn btn-info">Tạo nhà phân phối</button>
 			&emsp;
 			<a href="{{ route('admin.distributions.index') }}" class="btn btn-primary">Trở về</a>
 		</div>

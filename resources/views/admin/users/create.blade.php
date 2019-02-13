@@ -73,7 +73,7 @@
 		<!-- /.box-body -->
 
 		<div class="box-footer">
-			<button type="submit" class="btn btn-info">Tạo</button>
+			<button type="submit" class="btn btn-info">Tạo khách hàng</button>
 			&emsp;
 			<a href="{{ route('admin.users.index') }}" class="btn btn-primary">Trở về</a>
 		</div>

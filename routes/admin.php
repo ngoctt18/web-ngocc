@@ -23,8 +23,9 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::resource('catagories', 'Catagory\CatagoryController');
 	Route::resource('distributions', 'Distribute\DistributeController');
 	Route::resource('products', 'Product\ProductController');
+	
+	Route::post('uploadImage', 'Product\ProductController@uploadImage')->name('uploadImage');
 	Route::resource('users', 'User\UserController');
-
 
 });
 

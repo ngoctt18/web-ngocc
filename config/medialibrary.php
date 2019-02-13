@@ -6,7 +6,8 @@ return [
      * The disk on which to store added files and derived images by default. Choose
      * one or more of the disks you've configured in config/filesystems.php.
      */
-    'disk_name' => 'public',
+    // Dùng media ở file config/filesystems.php.
+    'disk_name' => 'media',
 
     /*
      * The maximum file size of an item in bytes.
