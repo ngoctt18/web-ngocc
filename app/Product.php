@@ -39,14 +39,14 @@ class Product extends Model implements HasMedia
     // Defining An Accessor
 	public function getThumbProductAttribute(){
 		$thumb = optional($this->getFirstMedia('product_avatar'))->getFullUrl('thumb');
-		return  $thumb ?? asset('');
+		return  $thumb;
 	}
 
 	public function getThumbProductDetailsAttribute(){
 		$thumb = optional($this->getMedia('product_details'))->map(function (\Spatie\MediaLibrary\Models\Media $media) {
 			return $media->getFullUrl('thumb');
 		});
-		return  $thumb ?? asset('');
+		return  $thumb;
 	}
 
 

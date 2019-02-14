@@ -17,6 +17,11 @@ Auth::routes();
 Route::middleware(['auth:writer'])->group(function(){
 	Route::get('dashboard', 'DashboardController@writer')->name('dashboard');
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+	
+    // Thay đổi mật khẩu user đang đăng nhập
+	Route::post('checkPassword', 'Auth\LoginController@checkPassword')->name('check_password');
+	Route::post('changePassword', 'Auth\LoginController@changePassword')->name('change_password');
 });
 
 

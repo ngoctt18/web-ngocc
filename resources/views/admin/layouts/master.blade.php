@@ -4,6 +4,7 @@
   @include('admin.partials.head')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+  <div class="admin_loader"></div>
   <div class="wrapper">
     <!-- header -->
     @include('admin.partials.header')
@@ -18,7 +19,6 @@
       <section class="content-header">
         <h1>
           @yield('title')
-          <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
           <li><a href="{{ route(get_guard().'.dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>

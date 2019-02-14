@@ -24,8 +24,14 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::resource('distributions', 'Distribute\DistributeController');
 	Route::resource('products', 'Product\ProductController');
 	
+	// Upload một file ảnh lên thư mục tạm trên server.
 	Route::post('uploadImage', 'Product\ProductController@uploadImage')->name('uploadImage');
 	Route::resource('users', 'User\UserController');
+	Route::resource('orders', 'Order\OrderController')->except(['create','store']);
+
+    // Thay đổi mật khẩu user đang đăng nhập
+	Route::post('checkPassword', 'Auth\LoginController@checkPassword')->name('check_password');
+	Route::post('changePassword', 'Auth\LoginController@changePassword')->name('change_password');
 
 });
 

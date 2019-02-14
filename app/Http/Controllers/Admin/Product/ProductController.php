@@ -112,7 +112,7 @@ class ProductController extends Controller
 	}
 
 
-	//Upload một file ảnh lên thư mục tạm trên server.
+	// Upload một file ảnh lên thư mục tạm trên server.
 	public function uploadImage(Request $request){
 		$request->validate([
 			'image' => 'required|image'

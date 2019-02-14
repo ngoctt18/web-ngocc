@@ -1,5 +1,8 @@
+$(window).on('load', function(){
+    $('.admin_loader').hide();
+});
+
 $(document).ready(function(){
-    
     var alertMessage = (function(){
         $('.alert-message').delay(2500).slideUp().fadeOut();
     })();
@@ -29,6 +32,4 @@ $(document).ready(function(){
         });
     })();
 
-    
-    
 });

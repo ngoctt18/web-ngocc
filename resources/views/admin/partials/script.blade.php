@@ -36,5 +36,7 @@
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="{{ asset('dist/js/demo.js') }}"></script> --}}
 
-@yield('scripts')
+<script src="{{ asset('dist/js/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
+@include('admin.partials.admin_change_password')
+@yield('scripts')

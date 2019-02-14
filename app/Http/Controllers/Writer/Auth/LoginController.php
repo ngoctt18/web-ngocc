@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests\Writer\LoginWriterRequest;
 use Illuminate\Http\Request;
 use Auth;
+use Hash;
 use Session;
 
 class LoginController extends Controller
@@ -38,9 +39,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:writer')->except('logout');
+        $this->middleware('guest')->except('logout','checkPassword','changePassword');
+        $this->middleware('guest:admin')->except('logout','checkPassword','changePassword');
+        $this->middleware('guest:writer')->except('logout','checkPassword','changePassword');
     }
 
     public function showWriterLoginForm()
@@ -65,5 +66,23 @@ class LoginController extends Controller
     public function logout(Request $request){
         Auth::guard('writer')->logout();
         return redirect()->guest('/writer/login');
+    }
+
+    public function checkPassword(Request $request){
+        $password = $request->get('password', NULL);
+        if (Hash::check($password, Auth::user()->password)) {
+            // Nhập đúng mật khẩu
+            return "TRUE";
+        } else {
+            return "FALSE";
+        }
+    }
+
+    public function changePassword(Request $request){
+        Auth::user()->update([
+            'password' => $request->re_password,
+        ]);
+        Session::flash('success', 'Thay đổi mật khẩu thành công!');
+        return redirect()->route('admin.dashboard');
     }
 }

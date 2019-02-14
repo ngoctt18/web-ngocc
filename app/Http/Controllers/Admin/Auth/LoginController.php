@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests\Admin\LoginAdminRequest;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Session;
+use Hash;
+use App\Admin;
 
 class LoginController extends Controller
 {
@@ -38,9 +40,14 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:writer')->except('logout');
+        /*
+        * Các Middleware sẽ cho khách dùng đc showAdminLoginForm và adminLogin
+        * Nhưng không dùng đc các function ->except('logout','checkPassword','changePassword');
+        * 
+        */
+        $this->middleware('guest')->except('logout','checkPassword','changePassword');
+        $this->middleware('guest:admin')->except('logout','checkPassword','changePassword');
+        $this->middleware('guest:writer')->except('logout','checkPassword','changePassword');
     }
 
     public function showAdminLoginForm()
@@ -54,16 +61,32 @@ class LoginController extends Controller
             'phone' => $request->phone, 
             'password' => $request->password
         ];
-        // dd($loginInfo);
         if (Auth::guard('admin')->attempt($loginInfo, $request->input('remember', false))) {
             Session::flash('success', 'Đăng nhập thành công.');
             return redirect()->route('admin.dashboard');
         }
-        // return back()->withInput($request->only('phone', 'remember'));
     }
     
     public function logout(Request $request){
         Auth::guard('admin')->logout();
         return redirect()->guest('/admin/login');
+    }
+
+    public function checkPassword(Request $request){
+        $password = $request->get('password', NULL);
+        if (Hash::check($password, Auth::user()->password)) {
+            // Nhập đúng mật khẩu
+            return "TRUE";
+        } else {
+            return "FALSE";
+        }
+    }
+
+    public function changePassword(Request $request){
+        Auth::user()->update([
+            'password' => $request->re_password,
+        ]);
+        Session::flash('success', 'Thay đổi mật khẩu thành công!');
+        return redirect()->route('admin.dashboard');
     }
 }

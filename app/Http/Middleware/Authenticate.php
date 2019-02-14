@@ -14,7 +14,7 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        // Không hiểu cái này ???
+        // Nếu chưa đăng nhập thì quay lại trang login
         if (! $request->expectsJson()) {
             return route('admin.login');
         }

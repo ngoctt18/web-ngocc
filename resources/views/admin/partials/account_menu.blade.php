@@ -31,7 +31,7 @@
     <!-- Menu Footer-->
     <li class="user-footer">
       <div class="pull-left">
-        <a href="#" class="btn btn-default btn-flat">Profile</a>
+        <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#modal-changePassword">Change Password</a>
       </div>
       <div class="pull-right">
         <a href="{{ route(get_guard().'.logout') }}" class="btn btn-default btn-flat">Sign out</a>
