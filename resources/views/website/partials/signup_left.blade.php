@@ -3,7 +3,7 @@
       <div class="image-box">
          <div class="img-banner effect">
             <a href="collections/all.html">
-               <img src="../cdn.shopify.com/s/files/1/0928/4804/t/2/assets/sidebar_bannerone2946.png?14233272639774211042" alt="Adv Banner" class="img-responsive" />
+               <img src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/sidebar_bannerone2946.png?14233272639774211042') }}" alt="Adv Banner" class="img-responsive" />
             </a>
          </div>
       </div>

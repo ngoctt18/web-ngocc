@@ -11,3 +11,8 @@ html {
 	z-index: 9999;
 	background: url('website_loader.gif') 50% 50% no-repeat rgb(249,249,249);
 }
+
+div.product-image-container img.img-responsive {
+	width: 252px;
+	height: 261px;
+}

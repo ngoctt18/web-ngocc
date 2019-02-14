@@ -29,4 +29,7 @@ Route::middleware(['guest:web'])->group(function(){
 	Route::get('register', 'Auth\LoginController@showUserRegisterForm')->name('register');
 	Route::post('register', 'Auth\LoginController@userRegister');
 
+	Route::get('product/{id}/{name}', 'WebsiteController@productDetail')->name('product_detail');
+	
+
 });

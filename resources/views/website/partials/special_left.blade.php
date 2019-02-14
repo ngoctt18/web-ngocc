@@ -9,7 +9,7 @@
             <div class="product-block">
                <div class="product-container media">
                   <a class="products-block-image img pull-left" href="products/donec-fringilla.html" title="Aenean sagittis commodo habitasse lacus">
-                     <img class="replace-2x img-responsive" src="../cdn.shopify.com/s/files/1/0928/4804/products/p3_smalldf3d.jpg?v=1439570902" alt="Aenean sagittis commodo habitasse lacus">
+                     <img class="replace-2x img-responsive" src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p3_smalldf3d.jpg?v=1439570902') }}" alt="Aenean sagittis commodo habitasse lacus">
                   </a>
                   <div class="media-body">
                      <div class="product-content">
@@ -31,7 +31,7 @@
             <div class="product-block">
                <div class="product-container media">
                   <a class="products-block-image img pull-left" href="products/nullam-volutpat.html" title="Commo habita lacus aenean consequat sagittis">
-                     <img class="replace-2x img-responsive" src="../cdn.shopify.com/s/files/1/0928/4804/products/p15_smalla330.jpg?v=1439571039" alt="Commo habita lacus aenean consequat sagittis">
+                     <img class="replace-2x img-responsive" src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p15_smalla330.jpg?v=1439571039') }}" alt="Commo habita lacus aenean consequat sagittis">
                   </a>
                   <div class="media-body">
                      <div class="product-content">
@@ -52,7 +52,7 @@
             <div class="product-block">
                <div class="product-container media">
                   <a class="products-block-image img pull-left" href="products/nullam-commodo.html" title="Egestas lorem commodo libero quis enim vehicula">
-                     <img class="replace-2x img-responsive" src="../cdn.shopify.com/s/files/1/0928/4804/products/p17_small13bb.jpg?v=1439571095" alt="Egestas lorem commodo libero quis enim vehicula">
+                     <img class="replace-2x img-responsive" src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p17_small13bb.jpg?v=1439571095') }}" alt="Egestas lorem commodo libero quis enim vehicula">
                   </a>
                   <div class="media-body">
                      <div class="product-content">
@@ -73,7 +73,7 @@
             <div class="product-block">
                <div class="product-container media">
                   <a class="products-block-image img pull-left" href="products/nullam-commodo-1.html" title="Libero quis enim vehicula egestas lorem commodo">
-                     <img class="replace-2x img-responsive" src="../cdn.shopify.com/s/files/1/0928/4804/products/p11_small8e6f.jpg?v=1439571172" alt="Libero quis enim vehicula egestas lorem commodo">
+                     <img class="replace-2x img-responsive" src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p11_small8e6f.jpg?v=1439571172') }}" alt="Libero quis enim vehicula egestas lorem commodo">
                   </a>
                   <div class="media-body">
                      <div class="product-content">
@@ -94,7 +94,7 @@
             <div class="product-block">
                <div class="product-container media">
                   <a class="products-block-image img pull-left" href="products/nullam-volutpat-1.html" title="Libero quis enim vehicula egestas lorem commodo">
-                     <img class="replace-2x img-responsive" src="../cdn.shopify.com/s/files/1/0928/4804/products/p14_small592f.jpg?v=1439571205" alt="Libero quis enim vehicula egestas lorem commodo">
+                     <img class="replace-2x img-responsive" src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_small592f.jpg?v=1439571205') }}" alt="Libero quis enim vehicula egestas lorem commodo">
                   </a>
                   <div class="media-body">
                      <div class="product-content">
@@ -118,3 +118,4 @@
          </a>
       </div>
    </div>
+</div>

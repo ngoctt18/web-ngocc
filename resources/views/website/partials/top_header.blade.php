@@ -6,7 +6,7 @@
             <div id="header_logo">
                <h1 class="" itemscope itemtype="">
                   <a href="index.html" itemprop="url">
-                     <img src="../cdn.shopify.com/s/files/1/0928/4804/t/2/assets/logo2946.png?14233272639774211042" alt="AP-MILK-STORE" itemprop="logo">
+                     <img src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/logo2946.png?14233272639774211042') }}" alt="AP-MILK-STORE" itemprop="logo">
                   </a>
                </h1>
             </div>

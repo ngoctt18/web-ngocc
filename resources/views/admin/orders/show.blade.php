@@ -71,9 +71,9 @@
 							<td>{{$key+1}}</td>
 							<td>{{$detail->product->name}}</td>
 							<td>{{$detail->quantity}}</td>
-							<td>{{$detail->product->price}}</td>
+							<td>{{number_format($detail->product->price,0,",",".")}}</td>
 							<td>{{$detail->product->discount}}%</td>
-							<td>{{$detail->quantity*$detail->product->price*$detail->product->discount/100}}</td>
+							<td>{{number_format($detail->product->price-$detail->quantity*$detail->product->price*$detail->product->discount/100,0,",",".")}}</td>
 						</tr>
 						@endforeach
 					</tbody>

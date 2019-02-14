@@ -128,7 +128,7 @@
                                        <div class="product-container clearfix">
                                           <div class="image ">
                                              <a class="product_img_link" href="products/donec-fringilla.html" title="Aenean sagittis commodo habitasse lacus">
-                                                <img class="replace-2x img-responsive" src="../cdn.shopify.com/s/files/1/0928/4804/products/p3_smalldf3d.jpg?v=1439570902" alt="Aenean sagittis commodo habitasse lacus">
+                                                <img class="replace-2x img-responsive" src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p3_smalldf3d.jpg?v=1439570902') }}" alt="Aenean sagittis commodo habitasse lacus">
                                              </a>
                                           </div>
                                           <div class="product-meta">
@@ -151,7 +151,7 @@
                                        <div class="product-container clearfix">
                                           <div class="image ">
                                              <a class="product_img_link" href="products/nullam-volutpat.html" title="Commo habita lacus aenean consequat sagittis">
-                                                <img class="replace-2x img-responsive" src="../cdn.shopify.com/s/files/1/0928/4804/products/p15_smalla330.jpg?v=1439571039" alt="Commo habita lacus aenean consequat sagittis">
+                                                <img class="replace-2x img-responsive" src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p15_smalla330.jpg?v=1439571039') }}" alt="Commo habita lacus aenean consequat sagittis">
                                              </a>
                                           </div>
                                           <div class="product-meta">

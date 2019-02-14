@@ -100,7 +100,7 @@
                                                 <div class="blog-item item col-md-12 col-xs-12 col-sp-12">
                                                    <div class="media-body clearfix">
                                                       <div class="image">
-                                                         <img src="../cdn.shopify.com/s/files/1/0928/4804/files/b1_medium693b.jpg?11360329962432831771" title="Nullam ullamcorper nisl quis ornare molestie" class="img-responsive replace-2x" alt="Nullam ullamcorper nisl quis ornare molestie" />
+                                                         <img src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/files/b1_medium693b.jpg?11360329962432831771') }}" title="Nullam ullamcorper nisl quis ornare molestie" class="img-responsive replace-2x" alt="Nullam ullamcorper nisl quis ornare molestie" />
                                                       </div>
                                                       <div class="blog-meta">
                                                       </div>
@@ -113,7 +113,7 @@
                                                 <div class="blog-item item col-md-12 col-xs-12 col-sp-12">
                                                    <div class="media-body clearfix">
                                                       <div class="image">
-                                                         <img src="../cdn.shopify.com/s/files/1/0928/4804/files/b3_medium693b.jpg?11360329962432831771" title="Turpis at eleifend leo mi elit Aenean porta ac sed faucibus" class="img-responsive replace-2x" alt="Turpis at eleifend leo mi elit Aenean porta ac sed faucibus" />
+                                                         <img src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/files/b3_medium693b.jpg?11360329962432831771') }}" title="Turpis at eleifend leo mi elit Aenean porta ac sed faucibus" class="img-responsive replace-2x" alt="Turpis at eleifend leo mi elit Aenean porta ac sed faucibus" />
                                                       </div>
                                                       <div class="blog-meta">
                                                       </div>
@@ -126,7 +126,7 @@
                                                 <div class="blog-item item col-md-12 col-xs-12 col-sp-12">
                                                    <div class="media-body clearfix">
                                                       <div class="image">
-                                                         <img src="../cdn.shopify.com/s/files/1/0928/4804/files/b5_medium693b.jpg?11360329962432831771" title="Morbi condimentum molestie Nam enim odio sodales" class="img-responsive replace-2x" alt="Morbi condimentum molestie Nam enim odio sodales" />
+                                                         <img src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/files/b5_medium693b.jpg?11360329962432831771') }}" title="Morbi condimentum molestie Nam enim odio sodales" class="img-responsive replace-2x" alt="Morbi condimentum molestie Nam enim odio sodales" />
                                                       </div>
                                                       <div class="blog-meta">
                                                       </div>
@@ -143,7 +143,7 @@
                                                 <div class="blog-item item col-md-12 col-xs-12 col-sp-12">
                                                    <div class="media-body clearfix">
                                                       <div class="image">
-                                                         <img src="../cdn.shopify.com/s/files/1/0928/4804/files/b4_medium693b.jpg?11360329962432831771" title="Urna pretium elit mauris cursus Curabitur at elit Vestibulum" class="img-responsive replace-2x" alt="Urna pretium elit mauris cursus Curabitur at elit Vestibulum" />
+                                                         <img src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/files/b4_medium693b.jpg?11360329962432831771') }}" title="Urna pretium elit mauris cursus Curabitur at elit Vestibulum" class="img-responsive replace-2x" alt="Urna pretium elit mauris cursus Curabitur at elit Vestibulum" />
                                                       </div>
                                                       <div class="blog-meta">
                                                       </div>
@@ -156,7 +156,7 @@
                                                 <div class="blog-item item col-md-12 col-xs-12 col-sp-12">
                                                    <div class="media-body clearfix">
                                                       <div class="image">
-                                                         <img src="../cdn.shopify.com/s/files/1/0928/4804/files/b2_medium693b.jpg?11360329962432831771" title="First Post" class="img-responsive replace-2x" alt="First Post" />
+                                                         <img src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/files/b2_medium693b.jpg?11360329962432831771') }}" title="First Post" class="img-responsive replace-2x" alt="First Post" />
                                                       </div>
                                                       <div class="blog-meta">
                                                       </div>
@@ -267,7 +267,7 @@
                               <p class="text-center">&copy; Copyright 2019 AP-MILK-STORE.</p>
                            </div>
                            <div class="col-md-6 col-sm-12 col-xs-12">
-                              <p class="text-right"><img src="../cdn.shopify.com/s/files/1/0928/4804/t/2/assets/payment2946.png?14233272639774211042" alt="paymment" class="img-responsive" ></p>
+                              <p class="text-right"><img src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/payment2946.png?14233272639774211042" alt="paymment" class="img-responsive') }}" ></p>
                            </div>
                         </div>
                      </div>

@@ -12,7 +12,9 @@
             @include('website.partials.header')
             <main class="main-content" role="main">
                <section id="columns" class="columns-container">
+
                   @yield('content')
+                  
                </section>
             </main>
             @include('website.partials.footer')
