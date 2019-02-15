@@ -11,6 +11,7 @@
                             <div class="product_list">
                                 <div class="product-items">
                                     <div class="row">
+                                        @if(count($products))
                                         @foreach($products as $key => $product)
                                         <div class="product_block col-md-4 col-xs-4 col-sp-12">
                                             <div class="product-container text-left product-block">
@@ -86,6 +87,10 @@
                                     <div class="row">
                                         @endif
                                         @endforeach
+                                        @else
+                                        <div class="alert alert-danger" role="alert" style="
+                                        margin: 20px;">Không có sản phẩm nào!</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

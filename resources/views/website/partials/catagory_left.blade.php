@@ -14,7 +14,7 @@
                <ul class="nav navbar-nav nav-verticalmenu">
                   @foreach($catagories as $key => $catagory)
                   <li class=" parent dropdown">
-                     <a href="collections/best-seller.html" title="{{$catagory->name}}">
+                     <a href="{{ route('web.catagories',['id'=>$catagory->id,'name'=>$catagory->slug]) }}" title="{{$catagory->name}}">
                         <span class="menu-icon has-icon menu-icon-@if($key<10){{$key+1}}@else{{$key-9}}@endif">
                            <span class="menu-title">{{$catagory->name}}</span>
                         </span>

@@ -12,82 +12,45 @@
             <div id="apollo-top-menu" class="collapse navbar-collapse">
                <ul class="nav navbar-nav megamenu">
                   <li class="active">
-                     <a class="" href="index.html" title="Home" target="_self">
+                     <a class="" href="{{ route('web.homepage') }}" title="Home" target="_self">
                         <span class="">Home</span>
                      </a>
                   </li>
+
+                  @foreach($catagoriesTypes as $catagoriesType)
+                  
+                  @if(count($catagoriesType->catagories))
                   <li class="parent dropdown ">
-                     <a class="dropdown-toggle has-category" data-toggle="dropdown" href="collections/all.html" title="Collection" target="_self">
-                        <span class="">Collection</span><b class="caret"></b>
+                     <a class="dropdown-toggle has-category" data-toggle="dropdown" href="{{ route('web.catagory_types',['id'=>$catagoriesType->id,'name'=>$catagoriesType->slug]) }}" title="Collection" target="_self">
+                        <span class="">{{$catagoriesType->name}}</span><b class="caret"></b>
                      </a>
-                     <div class="dropdown-menu level1">
-                        <div class="dropdown-menu-inner">
-                           <div class="mega-col-inner">
-                              <ul>
-                                 <li class="">
-                                    <a class="" href="collections/frontpage.html" title="Left Sidebar Grid">
-                                       <span class="">Left Sidebar Grid</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="collections/random.html" title="Right Sidebar Grid">
-                                       <span class="">Right Sidebar Grid</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="collections/shop.html" title="Fullwidth Grid">
-                                       <span class="">Fullwidth Grid</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="collections/special.html" title="Left Sidebar List">
-                                       <span class="">Left Sidebar List</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="collections/best-seller.html" title="Right Sidebar List">
-                                       <span class="">Right Sidebar List</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="collections/compoment.html" title="Fullwidth List">
-                                       <span class="">Fullwidth List</span>
-                                    </a>
-                                 </li>
-                              </ul>
+                     @else
+                     <li class="">
+                        <a class="" href="" title="{{$catagoriesType->name}}" target="_self">
+                           <span class="">{{$catagoriesType->name}}</span>
+                        </a>
+                        @endif
+
+                        @if(count($catagoriesType->catagories))
+                        <div class="dropdown-menu level1">
+                           <div class="dropdown-menu-inner">
+                              <div class="mega-col-inner">
+                                 <ul>
+                                    @foreach($catagoriesType->catagories as $catagory)
+                                    <li class="">
+                                       <a class="" href="{{ route('web.catagories',['id'=>$catagory->id,'name'=>$catagory->slug]) }}" title="Left Sidebar Grid">
+                                          <span class="">{{$catagory->name}}</span>
+                                       </a>
+                                    </li>
+                                    @endforeach
+                                 </ul>
+                              </div>
                            </div>
                         </div>
-                     </div>
-                  </li>
-                  <li class="parent dropdown ">
-                     <a class="dropdown-toggle has-category" data-toggle="dropdown" href="products/nullam-volutpat.html" title="Products" target="_self">
-                        <span class="">Products</span><b class="caret"></b>
-                     </a>
-                     <div class="dropdown-menu level1">
-                        <div class="dropdown-menu-inner">
-                           <div class="mega-col-inner">
-                              <ul>
-                                 <li class="">
-                                    <a class="" href="products/nullam-volutpat.html" title="Fullwidth">
-                                       <span class="">Fullwidth</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="products/donec-fringilla.html" title="Left Sidebar">
-                                       <span class="">Left Sidebar</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="products/nullam-commodo.html" title="Right Sidebar">
-                                       <span class="">Right Sidebar</span>
-                                    </a>
-                                 </li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                  </li>
-                  <li class="parent dropdown full-width ">
+                        @endif
+                     </li>
+                     @endforeach
+                  <!-- <li class="parent dropdown full-width ">
                      <a class="dropdown-toggle has-category" data-toggle="dropdown" href="products/donec-fringilla.html" title="Mega menu" target="_self">
                         <span class="menu-title">Mega menu</span><b class="caret"></b>
                      </a>
@@ -128,7 +91,7 @@
                                        <div class="product-container clearfix">
                                           <div class="image ">
                                              <a class="product_img_link" href="products/donec-fringilla.html" title="Aenean sagittis commodo habitasse lacus">
-                                                <img class="replace-2x img-responsive" src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p3_smalldf3d.jpg?v=1439570902') }}" alt="Aenean sagittis commodo habitasse lacus">
+                                                <img class="replace-2x img-responsive" src="{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p3_smalldf3d.jpg?v=1439570902') }}" alt="Aenean sagittis commodo habitasse lacus">
                                              </a>
                                           </div>
                                           <div class="product-meta">
@@ -151,7 +114,7 @@
                                        <div class="product-container clearfix">
                                           <div class="image ">
                                              <a class="product_img_link" href="products/nullam-volutpat.html" title="Commo habita lacus aenean consequat sagittis">
-                                                <img class="replace-2x img-responsive" src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p15_smalla330.jpg?v=1439571039') }}" alt="Commo habita lacus aenean consequat sagittis">
+                                                <img class="replace-2x img-responsive" src="{ asset('cdn.shopify.com/s/files/1/0928/4804/products/p15_smalla330.jpg?v=1439571039') }}" alt="Commo habita lacus aenean consequat sagittis">
                                              </a>
                                           </div>
                                           <div class="product-meta">
@@ -177,52 +140,9 @@
                            </div>
                         </div>
                      </div>
-                  </li>
-                  <li class="parent dropdown ">
-                     <a class="dropdown-toggle has-category" data-toggle="dropdown" href="pages/about-us.html" title="Shortcode" target="_self">
-                        <span class="">Shortcode</span><b class="caret"></b>
-                     </a>
-                     <div class="dropdown-menu level1">
-                        <div class="dropdown-menu-inner">
-                           <div class="mega-col-inner">
-                              <ul>
-                                 <li class="">
-                                    <a class="" href="pages/shortcode.html" title="shortcode list">
-                                       <span class="">shortcode list</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="products/nullam-volutpat.html" title="product description">
-                                       <span class="">product description</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="blogs/news/41609924-nullam-ullamcorper-nisl-quis-ornare-molestie.html" title="shortcode in blog">
-                                       <span class="">shortcode in blog</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="pages/faq.html" title="shortcode in page">
-                                       <span class="">shortcode in page</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="collections/frontpage.html" title="shorcode in collection">
-                                       <span class="">shorcode in collection</span>
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a class="" href="https://www.youtube.com/watch?v=rMkkHkeTPLE" title="Video guide">
-                                       <span class="">Video guide</span>
-                                    </a>
-                                 </li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                  </li>
+                  </li> -->
                   <li class="">
-                     <a class="" href="blogs/news.html" title="Blog" target="_self">
+                     <a class="" href="" title="Blog" target="_self">
                         <span class="">Blog</span>
                      </a>
                   </li>

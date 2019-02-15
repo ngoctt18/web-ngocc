@@ -7,10 +7,25 @@
                         <span itemprop="name">Home</span>
                     </a>
                 </li>
-                
+
+                @isset(($breadcrumb->catagory->catagoryType))
+                <li itemprop="itemListElement" itemscope itemtype="">
+                    <a href="" title="Back to the frontpage" itemprop="item">
+                        <span itemprop="name">{{$breadcrumb->catagory->catagoryType->name}}</span>
+                    </a>
+                </li>
+                @endisset
+
+                @isset(($breadcrumb->catagory))
+                <li itemprop="itemListElement" itemscope itemtype="">
+                    <a href="" title="Back to the frontpage" itemprop="item">
+                        <span itemprop="name">{{$breadcrumb->catagory->name}}</span>
+                    </a>
+                </li>
+                @endisset
 
                 <li class="active" itemprop="itemListElement" itemscope itemtype="">
-                    <span itemprop="name">{{$product->name}}</span>
+                    <span itemprop="name">{{$breadcrumb->name}}</span>
                 </li>
                 
             </ol>

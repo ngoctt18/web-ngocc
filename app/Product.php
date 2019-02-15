@@ -64,4 +64,29 @@ class Product extends Model implements HasMedia
 		return $this->hasOne(OrderDetail::class, 'product_id', 'id');
 	}
 
+
+	// scope
+	// Tìm sản phẩm theo catagory_type_id
+	public function scopeProductsByCatagoryType($query, $catagory_type_id)
+	{
+		return $query->whereHas('catagory', function($query) use ($catagory_type_id){
+			$query->where('catagory_type_id', $catagory_type_id);
+		});
+	}
+
+	public function scopeSearchPrice($query, $value)
+	{
+		if ($value == 200000) {
+			return $query->where('price', '<', 200000);
+		} else if($value == 200000300000){
+			return $query->where('price', '>=', 200000)->where('price', '<=', 300000);
+		} else if($value == 300000400000){
+			return $query->where('price', '>=', 300000)->where('price', '<=', 400000);
+		} else if($value == 400000500000){
+			return $query->where('price', '>=', 400000)->where('price', '<=', 500000);
+		} else if($value == 500000){
+			return $query->where('price', '>=', 500000);
+		}
+	}
+
 }

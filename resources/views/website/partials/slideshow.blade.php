@@ -2,7 +2,7 @@
  <div class="slider-container ">
   <ul id="sliderlayer" class="slides clearfix">
    <li data-thumb="../cdn.shopify.com/s/files/1/0928/4804/t/2/assets/slideshow_image_12946.png?14233272639774211042">
-    <a href="collections/all.html" class="slide-link">
+    <a href="#" class="slide-link">
      <img class="img-responsive" alt="Delicious" src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/slideshow_image_12946.png?14233272639774211042') }}" />
    </a>
    <div class="slide-caption caption_1">

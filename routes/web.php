@@ -30,6 +30,11 @@ Route::middleware(['guest:web'])->group(function(){
 	Route::post('register', 'Auth\LoginController@userRegister');
 
 	Route::get('product/{id}/{name}', 'WebsiteController@productDetail')->name('product_detail');
+	Route::get('catagory-types/{id}/{name}', 'WebsiteController@catagoryTypes')->name('catagory_types');
+	Route::get('catagories/{id}/{name}', 'WebsiteController@Catagories')->name('catagories');
+
+	Route::post('add-to-cart/{id}/{name}', 'ShoppingController@addToCart')->name('add_cart');
+	Route::get('cart', 'ShoppingController@getCart')->name('cart');
 	
 
 });
