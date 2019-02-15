@@ -30,7 +30,7 @@
       <!-- SHOP BY PRICE -->
       <div class="catalog_filters">
          <div class="catalog_subtitle_heading">
-            <span class="catalog_subtitle">Price</span>
+            <span class="catalog_subtitle"></span>
          </div>
          <ul id="ul_catalog_price" class="col-md-12 catalog_filter_ul list-unstyled">
             <li class="advanced-filter {{request('price') == 200000 ? 'price_checked' : ''}}" data-group="Price" data-handle="under-50">

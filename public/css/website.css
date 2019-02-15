@@ -1,4 +1,5 @@
 html { scroll-behavior: smooth; }
+textarea {resize: vertical;}
 
 .website_loader {
 	position: fixed;

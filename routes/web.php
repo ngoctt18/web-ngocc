@@ -35,6 +35,9 @@ Route::middleware(['guest:web'])->group(function(){
 
 	Route::post('add-to-cart/{id}/{name}', 'ShoppingController@addToCart')->name('add_cart');
 	Route::get('cart', 'ShoppingController@getCart')->name('cart');
+	Route::get('cart/del-item/{rowId}', 'ShoppingController@delItemInCart')->name('del_item');
 	
+	Route::post('update-qty', 'ShoppingController@updateQuantity')->name('update_qty');
 
+	Route::post('checkout', 'ShoppingController@checkout')->name('checkout');
 });
