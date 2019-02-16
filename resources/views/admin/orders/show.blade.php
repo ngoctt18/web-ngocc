@@ -71,9 +71,9 @@
 							<td>{{$key+1}}</td>
 							<td>{{$detail->product->name}}</td>
 							<td>{{$detail->quantity}}</td>
-							<td>{{number_format($detail->product->price,0,",",".")}}</td>
+							<td>{{number_format($detail->product->price,0,",",".")}} ₫</td>
 							<td>{{$detail->product->discount}}%</td>
-							<td>{{number_format($detail->product->price-$detail->quantity*$detail->product->price*$detail->product->discount/100,0,",",".")}}</td>
+							<td>{{number_format(($detail->quantity*$detail->product->price)-($detail->quantity*$detail->product->price*$detail->product->discount/100),0,",",".")}} ₫</td>
 						</tr>
 						@endforeach
 					</tbody>
@@ -95,26 +95,26 @@
 			</div>
 			<!-- /.col -->
 			<div class="col-xs-6">
-				<p class="lead">Amount Due 2/22/2014</p>
+				{{-- <p class="lead">Amount Due 2/22/2014</p> --}}
 
 				<div class="table-responsive">
 					<table class="table">
 						<tr>
-							<th style="width:50%">Subtotal:</th>
-							<td>$250.30</td>
+							<th>Vận chuyển:</th>
+							<td>Free</td>
 						</tr>
 						<tr>
+							<th style="width:50%">Tổng tiền:</th>
+							<td>{{number_format($order->sum_money,0,",",".")}} ₫</td>
+						</tr>
+						<!-- <tr>
 							<th>Tax (9.3%)</th>
 							<td>$10.34</td>
-						</tr>
-						<tr>
-							<th>Shipping:</th>
-							<td>$5.80</td>
-						</tr>
-						<tr>
+						</tr> -->
+						<!-- <tr>
 							<th>Total:</th>
 							<td>$265.24</td>
-						</tr>
+						</tr> -->
 					</table>
 				</div>
 			</div>

@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Exceptions;
-
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
 use Auth;
-
 class Handler extends ExceptionHandler
 {
     /**
@@ -17,7 +14,6 @@ class Handler extends ExceptionHandler
     protected $dontReport = [
         //
     ];
-
     /**
      * A list of the inputs that are never flashed for validation exceptions.
      *
@@ -27,7 +23,6 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
-
     /**
      * Report or log an exception.
      *
@@ -38,7 +33,6 @@ class Handler extends ExceptionHandler
     {
         parent::report($exception);
     }
-
     /**
      * Render an exception into an HTTP response.
      *
@@ -50,8 +44,8 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
-
     // Chuyển hướng đúng type guard khi đăng xuất,...
+    // Chuyển hướng sang trang login khi chưa đăng nhập theo url 
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson()) {
@@ -63,6 +57,9 @@ class Handler extends ExceptionHandler
         if ($request->is('writer') || $request->is('writer/*')) {
             return redirect()->guest('/writer/login');
         }
-        return redirect()->guest(route('admin.login'));
+        if ($request->is('homepage') || $request->is('homepage/*')) {
+            return redirect()->guest('/homepage/login');
+        }
+        return redirect()->guest(route('web.login'));
     }
 }

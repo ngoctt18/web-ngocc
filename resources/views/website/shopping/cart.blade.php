@@ -17,7 +17,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 				
 				<form action="{{ route('web.checkout') }}" method="post" novalidate="" class="cart" name="formCart" id="formCart">
 					{{csrf_field()}}
-					<h1 class="page-header">Giỏ hàng <small>(Bạn có {{$contents->count()}} sản phẩm)</small></h1>
+					<h1 class="page-header">Giỏ hàng <small>(Bạn có {{Cart::count()}} sản phẩm)</small></h1>
 					@if(count($contents))
 					<div class="page-content">
 						<div class="cart_header_labels clearfix">
@@ -58,22 +58,26 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 							
 							<div class="cpro_item col-xs-12 col-sm-1 col-md-1">
 								<div class="cpro_item_inner">
-									<a href="{{ route('web.product_detail',[$item->id,$item->options->slug]) }}">
-										<img class="img-responsive" src="{{$item->options->img??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="Egestas lorem commodo libero quis enim vehicula - N / blue">
+									<a href="{{ route('web.product_detail',[$item->id,$item->model->slug]) }}">
+										<img class="img-responsive" src="{{$item->model->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="Egestas lorem commodo libero quis enim vehicula - N / blue">
 									</a>
 								</div>
 							</div>
 							<div class="cpro_item col-xs-12 col-sm-3 col-md-4">
 								<div class="cpro_item_inner">
-									<a href="{{ route('web.product_detail',[$item->id,$item->options->slug]) }}">
-										{{$item->name}}
+									<a href="{{ route('web.product_detail',[$item->id,$item->model->slug]) }}">
+										{{$item->model->name}}
 									</a>
 									{{-- <small>N / blue</small> --}}
 								</div>
 							</div>
 							<div class="cpro_item col-xs-12 col-sm-2 col-md-3">
 								<div class="cpro_item_inner">
-									<span class="price product-price"><span class="money" data-currency-usd="$40.00">{{number_format($item->price,0,",",".")}}₫</span></span>
+									<span class="price product-price">
+										<span class="money" data-currency-usd="">
+											{{number_format($item->price,0,",",".")}}₫
+										</span>
+									</span>
 									@if ($item->options->discount != 0)
 									<span class="old-price product-price">
 										<span class='money' style=" text-decoration: line-through; color: gray;">
@@ -132,14 +136,19 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 								<p><em>Shipping &amp; taxes calculated at checkout</em></p>
 								<a class="btn con-ajax-cart btn-outline" href="{{ route('web.homepage') }}" title="Continue shopping">Continue shopping</a>
 								<input type="submit" name="update" class="btn btn-outline update-cart" value="Update Cart">
-								<input type="submit" name="checkout" class="btn btn-outline" value="Check Out">
+								<a href="{{ route('web.checkout') }}" class="btn btn-outline" >Check Out</a>
+								<!-- <input type="submit" name="checkout" class="btn btn-outline" value="Check Out"> -->
 								
 							</div>
 						</div>
 					</div>
 					@else
-					<div class="alert alert-danger" role="alert" style="
-					margin: 20px;">Giỏ hàng của bạn còn trống!</div>
+					@if(session()->has('success'))
+					<p class="alert alert-success cart-empty" style=" margin-bottom: 20px; ">
+						{{ session()->get('success') }}
+					</p>
+					@endif
+					<p class="alert alert-warning cart-empty">Giỏ hàng của bạn còn trống!</p>
 					@endif
 				</form>
 				<p class="cart_navigation clearfix">

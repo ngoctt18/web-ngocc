@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Support\Facades\Auth;
-
 class RedirectIfAuthenticated
 {
     /**
@@ -24,11 +21,12 @@ class RedirectIfAuthenticated
                     return redirect()->route('admin.dashboard');
                 case 'writer':
                     return redirect()->route('writer.dashboard');
+                case 'web':
+                    return redirect()->route('web.dashboard');
                 default:
-                    return redirect()->route('home');
+                    return redirect()->route('web.homepage');
             }
         }
-
         return $next($request);
     }
 }

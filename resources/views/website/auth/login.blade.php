@@ -12,14 +12,21 @@
 					We've sent you an email with a link to update your password.
 				</div>
 				<div id="CustomerLoginForm">
-					<form method="post" action="" id="customer_login" accept-charset="UTF-8">
+					<form method="post" action="{{ route('web.post_login') }}" id="customer_login" accept-charset="UTF-8">
+						{{ csrf_field() }}
 						<h1>Login</h1>
 
-						<label for="CustomerEmail" class="label-login">Email Address</label>
-						<input type="email" name="customer[email]" id="CustomerEmail" placeholder="Email Address" class="account_input form-control " autocorrect="off" autocapitalize="off" autofocus="">
+						<label for="CustomerEmail" class="label-login">Phone</label>
+						<input type="text" name="phone" id="CustomerEmail" placeholder="Phone" class="account_input form-control " autocorrect="off" autocapitalize="off" autofocus="" value="{{old('phone')}}">
+						@if($errors->has('phone'))
+						<span class="help-block">{{ $errors->first('phone') }}</span>
+						@endif
 
 						<label for="CustomerPassword" class="label-login">Password</label>
-						<input type="password" value="" name="customer[password]" id="CustomerPassword" placeholder="Password" class="password_input form-control ">
+						<input type="password" value="" name="password" id="CustomerPassword" placeholder="Password" class="password_input form-control ">
+						@if($errors->has('password'))
+						<span class="help-block">{{ $errors->first('password') }}</span>
+						@endif
 						<p class="lost_password form-group">
 							<a href="#recover" id="RecoverPassword">Forgot your password?</a>
 						</p>

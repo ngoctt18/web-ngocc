@@ -15,6 +15,8 @@ class User extends Authenticatable implements HasMedia
     use Notifiable;
     use HasMediaTrait;
 
+    protected $guard = 'web';
+
     /**
      * The attributes that are mass assignable.
      *

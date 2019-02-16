@@ -20,7 +20,7 @@
                      </div>
                      <div class="cart-inner media-body">
                         <span class="cart-title">Shopping cart</span>
-                        <span id="CartCount">{{$contents->count()}}</span>
+                        <span id="CartCount">{{Cart::count()}}</span>
                         <span>items - </span>
                         <span id="CartCost"><span class='money'>{{$total}}₫</span></span>
                      </div>
@@ -36,11 +36,20 @@
                      <a id="wishlist-total" title="Wishlist" href="pages/wish-list.html"><i class="fa fa-list-alt"></i> Wishlist</a>
                   </li>
                   <li>
-                     <a class="account" rel="nofollow" href="{{ route('web.login') }}" title="My Account"><i class="fa fa-user"></i> My Account</a>
-                  </li>
-                  <li>
                      <a href="{{ route('web.cart') }}" title="My Cart"><i class="fa fa-share"></i> Check Out</a>
                   </li>
+                  @if(Auth::check())
+                  <li>
+                     <a class="account" href="#" title="{{Auth::user()->name}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a>
+                  </li>
+                  <li>
+                     <a class="account" href="{{ route('web.logout') }}" title="Logout"><i class="fa fa-user"></i> Logout</a>
+                  </li>
+                  @else
+                  <li>
+                     <a class="account" href="{{ route('web.login') }}" title="Login"><i class="fa fa-user"></i> Login</a>
+                  </li>
+                  @endif
                </ul>
             </div>
             <div id="search_block_top" class="">

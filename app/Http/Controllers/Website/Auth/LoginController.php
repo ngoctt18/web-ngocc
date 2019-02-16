@@ -2,28 +2,72 @@
 
 namespace App\Http\Controllers\Website\Auth;
 
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use  App\Http\Requests\Website\LoginWebsiteRequest;
+
+use App\Product;
+use App\Catagory;
+use App\CatagoriesType;
+use App\Order;
+use App\OrderDetail;
+use Carbon;
+use Session;
+use Cart;
+use Auth;
 
 class LoginController extends Controller
 {
-	public function showUserLoginForm()
-	{
-		return view('website.auth.login');
-	}
+	use AuthenticatesUsers;
 
-	public function userLogin()
+	public function __construct()
 	{
+        /*
+        * Các Middleware sẽ cho khách dùng đc showAdminLoginForm và adminLogin
+        * Nhưng không dùng đc các function ->except('logout','checkPassword','changePassword');
+        * 
+        */
+        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:writer')->except('logout');
+    }
 
-	}
+    public function showUserLoginForm()
+    {
+    	$total = Cart::subtotal(0,'','.');
+    	$catagoriesTypes = CatagoriesType::where('status', '1')->get();
+    	return view('website.auth.login', compact('total','catagoriesTypes'));
+    }
 
-	public function showUserRegisterForm()
-	{
-		return view('website.auth.register');
-	}
+    public function userLogin(LoginWebsiteRequest $request)
+    {
+    	$loginInfo = [
+    		'phone' => $request->phone, 
+    		'password' => $request->password
+    	];
+		// return $loginInfo;
+    	if (Auth::attempt($loginInfo, $request->input('remember', false))) {
+    		Session::flash('success', 'Đăng nhập thành công.');
+    		return redirect()->route('web.checkout');
+    	}
+    }
 
-	public function userRegister()
-	{
-		
-	}
+    public function logout(Request $request){
+    	Auth::logout();
+    	return redirect()->guest('/homepage/');
+    }
+
+
+
+
+    public function showUserRegisterForm()
+    {
+    	return view('website.auth.register');
+    }
+
+    public function userRegister()
+    {
+    	
+    }
 }

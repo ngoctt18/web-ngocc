@@ -33,7 +33,7 @@
 				<tr role="row" class="align-middle">
 					<td><a href="{{ route('admin.orders.show', ['id' => $order->id], false) }}" class="">{{$order->id}}</a></td>
 					<td>{{$order->name}}</td>
-					<td>{{$order->sum_money}}</td>
+					<td>{{number_format($order->sum_money,0,",",".")}} ₫</td>
 					<td>{{$order->created_at->format('d/m/Y')}}</td>
 					<td>
 						@if($order->status == '0')

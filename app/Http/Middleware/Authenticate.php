@@ -1,9 +1,6 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-
 class Authenticate extends Middleware
 {
     /**
@@ -16,7 +13,7 @@ class Authenticate extends Middleware
     {
         // Nếu chưa đăng nhập thì quay lại trang login
         if (! $request->expectsJson()) {
-            return route('admin.login');
+            return route('web.login');
         }
     }
 }

@@ -63,12 +63,13 @@
 										<div class="functional-buttons clearfix">
 											<div class="cart">
 												<div class="action">
-													<form action="" method="post" enctype="multipart/form-data" class="form-ajaxtocart">
-														<input type="hidden" name="id" value="4214856452" />
-														<a class=" btn btn-outline button ajax_addtocart" href="{{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}" title="{{$product->name}}">
+													<form action="{{ route('web.add_cart',[$product->id,$product->slug]) }}" method="post" class="form-ajaxtocart">
+														{{csrf_field()}}
+														<input type="hidden" name="quantity" value="1" />
+														<button type="submit"  class=" btn btn-outline button ajax_addtocart" >
 															<span class="fa fa-shopping-cart"></span>
 															<span class="select_options">Mua ngay</span>
-														</a>
+														</button>
 													</form>
 												</div>
 											</div>

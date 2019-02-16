@@ -8,11 +8,13 @@ use App\Product;
 use App\Catagory;
 use App\CatagoriesType;
 use Cart;
+use Auth;
 
 class WebsiteController extends Controller
 {
 	public function homepage()
 	{
+		// return Auth::user();
 		$contents = Cart::content();
 		$total = Cart::subtotal(0,'','.');
 
