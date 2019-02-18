@@ -12,7 +12,7 @@
                      <h1>{{$news->title}}</h1>
                      <div class="blog-meta clearfix">
                         <div class="postby">
-                           Posted by <strong>{{$news->author->name}}</strong> on {{$news->created_at->format('H:m - j F, Y')}}
+                            Posted by <strong><a href="{{ route('web.news.author',[$news->author->username]) }}">{{$news->author->name}}</a></strong> on <time>{{$news->created_at->format('H:m - j F, Y')}}</time>
                         </div>
                         <div class="blog-tags">
                            <span class="icon-tag">Tags:</span>
@@ -37,12 +37,13 @@
                            <div class="blog-content clearfix">
                               <div class="content-wrap clearfix">
                                  <div class="itemFullText">
-                                    {{$news->content}}
+                                    {!!$news->content!!}
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
+                     <br>
                      <div class="blog-social clearfix">
                         <div class="socialsharing_product no-print">
                             <ul class="social-sharing list-unstyled">
@@ -69,6 +70,7 @@
                             </ul>
                         </div>
                      </div>
+                     <br>
                      <div class="blog-tags-bottom">
                         <span class="icon-tag">Tags:</span>
                         @foreach($news->tags as $tag)
@@ -82,44 +84,35 @@
                      </div>
                      <hr>
                      <p class="btn-prenext clearfix">
-                        <span class="pull-left"><i class="fa fa-angle-double-left"></i> <a href="41609924-nullam-ullamcorper-nisl-quis-ornare-molestie.html" title="">Older Post</a></span>
-                        <span class="pull-right">
-                        <a href="41609924-nullam-ullamcorper-nisl-quis-ornare-molestie.html" title="">Newer Post</a> <i class="fa fa-angle-double-right"></i>
+                        @isset ($previous)
+                        <span class="pull-left"><i class="fa fa-angle-double-left"></i> <a href="{{ route('web.news.view', [$previous->id,$previous->slug]) }}" title="{{$previous->title}}">Older Post</a>
                         </span>
+                        @endisset
+                        @isset ($next)
+                        <span class="pull-right">
+                        <a href="{{ route('web.news.view', [$next->id,$next->slug]) }}" title="{{$next->title}}">Newer Post</a> <i class="fa angle-right"></i>
+                        </span>
+                        @endisset
                      </p>
                      <div class="extra-blogs row">
                         <div class="col-lg-6 col-md-6 col-xs-12">
-                           <h4>In Same Category</h4>
+                           <h4>popular posts</h4>
                            <ul>
-                              <li>
-                                 <a href="41609924-nullam-ullamcorper-nisl-quis-ornare-molestie.html" title="">Nullam ullamcorper nisl quis ornare molestie</a>
+                                @foreach($news_popular as $popular)
+                                <li>
+                                 <a href="{{ route('web.news.view', [$popular->id,$popular->slug]) }}" title="{{$popular->title}}">{{$popular->title}}</a>
                               </li>
-                              <li>
-                                 <a href="41609796-turpis-at-eleifend-leo-mi-elit-aenean-porta-ac-sed-faucibus.html" title="">Turpis at eleifend leo mi elit Aenean porta ac sed faucibus</a>
-                              </li>
-                              <li>
-                                 <a href="41609412-morbi-condimentum-molestie-nam-enim-odio-sodales.html" title="">Morbi condimentum molestie Nam enim odio sodales</a>
-                              </li>
-                              <li>
-                                 <a href="41609092-urna-pretium-elit-mauris-cursus-curabitur-at-elit-vestibulum.html" title="">Urna pretium elit mauris cursus Curabitur at elit Vestibulum</a>
-                              </li>
-                              <li>
-                                 <a href="36737028-first-post.html" title="">First Post</a>
-                              </li>
+                              @endforeach
                            </ul>
                         </div>
                         <div class="col-lg-6 col-md-6 col-xs-12">
                            <h4>Related by Tags</h4>
                            <ul>
-                              <li>
-                                 <a href="41609796-turpis-at-eleifend-leo-mi-elit-aenean-porta-ac-sed-faucibus.html" title="">Turpis at eleifend leo mi elit Aenean porta ac sed faucibus</a>
-                              </li>
-                              <li>
-                                 <a href="41609412-morbi-condimentum-molestie-nam-enim-odio-sodales.html" title="">Morbi condimentum molestie Nam enim odio sodales</a>
-                              </li>
-                              <li>
-                                 <a href="41609092-urna-pretium-elit-mauris-cursus-curabitur-at-elit-vestibulum.html" title="">Urna pretium elit mauris cursus Curabitur at elit Vestibulum</a>
-                              </li>
+                                @foreach ($news_related as $related)
+                                  <li>
+                                     <a href="{{ route('web.news.view', [$related->id,$related->slug]) }}" title="{{$related->title}}">{{$related->title}}</a>
+                                  </li>
+                                @endforeach
                            </ul>
                         </div>
                      </div>
@@ -132,33 +125,29 @@
                   <div class="block-sidebar-blog block">
                      <h4 class="title_block">Recent Articles</h4>
                      <ul class="list-block list-unstyled block_content">
+                        @foreach($news_latest as $news)
                         <li>
-                           <a href="../41609924-nullam-ullamcorper-nisl-quis-ornare-molestie.html">Nullam ullamcorper nisl quis ornare molestie</a>
-                           <time datetime="2015-08-17">August 17, 2015</time>
+                            <a href="{{ route('web.news.view', [$news->id,$news->slug]) }}" title="{{$news->title}}">{{$news->title}}</a>
+                            <time>
+                                {{$news->created_at->format('H:m - F j, Y')}}
+                            </time>
                         </li>
-                        <li>
-                           <a href="../41609796-turpis-at-eleifend-leo-mi-elit-aenean-porta-ac-sed-faucibus.html">Turpis at eleifend leo mi elit Aenean porta ac sed faucibus</a>
-                           <time datetime="2015-08-17">August 17, 2015</time>
-                        </li>
-                        <li>
-                           <a href="../41609412-morbi-condimentum-molestie-nam-enim-odio-sodales.html">Morbi condimentum molestie Nam enim odio sodales</a>
-                           <time datetime="2015-08-17">August 17, 2015</time>
-                        </li>
-                        <li>
-                           <a href="../41609092-urna-pretium-elit-mauris-cursus-curabitur-at-elit-vestibulum.html">Urna pretium elit mauris cursus Curabitur at elit Vestibulum</a>
-                           <time datetime="2015-08-17">August 17, 2015</time>
-                        </li>
-                        <li>
-                           <a href="../36737028-first-post.html">First Post</a>
-                           <time datetime="2015-07-19">July 19, 2015</time>
-                        </li>
-                     </ul>
+                        @endforeach
+                    </ul>
                   </div>
                   <div id="categories-blog" class="block-sidebar-blog block">
                      <h4 class="title_block">Tags</h4>
                      <ul class="list-block list-unstyled block_content">
-                        <li>Milk</li>
-                        <li><a href="milk-store.html" title="Show articles tagged Milk store">Milk store</a></li>
+                        @foreach($tags as $tag)
+                        <li>
+                            <a href="{{ route('web.news.tagged',[$tag->slug]) }}">
+                                <span>{{$tag->name}}</span>
+                            </a>
+                            @if(!$loop->last)
+                            {{", "}}
+                            @endif 
+                        </li>
+                        @endforeach
                      </ul>
                   </div>
                   <div id="blogsidebar-html" class="block-sidebar-blog block">

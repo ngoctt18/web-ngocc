@@ -44,7 +44,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                 </div>
                                 <h5 class="brand" itemprop="brand"><span>Thương hiệu: </span><a href="" title="">{{$product->brand}}</a></h5>
                                 <div class="product-description rte" itemprop="description">
-                                    {{$product->description}}
+                                    {!!$product->description!!}
                                 </div>
                                 <div class="socialsharing_product no-print">
                                     <ul class="social-sharing list-unstyled">
@@ -195,6 +195,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                             </div>
                         </div>
                     </div>
+                    <div class="fb-comments" data-href="http://localhost:8000/homepage/product/14/sua-hat-oc-cho" data-width="600px" data-numposts="5"></div>
                     <div class="productpage col-xs-12 col-sm-12 col-lg-12">
                         <div id="productrelated01" class="products_block exclusive block" >
                             <h4 class="page-subheading ">

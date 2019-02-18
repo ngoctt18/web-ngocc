@@ -2,7 +2,8 @@
 <meta name="theme-color" content="#747474">
 <script src="{{ asset('ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js') }}" type="text/javascript"></script>
 <!-- Theme css ================================================================ -->
-<link rel="stylesheet" href="{{ asset('maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') }}" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
 <link href='{{ asset('http://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,300,300italic') }}' rel='stylesheet' type='text/css'>
 <link href="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/fonts.scss2946.css?14233272639774211042') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/ajaxify.scss2946.css?14233272639774211042') }}" rel="stylesheet" type="text/css" media="all" />

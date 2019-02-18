@@ -16,10 +16,10 @@
                             <div class="inner">
                                 @foreach($news as $new)
                                 <div class="blog-item clearfix">
-                                    <h3><a href="{{ route('web.news.view', [$new->id,$new->slug]) }}">{{$new->title}}</a></h3>
+                                    <h3><a href="{{ route('web.news.view', [$new->id,$new->slug]) }}" title="{{$new->title}}">{{$new->title}}</a></h3>
                                     <div class="blog-meta clearfix">
                                         <div class="postby">
-                                            Posted by <strong><a href="{{ route('web.news.author',[$new->author->username]) }}">{{$new->author->name}}</a></strong> on {{$new->created_at->format('H:m - F j, Y')}}
+                                            Posted by <strong><a href="{{ route('web.news.author',[$new->author->username]) }}">{{$new->author->name}}</a></strong> on <time>{{$new->created_at->format('H:m - F j, Y')}}</time>
                                         </div>
                                         <div class="blog-tags">
                                             <span class="icon-tag">Tags:</span>
@@ -37,7 +37,7 @@
                                         <div class="image">
                                             <img src="../../../../cdn.shopify.com/s/files/1/0928/4804/files/b3_medium693b.jpg?11360329962432831771" title="Turpis at eleifend leo mi elit Aenean porta ac sed faucibus" class="img-responsive replace-2x" alt="Turpis at eleifend leo mi elit Aenean porta ac sed faucibus" />
                                         </div>
-                                        <p>{{str_limit($new->content, 350, '...')}}</p>
+                                        <p>{!!str_limit($new->content, 350, '...')!!}</p>
                                     </div>
                                     <p><a class="btn btn-readmore" href="{{ route('web.news.view', [$new->id,$new->slug]) }}">Read more &rarr;</a></p>
                                 </div>
@@ -55,8 +55,10 @@
                             <ul class="list-block list-unstyled block_content">
                                 @foreach($news_latest as $news)
                                 <li>
-                                    <a href="{{ route('web.news.view', [$news->id,$news->slug]) }}">{{$news->title}}">{{$news->title}}</a>
-                                    {{$news->created_at->format('H:m - F j, Y')}}
+                                    <a href="{{ route('web.news.view', [$news->id,$news->slug]) }}" title="{{$news->title}}">{{$news->title}}</a>
+                                    <time>
+                                        {{$news->created_at->format('H:m - F j, Y')}}
+                                    </time>
                                 </li>
                                 @endforeach
                             </ul>
@@ -64,14 +66,15 @@
                         <div id="categories-blog" class="block-sidebar-blog block">
                             <h4 class="title_block">Tags</h4>
                             <ul class="list-block list-unstyled block_content">
-                                @foreach($new->tags as $tag)
+                                @foreach($tags as $tag)
                                 <li>
                                     <a href="{{ route('web.news.tagged',[$tag->slug]) }}">
-                                    <span>{{$tag->name}}</span></a>
+                                        <span>{{$tag->name}}</span>
+                                    </a>
+                                    @if(!$loop->last)
+                                    {{", "}}
+                                    @endif 
                                 </li>
-                                @if(!$loop->last)
-                                {{", "}}
-                                @endif 
                                 @endforeach
                             </ul>
                         </div>
