@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Catagory;
 use App\CatagoriesType;
+use App\Contact;
 use Cart;
 use Auth;
+use Session;
 
 class WebsiteController extends Controller
 {
@@ -67,5 +69,20 @@ class WebsiteController extends Controller
 		$productsSpecial = Product::where('status', '1')->orderBy('discount','DESC')->take(4)->get();
 		
 		return view('website.catagories.catagories', compact('catagoriesTypes','products','breadcrumb','productsSpecial','catagories','contents','total'));
+	}
+
+	public function contact()
+	{
+		$total = Cart::subtotal(0,'','.');
+		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
+		$breadcrumb = 'Contact';
+		return view('website.pages.contact', compact('total','catagoriesTypes','breadcrumb'));
+	}
+
+	public function postContact(Request $request)
+	{
+		Contact::create($request->all());
+		Session::flash('success', 'display: block;');
+		return redirect()->back();
 	}
 }

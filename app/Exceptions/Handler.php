@@ -42,7 +42,19 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if ($this->isHttpException($exception)) {
+            switch ($exception->getStatusCode()) {
+                case '404':
+                    return redirect()->route('web.404');
+                    break;
+                
+                default:
+                    return $this->renderHttpException($exception);
+                    break;
+            }
+        } else {
+            return parent::render($request, $exception);
+        }
     }
     // Chuyển hướng đúng type guard khi đăng xuất,...
     // Chuyển hướng sang trang login khi chưa đăng nhập theo url 

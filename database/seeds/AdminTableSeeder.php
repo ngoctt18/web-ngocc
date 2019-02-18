@@ -20,5 +20,13 @@ class AdminTableSeeder extends Seeder
     		'password' => '123456',
     		'address' => 'Hưng Yên',
     	]);
+        Admin::create([
+            'name' => 'Nguyen Dieu Anh',
+            'username' => 'ndanh00',
+            'phone' => '123456789',
+            'email' => 'ndanh00@admin.com',
+            'password' => '123456789',
+            'address' => 'Quảng Ninh',
+        ]);
     }
 }

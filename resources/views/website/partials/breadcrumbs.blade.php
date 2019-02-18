@@ -24,8 +24,16 @@
                 </li>
                 @endisset
 
+                @isset(($breadcrumb_new))
+                <li itemprop="itemListElement" itemscope itemtype="">
+                    <a href="{{ route('web.news') }}" title="Back to the frontpage" itemprop="item">
+                        <span itemprop="name">{{$breadcrumb_new??''}}</span>
+                    </a>
+                </li>
+                @endisset
+
                 <li class="active" itemprop="itemListElement" itemscope itemtype="">
-                    <span itemprop="name">{{$breadcrumb->name}}</span>
+                    <span itemprop="name">{{$breadcrumb->name??$breadcrumb}}</span>
                 </li>
                 
             </ol>

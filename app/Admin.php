@@ -21,9 +21,9 @@ class Admin extends Authenticatable
 	];
 
 	// Defining A Mutator
-    public function setPasswordAttribute($value){
-        $this->attributes['password'] = bcrypt($value);
-    }
+	public function setPasswordAttribute($value){
+		$this->attributes['password'] = bcrypt($value);
+	}
 
     // Defining An Accessor
 

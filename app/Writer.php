@@ -27,4 +27,8 @@ class Writer extends Authenticatable
     // Defining An Accessor
 
     // Relationships
+	public function news()
+	{
+		return $this->hasMany(News::class, 'author_id', 'id');
+	}
 }

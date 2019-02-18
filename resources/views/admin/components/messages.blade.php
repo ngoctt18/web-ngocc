@@ -1,6 +1,6 @@
 @if(session()->has('success'))
     <div class="callout callout-success alert-message">
-        <p>{{ session()->get('success') }}</p>
+    	<p>{{ session()->get('success') }}</p>
     </div>
 @endif
 @if(session()->has('error'))

@@ -16,12 +16,13 @@ class CreateNewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('slug');
             $table->text('content');
-            $table->string('thumbnail');
-            $table->text('description');
-            $table->text('hot')->nullable();
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->string('thumbnail');
+            // $table->text('description');
+            // $table->text('hot')->nullable();
+            $table->unsignedInteger('author_id');
+            $table->foreign('author_id')->references('id')->on('writers')->onDelete('cascade');
             $table->enum('status',[0, 1])->default(1);
             // 0: Ẩn, 1: Hiển thị
             $table->timestamps();

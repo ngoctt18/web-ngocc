@@ -43,12 +43,12 @@
 				</div>
 				<div class="form-group">
 					<label for="price">Giá</label>
-					<input type="number" class="form-control" id="price" placeholder="Giá" name="price" value="{{old('price')}}">
+					<input type="number" class="form-control" id="price" placeholder="Giá" name="price" value="{{old('price')}}" min="0">
 					<small class="text-danger">{{ $errors->first('price') }}</small>
 				</div>
 				<div class="form-group">
 					<label for="discount">Giảm giá</label>
-					<input type="number" class="form-control" id="discount" placeholder="Giảm giá" name="discount" value="{{old('discount')}}">
+					<input type="number" class="form-control" id="discount" placeholder="Giảm giá" name="discount" value="{{old('discount')}}" min="0">
 					<small class="text-danger">{{ $errors->first('discount') }}</small>
 				</div>
 				<div class="form-group">

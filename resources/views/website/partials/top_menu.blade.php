@@ -142,8 +142,13 @@
                      </div>
                   </li> -->
                   <li class="">
-                     <a class="" href="" title="Blog" target="_self">
+                     <a class="" href="{{ route('web.news') }}" title="Blog" target="_self">
                         <span class="">Blog</span>
+                     </a>
+                  </li>
+                  <li class="">
+                     <a class="" href="{{ route('web.contact') }}" title="Liên hệ" target="_self">
+                        <span class="">Liên hệ</span>
                      </a>
                   </li>
                </ul>

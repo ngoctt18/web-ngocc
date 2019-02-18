@@ -23,8 +23,7 @@ Route::middleware(['auth:web'])->group(function(){
 });
 
 
-// CÁI middleware NÀY LÀM CHO SAI
-// Route::middleware(['guest:web'])->group(function(){
+Route::middleware(['guest:web'])->group(function(){
 	Route::get('/', 'WebsiteController@homepage')->name('homepage');
 
 	Route::get('login', 'Auth\LoginController@showUserLoginForm')->name('login');
@@ -43,4 +42,14 @@ Route::middleware(['auth:web'])->group(function(){
 	Route::get('cart/del-item/{rowId}', 'ShoppingController@delItemInCart')->name('del_item');
 	
 	Route::post('update-qty', 'ShoppingController@updateQuantity')->name('update_qty');
-// });
+
+	Route::get('contact', 'WebsiteController@contact')->name('contact');
+	Route::post('contact', 'WebsiteController@postContact');
+	Route::get('404', 'Auth\ErrorController@NotFound404')->name('404');
+
+
+	Route::get('news', 'News\NewsController@index')->name('news');
+	Route::get('news/view/{id}/{slug}', 'News\NewsController@view')->name('news.view');
+	Route::get('news/tagged/{slug}', 'News\NewsController@tagged')->name('news.tagged');
+	Route::get('news/author/{username}', 'News\NewsController@author')->name('news.author');
+});
