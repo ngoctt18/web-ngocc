@@ -43,7 +43,9 @@ class LoginController extends Controller
         /*
         * Các Middleware sẽ cho khách dùng đc showAdminLoginForm và adminLogin
         * Nhưng không dùng đc các function ->except('logout','checkPassword','changePassword');
-        * 
+        * guest sẽ không cần đăng nhập.
+        * auth ( đã đăng nhập)
+        * guest ( ko đăng nhập)
         */
         $this->middleware('guest')->except('logout','checkPassword','changePassword');
         $this->middleware('guest:admin')->except('logout','checkPassword','changePassword');

@@ -4,6 +4,7 @@ label.error { color: #a94442; font-weight: 100; }
 
 .admin_loader {
 	position: fixed;
+	opacity: 0.9;
 	left: 0px;
 	top: 0px;
 	width: 100%;

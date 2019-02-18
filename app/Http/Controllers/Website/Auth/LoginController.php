@@ -25,12 +25,11 @@ class LoginController extends Controller
 	{
         /*
         * Các Middleware sẽ cho khách dùng đc showAdminLoginForm và adminLogin
-        * Nhưng không dùng đc các function ->except('logout','checkPassword','changePassword');
+        * Nhưng không dùng đc các function ->except('logout');
         * 
         */
+        // Login rồi thì sẽ ko vào đc các function ở đây nữa ngoại trừ: logout
         $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-        $this->middleware('guest:writer')->except('logout');
     }
 
     public function showUserLoginForm()

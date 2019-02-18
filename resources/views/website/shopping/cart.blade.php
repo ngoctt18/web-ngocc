@@ -168,6 +168,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('input[name="quantity"]').bind('change', function () {
+			$('.website_loader').fadeIn();
 			var rowId = $(this).attr('rowId');
 			var qty = $(this).val();
 			var _token = $('input[name="_token"]').val();
@@ -187,10 +188,12 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 					// console.log('data: '+data['total']);
 					$(_self).closest('.list_product_cart').find('.subtotal').text(data['price']);
 					$(_self).closest('#formCart').find('.total_money').text(data['total']);
+					$('.website_loader').fadeOut();
 				},
 				error: function(data){
 					console.log('Ajax khong ve!');
 					console.log(data);
+					$('.website_loader').fadeOut();
 				},
 			});
 			

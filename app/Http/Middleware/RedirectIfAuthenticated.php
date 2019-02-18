@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
                 case 'writer':
                     return redirect()->route('writer.dashboard');
                 case 'web':
-                    return redirect()->route('web.dashboard');
+                    return redirect()->route('web.homepage');
                 default:
                     return redirect()->route('web.homepage');
             }

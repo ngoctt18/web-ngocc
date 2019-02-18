@@ -12,7 +12,6 @@ use App\OrderDetail;
 use Carbon;
 use Session;
 use Cart;
-use Auth;
 
 class ShoppingController extends Controller
 {
@@ -76,7 +75,7 @@ class ShoppingController extends Controller
 		// return $request->all();
 		$contents = Cart::content();
 		$total = Cart::subtotal(0,'','.');
-		Cart::store($request->checkout['email']);
+		//                               Cart::store($request->checkout['email']);
 		// return $request->checkout['shipping_address']['phone'];
 
 
