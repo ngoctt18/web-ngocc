@@ -8,6 +8,7 @@ use App\Product;
 use App\Catagory;
 use App\CatagoriesType;
 use App\Contact;
+use App\News;
 use Cart;
 use Auth;
 use Session;
@@ -19,6 +20,7 @@ class WebsiteController extends Controller
 		// return Auth::user();
 		$contents = Cart::content();
 		$total = Cart::subtotal(0,'','.');
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$catagories = Catagory::where('status', '1')->get();
@@ -26,7 +28,7 @@ class WebsiteController extends Controller
 		$productsSpecial = Product::where('status', '1')->orderBy('discount','DESC')->take(4)->get();
 		$productsNew = Product::where('status', '1')->latest()->take(8)->get();
 		
-		return view('website.homepage', compact('products','catagories','productsNew','catagoriesTypes','productsSpecial','contents','total'));
+		return view('website.homepage', compact('products','catagories','productsNew','catagoriesTypes','productsSpecial','contents','total','news_popular'));
 	}
 
 	public function productDetail($id)
@@ -37,9 +39,10 @@ class WebsiteController extends Controller
 		$catagories = Catagory::where('status', '1')->get();
 		$product = Product::findOrFail($id);
 		$productsRelate = $product->catagory->product->where('id', '!=', $id);
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$breadcrumb = $product;
 
-		return view('website.product.product_detail', compact('product','catagories','productsRelate','catagoriesTypes','breadcrumb','contents','total'));
+		return view('website.product.product_detail', compact('product','catagories','productsRelate','catagoriesTypes','breadcrumb','contents','total','news_popular'));
 	}
 
 	public function catagoryTypes($id, Request $request)
@@ -53,8 +56,9 @@ class WebsiteController extends Controller
 		$products = Product::where('status', '1')->ProductsByCatagoryType($id)->SearchPrice($price)->paginate(9);
 		$productsSpecial = Product::where('status', '1')->orderBy('discount','DESC')->take(4)->get();
 		$breadcrumb = $catagoryType;
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 
-		return view('website.catagories.catagory_types', compact('catagoryType','catagories','catagoriesTypes','breadcrumb','productsSpecial','products','contents','total'));
+		return view('website.catagories.catagory_types', compact('catagoryType','catagories','catagoriesTypes','breadcrumb','productsSpecial','products','contents','total','news_popular'));
 	}
 
 	public function Catagories($id, Request $request)
@@ -67,8 +71,9 @@ class WebsiteController extends Controller
 		$catagories = $breadcrumb->catagoryType->catagories;
 		$products = $breadcrumb->product()->SearchPrice($price)->paginate(9);
 		$productsSpecial = Product::where('status', '1')->orderBy('discount','DESC')->take(4)->get();
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		
-		return view('website.catagories.catagories', compact('catagoriesTypes','products','breadcrumb','productsSpecial','catagories','contents','total'));
+		return view('website.catagories.catagories', compact('catagoriesTypes','products','breadcrumb','productsSpecial','catagories','contents','total','news_popular'));
 	}
 
 	public function contact()
@@ -76,7 +81,8 @@ class WebsiteController extends Controller
 		$total = Cart::subtotal(0,'','.');
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$breadcrumb = 'Contact';
-		return view('website.pages.contact', compact('total','catagoriesTypes','breadcrumb'));
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+		return view('website.pages.contact', compact('total','catagoriesTypes','breadcrumb','news_popular'));
 	}
 
 	public function postContact(Request $request)

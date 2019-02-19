@@ -12,6 +12,7 @@ use App\Catagory;
 use App\CatagoriesType;
 use App\Order;
 use App\OrderDetail;
+use App\News;
 use Carbon;
 use Session;
 use Cart;
@@ -36,7 +37,8 @@ class LoginController extends Controller
     {
     	$total = Cart::subtotal(0,'','.');
     	$catagoriesTypes = CatagoriesType::where('status', '1')->get();
-    	return view('website.auth.login', compact('total','catagoriesTypes'));
+        $news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+    	return view('website.auth.login', compact('total','catagoriesTypes','news_popular'));
     }
 
     public function userLogin(LoginWebsiteRequest $request)
@@ -62,6 +64,7 @@ class LoginController extends Controller
 
     public function showUserRegisterForm()
     {
+        $news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
     	return view('website.auth.register');
     }
 

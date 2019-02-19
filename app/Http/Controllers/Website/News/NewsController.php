@@ -10,19 +10,21 @@ use App\Tag;
 use App\Writer;
 use Cart;
 use Session;
+// use Event;
 
 class NewsController extends Controller
 {
 	public function index()
 	{
 		$news = News::where('status', '1')->paginate(4);
-		$news_latest = News::where('status', '1')->latest()->take(5)->get();
+		$news_recent = News::where('status', '1')->latest()->take(5)->get();
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$tags = Tag::all();
 
 		$total = Cart::subtotal(0,'','.');
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$breadcrumb = 'News';
-		return view('website.news.index', compact('total','catagoriesTypes','breadcrumb','news','news_latest','tags'));
+		return view('website.news.index', compact('total','catagoriesTypes','breadcrumb','news','news_recent','tags','news_popular'));
 	}
 
 	public function tagged($slug)
@@ -31,14 +33,15 @@ class NewsController extends Controller
 		$news = News::whereHas('tags', function ($query) use($slug) {
 			$query->where('slug', $slug);
 		})->paginate(4);
-		$news_latest = News::where('status', '1')->latest()->take(5)->get();
+		$news_recent = News::where('status', '1')->latest()->take(5)->get();
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$tags = Tag::all();
 
 		$total = Cart::subtotal(0,'','.');
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$breadcrumb = Tag::where('slug', $slug)->first()->name;
 		$breadcrumb_new = "News";
-		return view('website.news.index', compact('total','catagoriesTypes','breadcrumb','breadcrumb_new','news','news_latest','tags'));
+		return view('website.news.index', compact('total','catagoriesTypes','breadcrumb','breadcrumb_new','news','news_recent','tags','news_popular'));
 	}
 
 	public function author($username)
@@ -52,29 +55,32 @@ class NewsController extends Controller
 			})->paginate(4);
 		}
 
-		$news_latest = News::where('status', '1')->latest()->take(5)->get();
+		$news_recent = News::where('status', '1')->latest()->take(5)->get();
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$tags = Tag::all();
 
 		$total = Cart::subtotal(0,'','.');
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$breadcrumb = Writer::where('username', $username)->first()->name ?? ucwords($username);
 		$breadcrumb_new = "News";
-		return view('website.news.index', compact('total','catagoriesTypes','breadcrumb','breadcrumb_new','news','news_latest','tags'));
+		return view('website.news.index', compact('total','catagoriesTypes','breadcrumb','breadcrumb_new','news','news_recent','tags','news_popular'));
 	}
 
 	public function view($id)	
 	{
 		$news = News::findOrFail($id);
 		// count view
-		$sessionView = Session::get('count_views');
+		$sessionView = Session::get('count_views_'.$news->id);
 		// nếu chưa có session
 		if (!$sessionView) { 
-			Session::put('count_views', 1); // Tạo, Set giá trị cho session
+			Session::put('count_views_'.$news->id, 1); // Tạo, Set giá trị cho session
 			$news->increment('count_views'); // Tăng lần view lên 
 		}
+		// Event::fire('news.view', $news);
+
 		
-		$news_latest = News::where('status', '1')->where('id', '!=', $id)->latest()->take(5)->get();
-		$news_popular = News::where('status', '1')->where('id', '!=', $id)->inRandomOrder()->take(5)->get();
+		$news_recent = News::where('status', '1')->where('id', '!=', $id)->latest()->take(5)->get();
+		$news_popular = News::where('status', '1')->where('id', '!=', $id)->orderBy('count_views', 'DESC')->take(5)->get();
 		$tags = Tag::all();
 
 		
@@ -85,7 +91,6 @@ class NewsController extends Controller
 		->take(5)
 		->get();
 
-		visits($news)->increment();
 
 		$previous = News::where('id', '<', $id)->orderBy('id','desc')->first();
 		$next = News::where('id', '>', $id)->orderBy('id','asc')->first();
@@ -94,7 +99,7 @@ class NewsController extends Controller
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$breadcrumb = $news->title;
 		$breadcrumb_new = "News";
-		return view('website.news.show', compact('total','catagoriesTypes','breadcrumb','breadcrumb_new','news','news_latest','tags','previous','next','news_popular','news_related'));
+		return view('website.news.show', compact('total','catagoriesTypes','breadcrumb','breadcrumb_new','news','news_recent','tags','previous','next','news_popular','news_related'));
 
 	}
 }

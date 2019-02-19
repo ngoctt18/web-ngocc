@@ -35,7 +35,9 @@
                                     </div>
                                     <div class="rte">
                                         <div class="image">
-                                            <img src="../../../../cdn.shopify.com/s/files/1/0928/4804/files/b3_medium693b.jpg?11360329962432831771" title="Turpis at eleifend leo mi elit Aenean porta ac sed faucibus" class="img-responsive replace-2x" alt="Turpis at eleifend leo mi elit Aenean porta ac sed faucibus" />
+                                            <a href="{{ route('web.news.view', [$new->id,$new->slug]) }}" title="{{$new->title}}">
+                                                <img src="../../../../cdn.shopify.com/s/files/1/0928/4804/files/b3_medium693b.jpg?11360329962432831771" title="{{$new->title}}" class="img-responsive replace-2x" alt="{{$new->title}}" />
+                                            </a>
                                         </div>
                                         <p>{!!str_limit($new->content, 350, '...')!!}</p>
                                     </div>
@@ -47,47 +49,10 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- RECENT NEWS in right side -->
+                @include('website.news.news_recent')
 
-                <div id="right_column" class="column sidebar col-md-4">
-                    <div class="blog-sidebar" role="complementary">
-                        <div class="block-sidebar-blog block">
-                            <h4 class="title_block">Recent Articles</h4>
-                            <ul class="list-block list-unstyled block_content">
-                                @foreach($news_latest as $news)
-                                <li>
-                                    <a href="{{ route('web.news.view', [$news->id,$news->slug]) }}" title="{{$news->title}}">{{$news->title}}</a>
-                                    <time>
-                                        {{$news->created_at->format('H:m - F j, Y')}}
-                                    </time>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div id="categories-blog" class="block-sidebar-blog block">
-                            <h4 class="title_block">Tags</h4>
-                            <ul class="list-block list-unstyled block_content">
-                                @foreach($tags as $tag)
-                                <li>
-                                    <a href="{{ route('web.news.tagged',[$tag->slug]) }}">
-                                        <span>{{$tag->name}}</span>
-                                    </a>
-                                    @if(!$loop->last)
-                                    {{", "}}
-                                    @endif 
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div id="blogsidebar-html" class="block-sidebar-blog block">
-                            <h4 class="title_block">Sample Text Box</h4>
-                            <div class="block_content">
-                                <div class="html_des">
-                                    Create a page in your admin panel with a little bit of content. Then assign that page to the Text Widget section in the Theme Settings of your admin.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ use App\Catagory;
 use App\CatagoriesType;
 use App\Order;
 use App\OrderDetail;
+use App\News;
 use Carbon;
 use Session;
 use Cart;
@@ -39,7 +40,8 @@ class ShoppingController extends Controller
 		$total = Cart::subtotal(0,'','.');
 		// return $contents;
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
-		return view('website.shopping.cart', compact('catagoriesTypes','contents','total'));
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+		return view('website.shopping.cart', compact('catagoriesTypes','contents','total','news_popular'));
 	}
 
 	public function delItemInCart($rowId)
@@ -67,7 +69,8 @@ class ShoppingController extends Controller
 		$total = Cart::subtotal(0,'','.');
 		// return $contents;
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
-		return view('website.shopping.checkout', compact('catagoriesTypes','contents','total'));
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+		return view('website.shopping.checkout', compact('catagoriesTypes','contents','total','news_popular'));
 	}
 
 	public function storeCheckout(Request $request)

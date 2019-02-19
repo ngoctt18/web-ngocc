@@ -64,7 +64,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="btn btn-pinterest" target="_blank" href="../../pinterest.com/pin/create/button/indexdfa2.html?url={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}&amp;description={{$product->name}}&amp;media={{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}">
+                                            <a class="btn btn-pinterest" target="_blank" href="http://pinterest.com/pin/create/button/?url={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}&media={{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}&description={{$product->name}}">
                                                 <i class="fa fa-pinterest-p"></i> Pinterest
                                             </a>
                                         </li>
@@ -266,41 +266,41 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                                                             <span class="fa fa-shopping-cart"></span>
                                                                             <span class="select_options">Mua ngay</span>
                                                                         </a>
-                                                                    <!-- </form> -->
+                                                                        <!-- </form> -->
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endforeach
                                         </div>
-                                        @endforeach
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <script type="text/javascript">
-                            $(document).ready(function() {
+                            <script type="text/javascript">
+                                $(document).ready(function() {
 
-                               $('#productrelated01 .owl-carousel').each(function(){
+                                 $('#productrelated01 .owl-carousel').each(function(){
                                   $(this).owlCarousel({
-                                     items : 3,
-                                     lazyLoad : true,
-                                     navigation : true,
-                                     addClassActive: true,
-                                     afterInit : SetOwlCarouselFirstLast,
-                                     afterAction : SetOwlCarouselFirstLast,
+                                   items : 3,
+                                   lazyLoad : true,
+                                   navigation : true,
+                                   addClassActive: true,
+                                   afterInit : SetOwlCarouselFirstLast,
+                                   afterAction : SetOwlCarouselFirstLast,
 
-                                     itemsDesktop: [1199, 2],
-                                     itemsDesktopSmall: [979, 2],
-                                     itemsTablet: [768, 2],
-                                     itemsTabletSmall: [480, 1],
-                                     itemsMobile: [360, 1],
+                                   itemsDesktop: [1199, 2],
+                                   itemsDesktopSmall: [979, 2],
+                                   itemsTablet: [768, 2],
+                                   itemsTabletSmall: [480, 1],
+                                   itemsMobile: [360, 1],
 
-                                     navigationText : ["Prev", "Next"]
-                                 }); 
+                                   navigationText : ["Prev", "Next"]
+                               }); 
                               });
-                               function SetOwlCarouselFirstLast(el){
+                                 function SetOwlCarouselFirstLast(el){
                                   el.find(".owl-item").removeClass("first");
                                   el.find(".owl-item.active").first().addClass("first");
 
