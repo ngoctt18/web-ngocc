@@ -54,7 +54,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="btn btn-facebook" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}">
+                                            <a class="btn btn-facebook" target="_blank" href="http://www.facebook.com/sharer.php?u={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}">
                                                 <i class="fa fa-facebook"></i> facebook
                                             </a>
                                         </li>

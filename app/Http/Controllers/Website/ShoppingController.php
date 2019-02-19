@@ -95,6 +95,7 @@ class ShoppingController extends Controller
 
 			if (count($contents) >0) {
 				foreach ($contents as $key => $item) {
+					Product::findOrFail($item->id)->increment('count_buys');
 					OrderDetail::create([
 						'quantity' => $item->qty, 
 						'product_id' => $item->id, 

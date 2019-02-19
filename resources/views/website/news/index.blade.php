@@ -19,7 +19,7 @@
                                     <h3><a href="{{ route('web.news.view', [$new->id,$new->slug]) }}" title="{{$new->title}}">{{$new->title}}</a></h3>
                                     <div class="blog-meta clearfix">
                                         <div class="postby">
-                                            Posted by <strong><a href="{{ route('web.news.author',[$new->author->username]) }}">{{$new->author->name}}</a></strong> on <time>{{$new->created_at->format('H:m - F j, Y')}}</time>
+                                            Posted by <strong><a href="{{ route('web.news.author',[$new->author->username??"admin"]) }}">{{$new->author->name??"Admin"}}</a></strong> on <time>{{$new->created_at->format('H:m - F j, Y')}}</time>
                                         </div>
                                         <div class="blog-tags">
                                             <span class="icon-tag">Tags:</span>

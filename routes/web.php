@@ -52,4 +52,6 @@ Route::middleware(['guest:web'])->group(function(){
 	Route::get('news/view/{id}/{slug}', 'News\NewsController@view')->name('news.view');
 	Route::get('news/tagged/{slug}', 'News\NewsController@tagged')->name('news.tagged');
 	Route::get('news/author/{username}', 'News\NewsController@author')->name('news.author');
+
+	Route::get('ajax-pagination','WebsiteController@ajaxPagination')->name('ajax.pagination');
 });

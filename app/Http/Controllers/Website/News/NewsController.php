@@ -9,6 +9,7 @@ use App\News;
 use App\Tag;
 use App\Writer;
 use Cart;
+use Session;
 
 class NewsController extends Controller
 {
@@ -43,15 +44,20 @@ class NewsController extends Controller
 	public function author($username)
 	{
 		// Get News theo author_id  writer
-		$news = News::whereHas('author', function ($query) use($username) {
-			$query->where('username', $username);
-		})->paginate(4);
+		if ($username == 'admin') {
+			$news = News::where('author_id', null)->paginate(4);
+		} else {
+			$news = News::whereHas('author', function ($query) use($username) {
+				$query->where('username', $username);
+			})->paginate(4);
+		}
+
 		$news_latest = News::where('status', '1')->latest()->take(5)->get();
 		$tags = Tag::all();
 
 		$total = Cart::subtotal(0,'','.');
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
-		$breadcrumb = Writer::where('username', $username)->first()->name;
+		$breadcrumb = Writer::where('username', $username)->first()->name ?? ucwords($username);
 		$breadcrumb_new = "News";
 		return view('website.news.index', compact('total','catagoriesTypes','breadcrumb','breadcrumb_new','news','news_latest','tags'));
 	}
@@ -59,6 +65,14 @@ class NewsController extends Controller
 	public function view($id)	
 	{
 		$news = News::findOrFail($id);
+		// count view
+		$sessionView = Session::get('count_views');
+		// nếu chưa có session
+		if (!$sessionView) { 
+			Session::put('count_views', 1); // Tạo, Set giá trị cho session
+			$news->increment('count_views'); // Tăng lần view lên 
+		}
+		
 		$news_latest = News::where('status', '1')->where('id', '!=', $id)->latest()->take(5)->get();
 		$news_popular = News::where('status', '1')->where('id', '!=', $id)->inRandomOrder()->take(5)->get();
 		$tags = Tag::all();
@@ -70,6 +84,8 @@ class NewsController extends Controller
 		->where('id', '!=', $id) // So you won't fetch same post
 		->take(5)
 		->get();
+
+		visits($news)->increment();
 
 		$previous = News::where('id', '<', $id)->orderBy('id','desc')->first();
 		$next = News::where('id', '>', $id)->orderBy('id','asc')->first();

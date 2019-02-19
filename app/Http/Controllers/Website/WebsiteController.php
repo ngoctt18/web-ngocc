@@ -85,4 +85,6 @@ class WebsiteController extends Controller
 		Session::flash('success', 'display: block;');
 		return redirect()->back();
 	}
+
+	
 }

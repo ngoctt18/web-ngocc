@@ -16,10 +16,12 @@
                                         <div class="product_block col-md-4 col-xs-4 col-sp-12">
                                             <div class="product-container text-left product-block">
                                                 <div class="product-image-container image">
-                                                    <img class="replace-2x img-responsive" src="{{$product->ThumbProduct??asset("images/products/product4.jpg")}}" alt="{{$product->name}}">
-                                                    <span class="product-additional" data-idproduct="1119719620">
-                                                        <img class="replace-2x img-responsive" alt="{{$product->name}}" src="{{$product->ThumbProductDetails[0]??asset("images/products/product3.jpg")}}">
-                                                    </span>
+                                                    <a class="product_img_link" href="{{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}" title="{{$product->name}}">
+                                                        <img class="replace-2x img-responsive" src="{{$product->ThumbProduct??asset("images/products/product4.jpg")}}" alt="{{$product->name}}">
+                                                        <span class="product-additional" data-idproduct="1119719620">
+                                                            <img class="replace-2x img-responsive" alt="{{$product->name}}" src="{{$product->ThumbProductDetails[0]??asset("images/products/product3.jpg")}}">
+                                                        </span>
+                                                    </a>
                                                     @if($product->discount != '0')
                                                     <span class="sale-box">
                                                         <span class="label-sale label">Sale</span>

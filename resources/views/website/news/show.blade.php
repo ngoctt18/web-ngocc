@@ -12,7 +12,7 @@
                      <h1>{{$news->title}}</h1>
                      <div class="blog-meta clearfix">
                         <div class="postby">
-                            Posted by <strong><a href="{{ route('web.news.author',[$news->author->username]) }}">{{$news->author->name}}</a></strong> on <time>{{$news->created_at->format('H:m - j F, Y')}}</time>
+                            Posted by <strong><a href="{{ route('web.news.author',[$news->author->username??"admin"]) }}">{{$news->author->name??"Admin"}}</a></strong> on <time>{{$news->created_at->format('H:m - j F, Y')}}</time>
                         </div>
                         <div class="blog-tags">
                            <span class="icon-tag">Tags:</span>

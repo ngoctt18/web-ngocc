@@ -9,5 +9,6 @@ $factory->define(App\News::class, function (Faker $faker) {
 		'content' => $faker->paragraph(30), 
 		'admin_id' => App\Admin::all()->random()->id,
 		'status' => 1,
+		'count_views' => $faker->randomDigit,
 	];
 });
