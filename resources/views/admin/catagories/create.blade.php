@@ -28,7 +28,7 @@
 			<div class="form-group">
 				<label for="catagory_type_id">Nhóm danh mục</label>
 				<select class="form-control" style="width: 30%;" name="catagory_type_id">
-					<option value="">Chọn nhóm danh mục</option>
+					<option>Chọn nhóm danh mục</option>
 					@foreach($catagoryTypes as $catagoryType)
 					<option value="{{$catagoryType->id}}" {{old('catagory_type_id') == $catagoryType->id ? 'selected' : ''}}>{{$catagoryType->name}}</option>
 					@endforeach
@@ -38,7 +38,7 @@
 			<div class="form-group">
 				<label for="status">Trạng thái</label>
 				<select class="form-control" style="width: 20%;" name="status" id="status">
-					<option value="">Chọn trạng thái</option>
+					<option>Chọn trạng thái</option>
 					<option value="1" {{old('status') == '1' ? 'selected' : ''}}>Hiển thị</option>
 					<option value="0" {{old('status') == '0' ? 'selected' : ''}}>Ẩn</option>
 				</select>

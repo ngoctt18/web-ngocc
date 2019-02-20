@@ -43,7 +43,7 @@
 			<div class="form-group">
 				<label for="status">Trạng thái</label>
 				<select class="form-control" style="width: 20%;" name="status" id="status">
-					<option value="">Chọn trạng thái</option>
+					<option>Chọn trạng thái</option>
 					<option value="0" {{old('status') == '0' ? 'selected' : ''}}>Tạm dừng hoạt động</option>
 					<option value="1" {{old('status') == '1' ? 'selected' : ''}}>Hoạt động</option>
 					<option value="2" {{old('status') == '2' ? 'selected' : ''}}>Dừng hoạt động</option>

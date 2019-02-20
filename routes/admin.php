@@ -23,6 +23,11 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::resource('catagories', 'Catagory\CatagoryController');
 	Route::resource('distributions', 'Distribute\DistributeController');
 	Route::resource('products', 'Product\ProductController');
+
+	Route::get('news/trashes', 'News\NewsController@trash')->name('news.trash');
+	Route::get('news/{news}/restore', 'News\NewsController@restore')->name('news.restore');
+	Route::delete('forcedelete/{news}', 'News\NewsController@forcedelete')->name('news.forcedelete');
+	Route::resource('news', 'News\NewsController');
 	
 	// Upload một file ảnh lên thư mục tạm trên server.
 	Route::post('uploadImage', 'Product\ProductController@uploadImage')->name('uploadImage');
@@ -33,6 +38,11 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::post('checkPassword', 'Auth\LoginController@checkPassword')->name('check_password');
 	Route::post('changePassword', 'Auth\LoginController@changePassword')->name('change_password');
 
+
+
+
+
+
 });
 
 
@@ -41,3 +51,15 @@ Route::middleware(['guest:admin'])->group(function(){
 	Route::post('login', 'Auth\LoginController@adminLogin');
 
 });
+
+
+
+	// Route::get('addcolumn', function(){
+	// 	Schema::table('products', function ($table) {
+	// 		$table->softDeletes();
+	// 	});
+	// });
+
+
+
+

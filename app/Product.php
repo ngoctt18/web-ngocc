@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model implements HasMedia
 {
 	use HasMediaTrait;
+	use SoftDeletes;
+
 	
 	protected $table = 'products';
 
@@ -18,6 +21,8 @@ class Product extends Model implements HasMedia
 	];
 
 	public $timestamps = true;
+
+	protected $dates = ['deleted_at'];
 	
 	const TMP_DIRECTORY = 'app/public/tmp-share-images';
 	
@@ -42,9 +47,21 @@ class Product extends Model implements HasMedia
 		return  $thumb;
 	}
 
+	public function getImageProductAttribute(){
+		$thumb = optional($this->getFirstMedia('product_avatar'))->getFullUrl();
+		return  $thumb;
+	}
+
 	public function getThumbProductDetailsAttribute(){
 		$thumb = optional($this->getMedia('product_details'))->map(function (\Spatie\MediaLibrary\Models\Media $media) {
 			return $media->getFullUrl('thumb');
+		});
+		return  $thumb;
+	}
+
+	public function getImageProductDetailsAttribute(){
+		$thumb = optional($this->getMedia('product_details'))->map(function (\Spatie\MediaLibrary\Models\Media $media) {
+			return $media->getFullUrl();
 		});
 		return  $thumb;
 	}

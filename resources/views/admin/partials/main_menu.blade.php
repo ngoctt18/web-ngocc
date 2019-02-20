@@ -6,13 +6,20 @@ $menus_admin = [
     ['type' => 'single', 'route' => 'admin.catagories.index', 'icon' => 'fa fa-align-justify', 'name' => 'Quản lý danh mục'],
     ['type' => 'single', 'route' => 'admin.distributions.index', 'icon' => 'fa fa-industry', 'name' => 'Quản lý nhà phân phối'],
     ['type' => 'single', 'route' => 'admin.products.index', 'icon' => 'fa fa-product-hunt', 'name' => 'Quản lý sản phẩm'],
+    [
+        'type' => 'multi', 'name' => 'Quản lý tin tức', 'icon' => 'fa fa-newspaper-o',
+        'children' => [
+            ['type' => 'single', 'route' => 'admin.news.index', 'icon' => 'fa fa-newspaper-o', 'name' => 'Danh sách bài viết'],
+            ['type' => 'single', 'route' => 'admin.news.trash', 'icon' => 'fa fa-trash-o', 'name' => 'Thùng rác'],
+        ]
+    ],
     ['type' => 'single', 'route' => 'admin.users.index', 'icon' => 'fa fa-users', 'name' => 'Quản lý khách hàng'],
     [
         'type' => 'multi', 'name' => 'Quản lý đơn hàng', 'icon' => 'fa fa-cart-plus',
         'children' => [
             ['type' => 'single', 'route' => 'admin.orders.index', 'icon' => '', 'name' => 'Danh sách đơn hàng'],
-            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Danh sách lịch hẹn tái khám'],
-            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Thiết lập thời gian tái khám'],
+            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Danh sách '],
+            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Thiết lập '],
         ]
     ],
 ];  

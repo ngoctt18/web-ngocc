@@ -12,7 +12,7 @@
 <p>
 	<a href="{{ route('admin.products.create') }}" class="btn btn-primary">Thêm sản phẩm</a> &emsp; <span class="pull-right marT15">Tổng số: {{ $products->total() }}</span>
 </p>
-<div class="box">
+<div class="box box-success">
 	<div class="box-header">
 		<h3 class="box-title"></h3>
 	</div>

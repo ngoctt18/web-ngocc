@@ -12,7 +12,7 @@
 <p>
 	&emsp; <span class="pull-right">Tổng số: {{ $orders->total() }}</span>
 </p>
-<div class="box">
+<div class="box box-success">
 	<div class="box-header">
 		<h3 class="box-title"></h3>
 	</div>

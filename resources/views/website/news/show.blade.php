@@ -1,5 +1,13 @@
 @extends('website.layouts.website')
+
 @section('title', $breadcrumb)
+
+@section('styles')
+<style type="text/css">
+  .blog-content img { max-width: 100%; max-height: 100%; }
+</style>
+@endsection
+
 @section('content')
 @include('website.partials.breadcrumbs')
 <section id="columns" class="columns-container">
@@ -33,7 +41,7 @@
                   <div class="blog-content">
                      <div class="rte" itemprop="articleBody">
                         <div class="blog-description">
-                           <p><img src="{{ asset('../../../cdn.shopify.com/s/files/1/0928/4804/files/b3_1024x1024693b.jpg?11360329962432831771') }}"></p>
+                         <p><img src="{{ $news->ImageNews ?? asset('../../../cdn.shopify.com/s/files/1/0928/4804/files/b3_1024x1024693b.jpg?11360329962432831771') }}"></p>
                            <p>{{$news->title}}</p>
                         </div>
                         <div class="blog-content">

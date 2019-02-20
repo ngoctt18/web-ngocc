@@ -36,10 +36,11 @@
                                     <div class="rte">
                                         <div class="image">
                                             <a href="{{ route('web.news.view', [$new->id,$new->slug]) }}" title="{{$new->title}}">
-                                                <img src="../../../../cdn.shopify.com/s/files/1/0928/4804/files/b3_medium693b.jpg?11360329962432831771" title="{{$new->title}}" class="img-responsive replace-2x" alt="{{$new->title}}" />
+                                                <img src="{{$new->ImageNews??asset('../../../../cdn.shopify.com/s/files/1/0928/4804/files/b3_medium693b.jpg?11360329962432831771')}}" title="{{$new->title}}" class="img-responsive replace-2x" alt="{{$new->title}}" />
                                             </a>
                                         </div>
-                                        <p>{!!str_limit($new->content, 350, '...')!!}</p>
+                                        <p>{{str_limit(html_entity_decode($new->content), 350, '...')}}</p>
+                                        {{-- <p>{{html_entity_decode($new->content)}}</p> --}}
                                     </div>
                                     <p><a class="btn btn-readmore" href="{{ route('web.news.view', [$new->id,$new->slug]) }}">Read more &rarr;</a></p>
                                 </div>

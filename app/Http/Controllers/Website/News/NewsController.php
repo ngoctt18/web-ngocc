@@ -16,7 +16,7 @@ class NewsController extends Controller
 {
 	public function index()
 	{
-		$news = News::where('status', '1')->paginate(4);
+		$news = News::where('status', '1')->latest()->paginate(4);
 		$news_recent = News::where('status', '1')->latest()->take(5)->get();
 		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$tags = Tag::all();
@@ -32,7 +32,7 @@ class NewsController extends Controller
 		// Get News theo tag 
 		$news = News::whereHas('tags', function ($query) use($slug) {
 			$query->where('slug', $slug);
-		})->paginate(4);
+		})->latest()->paginate(4);
 		$news_recent = News::where('status', '1')->latest()->take(5)->get();
 		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$tags = Tag::all();
@@ -48,11 +48,11 @@ class NewsController extends Controller
 	{
 		// Get News theo author_id  writer
 		if ($username == 'admin') {
-			$news = News::where('author_id', null)->paginate(4);
+			$news = News::where('author_id', null)->latest()->paginate(4);
 		} else {
 			$news = News::whereHas('author', function ($query) use($username) {
 				$query->where('username', $username);
-			})->paginate(4);
+			})->latest()->paginate(4);
 		}
 
 		$news_recent = News::where('status', '1')->latest()->take(5)->get();

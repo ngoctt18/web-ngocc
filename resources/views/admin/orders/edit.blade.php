@@ -24,7 +24,7 @@
 			<div class="form-group">
 				<label for="status">Trạng thái</label>
 				<select class="form-control" style="width: 20%;" name="status" id="status">
-					<option value="">Chọn trạng thái</option>
+					<option>Chọn trạng thái</option>
 					<option value="1" {{old('status', $catagoryType->status) == '1' ? 'selected' : ''}}>Hiển thị</option>
 					<option value="0" {{old('status', $catagoryType->status) == '0' ? 'selected' : ''}}>Ẩn</option>
 				</select>

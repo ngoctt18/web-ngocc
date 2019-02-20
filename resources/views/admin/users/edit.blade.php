@@ -63,10 +63,10 @@
 			<div class="form-group">
 				<label for="status">Trạng thái</label>
 				<select class="form-control" style="width: 20%;" name="status" id="status">
-					<option value="">Chọn trạng thái</option>
+					<option>Chọn trạng thái</option>
 					<option value="0" {{old('status',$user->status) == '0' ? 'selected' : ''}}>Tạm dừng hoạt động</option>
 					<option value="1" {{old('status',$user->status) == '1' ? 'selected' : ''}}>Hoạt động</option>
-					<option value="0" {{old('status',$user->status) == '2' ? 'selected' : ''}}>Dừng hoạt động</option>
+					<option value="2" {{old('status',$user->status) == '2' ? 'selected' : ''}}>Dừng hoạt động</option>
 				</select>
 				<small class="text-danger">{{ $errors->first('status') }}</small>
 			</div>
