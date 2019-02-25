@@ -53,10 +53,9 @@
                </ul>
             </div>
             <div id="search_block_top" class="">
-               <span id="search-icon" class="fa fa-search" title=""></span>
-               <form id="searchbox" class="popup-content" action="https://ap-milk-store-2.myshopify.com/search" method="get" role="search">
-                  <input type="hidden" name="type" value="product">
-                  <input id="search_query_top" class="search_query form-control" type="search" name="q" placeholder="Search ..." value="" placeholder="" aria-label="Search ...">
+               <span id="search-icon" class="fa fa-search" title="Search"></span>
+               <form id="searchbox" class="popup-content" action="{{ route('web.search') }}" method="GET" role="search">
+                  <input id="search_query_top" class="search_query form-control typeahead " type="text" name="query" placeholder="Search ..." value="{{ old('query', request('query')) }}" data-provide="typeahead" autocomplete="off">
                   <button id="search_button" class="btn btn-sm" type="submit" >
                      <span><i class="fa fa-search"></i></span>
                      <span class="fallback-text">Search</span>
@@ -67,3 +66,4 @@
       </div>
    </div>
 </div>
+

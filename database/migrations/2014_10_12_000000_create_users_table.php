@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('address')->nullable();
             $table->boolean('verified')->default(false);
+            $table->string('verification_code')->nullable();
+            $table->date('verified_at')->nullable();
             $table->enum('status',[0, 1, 2])->default(1);
             // 0: Tạm dừng hoạt động, 1: Đang hoạt động, 2: Dừng hoạt động
             

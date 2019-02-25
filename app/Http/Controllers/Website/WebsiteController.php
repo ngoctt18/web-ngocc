@@ -92,15 +92,15 @@ class WebsiteController extends Controller
 		return redirect()->back();
 	}
 
-	public function searchAll(Request $request)
-	{
+	// public function searchAll(Request $request)
+	// {
 		
-		$total = Cart::subtotal(0,'','.');
-		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
-		$breadcrumb = 'Search';
-		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
-		return view('website.pages.search_product', compact('total','catagoriesTypes','breadcrumb','news_popular'));
-	}
+	// 	$total = Cart::subtotal(0,'','.');
+	// 	$catagoriesTypes = CatagoriesType::where('status', '1')->get();
+	// 	$breadcrumb = 'Search';
+	// 	$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+	// 	return view('website.pages.search_product', compact('total','catagoriesTypes','breadcrumb','news_popular'));
+	// }
 
 	
 }

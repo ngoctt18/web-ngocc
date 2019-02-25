@@ -2,8 +2,17 @@
 
 @section('title', 'Login')
 
-@section('content')
+@section('styles')
+<style type="text/css">
+.red {color: red;}
+span.error { color: #b30e0e; font-weight: 500; margin-top: 1px; }
+#login-page .login-box .form-control { margin: 0; }
+p.lost_password { margin-top: 15px !important; }
+label.label-login { margin-top: 20px !important; }
+</style>
+@endsection
 
+@section('content')
 <div id="login-page" class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6">
@@ -16,22 +25,22 @@
 						{{ csrf_field() }}
 						<h1>Login</h1>
 
-						<label for="CustomerEmail" class="label-login">Phone</label>
-						<input type="text" name="phone" id="CustomerEmail" placeholder="Phone" class="account_input form-control " autocorrect="off" autocapitalize="off" autofocus="" value="{{old('phone')}}">
+						<label for="CustomerEmail" class="label-login">Phone <span class="red">*</span></label>
+						<input type="text" name="phone" id="CustomerEmail" placeholder="Phone" class="account_input form-control " autocorrect="off" autocapitalize="off" autofocus="" value="{{old('phone')}}" required="">
 						@if($errors->has('phone'))
-						<span class="help-block">{{ $errors->first('phone') }}</span>
+						<span class="help-block error">{{ $errors->first('phone') }}</span>
 						@endif
 
-						<label for="CustomerPassword" class="label-login">Password</label>
-						<input type="password" value="" name="password" id="CustomerPassword" placeholder="Password" class="password_input form-control ">
+						<label for="CustomerPassword" class="label-login">Password <span class="red">*</span></label>
+						<input type="password" value="" name="password" id="CustomerPassword" placeholder="Password" class="password_input form-control" required="">
 						@if($errors->has('password'))
-						<span class="help-block">{{ $errors->first('password') }}</span>
+						<span class="help-block error">{{ $errors->first('password') }}</span>
 						@endif
 						<p class="lost_password form-group">
 							<a href="#recover" id="RecoverPassword">Forgot your password?</a>
 						</p>
 
-						<p>
+						<p style=" margin-bottom: 5px; ">
 							<button type="submit" id="SubmitLogin" name="SubmitLogin" class="btn btn-outline">
 								<span>
 									<i class="fa fa-lock"></i>&nbsp;
@@ -39,7 +48,12 @@
 								</span>
 							</button>
 						</p>
-						<a href="{{ route('web.homepage') }}">Return to Store</a>
+						<a href="{{ route('web.homepage') }}">
+							<span>
+								<i class="fa fa-long-arrow-left"></i>&nbsp;
+								Quay về shop
+							</span>
+						</a>
 					</form>
 				</div>
 				<div id="RecoverPasswordForm" style="display: none;">
