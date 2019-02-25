@@ -26,7 +26,7 @@ class WebsiteController extends Controller
 		$catagories = Catagory::where('status', '1')->get();
 		$products = Product::where('status', '1')->inRandomOrder()->take(6)->get();
 		$productsSpecial = Product::where('status', '1')->orderBy('discount','DESC')->take(4)->get();
-		$productsNew = Product::where('status', '1')->latest()->take(8)->get();
+		$productsNew = Product::where('status', '1')->orderBy('count_buys','DESC')->take(8)->get();
 		
 		return view('website.homepage', compact('products','catagories','productsNew','catagoriesTypes','productsSpecial','contents','total','news_popular'));
 	}

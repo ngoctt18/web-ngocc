@@ -13,6 +13,7 @@ use App\News;
 use Carbon;
 use Session;
 use Cart;
+use Auth;
 
 class ShoppingController extends Controller
 {
@@ -98,7 +99,10 @@ class ShoppingController extends Controller
 
 			if (count($contents) >0) {
 				foreach ($contents as $key => $item) {
-					Product::findOrFail($item->id)->increment('count_buys');
+					$thatProduct = Product::findOrFail($item->id);
+					$oldQty = $thatProduct->count_buys;
+					$newQty = $oldQty + $item->qty;
+					$thatProduct->update(['count_buys' => $newQty]);
 					OrderDetail::create([
 						'quantity' => $item->qty, 
 						'product_id' => $item->id, 

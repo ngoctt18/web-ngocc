@@ -23,7 +23,6 @@ Route::middleware(['auth:web'])->group(function(){
 });
 
 
-Route::middleware(['guest:web'])->group(function(){
 	Route::get('/', 'WebsiteController@homepage')->name('homepage');
 
 	Route::get('login', 'Auth\LoginController@showUserLoginForm')->name('login');
@@ -56,4 +55,3 @@ Route::middleware(['guest:web'])->group(function(){
 	Route::get('search','WebsiteController@searchAll')->name('search');
 
 	// Route::get('ajax-pagination','WebsiteController@ajaxPagination')->name('ajax.pagination');
-});
