@@ -2,7 +2,7 @@
 	<div class="products_top col-xs-12 col-sm-12">
 		<div id="productlist01" class="products_block exclusive block" >
 			<h4 class="page-subheading ">
-				Sản phẩm mới
+				Sản phẩm bán chạy
 			</h4>
 			<div class="block_content">
 				<div class="product_list_owl">

@@ -22,6 +22,7 @@ $menus_admin = [
             ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Thiết lập '],
         ]
     ],
+    ['type' => 'single', 'route' => 'admin.contacts.index', 'icon' => 'fa fa-commenting-o', 'name' => 'Quản lý lời nhắn'],
 ];  
 
 $menus_writer = [

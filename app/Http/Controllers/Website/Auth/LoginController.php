@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Website\LoginWebsiteRequest;
 use App\Http\Requests\Website\StoreRegisterRequest;
-
-use Illuminate\Support\Facades\Mail;
-use App\Mail\SendEmailRegister;
+use App\Jobs\SendEmailRegisterJob;
 
 use App\Product;
 use App\Catagory;
@@ -18,6 +16,7 @@ use App\Order;
 use App\OrderDetail;
 use App\News;
 use App\User;
+use App\Subscribe;
 use Carbon;
 use Session;
 use Cart;
@@ -32,7 +31,6 @@ class LoginController extends Controller
         /*
         * Các Middleware sẽ cho khách dùng đc showAdminLoginForm và adminLogin
         * Nhưng không dùng đc các function ->except('logout');
-        * 
         */
         // Login rồi thì sẽ ko vào đc các function ở đây nữa ngoại trừ: logout
         $this->middleware('guest')->except('logout');
@@ -61,7 +59,7 @@ class LoginController extends Controller
 
     public function logout(Request $request){
     	Auth::logout();
-    	return redirect()->guest('/homepage/');
+    	return redirect()->guest('/homepage/login');
     }
 
 
@@ -75,33 +73,24 @@ class LoginController extends Controller
         return view('website.auth.register', compact('total','news_popular','catagoriesTypes'));
     }
 
-    // store ly dang ky tai khoan
+    // store xu ly dang ky tai khoan
     public function userRegister(StoreRegisterRequest $request)
     {
-    	// return $request->all();
         $data = $request->all();
         $data['verification_code'] = str_random(64);
+        $user = User::create($data);
+        // This method gets called automatically after a user is registered
+        dispatch(new SendEmailRegisterJob($user));
+        // queue send email
 
-        User::create($data);
-        Session::flash('success', 'Đăng ký thành công. Đăng nhập để tiếp tục.');
-        return redirect()->route('web.registered');
-    }
-
-    // Tra ve view thong bao da dang ky thanh cong
-    public function userRegistered()
-    {
         $total = Cart::subtotal(0,'','.');
         $catagoriesTypes = CatagoriesType::where('status', '1')->get();
         $news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+
         Session::flash('userRegistered', 'ĐĂNG KÝ THÀNH CÔNG! VUI LÒNG KIỂM TRA EMAIL ĐỂ XÁC NHẬN TÀI KHOẢN.');
         return view('website.auth.registered', compact('total','news_popular','catagoriesTypes'));
     }
 
-    // This method gets called automatically after a user is registered
-    public function registered(Request $request, $user)
-    {
-        Mail::to($user->email)->send(new SendEmailRegister($user));
-    }
 
     public function confirmRegistered($token)
     {
@@ -110,12 +99,48 @@ class LoginController extends Controller
         $news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 
         $user = User::where('verification_code', $token)->firstOrFail();
-        $user->verified_at = now();
+
+        $user->verified_at = Carbon\Carbon::now()->toDateTimeString();
         $user->verified = true;
         $user->verification_code = null;
         $user->save();
 
-        Session::flash('confirmRegistered', 'XÁC NHẬN EMAIL THÀNH CÔNG. ĐĂNG NHẬP ĐỂ TIẾP TỤC.');
+        Session::flash('confirmRegistered', 'XÁC NHẬN EMAIL THÀNH CÔNG. ');
         return view('website.auth.registered', compact('total','news_popular','catagoriesTypes'));
     }
-}
+
+    public function signUpEmail(Request $request)
+    {
+        $total = Cart::subtotal(0,'','.');
+        $catagoriesTypes = CatagoriesType::where('status', '1')->get();
+        $news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+
+        // sign up email
+        $sessionSignUp = Session::get('signUpEmail');
+        // nếu chưa có session
+        // if (!$sessionSignUp) { 
+            Session::put('signUpEmail', 1); // Tạo, Set giá trị cho session
+
+            $this->validate($request,
+                [
+                    'email' => 'required|email|unique:subscribes,email',
+                ],
+                [
+                    'required' => ':attribute Không được để trống',
+                    'email' => ':attribute Không đúng định dạng',
+                    'max' => ':attribute Không được lớn hơn :max',
+                    'unique' => ':attribute này đã được đăng ký rồi',
+                ],
+                [
+                    'email' => 'Email',
+                ]
+
+            );
+            Subscribe::create($request->all());
+            Session::flash('signUpEmailOK', 'ĐĂNG KÝ NHẬN TIN TỨC QUA EMAIL THÀNH CÔNG. ');
+        // } else {
+            // Session::flash('signUpEmailDuplicate', 'BẠN ĐÃ ĐĂNG KÝ NHẬN TIN TỨC QUA EMAIL RỒI. ');
+        // }
+            return view('website.emails.sign_up_email', compact('total','news_popular','catagoriesTypes'));
+        }
+    }

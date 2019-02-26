@@ -16,7 +16,8 @@ class SendEmailRegister extends Mailable
      *
      * @return void
      */
-    public $subject = "Please confirm your email address";
+    // $subject default là tiêu đề của Email
+    public $subject = "Please confirm your email address.";
     protected $user;
 
     public function __construct($user)
@@ -31,6 +32,7 @@ class SendEmailRegister extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.register_email', ['user' => $this->user]);
+        // View hiển thị email trên gmail.com
+        return $this->view('website.emails.register_email', ['user' => $this->user]);
     }
 }

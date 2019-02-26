@@ -47,7 +47,7 @@
                   </li>
                   @else
                   <li>
-                     <a class="account" href="{{ route('web.login') }}" title="Login"><i class="fa fa-user"></i> Login</a>
+                     <a class="account" href="{{ route('web.login') }}" title="Login">Sign In</a>/<a class="account" href="{{ route('web.register') }}" title="Login">Sign Up</a>
                   </li>
                   @endif
                </ul>

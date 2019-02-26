@@ -103,7 +103,7 @@
                     <hr>
                     <br>
                     <center>
-                        <a href="http://localhost:8000/homepage" target="_blank">
+                        <a href="{{ asset('web.homepage') }}" target="_blank">
                             <button type="button" class="btn btn-primary  ">Trang chủ</button>
                         </a>
                     </center>

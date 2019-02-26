@@ -17,11 +17,13 @@
       <div class="des_newsletter">
          Sign up for our newsletter for exclusive updates on contests, new products, and more.
       </div>
-      <form class="form_newsletter" action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-         <input type="email" value="" placeholder="Your email ..." name="EMAIL" id="mail" class="newsletter-input form-control" aria-label="Your email ..." >
+      <form class="form_newsletter" action="{{ route('web.sign_up_email') }}" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+         @csrf
+         <input type="email" value="" placeholder="Your email ..." name="email" id="mail" class="newsletter-input form-control" aria-label="Your email ..." >
          <button id="subscribe" class="button_mini btn" type="submit">
             <span>Subscribe →</span>
          </button>
       </form>
+      <span style=" color: #b50404; ">{{$errors->first('email')}}</span>
    </div>
 </div>

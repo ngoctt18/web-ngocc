@@ -30,8 +30,9 @@ Route::post('post-login', 'Auth\LoginController@userLogin')->name('post_login');
 
 Route::get('register', 'Auth\LoginController@showUserRegisterForm')->name('register');
 Route::post('register', 'Auth\LoginController@userRegister');
-Route::get('registered', 'Auth\LoginController@userRegistered')->name('registered');
+// Route::get('registered', 'Auth\LoginController@userRegistered')->name('registered');
 Route::get('confirm/{token}', 'Auth\LoginController@confirmRegistered')->name('confirm');
+Route::post('sign-up', 'Auth\LoginController@signUpEmail')->name('sign_up_email');
 
 
 Route::get('product/{id}/{name}', 'WebsiteController@productDetail')->name('product_detail');

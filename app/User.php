@@ -63,4 +63,17 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
 
+
+    // Tài khoản đã được xác nhận
+    public function isVerified() {
+        return $this->verified == 1;
+    }
+
+    // Tài khoản còn đang hoạt động
+    public function isActive() {
+        return $this->status == 1;
+    }
+
+
+
 }

@@ -35,9 +35,17 @@ class LoginWebsiteRequest extends FormRequest
         if($validator->fails()) return;
 
         $validator->after(function($validator){
-            $admin = User::where('phone', request('phone'))->first();
+            $user = User::where('phone', request('phone'))->first();
             // dd(request('phone'));
-            if(!Hash::check(request('password'), $admin->password)){
+            if(!$user->isVerified()){
+                $validator->errors()->add('phone', 'Tài khoản chưa được kích hoạt.');
+                return;
+            }
+            if(!$user->isActive()){
+                $validator->errors()->add('phone', 'Tài khoản hiện không được hoạt động.');
+                return;
+            }
+            if(!Hash::check(request('password'), $user->password)){
                 $validator->errors()->add('password', 'Mật khẩu không chính xác.');
                 return;
             }

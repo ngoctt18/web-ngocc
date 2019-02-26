@@ -12,7 +12,7 @@
 					{{ session()->get('userRegistered') }}
 					@endif
 					@if(session()->has('confirmRegistered'))
-					{{ session()->get('confirmRegistered') }}
+					{{ session()->get('confirmRegistered') }}  <a href="{{ route('web.login') }}" style=" color: #59bd56; ">ĐĂNG NHẬP</a> ĐỂ TIẾP TỤC MUA SẮM.
 					@endif
 				</h1>
 

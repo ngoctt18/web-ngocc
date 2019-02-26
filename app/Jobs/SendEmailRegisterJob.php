@@ -7,20 +7,22 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmailRegister;
 
 class SendEmailRegisterJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $details;
+    protected $user;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($user)
     {
-        $this->details = $details;
+        $this->user = $user;
     }
 
     /**
@@ -30,7 +32,7 @@ class SendEmailRegisterJob implements ShouldQueue
      */
     public function handle()
     {
-        $email = new SendEmailTest();
-        Mail::to($this->details['email'])->send($email);
+        // Cut hàm xử lý gửi Mail từ controller đăng ký sang đây.
+        Mail::to($this->user->email)->send(new SendEmailRegister($this->user));
     }
 }
