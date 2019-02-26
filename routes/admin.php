@@ -33,7 +33,8 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::post('uploadImage', 'Product\ProductController@uploadImage')->name('uploadImage');
 	Route::resource('users', 'User\UserController');
 	Route::resource('orders', 'Order\OrderController')->except(['create','store']);
-	Route::resource('contacts', 'Contact\ContactController')->only(['index','destroy','show']);
+	Route::resource('contacts', 'Contact\ContactController')->only(['index','destroy']);
+	Route::post('contacts-detail', 'Contact\ContactController@contactDetail')->name('contact_detail');
 
     // Thay đổi mật khẩu user đang đăng nhập
 	Route::post('checkPassword', 'Auth\LoginController@checkPassword')->name('check_password');
@@ -53,13 +54,6 @@ Route::middleware(['guest:admin'])->group(function(){
 
 });
 
-
-
-	// Route::get('addcolumn', function(){
-	// 	Schema::table('products', function ($table) {
-	// 		$table->softDeletes();
-	// 	});
-	// });
 
 
 

@@ -2,10 +2,6 @@
 
 @section('title', 'Quản lý lời nhắn')
 
-@section('styles')
-
-@endsection
-
 @section('content')
 @include('admin.components.messages')
 <p>
@@ -39,7 +35,7 @@
 					<td>{{str_limit($contact->message, 80, '...')}}</td>
 					<td>{{$contact->created_at->format('H:i - d/m/Y')}}</td>
 					<td>
-						<a href="javascript:void(0)" class="btn btn-success btn-xs btnShowMessages"><i class="fa fa-eye"></i></a>
+						<a href="javascript:void(0)" idContact="{{$contact->id}}" class="btn btn-success btn-xs btnShowMessages"><i class="fa fa-eye"></i></a>
 						<a href="{{ route('admin.contacts.destroy', ['id' => $contact->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
 					</td>
 				</tr>
@@ -75,11 +71,14 @@
 
 <!-- /.modal-delete -->
 <div class="modal fade modalShowMessages" tabindex="-1" role="dialog">
-	<div class="modal-dialog modal400" role="document">
+	<div class="modal-dialog " role="document">
 		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="h4">Lời nhắn của khách hàng</h4>
+			</div>
 			<div class="modal-body">
-				<h4>Lời nhắn của khách hàng</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				<p class="info"></p>
+				<p class="messages">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -87,8 +86,7 @@
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-				<button type="submit" class="btn btn-success">Xác nhận</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
 			</div>
 		</div>
 	</div>
@@ -98,8 +96,29 @@
 @section('scripts')
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('.btnShowMessages').click(function(event) {
+		$('.btnShowMessages').unbind('click').click(function(event) {
 			event.preventDefault();
+			var idContact = $(this).attr('idContact');
+			var _token = $('input[name="_token"]').val();
+
+			// console.log('idContact: '+idContact);
+			$.ajax({
+				url: '{{ route('admin.contact_detail') }}',
+				type: 'POST',
+				data: {idContact, _token},
+				success: function(data){
+					// console.log(data);
+					$('.modalShowMessages').find('.h4').text('Lời nhắn của khách hàng: '+data.name);
+					$('.modalShowMessages').find('.info').html('<b>Điện thoại: </b>'+data.phone+'<b> - Email: </b>'+data.email+'');
+					$('.modalShowMessages').find('.messages').text(data.message);
+					$('.modalShowMessages').modal('show');
+				},
+				error: function(data){
+					console.log('Ajax khong ve!');
+					console.log(data);
+				}
+			})
+			
 		});
 	});
 </script>

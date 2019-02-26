@@ -9,6 +9,6 @@ class DashboardController extends Controller
 {
 	public function writer()
 	{
-		return view('admin.dashboard', ['url', 'writer']);
+		return view('writer.dashboard', ['url', 'writer']);
 	}
 }

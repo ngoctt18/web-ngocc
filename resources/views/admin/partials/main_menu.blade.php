@@ -28,10 +28,12 @@ $menus_admin = [
 $menus_writer = [
     ['type' => 'header', 'name' => 'Menu chính'],
     ['type' => 'single', 'route' => '', 'icon' => 'fa fa-user', 'name' => 'Thông tin cá nhân'],
+    ['type' => 'single', 'route' => 'writer.dashboard', 'icon' => 'fa fa-dashboard', 'name' => 'Trang điều khiển'],
     [
-        'type' => 'multi', 'name' => 'Quản lý đặt lịch', 'icon' => 'fa fa-calendar',
+        'type' => 'multi', 'name' => 'Quản lý tin tức', 'icon' => 'fa fa-newspaper-o',
         'children' => [
-            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đăng sản phẩm'],
+            ['type' => 'single', 'route' => 'writer.news.index', 'icon' => 'fa fa-newspaper-o', 'name' => 'Danh sách bài viết'],
+            ['type' => 'single', 'route' => 'writer.news.trash', 'icon' => 'fa fa-trash-o', 'name' => 'Thùng rác'],
         ]
     ],
 ];  

@@ -57,17 +57,8 @@ Route::get('news/tagged/{slug}', 'News\NewsController@tagged')->name('news.tagge
 Route::get('news/author/{username}', 'News\NewsController@author')->name('news.author');
 
 
-	// Route::get('ajax-pagination','WebsiteController@ajaxPagination')->name('ajax.pagination');
 
 
 Route::get('search', 'Search\SearchController@index')->name('search');
 Route::get('autocomplete', 'Search\SearchController@autocomplete')->name('search.autocomplete');
 
-// Route::get('email-test', function(){
-
-// 	$details['email'] = 'your_email@gmail.com';
-
-// 	dispatch(new App\Jobs\SendEmailRegisterJob($details));
-
-// 	dd('done');
-// });
