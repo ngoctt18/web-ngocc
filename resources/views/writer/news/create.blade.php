@@ -17,6 +17,10 @@
 	<form role="form" method="POST" action="{{ route('writer.news.store', [], false) }}" enctype="multipart/form-data">
 		<div class="box-body">
 			{{ csrf_field() }}
+			@foreach ($errors->all() as $error)
+			<small class="text-danger">{{ $error }}</small> <br>
+			@endforeach
+
 			<div class="form-group">
 				<label for="title">Tiêu đề bài viết</label>
 				<input type="text" class="form-control" id="title" placeholder="Tiêu đề bài viết" name="title" value="{{old('title')}}">

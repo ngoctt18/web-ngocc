@@ -68,7 +68,7 @@
 				<tr role="row" class="align-middle">
 					<td>{{ index_row($news, $loop->index) }}</td>
 					<td>{{ str_limit($item->title, 70, '...') }}</td>
-					<td>{{ str_limit($item->content, 100, '...') }}</td>
+					<td>{{ str_limit(strip_tags(html_entity_decode($item->content)), 100, '...') }}</td>
 					<td>{{ $item->author->username ?? 'Admin' }}</td>
 					<td>
 						@foreach ($item->tags as $tag)

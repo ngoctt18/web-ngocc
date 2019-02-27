@@ -45,18 +45,21 @@ class NewsController extends Controller
 		return view('writer.news.create', compact('tags'));
 	}
 
-	public function store(Request $request)
+	public function store(StoreNewsRequest $request)
 	{
         // dd($request->all());
 		$data = $request->all();
 		$data['slug'] = $request->title;
 		$data['author_id'] = Auth::id();
 		$news = News::create($data);
-		foreach ($request->new_tags as $value) {
-			NewTag::create([
-				'new_id' => $news->id,
-				'tag_id' => $value,
-			]);
+		// check null
+		if (!is_null($request->new_tags)) {
+			foreach ($request->new_tags as $value) {
+				NewTag::create([
+					'new_id' => $news->id,
+					'tag_id' => $value,
+				]);
+			}
 		}
 		if($request->hasFile('news_image')){
 			$news->addMediaFromRequest('news_image')->toMediaCollection('news_image');
@@ -76,18 +79,20 @@ class NewsController extends Controller
 		return view('writer.news.edit', compact('news', 'tags'));
 	}
 
-	public function update(Request $request, News $news)
+	public function update(UpdateNewsRequest $request, News $news)
 	{
 		$data = $request->all();
 		$data['slug'] = $request->title;
 		$news->update($data);
 
 		NewTag::where('new_id', $news->id)->delete();
-		foreach ($request->new_tags as $value) {
-			NewTag::create([
-				'new_id' => $news->id,
-				'tag_id' => $value,
-			]);
+		if (!is_null($request->new_tags)) {
+			foreach ($request->new_tags as $value) {
+				NewTag::create([
+					'new_id' => $news->id,
+					'tag_id' => $value,
+				]);
+			}
 		}
 		if($request->hasFile('news_image')){
 			$news->clearMediaCollection('news_image');
