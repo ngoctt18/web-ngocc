@@ -49,78 +49,64 @@
 							</div>
 						</div>
 						<div class="main__content">
-                        <!-- <iframe srcdoc="<script>!function(){var e=function(e){var t={exports:{}};return e.call(t.exports,t,t.exports),t.exports},r=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,&quot;value&quot;in i&amp;&amp;(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&amp;&amp;i(e.prototype,t),n&amp;&amp;i(e,n),e}}(),a=function(e,t){if(!(e instanceof t))throw new TypeError(&quot;Cannot call a class as a function&quot;)},t=function(e){return e&amp;&amp;e.__esModule?e:{&quot;default&quot;:e}},n=e(function(e,t){&quot;use strict&quot;;Object.defineProperty(t,&quot;__esModule&quot;,{value:!0});var n=function(){function e(){var i=this;a(this,e),this.calls=[],window.ga=function(){for(var e=arguments.length,t=Array(e),n=0;n<e;n++)t[n]=arguments[n];return i.gaCall(t)}}return r(e,[{key:&quot;gaCall&quot;,value:function n(e){var t=this;this.calls.push(e),clearTimeout(this.timeout),this.timeout=setTimeout(function(){0<t.calls.length&amp;&amp;t.sendMessage()},0)}},{key:&quot;listen&quot;,value:function i(){var t=this;window.addEventListener(&quot;message&quot;,function(e){return t.receiveMessage(e)},!1)}},{key:&quot;sendMessage&quot;,value:function t(){window.parent.postMessage({type:&quot;analytics&quot;,calls:this.calls},this.origin),this.calls=[]}},{key:&quot;receiveMessage&quot;,value:function o(e){if(e.source===window.parent&amp;&amp;&quot;checkout_context&quot;===e.data.type){this.origin=e.origin,window.Shopify=e.data.Shopify,window.__st=e.data.__st;try{window.additionalScripts()}catch(t){console.error(&quot;User script error: &quot;,t)}}}}]),e}();t[&quot;default&quot;]=n});e(function(){&quot;use strict&quot;;(new(t(n)[&quot;default&quot;])).listen()})}(&quot;undefined&quot;!=typeof global?global:&quot;undefined&quot;!=typeof window&amp;&amp;window);
-                           window.additionalScripts = function () {
-                           };
-                           					</script>
-                           					" src="https://checkout.shopify.com/9284804/sandbox/google_analytics_iframe" onload="this.setAttribute('data-loaded', true)" sandbox="allow-scripts" id="google-analytics-sandbox" tabindex="-1" class="visually-hidden" style="display:none" aria-hidden="true" data-loaded="true"></iframe> -->
-                           					<div class="step" data-step="contact_information">
-                           						<form class="edit_checkout animate-floating-labels" action="{{ route('web.checkout.store') }}" accept-charset="UTF-8" method="post">
-                           							{{csrf_field()}}
-                           							<!-- <input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="6k0L9/KD0LSzsFG3tXs9X456raHUoEkfzDiCwXaR+R8YXO7I2KNYiuguBVRdFr8MJm/BoVUyXGbx3Jg+lunefg==">
-                           							<input type="hidden" name="previous_step" id="previous_step" value="contact_information">
-                           							<input type="hidden" name="step" value="shipping_method"> -->
-                           							<div class="step__sections">
-                           								<div class="section section--contact-information">
-                           									<div class="section__header">
-                           										<div class="layout-flex layout-flex--tight-vertical layout-flex--loose-horizontal layout-flex--wrap">
-                           											<h2 class="section__title layout-flex__item layout-flex__item--stretch" id="main-header" tabindex="-1">
-                           												1. Thông tin liên hệ
-                           											</h2>
-                           											<p class="layout-flex__item">
-                           												<span aria-hidden="true">Bạn đã có tài khoản?</span>
-                           												<a data-trekkie-id="have_an_account_login_link" href="{{ route('web.login') }}">
-                           													<span class="visually-hidden">Bạn đã có tài khoản?</span>
-                           													Đăng nhập
-                           												</a>        
-                           											</p>
-                           										</div>
-                           									</div>
-                           									<div class="section__content" data-section="customer-information" data-shopify-pay-validate-on-load="false">
-                           										<div class="fieldset">
-                           											<div data-shopify-pay-email-flow="false" class="field field--required">
-                           												<div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_email">Email</label>
-                           													<input placeholder="Email" autocapitalize="off" spellcheck="false" autocomplete="shipping email" data-trekkie-id="email_field" data-autofocus="true" data-backup="customer_email" aria-describedby="checkout-context-step-one" aria-required="true" class="field__input" size="30" type="email" name="checkout[email]" id="checkout_email" required="">
-                           												</div>
-                           											</div>
-                           										</div>
-                           										<div class="fieldset-description" data-buyer-accepts-marketing="">
-                           											<div class="section__content">
-                           												<div class="checkbox-wrapper">
-                           													<div class="checkbox__input">
-                           														<input name="checkout[buyer_accepts_marketing]" type="hidden" value="0"><input class="input-checkbox" data-backup="buyer_accepts_marketing" data-trekkie-id="buyer_accepts_marketing_field" type="checkbox" value="1" name="checkout[buyer_accepts_marketing]" id="checkout_buyer_accepts_marketing">
-                           													</div>
-                           													<label class="checkbox__label" for="checkout_buyer_accepts_marketing">
-                           														Nhận tin tức khuyến mãi về sản phẩm
-                           													</label>
-                           												</div>
-                           											</div>
-                           										</div>
-                           									</div>
-                           								</div>
-                           								<div class="section section--shipping-address" data-shipping-address="" data-update-order-summary="">
-                           									<div class="section__header">
-                           										<h2 class="section__title">
-                           											2. Thông tin giao hàng
-                           										</h2>
-                           									</div>
-                           									<div class="section__content">
-                           										<div class="fieldset" data-address-fields="">
-                           											<input class="visually-hidden" autocomplete="shipping given-name" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="first_name" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][first_name]">
-                           											<!-- <input class="visually-hidden" autocomplete="shipping family-name" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="last_name" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][last_name]"> -->
-                           											<!-- <input class="visually-hidden" autocomplete="shipping organization" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="company" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][company]"> -->
-                           											<input class="visually-hidden" autocomplete="shipping address-line1" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="address1" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][address1]">
-                           											<!-- <input class="visually-hidden" autocomplete="shipping address-line2" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="address2" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][address2]"> -->
-                           											<input class="visually-hidden" autocomplete="shipping address-level2" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="city" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][city]">
-                           											<!-- <input class="visually-hidden" autocomplete="shipping country" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="country" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][country]"> -->
-                           											<!-- <input class="visually-hidden" autocomplete="shipping address-level1" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="province" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][province]"> -->
-                           											<!-- <input class="visually-hidden" autocomplete="shipping postal-code" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="zip" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][zip]"> -->
-                           											<input class="visually-hidden" autocomplete="shipping tel" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="phone" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][phone]">
-                           											<div class="field field--optional" data-address-field="first_name">
-                           												<div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_first_name">Họ và tên</label>
-                           													<input placeholder="Họ và tên" autocomplete="shipping given-name" data-trekkie-id="shipping_firstname_field" data-backup="first_name" class="field__input" size="30" type="text" name="checkout[shipping_address][first_name]" id="checkout_shipping_address_first_name" required="">
-                           												</div>
-                           											</div>
+                     
+                    <div class="step" data-step="contact_information">
+                     <form class="edit_checkout animate-floating-labels" action="{{ route('web.checkout.store') }}" accept-charset="UTF-8" method="post">
+                      {{csrf_field()}}
+                      <div class="step__sections">
+                         <div class="section section--contact-information">
+                           <div class="section__header">
+                             <div class="layout-flex layout-flex--tight-vertical layout-flex--loose-horizontal layout-flex--wrap">
+                               <h2 class="section__title layout-flex__item layout-flex__item--stretch" id="main-header" tabindex="-1">
+                                 1. Thông tin liên hệ
+                              </h2>
+                           </div>
+                        </div>
+                        <div class="section__content" data-section="customer-information" data-shopify-pay-validate-on-load="false">
+                          <div class="fieldset">
+                            <div data-shopify-pay-email-flow="false" class="field field--required">
+                              <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_email">Email</label>
+                                <input placeholder="Email" autocapitalize="off" spellcheck="false" autocomplete="shipping email" data-trekkie-id="email_field" data-autofocus="true" data-backup="customer_email" aria-describedby="checkout-context-step-one" aria-required="true" class="field__input" size="30" type="email" name="checkout[email]" id="checkout_email" required="">
+                             </div>
+                          </div>
+                       </div>
+                       <div class="fieldset-description" data-buyer-accepts-marketing="">
+                         <div class="section__content">
+                           <div class="checkbox-wrapper">
+                             <div class="checkbox__input">
+                               <input name="checkout[buyer_accepts_marketing]" type="hidden" value="0"><input class="input-checkbox" data-backup="buyer_accepts_marketing" data-trekkie-id="buyer_accepts_marketing_field" type="checkbox" value="1" name="checkout[buyer_accepts_marketing]" id="checkout_buyer_accepts_marketing">
+                            </div>
+                            <label class="checkbox__label" for="checkout_buyer_accepts_marketing">
+                               Nhận tin tức khuyến mãi về sản phẩm
+                            </label>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div class="section section--shipping-address" data-shipping-address="" data-update-order-summary="">
+               <div class="section__header">
+                 <h2 class="section__title">
+                   2. Thông tin giao hàng
+                </h2>
+             </div>
+             <div class="section__content">
+              <div class="fieldset" data-address-fields="">
+                <input class="visually-hidden" autocomplete="shipping given-name" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="first_name" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][first_name]">
+                <!-- <input class="visually-hidden" autocomplete="shipping family-name" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="last_name" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][last_name]"> -->
+                <!-- <input class="visually-hidden" autocomplete="shipping organization" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="company" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][company]"> -->
+                <input class="visually-hidden" autocomplete="shipping address-line1" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="address1" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][address1]">
+                <!-- <input class="visually-hidden" autocomplete="shipping address-line2" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="address2" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][address2]"> -->
+                <input class="visually-hidden" autocomplete="shipping address-level2" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="city" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][city]">
+                <!-- <input class="visually-hidden" autocomplete="shipping country" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="country" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][country]"> -->
+                <!-- <input class="visually-hidden" autocomplete="shipping address-level1" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="province" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][province]"> -->
+                <!-- <input class="visually-hidden" autocomplete="shipping postal-code" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="zip" data-honeypot="true" aria-required="true" size="30" type="text" name="checkout[shipping_address][zip]"> -->
+                <input class="visually-hidden" autocomplete="shipping tel" tabindex="-1" aria-hidden="true" aria-label="no-label" data-autocomplete-field="phone" data-honeypot="true" size="30" type="text" name="checkout[shipping_address][phone]">
+                <div class="field field--optional" data-address-field="first_name">
+                  <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_first_name">Họ và tên</label>
+                    <input placeholder="Họ và tên" autocomplete="shipping given-name" data-trekkie-id="shipping_firstname_field" data-backup="first_name" class="field__input" size="30" type="text" name="checkout[shipping_address][first_name]" id="checkout_shipping_address_first_name" required="">
+                 </div>
+              </div>
                            											<!-- <div class="field field--required field--half" data-address-field="last_name">
                                                                <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_last_name">Họ đệm</label>
                                                                   <input placeholder="Họ đệm" autocomplete="shipping family-name" data-backup="last_name" data-trekkie-id="shipping_lastname_field" class="field__input" aria-required="true" size="30" type="text" name="checkout[shipping_address][last_name]" id="checkout_shipping_address_last_name" required="">
@@ -146,368 +132,99 @@
                                                <input placeholder="Thành phố" autocomplete="shipping address-level2" autocorrect="off" data-trekkie-id="shipping_city_field" data-backup="city" class="field__input" aria-required="true" size="30" type="text" name="checkout[shipping_address][city]" id="checkout_shipping_address_city" required="">
                                             </div>
                                          </div>
-                                          <!-- <div class="field field--required field--half field--show-floating-label" data-address-field="country" data-autocomplete-field-container="true">
-                                             <div class="field__input-wrapper field__input-wrapper--select">
-                                             	<label class="field__label field__label--visible" for="checkout_shipping_address_country">Country</label>
-                                             	<select size="1" autocomplete="shipping country" data-trekkie-id="shipping_country_field" data-backup="country" class="field__input field__input--select" aria-required="true" name="checkout[shipping_address][country]" id="checkout_shipping_address_country">
-                                             		<option data-code="AF" value="Afghanistan">Afghanistan</option>
-                                             		<option data-code="AX" value="Aland Islands">Åland Islands</option>
-                                             		<option data-code="AL" value="Albania">Albania</option>
-                                             		<option data-code="DZ" value="Algeria">Algeria</option>
-                                             		<option data-code="AD" value="Andorra">Andorra</option>
-                                             		<option data-code="AO" value="Angola">Angola</option>
-                                             		<option data-code="AI" value="Anguilla">Anguilla</option>
-                                             		<option data-code="AG" value="Antigua And Barbuda">Antigua &amp; Barbuda</option>
-                                             		<option data-code="AR" value="Argentina">Argentina</option>
-                                             		<option data-code="AM" value="Armenia">Armenia</option>
-                                             		<option data-code="AW" value="Aruba">Aruba</option>
-                                             		<option data-code="AU" value="Australia">Australia</option>
-                                             		<option data-code="AT" value="Austria">Austria</option>
-                                             		<option data-code="AZ" value="Azerbaijan">Azerbaijan</option>
-                                             		<option data-code="BS" value="Bahamas">Bahamas</option>
-                                             		<option data-code="BH" value="Bahrain">Bahrain</option>
-                                             		<option data-code="BD" value="Bangladesh">Bangladesh</option>
-                                             		<option data-code="BB" value="Barbados">Barbados</option>
-                                             		<option data-code="BY" value="Belarus">Belarus</option>
-                                             		<option data-code="BE" value="Belgium">Belgium</option>
-                                             		<option data-code="BZ" value="Belize">Belize</option>
-                                             		<option data-code="BJ" value="Benin">Benin</option>
-                                             		<option data-code="BM" value="Bermuda">Bermuda</option>
-                                             		<option data-code="BT" value="Bhutan">Bhutan</option>
-                                             		<option data-code="BO" value="Bolivia">Bolivia</option>
-                                             		<option data-code="BA" value="Bosnia And Herzegovina">Bosnia &amp; Herzegovina</option>
-                                             		<option data-code="BW" value="Botswana">Botswana</option>
-                                             		<option data-code="BV" value="Bouvet Island">Bouvet Island</option>
-                                             		<option data-code="BR" value="Brazil">Brazil</option>
-                                             		<option data-code="IO" value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-                                             		<option data-code="VG" value="Virgin Islands, British">British Virgin Islands</option>
-                                             		<option data-code="BN" value="Brunei">Brunei</option>
-                                             		<option data-code="BG" value="Bulgaria">Bulgaria</option>
-                                             		<option data-code="BF" value="Burkina Faso">Burkina Faso</option>
-                                             		<option data-code="BI" value="Burundi">Burundi</option>
-                                             		<option data-code="KH" value="Cambodia">Cambodia</option>
-                                             		<option data-code="CM" value="Republic of Cameroon">Cameroon</option>
-                                             		<option data-code="CA" value="Canada">Canada</option>
-                                             		<option data-code="CV" value="Cape Verde">Cape Verde</option>
-                                             		<option data-code="BQ" value="Bonaire, Sint Eustatius and Saba">Caribbean Netherlands</option>
-                                             		<option data-code="KY" value="Cayman Islands">Cayman Islands</option>
-                                             		<option data-code="CF" value="Central African Republic">Central African Republic</option>
-                                             		<option data-code="TD" value="Chad">Chad</option>
-                                             		<option data-code="CL" value="Chile">Chile</option>
-                                             		<option data-code="CN" value="China">China</option>
-                                             		<option data-code="CX" value="Christmas Island">Christmas Island</option>
-                                             		<option data-code="CC" value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
-                                             		<option data-code="CO" value="Colombia">Colombia</option>
-                                             		<option data-code="KM" value="Comoros">Comoros</option>
-                                             		<option data-code="CG" value="Congo">Congo - Brazzaville</option>
-                                             		<option data-code="CD" value="Congo, The Democratic Republic Of The">Congo - Kinshasa</option>
-                                             		<option data-code="CK" value="Cook Islands">Cook Islands</option>
-                                             		<option data-code="CR" value="Costa Rica">Costa Rica</option>
-                                             		<option data-code="HR" value="Croatia">Croatia</option>
-                                             		<option data-code="CU" value="Cuba">Cuba</option>
-                                             		<option data-code="CW" value="Curaçao">Curaçao</option>
-                                             		<option data-code="CY" value="Cyprus">Cyprus</option>
-                                             		<option data-code="CZ" value="Czech Republic">Czech Republic</option>
-                                             		<option data-code="CI" value="Côte d'Ivoire">Côte d’Ivoire</option>
-                                             		<option data-code="DK" value="Denmark">Denmark</option>
-                                             		<option data-code="DJ" value="Djibouti">Djibouti</option>
-                                             		<option data-code="DM" value="Dominica">Dominica</option>
-                                             		<option data-code="DO" value="Dominican Republic">Dominican Republic</option>
-                                             		<option data-code="EC" value="Ecuador">Ecuador</option>
-                                             		<option data-code="EG" value="Egypt">Egypt</option>
-                                             		<option data-code="SV" value="El Salvador">El Salvador</option>
-                                             		<option data-code="GQ" value="Equatorial Guinea">Equatorial Guinea</option>
-                                             		<option data-code="ER" value="Eritrea">Eritrea</option>
-                                             		<option data-code="EE" value="Estonia">Estonia</option>
-                                             		<option data-code="ET" value="Ethiopia">Ethiopia</option>
-                                             		<option data-code="FK" value="Falkland Islands (Malvinas)">Falkland Islands</option>
-                                             		<option data-code="FO" value="Faroe Islands">Faroe Islands</option>
-                                             		<option data-code="FJ" value="Fiji">Fiji</option>
-                                             		<option data-code="FI" value="Finland">Finland</option>
-                                             		<option data-code="FR" value="France">France</option>
-                                             		<option data-code="GF" value="French Guiana">French Guiana</option>
-                                             		<option data-code="PF" value="French Polynesia">French Polynesia</option>
-                                             		<option data-code="TF" value="French Southern Territories">French Southern Territories</option>
-                                             		<option data-code="GA" value="Gabon">Gabon</option>
-                                             		<option data-code="GM" value="Gambia">Gambia</option>
-                                             		<option data-code="GE" value="Georgia">Georgia</option>
-                                             		<option data-code="DE" value="Germany">Germany</option>
-                                             		<option data-code="GH" value="Ghana">Ghana</option>
-                                             		<option data-code="GI" value="Gibraltar">Gibraltar</option>
-                                             		<option data-code="GR" value="Greece">Greece</option>
-                                             		<option data-code="GL" value="Greenland">Greenland</option>
-                                             		<option data-code="GD" value="Grenada">Grenada</option>
-                                             		<option data-code="GP" value="Guadeloupe">Guadeloupe</option>
-                                             		<option data-code="GT" value="Guatemala">Guatemala</option>
-                                             		<option data-code="GG" value="Guernsey">Guernsey</option>
-                                             		<option data-code="GN" value="Guinea">Guinea</option>
-                                             		<option data-code="GW" value="Guinea Bissau">Guinea-Bissau</option>
-                                             		<option data-code="GY" value="Guyana">Guyana</option>
-                                             		<option data-code="HT" value="Haiti">Haiti</option>
-                                             		<option data-code="HM" value="Heard Island And Mcdonald Islands">Heard &amp; McDonald Islands</option>
-                                             		<option data-code="HN" value="Honduras">Honduras</option>
-                                             		<option data-code="HK" value="Hong Kong">Hong Kong SAR China</option>
-                                             		<option data-code="HU" value="Hungary">Hungary</option>
-                                             		<option data-code="IS" value="Iceland">Iceland</option>
-                                             		<option data-code="IN" value="India">India</option>
-                                             		<option data-code="ID" value="Indonesia">Indonesia</option>
-                                             		<option data-code="IR" value="Iran, Islamic Republic Of">Iran</option>
-                                             		<option data-code="IQ" value="Iraq">Iraq</option>
-                                             		<option data-code="IE" value="Ireland">Ireland</option>
-                                             		<option data-code="IM" value="Isle Of Man">Isle of Man</option>
-                                             		<option data-code="IL" value="Israel">Israel</option>
-                                             		<option data-code="IT" value="Italy">Italy</option>
-                                             		<option data-code="JM" value="Jamaica">Jamaica</option>
-                                             		<option data-code="JP" value="Japan">Japan</option>
-                                             		<option data-code="JE" value="Jersey">Jersey</option>
-                                             		<option data-code="JO" value="Jordan">Jordan</option>
-                                             		<option data-code="KZ" value="Kazakhstan">Kazakhstan</option>
-                                             		<option data-code="KE" value="Kenya">Kenya</option>
-                                             		<option data-code="KI" value="Kiribati">Kiribati</option>
-                                             		<option data-code="XK" value="Kosovo">Kosovo</option>
-                                             		<option data-code="KW" value="Kuwait">Kuwait</option>
-                                             		<option data-code="KG" value="Kyrgyzstan">Kyrgyzstan</option>
-                                             		<option data-code="LA" value="Lao People's Democratic Republic">Laos</option>
-                                             		<option data-code="LV" value="Latvia">Latvia</option>
-                                             		<option data-code="LB" value="Lebanon">Lebanon</option>
-                                             		<option data-code="LS" value="Lesotho">Lesotho</option>
-                                             		<option data-code="LR" value="Liberia">Liberia</option>
-                                             		<option data-code="LY" value="Libyan Arab Jamahiriya">Libya</option>
-                                             		<option data-code="LI" value="Liechtenstein">Liechtenstein</option>
-                                             		<option data-code="LT" value="Lithuania">Lithuania</option>
-                                             		<option data-code="LU" value="Luxembourg">Luxembourg</option>
-                                             		<option data-code="MO" value="Macao">Macau SAR China</option>
-                                             		<option data-code="MK" value="Macedonia, Republic Of">Macedonia</option>
-                                             		<option data-code="MG" value="Madagascar">Madagascar</option>
-                                             		<option data-code="MW" value="Malawi">Malawi</option>
-                                             		<option data-code="MY" value="Malaysia">Malaysia</option>
-                                             		<option data-code="MV" value="Maldives">Maldives</option>
-                                             		<option data-code="ML" value="Mali">Mali</option>
-                                             		<option data-code="MT" value="Malta">Malta</option>
-                                             		<option data-code="MQ" value="Martinique">Martinique</option>
-                                             		<option data-code="MR" value="Mauritania">Mauritania</option>
-                                             		<option data-code="MU" value="Mauritius">Mauritius</option>
-                                             		<option data-code="YT" value="Mayotte">Mayotte</option>
-                                             		<option data-code="MX" value="Mexico">Mexico</option>
-                                             		<option data-code="MD" value="Moldova, Republic of">Moldova</option>
-                                             		<option data-code="MC" value="Monaco">Monaco</option>
-                                             		<option data-code="MN" value="Mongolia">Mongolia</option>
-                                             		<option data-code="ME" value="Montenegro">Montenegro</option>
-                                             		<option data-code="MS" value="Montserrat">Montserrat</option>
-                                             		<option data-code="MA" value="Morocco">Morocco</option>
-                                             		<option data-code="MZ" value="Mozambique">Mozambique</option>
-                                             		<option data-code="MM" value="Myanmar">Myanmar (Burma)</option>
-                                             		<option data-code="NA" value="Namibia">Namibia</option>
-                                             		<option data-code="NR" value="Nauru">Nauru</option>
-                                             		<option data-code="NP" value="Nepal">Nepal</option>
-                                             		<option data-code="NL" value="Netherlands">Netherlands</option>
-                                             		<option data-code="AN" value="Netherlands Antilles">Netherlands Antilles</option>
-                                             		<option data-code="NC" value="New Caledonia">New Caledonia</option>
-                                             		<option data-code="NZ" value="New Zealand">New Zealand</option>
-                                             		<option data-code="NI" value="Nicaragua">Nicaragua</option>
-                                             		<option data-code="NE" value="Niger">Niger</option>
-                                             		<option data-code="NG" value="Nigeria">Nigeria</option>
-                                             		<option data-code="NU" value="Niue">Niue</option>
-                                             		<option data-code="NF" value="Norfolk Island">Norfolk Island</option>
-                                             		<option data-code="KP" value="Korea, Democratic People's Republic Of">North Korea</option>
-                                             		<option data-code="NO" value="Norway">Norway</option>
-                                             		<option data-code="OM" value="Oman">Oman</option>
-                                             		<option data-code="PK" value="Pakistan">Pakistan</option>
-                                             		<option data-code="PS" value="Palestinian Territory, Occupied">Palestinian Territories</option>
-                                             		<option data-code="PA" value="Panama">Panama</option>
-                                             		<option data-code="PG" value="Papua New Guinea">Papua New Guinea</option>
-                                             		<option data-code="PY" value="Paraguay">Paraguay</option>
-                                             		<option data-code="PE" value="Peru">Peru</option>
-                                             		<option data-code="PH" value="Philippines">Philippines</option>
-                                             		<option data-code="PN" value="Pitcairn">Pitcairn Islands</option>
-                                             		<option data-code="PL" value="Poland">Poland</option>
-                                             		<option data-code="PT" value="Portugal">Portugal</option>
-                                             		<option data-code="QA" value="Qatar">Qatar</option>
-                                             		<option data-code="RE" value="Reunion">Réunion</option>
-                                             		<option data-code="RO" value="Romania">Romania</option>
-                                             		<option data-code="RU" value="Russia">Russia</option>
-                                             		<option data-code="RW" value="Rwanda">Rwanda</option>
-                                             		<option data-code="WS" value="Samoa">Samoa</option>
-                                             		<option data-code="SM" value="San Marino">San Marino</option>
-                                             		<option data-code="ST" value="Sao Tome And Principe">São Tomé &amp; Príncipe</option>
-                                             		<option data-code="SA" value="Saudi Arabia">Saudi Arabia</option>
-                                             		<option data-code="SN" value="Senegal">Senegal</option>
-                                             		<option data-code="RS" value="Serbia">Serbia</option>
-                                             		<option data-code="SC" value="Seychelles">Seychelles</option>
-                                             		<option data-code="SL" value="Sierra Leone">Sierra Leone</option>
-                                             		<option data-code="SG" value="Singapore">Singapore</option>
-                                             		<option data-code="SX" value="Sint Maarten">Sint Marteen</option>
-                                             		<option data-code="SK" value="Slovakia">Slovakia</option>
-                                             		<option data-code="SI" value="Slovenia">Slovenia</option>
-                                             		<option data-code="SB" value="Solomon Islands">Solomon Islands</option>
-                                             		<option data-code="SO" value="Somalia">Somalia</option>
-                                             		<option data-code="ZA" value="South Africa">South Africa</option>
-                                             		<option data-code="GS" value="South Georgia And The South Sandwich Islands">South Georgia &amp; South Sandwich Islands</option>
-                                             		<option data-code="KR" value="South Korea">South Korea</option>
-                                             		<option data-code="SS" value="South Sudan">South Sudan</option>
-                                             		<option data-code="ES" value="Spain">Spain</option>
-                                             		<option data-code="LK" value="Sri Lanka">Sri Lanka</option>
-                                             		<option data-code="BL" value="Saint Barthélemy">St. Barthélemy</option>
-                                             		<option data-code="SH" value="Saint Helena">St. Helena</option>
-                                             		<option data-code="KN" value="Saint Kitts And Nevis">St. Kitts &amp; Nevis</option>
-                                             		<option data-code="LC" value="Saint Lucia">St. Lucia</option>
-                                             		<option data-code="MF" value="Saint Martin">St. Martin</option>
-                                             		<option data-code="PM" value="Saint Pierre And Miquelon">St. Pierre &amp; Miquelon</option>
-                                             		<option data-code="VC" value="St. Vincent">St. Vincent &amp; Grenadines</option>
-                                             		<option data-code="SD" value="Sudan">Sudan</option>
-                                             		<option data-code="SR" value="Suriname">Suriname</option>
-                                             		<option data-code="SJ" value="Svalbard And Jan Mayen">Svalbard &amp; Jan Mayen</option>
-                                             		<option data-code="SZ" value="Swaziland">Swaziland</option>
-                                             		<option data-code="SE" value="Sweden">Sweden</option>
-                                             		<option data-code="CH" value="Switzerland">Switzerland</option>
-                                             		<option data-code="SY" value="Syria">Syria</option>
-                                             		<option data-code="TW" value="Taiwan">Taiwan</option>
-                                             		<option data-code="TJ" value="Tajikistan">Tajikistan</option>
-                                             		<option data-code="TZ" value="Tanzania, United Republic Of">Tanzania</option>
-                                             		<option data-code="TH" value="Thailand">Thailand</option>
-                                             		<option data-code="TL" value="Timor Leste">Timor-Leste</option>
-                                             		<option data-code="TG" value="Togo">Togo</option>
-                                             		<option data-code="TK" value="Tokelau">Tokelau</option>
-                                             		<option data-code="TO" value="Tonga">Tonga</option>
-                                             		<option data-code="TT" value="Trinidad and Tobago">Trinidad &amp; Tobago</option>
-                                             		<option data-code="TN" value="Tunisia">Tunisia</option>
-                                             		<option data-code="TR" value="Turkey">Turkey</option>
-                                             		<option data-code="TM" value="Turkmenistan">Turkmenistan</option>
-                                             		<option data-code="TC" value="Turks and Caicos Islands">Turks &amp; Caicos Islands</option>
-                                             		<option data-code="TV" value="Tuvalu">Tuvalu</option>
-                                             		<option data-code="UM" value="United States Minor Outlying Islands">U.S. Outlying Islands</option>
-                                             		<option data-code="UG" value="Uganda">Uganda</option>
-                                             		<option data-code="UA" value="Ukraine">Ukraine</option>
-                                             		<option data-code="AE" value="United Arab Emirates">United Arab Emirates</option>
-                                             		<option data-code="GB" value="United Kingdom">United Kingdom</option>
-                                             		<option data-code="US" value="United States">United States</option>
-                                             		<option data-code="UY" value="Uruguay">Uruguay</option>
-                                             		<option data-code="UZ" value="Uzbekistan">Uzbekistan</option>
-                                             		<option data-code="VU" value="Vanuatu">Vanuatu</option>
-                                             		<option data-code="VA" value="Holy See (Vatican City State)">Vatican City</option>
-                                             		<option data-code="VE" value="Venezuela">Venezuela</option>
-                                             		<option data-code="VN" selected="selected" value="Vietnam">Vietnam</option>
-                                             		<option data-code="WF" value="Wallis And Futuna">Wallis &amp; Futuna</option>
-                                             		<option data-code="EH" value="Western Sahara">Western Sahara</option>
-                                             		<option data-code="YE" value="Yemen">Yemen</option>
-                                             		<option data-code="ZM" value="Zambia">Zambia</option>
-                                             		<option data-code="ZW" value="Zimbabwe">Zimbabwe</option>
-                                             	</select>
-                                             	<div class="field__caret">
-                                             		<svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-10 field__caret-svg" aria-hidden="true" focusable="false">
-                                             			<use xlink:href="#caret-down"></use>
-                                             		</svg>
-                                             	</div>
-                                             </div>
-                                          </div> -->
-                                          <!-- <div class="field--third field field--required hidden" data-address-field="province" data-autocomplete-field-container="true">
-                                             <div class="field__input-wrapper field__input-wrapper--select">
-                                             	<label class="field__label field__label--visible" for="checkout_shipping_address_province">Region</label>
-                                             	<input placeholder="Region" autocomplete="shipping address-level1" data-trekkie-id="shipping_province_field" data-backup="province" class="field__input" aria-required="true" type="text" name="checkout[shipping_address][province]" id="checkout_shipping_address_province" disabled="disabled" hidden="hidden">
-                                             	<div class="field__caret shown-if-js">
-                                             		<svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-10 field__caret-svg" aria-hidden="true" focusable="false">
-                                             			<use xlink:href="#caret-down"></use>
-                                             		</svg>
-                                             	</div>
-                                             </div>
-                                          </div> -->
-                                          <!-- <div class="field field--required field--half" data-address-field="zip" data-autocomplete-field-container="true">
-                                             <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_zip">Postal code</label>
-                                             	<input placeholder="Postal code" autocomplete="shipping postal-code" data-backup="zip" data-trekkie-id="shipping_zip_google_autocomplete_field" data-autocomplete-trigger="true" data-autocomplete-title="Suggestions" data-autocomplete-single-item="1 item available" data-autocomplete-multi-item=" items available" data-autocomplete-item-selection=" of " data-autocomplete-close="Close suggestions" class="field__input field__input--zip" aria-required="true" size="30" type="text" name="checkout[shipping_address][zip]" id="checkout_shipping_address_zip">
-                                             </div>
-                                          </div> -->
-                                          <div data-address-field="phone" class="field field--optional">
-                                             <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_phone">Điện thoại liên hệ</label>
-                                               <input placeholder="Điện thoại liên hệ" autocomplete="shipping tel" data-backup="phone" data-trekkie-id="shipping_phone_field" data-phone-formatter="true" data-phone-formatter-country-select="[name='checkout[shipping_address][country]']" class="field__input field__input--numeric" size="30" type="tel" name="checkout[shipping_address][phone]" id="checkout_shipping_address_phone" required="">
-                                            </div>
-                                         </div>
+                                         
                                          <div data-address-field="phone" class="field field--optional">
-                                          <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_phone">Lưu ý dành cho nhân viên giao hàng</label>
-                                             <textarea placeholder="Lưu ý dành cho nhân viên giao hàng" autocomplete="shipping tel" data-backup="phone" data-trekkie-id="shipping_phone_field" data-phone-formatter="true" data-phone-formatter-country-select="[name='checkout[shipping_address][country]']" class="field__input field__input--numeric" size="30" type="tel" name="note" id="checkout_shipping_address_phone"></textarea>
-                                          </div>
+                                          <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_phone">Điện thoại liên hệ</label>
+                                            <input placeholder="Điện thoại liên hệ" autocomplete="shipping tel" data-backup="phone" data-trekkie-id="shipping_phone_field" data-phone-formatter="true" data-phone-formatter-country-select="[name='checkout[shipping_address][country]']" class="field__input field__input--numeric" size="30" type="tel" name="checkout[shipping_address][phone]" id="checkout_shipping_address_phone" required="">
+                                         </div>
+                                      </div>
+                                      <div data-address-field="phone" class="field field--optional">
+                                       <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_phone">Lưu ý dành cho nhân viên giao hàng</label>
+                                          <textarea placeholder="Lưu ý dành cho nhân viên giao hàng" autocomplete="shipping tel" data-backup="phone" data-trekkie-id="shipping_phone_field" data-phone-formatter="true" data-phone-formatter-country-select="[name='checkout[shipping_address][country]']" class="field__input field__input--numeric" size="30" type="tel" name="note" id="checkout_shipping_address_phone"></textarea>
                                        </div>
                                     </div>
                                  </div>
                               </div>
-                              <div class="section section--half-spacing-top section--optional">
-                                 <div class="section__content">
-                                   <div class="checkbox-wrapper">
-                                     <div class="checkbox__input">
-                                       <input size="30" type="hidden" name="checkout[remember_me]">
-                                       <input name="checkout[remember_me]" type="hidden" value="0"><input class="input-checkbox" data-backup="remember_me" data-trekkie-id="remember_me_field" type="checkbox" value="1" name="checkout[remember_me]" id="checkout_remember_me">
-                                    </div>
-                                    <label class="checkbox__label" for="checkout_remember_me">
-                                       Lưu thông tin này cho lần sau
-                                    </label>          
+                           </div>
+                           <div class="section section--half-spacing-top section--optional">
+                              <div class="section__content">
+                                <div class="checkbox-wrapper">
+                                  <div class="checkbox__input">
+                                    <input size="30" type="hidden" name="checkout[remember_me]">
+                                    <input name="checkout[remember_me]" type="hidden" value="0"><input class="input-checkbox" data-backup="remember_me" data-trekkie-id="remember_me_field" type="checkbox" value="1" name="checkout[remember_me]" id="checkout_remember_me">
                                  </div>
+                                 <label class="checkbox__label" for="checkout_remember_me">
+                                    Lưu thông tin này cho lần sau
+                                 </label>          
                               </div>
                            </div>
                         </div>
-                        <div class="section section--shipping-method">
-                         <div class="section__header">
-                           <h2 class="section__title" id="main-header" tabindex="-1">
-                             3. Phương thức vận chuyển
-                          </h2>
-                       </div>
-                       <div class="section__content">
-                        <div class="content-box" data-shipping-methods="">
-                          <div class="content-box__row">
-                            <div class="radio-wrapper" data-shipping-method="shopify-Standard%20Shipping-10.00">
-                              <div class="radio__input">
-                                <input class="input-radio" type="radio" id="checkout_shipping_rate_id_shopify-standard20shipping-1000" checked="checked">
-                                <!-- <input class="input-radio" data-checkout-total-shipping="$10.00" data-checkout-total-shipping-cents="1000" data-checkout-shipping-rate="$10.00" data-checkout-original-shipping-rate="$10.00" data-checkout-total-taxes="$16.00" data-checkout-total-taxes-cents="1600" data-checkout-total-price="$186.00" data-checkout-total-price-cents="18600" data-checkout-payment-due="$186.00" data-checkout-payment-due-cents="18600" data-checkout-payment-subform="required" data-checkout-subtotal-price="$160.00" data-checkout-subtotal-price-cents="16000" data-backup="shopify-Standard%20Shipping-10.00" aria-label="Standard Shipping. $10.00" type="radio" value="shopify-Standard%20Shipping-10.00" name="checkout[shipping_rate][id]" id="checkout_shipping_rate_id_shopify-standard20shipping-1000" checked="checked"> -->
-                             </div>
-                             <label class="radio__label" aria-hidden="true" for="checkout_shipping_rate_id_shopify-standard20shipping-1000">
-                                <span class="radio__label__primary" data-shipping-method-label-title="Standard Shipping">
-                                  Giao hàng tiêu chuẩn
-                               </span>
-                               <span class="radio__label__accessory">
-                                  <span class="content-box__emphasis">
-                                    Free Ship
-                                 </span>
-                              </span>
-                           </label>      
-                        </div>
-                        <!-- /radio-wrapper-->
                      </div>
+                     <div class="section section--shipping-method">
+                      <div class="section__header">
+                        <h2 class="section__title" id="main-header" tabindex="-1">
+                          3. Phương thức vận chuyển
+                       </h2>
+                    </div>
+                    <div class="section__content">
+                     <div class="content-box" data-shipping-methods="">
+                       <div class="content-box__row">
+                         <div class="radio-wrapper" data-shipping-method="shopify-Standard%20Shipping-10.00">
+                           <div class="radio__input">
+                             <input class="input-radio" type="radio" id="checkout_shipping_rate_id_shopify-standard20shipping-1000" checked="checked">
+                             <!-- <input class="input-radio" data-checkout-total-shipping="$10.00" data-checkout-total-shipping-cents="1000" data-checkout-shipping-rate="$10.00" data-checkout-original-shipping-rate="$10.00" data-checkout-total-taxes="$16.00" data-checkout-total-taxes-cents="1600" data-checkout-total-price="$186.00" data-checkout-total-price-cents="18600" data-checkout-payment-due="$186.00" data-checkout-payment-due-cents="18600" data-checkout-payment-subform="required" data-checkout-subtotal-price="$160.00" data-checkout-subtotal-price-cents="16000" data-backup="shopify-Standard%20Shipping-10.00" aria-label="Standard Shipping. $10.00" type="radio" value="shopify-Standard%20Shipping-10.00" name="checkout[shipping_rate][id]" id="checkout_shipping_rate_id_shopify-standard20shipping-1000" checked="checked"> -->
+                          </div>
+                          <label class="radio__label" aria-hidden="true" for="checkout_shipping_rate_id_shopify-standard20shipping-1000">
+                             <span class="radio__label__primary" data-shipping-method-label-title="Standard Shipping">
+                               Giao hàng tiêu chuẩn
+                            </span>
+                            <span class="radio__label__accessory">
+                               <span class="content-box__emphasis">
+                                 Free Ship
+                              </span>
+                           </span>
+                        </label>      
+                     </div>
+                     <!-- /radio-wrapper-->
                   </div>
                </div>
             </div>
-            <div class="section section--shipping-method">
-             <div class="section__header">
-               <h2 class="section__title" id="main-header" tabindex="-1">
-                 4. Phương thức thanh toán
-              </h2>
-           </div>
-           <div class="section__content">
-            <div class="content-box" data-shipping-methods="">
-              <div class="content-box__row">
-                <div class="radio-wrapper" >
-                  <div class="radio__input">
-                    <input class="input-radio" type="radio" id="checkout_shipping_rate_id_shopify-standard20shipping-1000" checked="checked">
-                 </div>
-                 <label class="radio__label" aria-hidden="true" for="checkout_shipping_rate_id_shopify-standard20shipping-1000">
-                    <span class="radio__label__primary content-box__emphasis" data-shipping-method-label-title="Standard Shipping">
-                      Thanh toán tiền mặt khi nhận hàng
-                   </span>
-                </label>      
-             </div>
-             <!-- /radio-wrapper-->
+         </div>
+         <div class="section section--shipping-method">
+          <div class="section__header">
+            <h2 class="section__title" id="main-header" tabindex="-1">
+              4. Phương thức thanh toán
+           </h2>
+        </div>
+        <div class="section__content">
+         <div class="content-box" data-shipping-methods="">
+           <div class="content-box__row">
+             <div class="radio-wrapper" >
+               <div class="radio__input">
+                 <input class="input-radio" type="radio" id="checkout_shipping_rate_id_shopify-standard20shipping-1000" checked="checked">
+              </div>
+              <label class="radio__label" aria-hidden="true" for="checkout_shipping_rate_id_shopify-standard20shipping-1000">
+                 <span class="radio__label__primary content-box__emphasis" data-shipping-method-label-title="Standard Shipping">
+                   Thanh toán tiền mặt khi nhận hàng
+                </span>
+             </label>      
           </div>
+          <!-- /radio-wrapper-->
        </div>
     </div>
  </div>
- <div class="step__footer" data-step-footer="">
-    <button name="button" type="submit" class="step__footer__continue-btn btn ">
-      <span class="btn__content">
-        Đặt mua
-     </span>
-     <svg class="icon-svg icon-svg--size-18 btn__spinner icon-svg--spinner-button" aria-hidden="true" focusable="false">
-        <use xlink:href="#spinner-button"></use>
-     </svg>
-  </button>
+</div>
+<div class="step__footer" data-step-footer="">
+ <button name="button" type="submit" class="step__footer__continue-btn btn ">
+   <span class="btn__content">
+     Đặt mua
+  </span>
+  <svg class="icon-svg icon-svg--size-18 btn__spinner icon-svg--spinner-button" aria-hidden="true" focusable="false">
+     <use xlink:href="#spinner-button"></use>
+  </svg>
+</button>
 
-  <a class="step__footer__previous-link" data-trekkie-id="previous_step_link" href="{{ route('web.cart') }}">
+<a class="step__footer__previous-link" data-trekkie-id="previous_step_link" href="{{ route('web.cart') }}">
    <svg focusable="false" aria-hidden="true" class="icon-svg icon-svg--color-accent icon-svg--size-10 previous-link__icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
      <path d="M8 1L7 0 3 4 2 5l1 1 4 4 1-1-4-4"></path>
   </svg>

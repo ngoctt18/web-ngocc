@@ -16,8 +16,10 @@
 
 
 Route::middleware(['auth:web'])->group(function(){
-	Route::get('checkout', 'ShoppingController@checkout')->name('checkout');
-	Route::post('checkout', 'ShoppingController@storeCheckout')->name('checkout.store');
+	Route::middleware(['checkCartEmpty'])->group(function(){
+		Route::get('checkout', 'ShoppingController@checkout')->name('checkout');
+		Route::post('checkout', 'ShoppingController@storeCheckout')->name('checkout.store');
+	});
 
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 });
@@ -43,6 +45,10 @@ Route::get('catagories/{id}/{name}', 'WebsiteController@Catagories')->name('cata
 Route::post('add-to-cart/{id}/{name}', 'ShoppingController@addToCart')->name('add_cart');
 Route::get('cart', 'ShoppingController@getCart')->name('cart');
 Route::get('cart/del-item/{rowId}', 'ShoppingController@delItemInCart')->name('del_item');
+
+Route::post('add-to-wishlist/{id}/{name}', 'ShoppingController@addToWishList')->name('add_wishlist');
+Route::get('wishlist', 'ShoppingController@getWishList')->name('wishlist');
+Route::get('wishlist/del-item/{rowId}', 'ShoppingController@delItemInWishList')->name('del_item_wishlist');
 
 Route::post('update-qty', 'ShoppingController@updateQuantity')->name('update_qty');
 

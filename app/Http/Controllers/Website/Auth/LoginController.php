@@ -33,7 +33,7 @@ class LoginController extends Controller
         * Nhưng không dùng đc các function ->except('logout');
         */
         // Login rồi thì sẽ ko vào đc các function ở đây nữa ngoại trừ: logout
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:web')->except('logout');
     }
 
     public function showUserLoginForm()
@@ -52,9 +52,13 @@ class LoginController extends Controller
     	];
 		// return $loginInfo;
     	if (Auth::attempt($loginInfo, $request->input('remember', false))) {
-    		Session::flash('success', 'Đăng nhập thành công.');
-    		return redirect()->back();
-    	}
+            // Khôi phục giỏ hàng
+            Cart::restore(Auth::user()->email);
+
+            Session::flash('success', 'Đăng nhập thành công.');
+            return redirect()->back();
+        }
+        return back()->withInput($request->only('phone', 'remember'));
     }
 
     public function logout(Request $request){

@@ -10,6 +10,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 @endsection
 
 @section('content')
+@include('website.partials.breadcrumbs')
 <div class="container">
 	<div class="row">
 		<div id="center_column" class="center_column col-md-12">
@@ -59,7 +60,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 							<div class="cpro_item col-xs-12 col-sm-1 col-md-1">
 								<div class="cpro_item_inner">
 									<a href="{{ route('web.product_detail',[$item->id,$item->model->slug]) }}">
-										<img class="img-responsive" src="{{$item->model->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="Egestas lorem commodo libero quis enim vehicula - N / blue">
+										<img class="img-responsive" src="{{$item->model->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$item->model->name}}">
 									</a>
 								</div>
 							</div>
@@ -119,23 +120,18 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 						<div class="list_button_cart clearfix">
 							<div class="note_item col-xs-12 col-sm-6 col-md-6">
 								
-								<div class="note_cart">
-									<label class="control-label" for="CartSpecialInstructions">Lưu ý cho người bán</label>
-									<textarea name="note" class="form-control" id="CartSpecialInstructions"></textarea>
-								</div>
-								
 							</div>
 							<div class="col-xs-12 col-sm-6 col-md-6 text-right">
 								<p>
 									<span class="cart__subtotal-title" style=" font-size: 20px; ">Tổng tiền: </span>
 									<span class="h3 cart__subtotal">
-										<span class="money total_money" data-currency-usd="">{{-- {{number_format($total,0,",",".")}} --}}{{$total}}₫
+										<span class="money total_money" data-currency-usd="">
+											{{$total}}₫
 										</span>
 									</span>
 								</p>
 								<p><em>Shipping &amp; taxes calculated at checkout</em></p>
 								<a class="btn con-ajax-cart btn-outline" href="{{ route('web.homepage') }}" title="Continue shopping">Continue shopping</a>
-								<input type="submit" name="update" class="btn btn-outline update-cart" value="Update Cart">
 								<a href="{{ route('web.checkout') }}" class="btn btn-outline" >Check Out</a>
 								<!-- <input type="submit" name="checkout" class="btn btn-outline" value="Check Out"> -->
 								

@@ -90,7 +90,7 @@
                      <div class="footer_widget">
                         <div class="row">
                            <div class="col-md-4 col-sm-12 col-xs-12">
-                              
+
                               @include('website.partials.footer_news')
 
                            </div>
@@ -186,9 +186,11 @@
                         <div class="row">
                            <div class="col-md-6 col-sm-12 col-xs-12">
                               <p class="text-center">&copy; Copyright 2019 AP-MILK-STORE.</p>
+                              <p class="text-center"><a href="#">Powered by decemberr18</a></p>
                            </div>
                            <div class="col-md-6 col-sm-12 col-xs-12">
-                              <p class="text-right"><img src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/payment2946.png?14233272639774211042" alt="paymment" class="img-responsive') }}" ></p>
+                              <p class="text-right"><img src="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/payment2946.png?14233272639774211042" alt="paymment" class="img-responsive') }}" alt="paymment" class="img-responsive">
+                              </p>
                            </div>
                         </div>
                      </div>

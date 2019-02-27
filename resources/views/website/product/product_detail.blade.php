@@ -13,145 +13,148 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
         <div class="row">
             <div id="center_column" class="center_column col-sm-12 col-md-12">
                 <div itemscope itemtype="http://schema.org/Product">
-                    <meta itemprop="url" content="https://ap-milk-store-2.myshopify.com/products/nullam-volutpat">
-                    <meta itemprop="image" content="//cdn.shopify.com/s/files/1/0928/4804/products/p15_grande.jpg?v=1439571039">
-                    <div class="primary_block">
-                        <div class="row">
-                            <div class="product-left-column col-xs-12 col-sm-12 col-md-5">
-                                <div id="image-block" class="clearfix">
-                                    <span id="view_full_size">
-                                        <img id="proimage" class="img-responsive" itemprop="image" src="{{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$product->name}}" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039" />
-                                    </span>
+                    <!-- <meta itemprop="url" content="https://ap-milk-store-2.myshopify.com/products/nullam-volutpat">
+                        <meta itemprop="image" content="//cdn.shopify.com/s/files/1/0928/4804/products/p15_grande.jpg?v=1439571039"> -->
+                        <div class="primary_block">
+                            <div class="row">
+                                <div class="product-left-column col-xs-12 col-sm-12 col-md-5">
+                                    <div id="image-block" class="clearfix">
+                                        <span id="view_full_size">
+                                            <img id="proimage" class="img-responsive" itemprop="image" src="{{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$product->name}}" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039" />
+                                        </span>
+                                    </div>
+                                    <div id="views_block" class="clearfix ">
+                                        <div id="thumbs_list">
+                                            <div id="thumblist">
+                                                @for($i=0;$i<4;$i++)
+                                                <div id="thumbnail_{{$i+1}}" class="thumb_item ">
+                                                    <a href="javascript:void(0)" data-imageid="3051930052" data-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_large.jpg?v=1439571039" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039"  title="Commo habita lacus aenean consequat sagittis">
+                                                        <img class="img-responsive img_detail" id="thumb_{{$i+1}}" src="{{$product->ThumbProductDetails[$i]??asset('images/products/product'.($i+1).'.jpg')}}" alt="{{$product->name}}" itemprop="image" />
+                                                    </a>
+                                                </div>
+                                                @endfor
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div id="views_block" class="clearfix ">
-                                    <div id="thumbs_list">
-                                        <div id="thumblist">
-                                            @for($i=0;$i<4;$i++)
-                                            <div id="thumbnail_{{$i+1}}" class="thumb_item ">
-                                                <a href="javascript:void(0)" data-imageid="3051930052" data-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_large.jpg?v=1439571039" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039"  title="Commo habita lacus aenean consequat sagittis">
-                                                    <img class="img-responsive img_detail" id="thumb_{{$i+1}}" src="{{$product->ThumbProductDetails[$i]??asset('images/products/product'.($i+1).'.jpg')}}" alt="Commo habita lacus aenean consequat sagittis" itemprop="image" />
+                                <div class="product-center-column col-xs-12 col-sm-12 col-md-7">
+                                    <h1 itemprop="name">{{$product->name}}</h1>
+                                    <div class="review">
+                                        <span class="shopify-product-reviews-badge" data-id="1119719620"></span>
+                                    </div>
+                                    <h5 class="brand" itemprop="brand"><span>Thương hiệu: </span><a href="" title="">{{$product->brand}}</a></h5>
+                                    <div class="product-description rte" itemprop="description">
+                                        {!!$product->description!!}
+                                    </div>
+                                    <div class="socialsharing_product no-print">
+                                        <ul class="social-sharing list-unstyled">
+                                            <li>
+                                                <a class="btn btn-twitter" target="_blank" href="https://twitter.com/intent/tweet?text={{$product->name}}&amp;url={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}&amp;">
+                                                    <i class="fa fa-twitter"></i> Tweet
                                                 </a>
-                                            </div>
-                                            @endfor
-                                        </div>
+                                            </li>
+                                            <li>
+                                                <a class="btn btn-facebook" target="_blank" href="http://www.facebook.com/sharer.php?u={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}">
+                                                    <i class="fa fa-facebook"></i> facebook
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="btn btn-google-plus" target="_blank" href="https://plus.google.com/share?url={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}">
+                                                    <i class="fa fa-google-plus"></i> Google+
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="btn btn-pinterest" target="_blank" href="http://pinterest.com/pin/create/button/?url={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}&media={{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}&description={{$product->name}}">
+                                                    <i class="fa fa-pinterest-p"></i> Pinterest
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="product-center-column col-xs-12 col-sm-12 col-md-7">
-                                <h1 itemprop="name">{{$product->name}}</h1>
-                                <div class="review">
-                                    <span class="shopify-product-reviews-badge" data-id="1119719620"></span>
-                                </div>
-                                <h5 class="brand" itemprop="brand"><span>Thương hiệu: </span><a href="" title="">{{$product->brand}}</a></h5>
-                                <div class="product-description rte" itemprop="description">
-                                    {!!$product->description!!}
-                                </div>
-                                <div class="socialsharing_product no-print">
-                                    <ul class="social-sharing list-unstyled">
-                                        <li>
-                                            <a class="btn btn-twitter" target="_blank" href="https://twitter.com/intent/tweet?text={{$product->name}}&amp;url={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}&amp;">
-                                                <i class="fa fa-twitter"></i> Tweet
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="btn btn-facebook" target="_blank" href="http://www.facebook.com/sharer.php?u={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}">
-                                                <i class="fa fa-facebook"></i> facebook
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="btn btn-google-plus" target="_blank" href="https://plus.google.com/share?url={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}">
-                                                <i class="fa fa-google-plus"></i> Google+
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="btn btn-pinterest" target="_blank" href="http://pinterest.com/pin/create/button/?url={{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}&media={{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}&description={{$product->name}}">
-                                                <i class="fa fa-pinterest-p"></i> Pinterest
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-right-column col-xs-12 col-sm-12 col-md-7">
-                                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                                    <meta itemprop="priceCurrency" content="USD">
-                                    <link itemprop="availability" href="http://schema.org/InStock">
-                                    <div class="availability">
-                                        <p class="available instock">
-                                            @if($product->status=='1')
-                                            {{"Còn hàng"}}
-                                            @elseif($product->status=='0')
-                                            {{"Hết hàng"}}
-                                            @endif
-                                        </p>
-                                    </div>
-                                    <form action="{{ route('web.add_cart',[$product->id,$product->slug]) }}" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-ajaxtocart">
-                                        {{csrf_field()}}
-                                        <div class="clearfix">
-                                            {{-- 
-                                            <div class="alert alert-danger" role="alert" style="margin: 20px;">Không có sản phẩm nào!</div>
-                                            --}}
-                                            <div class="content_price alert alert-success">
-                                                <big><b style="color: black;">Giá bán: </b></big>
-                                                <span class="price product-price sale-price">
-                                                    <span class='money'>{{number_format($product->price-$product->price*$product->discount/100,0,",",".")}}₫</span>
-                                                </span>
-                                                &nbsp;
-                                                @if($product->discount != '0')
-                                                <span class="old-price product-price">
-                                                    <span class='money' style=" text-decoration: line-through; color: gray;">
-                                                        {{number_format($product->price,0,",",".")}}₫
-                                                    </span>
-                                                </span>
-                                                &nbsp;
-                                                <span class="label label-danger" style=" font-size: 15px; ">Giảm {{$product->discount}}%</span>
+                                <div class="product-right-column col-xs-12 col-sm-12 col-md-7">
+                                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                    <!-- <meta itemprop="priceCurrency" content="USD">
+                                        <link itemprop="availability" href="http://schema.org/InStock"> -->
+                                        <div class="availability">
+                                            <p class="available instock">
+                                                @if($product->status=='1')
+                                                {{"Còn hàng"}}
+                                                @elseif($product->status=='0')
+                                                {{"Hết hàng"}}
                                                 @endif
+                                            </p>
+                                        </div>
+                                        <form action="{{ route('web.add_cart',[$product->id,$product->slug]) }}" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-ajaxtocart">
+                                            {{csrf_field()}}
+                                            <div class="clearfix">
+                                                <div class="content_price alert alert-success">
+                                                    <big><b style="color: black;">Giá bán: </b></big>
+                                                    <span class="price product-price sale-price">
+                                                        <span class='money'>{{number_format($product->price-$product->price*$product->discount/100,0,",",".")}}₫</span>
+                                                    </span>
+                                                    &nbsp;
+                                                    @if($product->discount != '0')
+                                                    <span class="old-price product-price">
+                                                        <span class='money' style=" text-decoration: line-through; color: gray;">
+                                                            {{number_format($product->price,0,",",".")}}₫
+                                                        </span>
+                                                    </span>
+                                                    &nbsp;
+                                                    <span class="label label-danger" style=" font-size: 15px; ">
+                                                        Giảm {{$product->discount}}%
+                                                    </span>
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="total-price">
-                                            <label>Subtotal: </label>
-                                            <span></span>
-                                        </div>
-                                        <div class="line-product-top"></div>
-                                        <div class="quantity_wanted_p">
-                                            <label for="Quantity" class="quantity-selector">Quantity</label>
-                                            <!-- <div class="js-qty">
-                                                <button type="button" class="js-qty__adjust js-qty__adjust--minus" data-id="" data-qty="0">−</button>
-                                                <input type="text" class="js-qty__num" value="1" min="1" data-id="" aria-label="quantity" pattern="[0-9]*" name="quantity" id="Quantity">
-                                                <button type="button" class="js-qty__adjust js-qty__adjust--plus" data-id="" data-qty="11">+</button>
-                                            </div> -->
-                                            <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-                                        </div>
-                                        <button type="submit" id="AddToCart" class="btn add_to_cart_detail ajax_addtocart" @if($product->status=='0') {{'disabled="disabled"'}}@endif>
-                                            <i class="fa fa-shopping-cart"></i>
-                                            <span id="AddToCartText">Thêm vào giỏ hàng</span>
-                                        </button>
-                                    </form>
+                                            <div class="total-price">
+                                                <label>Subtotal: </label>
+                                                <span></span>
+                                            </div>
+                                            <div class="line-product-top"></div>
+                                            <div class="quantity_wanted_p">
+                                                <label for="Quantity" class="quantity-selector">Quantity</label>
+                                                <!-- <div class="js-qty">
+                                                    <button type="button" class="js-qty__adjust js-qty__adjust--minus" data-id="" data-qty="0">−</button>
+                                                    <input type="text" class="js-qty__num" value="1" min="1" data-id="" aria-label="quantity" pattern="[0-9]*" name="quantity" id="Quantity">
+                                                    <button type="button" class="js-qty__adjust js-qty__adjust--plus" data-id="" data-qty="11">+</button>
+                                                </div> -->
+                                                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                                            </div>
+                                            <button type="submit" id="AddToCart" class="btn add_to_cart_detail ajax_addtocart" @if($product->status=='0') {{'disabled="disabled"'}}@endif>
+                                                <i class="fa fa-shopping-cart"></i>
+                                                <span id="AddToCartText">Thêm vào giỏ hàng</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="wishlist">
+                                        <form action="{{ route('web.add_wishlist',[$product->id,$product->slug]) }}" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-ajaxtocart">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="wish_qty" value="1" min="1">
+                                            <button class="btn btn-outline btn-wishlist" type="submit">
+                                                <i class="fa fa-heart"></i>
+                                                <span>Add to Wishlist</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="line-product"></div>
                                 </div>
-                                <div class="wishlist">
-                                    <a class="btn btn-outline btn-wishlist" href="">
-                                        <i class="fa fa-heart"></i>
-                                        <span>Add to Wishlist</span>
-                                    </a>
-                                </div>
-                                <div class="line-product"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="more_info_block">
-                                <ul class="nav nav-tabs tab-info page-product-heading">
-                                    <li>
-                                        <a href="#idTab1" data-toggle="tab">More info</a>
-                                    </li>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="more_info_block">
+                                    <ul class="nav nav-tabs tab-info page-product-heading">
+                                        <li style=" border-bottom: 3px solid #59bd56; ">
+                                            <a href="#idTab1" data-toggle="tab">More info</a>
+                                        </li>
                                     <!-- <li>
                                         <a href="#idTab2" data-toggle="tab">Reviews</a>
                                     </li> -->
                                 </ul>
                                 <div class="tab-content">
-                                    <section id="idTab1" class="tab-pane page-product-box">
+                                    <section id="idTab1" class="{{-- tab-pane --}} page-product-box">
                                         <div class="rte">
-                                            <span>{{$product->intro}}</span>
+                                            <span>{!! $product->intro !!}</span>
                                         </div>
                                     </section>
                                     <section id="idTab2" class="tab-pane page-product-box">
@@ -209,10 +212,12 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                             <div class="product_block  ">
                                                 <div class="product-container text-left product-block">
                                                     <div class="product-image-container image">
-                                                        <img class="replace-2x img-responsive" src="{{$product->ThumbProductDetails[0]??asset("images/products/product2.jpg")}}" alt="{{$product_relate->name}}">
-                                                        <span class="product-additional" data-idproduct="1119718980">
-                                                            <img class="replace-2x img-responsive" alt="{{$product_relate->name}}" src="{{$product->ThumbProduct??asset("images/products/product3.jpg")}}">
-                                                        </span>
+                                                        <a class="product_img_link" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="{{$product_relate->name}}">
+                                                            <img class="replace-2x img-responsive" src="{{$product_relate->ThumbProduct??asset("images/products/product2.jpg")}}" alt="{{$product_relate->name}}">
+                                                            <span class="product-additional" data-idproduct="1119718980">
+                                                                <img class="replace-2x img-responsive" alt="{{$product_relate->name}}" src="{{$product_relate->ThumbProductDetails[0]??asset("images/products/product3.jpg")}}">
+                                                            </span>
+                                                        </a>
                                                         @if($product_relate->discount != '0')
                                                         <span class="sale-box">
                                                             <span class="label-sale label">Sale</span>
@@ -240,19 +245,19 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                                     </div>
                                                     <div class="product-meta">
                                                         <h5 class="name">
-                                                            <a class="product-name" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="{{$product_relate->name}}">{{$product_relate->name}}...</a>
+                                                            <a class="product-name" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="{{$product_relate->name}}">{{$product_relate->name}}</a>
                                                         </h5>
                                                         <div class="review">
                                                             <span class="shopify-product-reviews-badge" data-id="1119718980"></span>
                                                         </div>
                                                         <div class="content_price">
                                                             <span class="price product-price sale-price">
-                                                                <span class='money'>{{number_format($product->price-$product->price*$product->discount/100,0,",",".")}}₫</span>
+                                                                <span class='money'>{{number_format($product_relate->price-$product_relate->price*$product_relate->discount/100,0,",",".")}}₫</span>
                                                             </span>
-                                                            @if($product->discount != '0')
+                                                            @if($product_relate->discount != '0')
                                                             <span class="old-price product-price">
                                                                 <span class='money'>
-                                                                    {{number_format($product->price,0,",",".")}}₫
+                                                                    {{number_format($product_relate->price,0,",",".")}}₫
                                                                 </span>
                                                             </span>
                                                             @endif
@@ -282,40 +287,40 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                             <script type="text/javascript">
                                 $(document).ready(function() {
 
-                                 $('#productrelated01 .owl-carousel').each(function(){
-                                  $(this).owlCarousel({
-                                   items : 3,
-                                   lazyLoad : true,
-                                   navigation : true,
-                                   addClassActive: true,
-                                   afterInit : SetOwlCarouselFirstLast,
-                                   afterAction : SetOwlCarouselFirstLast,
+                                   $('#productrelated01 .owl-carousel').each(function(){
+                                      $(this).owlCarousel({
+                                         items : 3,
+                                         lazyLoad : true,
+                                         navigation : true,
+                                         addClassActive: true,
+                                         afterInit : SetOwlCarouselFirstLast,
+                                         afterAction : SetOwlCarouselFirstLast,
 
-                                   itemsDesktop: [1199, 2],
-                                   itemsDesktopSmall: [979, 2],
-                                   itemsTablet: [768, 2],
-                                   itemsTabletSmall: [480, 1],
-                                   itemsMobile: [360, 1],
+                                         itemsDesktop: [1199, 2],
+                                         itemsDesktopSmall: [979, 2],
+                                         itemsTablet: [768, 2],
+                                         itemsTabletSmall: [480, 1],
+                                         itemsMobile: [360, 1],
 
-                                   navigationText : ["Prev", "Next"]
-                               }); 
+                                         navigationText : ["Prev", "Next"]
+                                     }); 
+                                  });
+                                   function SetOwlCarouselFirstLast(el){
+                                      el.find(".owl-item").removeClass("first");
+                                      el.find(".owl-item.active").first().addClass("first");
+
+                                      el.find(".owl-item").removeClass("last");
+                                      el.find(".owl-item.active").last().addClass("last");
+                                  };
+
                               });
-                                 function SetOwlCarouselFirstLast(el){
-                                  el.find(".owl-item").removeClass("first");
-                                  el.find(".owl-item.active").first().addClass("first");
-
-                                  el.find(".owl-item").removeClass("last");
-                                  el.find(".owl-item.active").last().addClass("last");
-                              };
-
-                          });
-                      </script>
+                          </script>
+                      </div>
                   </div>
               </div>
           </div>
       </div>
   </div>
-</div>
 </section>
 <script>
     function selectCallback(variant, selector) {

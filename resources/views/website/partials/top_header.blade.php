@@ -33,7 +33,7 @@
                </div>
                <ul class="links">
                   <li>
-                     <a id="wishlist-total" title="Wishlist" href="pages/wish-list.html"><i class="fa fa-list-alt"></i> Wishlist</a>
+                     <a id="wishlist-total" title="Wishlist" href="{{ route('web.wishlist') }}"><i class="fa fa-list-alt"></i> Wishlist</a>
                   </li>
                   <li>
                      <a href="{{ route('web.cart') }}" title="My Cart"><i class="fa fa-share"></i> Check Out</a>
@@ -43,11 +43,18 @@
                      <a class="account" href="#" title="{{Auth::user()->name}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a>
                   </li>
                   <li>
-                     <a class="account" href="{{ route('web.logout') }}" title="Logout"><i class="fa fa-user"></i> Logout</a>
+                     <a class="account" href="{{ route('web.logout') }}" title="Logout">
+                        <i class="fa fa-sign-out"></i> Logout
+                     </a>
                   </li>
                   @else
                   <li>
-                     <a class="account" href="{{ route('web.login') }}" title="Login">Sign In</a>/<a class="account" href="{{ route('web.register') }}" title="Login">Sign Up</a>
+                     <a class="account" href="{{ route('web.login') }}" title="Login">
+                        <i class="fa fa-sign-in"></i> Sign In
+                     </a>
+                     <a class="account" href="{{ route('web.register') }}" title="Login">
+                        <i class="fa fa-user-plus"></i> Sign Up
+                     </a>
                   </li>
                   @endif
                </ul>

@@ -14,6 +14,7 @@ use Carbon;
 use Session;
 use Cart;
 use Auth;
+use DB;
 
 class ShoppingController extends Controller
 {
@@ -31,6 +32,9 @@ class ShoppingController extends Controller
 			]
 			// Liên kết giỏ hàng với Model Product
 		])->associate('App\Product');
+
+		// storeCartByUser in database
+		$this->storeCartByUser();
 		$content = Cart::content();
 		return redirect()->route('web.cart');
 	}
@@ -42,7 +46,8 @@ class ShoppingController extends Controller
 		// return $contents;
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
-		return view('website.shopping.cart', compact('catagoriesTypes','contents','total','news_popular'));
+		$breadcrumb = 'Cart';
+		return view('website.shopping.cart', compact('catagoriesTypes','contents','total','news_popular','breadcrumb'));
 	}
 
 	public function delItemInCart($rowId)
@@ -76,13 +81,10 @@ class ShoppingController extends Controller
 
 	public function storeCheckout(Request $request)
 	{
-		// return $request->all();
 		$contents = Cart::content();
 		$total = Cart::subtotal(0,'','.');
 		//                               Cart::store($request->checkout['email']);
 		// return $request->checkout['shipping_address']['phone'];
-
-
 
 		try {
 			$order = Order::create([
@@ -96,7 +98,6 @@ class ShoppingController extends Controller
 				'note' => $request->note, 
 			]);
 			// return $order;
-
 			if (count($contents) >0) {
 				foreach ($contents as $key => $item) {
 					$thatProduct = Product::findOrFail($item->id);
@@ -116,9 +117,59 @@ class ShoppingController extends Controller
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
-
-		// return $contents;
 		Session::flash('success', 'Đặt hàng thành công! Đơn hàng của bạn đang được xử lý.');
 		return redirect()->route('web.cart');
+	}
+
+	public function getWishList()
+	{
+		$contents = Cart::instance('wishlist')->content();
+		$total = Cart::subtotal(0,'','.');
+		// return $contents;
+		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+		$breadcrumb = 'Wish List';
+		return view('website.shopping.wishlist', compact('catagoriesTypes','contents','total','news_popular','breadcrumb'));
+	}
+
+	public function addToWishList(Request $request, $id)
+	{
+		$product = Product::findOrFail($id);
+		Cart::instance('wishlist')->add([
+			'id' => $id, 
+			'name' => $product->name, 
+			'qty' => $request->wish_qty, 
+			'price' => $product->price-$product->price*$product->discount/100, 
+			'options' => [
+				'discount' => $product->discount,
+				'price_old' => $product->price,
+			]
+			// Liên kết giỏ hàng với Model Product
+		])->associate('App\Product');
+		
+		// storeCartByUser in database
+		$this->storeCartByUser();
+		$content = Cart::content();
+		return redirect()->back();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	// storeCartByUser in database
+	public function storeCartByUser()
+	{
+		if (Auth::check()) {
+			DB::table('shoppingcart')->where('identifier', Auth::user()->email)->delete();
+			Cart::store(Auth::user()->email);
+		}
 	}
 }

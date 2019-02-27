@@ -21,8 +21,10 @@
 		<table id="example1" class="table table-bordered table-hover">
 			<thead>
 				<tr>
-					<th>Mã đơn hàng</th>
+					<th>Đơn hàng</th>
 					<th>Khách hàng</th>
+					<th>Địa chỉ</th>
+					<th>Phone</th>
 					<th>Tổng tiền</th>
 					<th>Ngày đặt</th>
 					<th>Trạng thái</th>
@@ -33,6 +35,8 @@
 				<tr role="row" class="align-middle">
 					<td><a href="{{ route('admin.orders.show', ['id' => $order->id], false) }}" class="">{{$order->id}}</a></td>
 					<td>{{$order->name}}</td>
+					<td>{{str_limit($order->address, 100, '...')}}</td>
+					<td>{{$order->phone}}</td>
 					<td>{{number_format($order->sum_money,0,",",".")}} ₫</td>
 					<td>{{$order->created_at->format('d/m/Y')}}</td>
 					<td>
