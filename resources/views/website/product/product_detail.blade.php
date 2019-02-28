@@ -120,21 +120,27 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                                 </div> -->
                                                 <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
                                             </div>
-                                            <button type="submit" id="AddToCart" class="btn add_to_cart_detail ajax_addtocart" @if($product->status=='0') {{'disabled="disabled"'}}@endif>
+                                            <button type="submit" id="AddToCart" class="btn add_to_cart_detail ajax_addtocart" @if($product->status=='0') {{'disabled="disabled"'}}@endif title="Thêm vào giỏ hàng">
                                                 <i class="fa fa-shopping-cart"></i>
                                                 <span id="AddToCartText">Thêm vào giỏ hàng</span>
                                             </button>
                                         </form>
                                     </div>
                                     <div class="wishlist">
+                                        @if ($inWishlist)
+                                        <a class="btn btn-outline btn-wishlist" href="{{ route('web.wishlist') }}" title="Sản phẩm đã nằm trong wishlist!">
+                                            <i class="fa fa-heart"></i>
+                                        </a>
+                                        @else
                                         <form action="{{ route('web.add_wishlist',[$product->id,$product->slug]) }}" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-ajaxtocart">
                                             {{csrf_field()}}
                                             <input type="hidden" name="wish_qty" value="1" min="1">
-                                            <button class="btn btn-outline btn-wishlist" type="submit">
+                                            <button class="btn btn-outline btn-wishlist" type="submit" title="Add to Wishlist">
                                                 <i class="fa fa-heart"></i>
                                                 <span>Add to Wishlist</span>
                                             </button>
                                         </form>
+                                        @endif
                                     </div>
                                     <div class="line-product"></div>
                                 </div>
@@ -287,40 +293,40 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                             <script type="text/javascript">
                                 $(document).ready(function() {
 
-                                   $('#productrelated01 .owl-carousel').each(function(){
-                                      $(this).owlCarousel({
-                                         items : 3,
-                                         lazyLoad : true,
-                                         navigation : true,
-                                         addClassActive: true,
-                                         afterInit : SetOwlCarouselFirstLast,
-                                         afterAction : SetOwlCarouselFirstLast,
+                                 $('#productrelated01 .owl-carousel').each(function(){
+                                  $(this).owlCarousel({
+                                   items : 3,
+                                   lazyLoad : true,
+                                   navigation : true,
+                                   addClassActive: true,
+                                   afterInit : SetOwlCarouselFirstLast,
+                                   afterAction : SetOwlCarouselFirstLast,
 
-                                         itemsDesktop: [1199, 2],
-                                         itemsDesktopSmall: [979, 2],
-                                         itemsTablet: [768, 2],
-                                         itemsTabletSmall: [480, 1],
-                                         itemsMobile: [360, 1],
+                                   itemsDesktop: [1199, 2],
+                                   itemsDesktopSmall: [979, 2],
+                                   itemsTablet: [768, 2],
+                                   itemsTabletSmall: [480, 1],
+                                   itemsMobile: [360, 1],
 
-                                         navigationText : ["Prev", "Next"]
-                                     }); 
-                                  });
-                                   function SetOwlCarouselFirstLast(el){
-                                      el.find(".owl-item").removeClass("first");
-                                      el.find(".owl-item.active").first().addClass("first");
-
-                                      el.find(".owl-item").removeClass("last");
-                                      el.find(".owl-item.active").last().addClass("last");
-                                  };
-
+                                   navigationText : ["Prev", "Next"]
+                               }); 
                               });
-                          </script>
-                      </div>
+                                 function SetOwlCarouselFirstLast(el){
+                                  el.find(".owl-item").removeClass("first");
+                                  el.find(".owl-item.active").first().addClass("first");
+
+                                  el.find(".owl-item").removeClass("last");
+                                  el.find(".owl-item.active").last().addClass("last");
+                              };
+
+                          });
+                      </script>
                   </div>
               </div>
           </div>
       </div>
   </div>
+</div>
 </section>
 <script>
     function selectCallback(variant, selector) {

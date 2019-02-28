@@ -2,7 +2,6 @@
 
 @section('title', 'Giỏ hàng')
 
-
 @section('styles')
 <style type="text/css">
 input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 100%; }
@@ -14,8 +13,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 <div class="container">
 	<div class="row">
 		<div id="center_column" class="center_column col-md-12">
-			<div id="cart-page">
-				
+			<div id="cart-page" style=" margin-top: 0; ">
 				<form action="{{ route('web.checkout') }}" method="post" novalidate="" class="cart" name="formCart" id="formCart">
 					{{csrf_field()}}
 					<h1 class="page-header">Giỏ hàng <small>(Bạn có {{Cart::count()}} sản phẩm)</small></h1>

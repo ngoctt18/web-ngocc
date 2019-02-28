@@ -35,6 +35,19 @@ class WebsiteController extends Controller
 	{
 		$contents = Cart::content();
 		$total = Cart::subtotal(0,'','.');
+		$wishlists = Cart::instance('wishlist')->content();
+		if (count($wishlists)) {
+			foreach ($wishlists as $value) {
+				$data[] = $value->id;
+			}
+			if (in_array($id, $data)) {
+				$inWishlist = TRUE;
+			} else {
+				$inWishlist = FALSE;
+			}
+		} else {
+			$inWishlist = FALSE;
+		}
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$catagories = Catagory::where('status', '1')->get();
 		$product = Product::findOrFail($id);
@@ -42,7 +55,7 @@ class WebsiteController extends Controller
 		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$breadcrumb = $product;
 
-		return view('website.product.product_detail', compact('product','catagories','productsRelate','catagoriesTypes','breadcrumb','contents','total','news_popular'));
+		return view('website.product.product_detail', compact('product','catagories','productsRelate','catagoriesTypes','breadcrumb','contents','total','news_popular','inWishlist'));
 	}
 
 	public function catagoryTypes($id, Request $request)
@@ -94,7 +107,7 @@ class WebsiteController extends Controller
 
 	// public function searchAll(Request $request)
 	// {
-		
+
 	// 	$total = Cart::subtotal(0,'','.');
 	// 	$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 	// 	$breadcrumb = 'Search';

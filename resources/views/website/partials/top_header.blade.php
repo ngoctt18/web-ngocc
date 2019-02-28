@@ -20,9 +20,9 @@
                      </div>
                      <div class="cart-inner media-body">
                         <span class="cart-title">Shopping cart</span>
-                        <span id="CartCount">{{Cart::count()}}</span>
+                        <span id="CartCount">{{Cart::instance('default')->count()}}</span>
                         <span>items - </span>
-                        <span id="CartCost"><span class='money'>{{$total}}₫</span></span>
+                        <span id="CartCost"><span class='money'>{{Cart::instance('default')->subtotal(0,'','.')}}₫</span></span>
                      </div>
                   </a>
                </div>
@@ -52,7 +52,7 @@
                      <a class="account" href="{{ route('web.login') }}" title="Login">
                         <i class="fa fa-sign-in"></i> Sign In
                      </a>
-                     <a class="account" href="{{ route('web.register') }}" title="Login">
+                     <a class="account" href="{{ route('web.register') }}" title="Register">
                         <i class="fa fa-user-plus"></i> Sign Up
                      </a>
                   </li>

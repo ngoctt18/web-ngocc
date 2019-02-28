@@ -18,6 +18,12 @@ use DB;
 
 class ShoppingController extends Controller
 {
+
+	public function __construct()
+	{
+
+	}
+
 	public function addToCart(Request $request, $id)
 	{
 		$product = Product::findOrFail($id);
@@ -33,9 +39,7 @@ class ShoppingController extends Controller
 			// Liên kết giỏ hàng với Model Product
 		])->associate('App\Product');
 
-		// storeCartByUser in database
 		$this->storeCartByUser();
-		$content = Cart::content();
 		return redirect()->route('web.cart');
 	}
 
@@ -53,6 +57,8 @@ class ShoppingController extends Controller
 	public function delItemInCart($rowId)
 	{
 		Cart::remove($rowId);
+
+		$this->storeCartByUser();
 		return redirect()->route('web.cart');
 	}
 
@@ -63,6 +69,8 @@ class ShoppingController extends Controller
 		Cart::update($rowId, $qty); // Will update the quantity
 		$price = Cart::get($rowId)->subtotal(0,'','.');
 		$total = Cart::subtotal(0,'','.');
+
+		$this->storeCartByUser();
 		return response()->json([
 			'price' => $price, 
 			'total' => $total
@@ -112,24 +120,26 @@ class ShoppingController extends Controller
 				}
 			}
           	// del
-			Cart::destroy();
+			Cart::instance('default')->destroy();
 
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
+
+		$this->storeCartByUser();
 		Session::flash('success', 'Đặt hàng thành công! Đơn hàng của bạn đang được xử lý.');
 		return redirect()->route('web.cart');
 	}
 
+	// wishlist
 	public function getWishList()
 	{
-		$contents = Cart::instance('wishlist')->content();
-		$total = Cart::subtotal(0,'','.');
-		// return $contents;
+		$wishlists = Cart::instance('wishlist')->content();
+		// return $total;
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$breadcrumb = 'Wish List';
-		return view('website.shopping.wishlist', compact('catagoriesTypes','contents','total','news_popular','breadcrumb'));
+		return view('website.shopping.wishlist', compact('catagoriesTypes','news_popular','breadcrumb','wishlists'));
 	}
 
 	public function addToWishList(Request $request, $id)
@@ -146,18 +156,41 @@ class ShoppingController extends Controller
 			]
 			// Liên kết giỏ hàng với Model Product
 		])->associate('App\Product');
-		
-		// storeCartByUser in database
-		$this->storeCartByUser();
-		$content = Cart::content();
+
+		$this->storeWishlistByUser();
 		return redirect()->back();
 	}
 
+	public function delItemInWishList($rowId)
+	{
+		Cart::instance('wishlist')->remove($rowId);
 
+		$this->storeWishlistByUser();
+		return redirect()->route('web.wishlist');
+	}
 
+	public function switchToCart($rowId)
+	{
+		$wishlist = Cart::instance('wishlist')->get($rowId);
+		$product = Product::findOrFail($wishlist->id);
 
+		Cart::instance('default')->add([
+			'id' => $wishlist->id, 
+			'name' => $product->name, 
+			'qty' => 1, 
+			'price' => $product->price-$product->price*$product->discount/100, 
+			'options' => [
+				'discount' => $product->discount,
+				'price_old' => $product->price,
+			]
+			// Liên kết giỏ hàng với Model Product
+		])->associate('App\Product');
+		Cart::instance('wishlist')->remove($rowId);
 
-
+		$this->storeCartByUser();
+		$this->storeWishlistByUser();
+		return redirect()->route('web.wishlist');
+	}
 
 
 
@@ -169,7 +202,16 @@ class ShoppingController extends Controller
 	{
 		if (Auth::check()) {
 			DB::table('shoppingcart')->where('identifier', Auth::user()->email)->delete();
-			Cart::store(Auth::user()->email);
+			Cart::instance('default')->store(Auth::user()->email);
+		}
+	}
+
+	// storeWishlistByUser in database
+	public function storeWishlistByUser()
+	{
+		if (Auth::check()) {
+			DB::table('shoppingcart')->where('identifier', 'wishlist_'.Auth::user()->email)->delete();
+			Cart::instance('wishlist')->store('wishlist_'.Auth::user()->email);
 		}
 	}
 }
