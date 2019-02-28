@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreNewsRequest;
 use App\Http\Requests\Admin\UpdateNewsRequest;
 use App\News;
+use App\Writer;
 use App\NewTag;
 use App\Tag;
 use Session;
@@ -16,6 +17,7 @@ class NewsController extends Controller
     public function index(Request $request)
     {
     	$title = $request->query('title', NULL);
+        $author_id = $request->query('author_id', NULL);
     	$tag_id = $request->query('tag_id', NULL);
     	$status = $request->query('status', NULL);
 
@@ -23,19 +25,25 @@ class NewsController extends Controller
     	if ($title != NULL) {
     		$news = $news->where('title', 'LIKE', '%'.$title.'%');
     	}
-    	if ($tag_id != NULL) {
-    		$news = $news->SearchByTag($tag_id);
+    	if ($author_id != NULL) {
+    		$news = $news->where('author_id', $author_id);
     	}
+        if ($tag_id != NULL) {
+            $news = $news->SearchByTag($tag_id);
+        }
     	if ($status != NULL) {
     		$news = $news->where('status', $status);
     	}
-    	$news = $news->latest()->paginate()->appends([
+    	$news = $news->latest()->paginate()
+        ->appends([
     		'title' => $title,
-    		'tag_id' => $tag_id,
+    		'author_id' => $author_id,
+            'tag_id' => $tag_id,
     		'status' => $status,
     	]);
-    	$tags = Tag::all();
-    	return view('admin.news.index', compact('news', 'tags'));
+        $tags = Tag::all();
+        $writers = Writer::all();
+        return view('admin.news.index', compact('news', 'tags', 'writers'));
     }
 
     public function create()
@@ -105,6 +113,7 @@ class NewsController extends Controller
     public function trash(Request $request)
     {
     	$title = $request->query('title', NULL);
+        $author_id = $request->query('author_id', NULL);
     	$tag_id = $request->query('tag_id', NULL);
     	$status = $request->query('status', NULL);
 
@@ -112,6 +121,9 @@ class NewsController extends Controller
     	if ($title != NULL) {
     		$news = $news->where('title', 'LIKE', '%'.$title.'%');
     	}
+        if ($author_id != NULL) {
+            $news = $news->where('author_id', $author_id);
+        }
     	if ($tag_id != NULL) {
     		$news = $news->SearchByTag($tag_id);
     	}
@@ -120,11 +132,13 @@ class NewsController extends Controller
     	}
     	$news = $news->onlyTrashed()->latest()->paginate()->appends([
     		'title' => $title,
+            'author_id' => $author_id,
     		'tag_id' => $tag_id,
     		'status' => $status,
     	]);
     	$tags = Tag::all();
-    	return view('admin.news.trash', compact('news', 'tags'));
+        $writers = Writer::all();
+    	return view('admin.news.trash', compact('news', 'tags', 'writers'));
     }
 
     public function restore($id)

@@ -11,9 +11,22 @@ use Session;
 
 class DistributeController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
-		$distributions = Distribute::latest()->paginate();
+		$name = $request->query('name', NULL);
+		$status = $request->query('status', NULL);
+		$distributions = Distribute::query();
+		if ($name != NULL) {
+			$distributions = $distributions->where('name', 'LIKE', '%'.$name.'%');
+		}
+		if ($status != NULL) {
+			$distributions = $distributions->where('status', $status);
+		}
+		$distributions = $distributions->latest()->paginate()
+		->appends([
+			'name' => $name,
+			'status' => $status
+		]);
 		return view('admin.distributions.index', compact('distributions'));
 	}
 

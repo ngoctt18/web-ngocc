@@ -11,9 +11,32 @@ use Session;
 
 class UserController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
-		$users = User::latest()->paginate();
+		$name = $request->query('name', NULL);
+		$phone = $request->query('phone', NULL);
+		$email = $request->query('email', NULL);
+		$status = $request->query('status', NULL);
+		$users = User::query();
+		if ($name != NULL) {
+			$users = $users->where('name', 'LIKE', '%'.$name.'%');
+		}
+		if ($phone != NULL) {
+			$users = $users->where('phone', 'LIKE', '%'.$phone.'%');
+		}
+		if ($email != NULL) {
+			$users = $users->where('email', 'LIKE', '%'.$email.'%');
+		}
+		if ($status != NULL) {
+			$users = $users->where('status', $status);
+		}
+		$users = $users->latest()->paginate()
+		->appends([
+			'name' => $name,
+			'phone' => $phone,
+			'email' => $email,
+			'status' => $status,
+		]);
 		return view('admin.users.index', compact('users'));
 	}
 
@@ -43,10 +66,10 @@ class UserController extends Controller
 	{
 		$user->update($request->all());
         // Cập nhật đại diện (nếu có)
-        if($request->hasFile('avatar')){
-        	$user->clearMediaCollection('user_avatar');
-        	$user->addMediaFromRequest('avatar')->toMediaCollection('user_avatar');
-        }
+		if($request->hasFile('avatar')){
+			$user->clearMediaCollection('user_avatar');
+			$user->addMediaFromRequest('avatar')->toMediaCollection('user_avatar');
+		}
         // Update password nếu nó ko rỗng. còn ko thì ko động tới
 		if ($request->password_confirm != null) {
 			$user->update(['password' => $request->password_confirm]);

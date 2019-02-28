@@ -14,7 +14,7 @@
 <p>
 	<a href="{{ route('admin.news.create') }}" class="btn btn-primary">Thêm bài viết</a> &emsp; <span class="pull-right marT15">Tổng số: {{ $news->total() }}</span>
 </p>
-<div class="box">
+<div class="box box-success">
 	<div class="box-header">
 		<h3 class="box-title"></h3>
 		<form action="" method="GET">
@@ -23,7 +23,16 @@
 					<label for="title">Tiêu đề tin tức</label>
 					<input id="title" name="title" value="{{ old('title', request('title')) }}" type="text" class="form-control input-sm" placeholder="Tiêu đề tin tức">
 				</div>
-				<div class="col-xs-3">
+				<div class="col-xs-2">
+					<label for="author_id">Tác giả</label>
+					<select id="author_id" class="form-control input-sm" name="author_id">
+						<option value="">Chọn tác giả</option>
+						@foreach($writers as $writer)
+						<option value="{{$writer->id}}" {{old('author_id', request('author_id')) == $writer->id ? 'selected' : ''}}>{{$writer->name}}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="col-xs-2">
 					<label for="tag_id">Thẻ tag</label>
 					<select id="tag_id" class="form-control input-sm" name="tag_id">
 						<option value="">Chọn thẻ tags</option>
@@ -32,7 +41,7 @@
 						@endforeach
 					</select>
 				</div>
-				<div class="col-xs-3">
+				<div class="col-xs-2">
 					<label for="status">Trạng thái</label>
 					<select id="status" class="form-control input-sm" name="status">
 						<option value="">Chọn trạng thái</option>

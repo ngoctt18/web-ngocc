@@ -15,6 +15,35 @@
 <div class="box box-success">
 	<div class="box-header">
 		<h3 class="box-title"></h3>
+		<form action="" method="GET">
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="name">Tên danh mục</label>
+					<input id="name" name="name" value="{{ old('name', request('name')) }}" type="text" class="form-control input-sm" placeholder="Tên danh mục">
+				</div>
+				<div class="col-xs-3">
+					<label for="catagory_type_id">Nhóm danh mục</label>
+					<select id="catagory_type_id" class="form-control input-sm" name="catagory_type_id">
+						<option value="">Chọn nhóm danh mục</option>
+						@foreach($catagoryTypes as $catagoryType)
+						<option value="{{$catagoryType->id}}" {{old('catagory_type_id', request('catagory_type_id')) == $catagoryType->id ? 'selected' : ''}}>{{$catagoryType->name}}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="col-xs-3">
+					<label for="status">Trạng thái</label>
+					<select id="status" class="form-control input-sm" name="status">
+						<option value="">Chọn trạng thái</option>
+						<option value="0" {{old('status', request('status')) == '0' ? 'selected' : ''}}>Ẩn</option>
+						<option value="1" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Hiển thị</option>
+					</select>
+				</div>
+				<div class="col-xs-2">
+					<label for="">&nbsp;</label>
+					<button type="submit" class="btn btn-block btn-info btn-sm">Tìm kiếm</button>
+				</div>
+			</div>
+		</form>
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body">

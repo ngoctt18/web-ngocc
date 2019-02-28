@@ -15,6 +15,35 @@
 <div class="box box-success">
 	<div class="box-header">
 		<h3 class="box-title"></h3>
+		<form action="" method="GET">
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="name">Tên khách hàng</label>
+					<input id="name" name="name" value="{{ old('name', request('name')) }}" type="text" class="form-control input-sm" placeholder="Tên khách hàng">
+				</div>
+				<div class="col-xs-2">
+					<label for="phone">Điện thoại</label>
+					<input id="phone" name="phone" value="{{ old('phone', request('phone')) }}" type="text" class="form-control input-sm" placeholder="Điện thoại">
+				</div>
+				<div class="col-xs-2">
+					<label for="email">Email</label>
+					<input id="email" name="email" value="{{ old('email', request('email')) }}" type="text" class="form-control input-sm" placeholder="Email">
+				</div>
+				<div class="col-xs-2">
+					<label for="status">Trạng thái</label>
+					<select id="status" class="form-control input-sm" name="status">
+						<option value="">Chọn trạng thái</option>
+						<option value="0" {{old('status', request('status')) == '0' ? 'selected' : ''}}>Tạm dừng hoạt động</option>
+						<option value="1" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Hoạt động</option>
+						<option value="2" {{old('status', request('status')) == '2' ? 'selected' : ''}}>Dừng hoạt động</option>
+					</select>
+				</div>
+				<div class="col-xs-2">
+					<label for="">&nbsp;</label>
+					<button type="submit" class="btn btn-block btn-info btn-sm">Tìm kiếm</button>
+				</div>
+			</div>
+		</form>
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body">

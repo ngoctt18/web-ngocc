@@ -12,9 +12,32 @@
 <p>
 	<a href="{{ route('admin.catagory-types.create') }}" class="btn btn-primary">Thêm nhóm danh mục</a> &emsp; <span class="pull-right marT15">Tổng số: {{ $catagoryTypes->total() }}</span>
 </p>
+
 <div class="box box-success">
 	<div class="box-header">
 		<h3 class="box-title"></h3>
+		<form action="" method="GET">
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="name">Tên nhóm danh mục</label>
+					<input id="name" name="name" value="{{ old('name', request('name')) }}" type="text" class="form-control input-sm" placeholder="Tên nhóm danh mục">
+				</div>
+				<div class="col-xs-3">
+					<label for="status">Trạng thái</label>
+					<select id="status" class="form-control input-sm" name="status">
+						<option value="">Chọn trạng thái</option>
+						<option value="0" {{old('status', request('status')) == '0' ? 'selected' : ''}}>Ẩn</option>
+						<option value="1" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Hiển thị</option>
+					</select>
+				</div>
+				<div class="col-xs-3">
+				</div>
+				<div class="col-xs-2">
+					<label for="">&nbsp;</label>
+					<button type="submit" class="btn btn-block btn-info btn-sm">Tìm kiếm</button>
+				</div>
+			</div>
+		</form>
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body">

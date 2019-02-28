@@ -12,10 +12,29 @@ use Session;
 
 class CatagoryController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
-		$catagories = Catagory::latest()->paginate();
-		return view('admin.catagories.index', compact('catagories'));
+		$name = $request->query('name', NULL);
+		$catagory_type_id = $request->query('catagory_type_id', NULL);
+		$status = $request->query('status', NULL);
+		$catagories = Catagory::query();
+		if ($name != NULL) {
+			$catagories = $catagories->where('name', 'LIKE', '%'.$name.'%');
+		}
+		if ($catagory_type_id != NULL) {
+			$catagories = $catagories->where('catagory_type_id', $catagory_type_id);
+		}
+		if ($status != NULL) {
+			$catagories = $catagories->where('status', $status);
+		}
+		$catagories = $catagories->latest()->paginate()
+		->appends([
+			'name' => $name,
+			'catagory_type_id' => $catagory_type_id,
+			'status' => $status
+		]);
+		$catagoryTypes = CatagoriesType::all();
+		return view('admin.catagories.index', compact('catagories','catagoryTypes'));
 	}
 
 	public function create()

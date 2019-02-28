@@ -15,6 +15,44 @@
 <div class="box box-success">
 	<div class="box-header">
 		<h3 class="box-title"></h3>
+		<form action="" method="GET">
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="name">Tên sản phẩm</label>
+					<input id="name" name="name" value="{{ old('name', request('name')) }}" type="text" class="form-control input-sm" placeholder="Tên sản phẩm">
+				</div>
+				<div class="col-xs-2">
+					<label for="catagory_id">Danh mục</label>
+					<select id="catagory_id" class="form-control input-sm" name="catagory_id">
+						<option value="">Chọn danh mục</option>
+						@foreach($catagories as $catagory)
+						<option value="{{$catagory->id}}" {{old('catagory_id', request('catagory_id')) == $catagory->id ? 'selected' : ''}}>{{$catagory->name}}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="col-xs-2">
+					<label for="distribution_id">Nhà phân phối</label>
+					<select id="distribution_id" class="form-control input-sm" name="distribution_id">
+						<option value="">Chọn nhà phân phối</option>
+						@foreach($distributions as $distribute)
+						<option value="{{$distribute->id}}" {{old('distribution_id', request('distribution_id')) == $distribute->id ? 'selected' : ''}}>{{$distribute->name}}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="col-xs-2">
+					<label for="status">Trạng thái</label>
+					<select id="status" class="form-control input-sm" name="status">
+						<option value="">Chọn trạng thái</option>
+						<option value="0" {{old('status', request('status')) == '0' ? 'selected' : ''}}>Hết hàng</option>
+						<option value="1" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Còn hàng</option>
+					</select>
+				</div>
+				<div class="col-xs-2">
+					<label for="">&nbsp;</label>
+					<button type="submit" class="btn btn-block btn-info btn-sm">Tìm kiếm</button>
+				</div>
+			</div>
+		</form>
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body">
@@ -25,7 +63,7 @@
 					<th>Sản phẩm</th>
 					<th>Giá</th>
 					<th>Discount</th>
-					<th>Thương hiệu</th>
+					{{-- <th>Thương hiệu</th> --}}
 					<th>Danh mục</th>
 					<th>Nhà phân phối</th>
 					<th>Trạng thái</th>
@@ -39,7 +77,7 @@
 					<td>{{$product->name}}</td>
 					<td>{{number_format($product->price,0,",",".")}}</td>
 					<td>{{$product->discount}}%</td>
-					<td>{{$product->brand}}</td>
+					{{-- <td>{{$product->brand}}</td> --}}
 					<td>{{$product->catagory->name}}</td>
 					<td>{{$product->distribute->name}}</td>
 					<td>
