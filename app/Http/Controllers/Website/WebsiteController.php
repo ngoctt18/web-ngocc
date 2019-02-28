@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Distribute;
 use App\Catagory;
 use App\CatagoriesType;
 use App\Contact;
@@ -105,15 +106,39 @@ class WebsiteController extends Controller
 		return redirect()->back();
 	}
 
-	// public function searchAll(Request $request)
-	// {
+	public function Distribute($id)
+	{
+		$total = Cart::subtotal(0,'','.');
+		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+		$products = Product::where('status', '1')->where('distribution_id', $id)->paginate(9);
+		$distribute  = Distribute::findOrFail($id);
+		$breadcrumb = $distribute;
 
-	// 	$total = Cart::subtotal(0,'','.');
-	// 	$catagoriesTypes = CatagoriesType::where('status', '1')->get();
-	// 	$breadcrumb = 'Search';
-	// 	$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
-	// 	return view('website.pages.search_product', compact('total','catagoriesTypes','breadcrumb','news_popular'));
-	// }
+		return view('website.pages.distribute', compact('total','catagoriesTypes','breadcrumb','news_popular','products','distribute'));
+	}
+
+	public function bestSeller()
+	{
+		$total = Cart::subtotal(0,'','.');
+		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+		$products = Product::where('status', '1')->orderBy('count_buys','DESC')->take(9)->get();
+		$breadcrumb = 'Best seller';
+
+		return view('website.pages.best-seller', compact('total','catagoriesTypes','breadcrumb','news_popular','products'));
+	}
+
+	public function bestDiscount()
+	{
+		$total = Cart::subtotal(0,'','.');
+		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+		$products = Product::where('status', '1')->orderBy('discount','DESC')->take(9)->get();
+		$breadcrumb = 'Best Discount';
+
+		return view('website.pages.best-discount', compact('total','catagoriesTypes','breadcrumb','news_popular','products'));
+	}
 
 	
 }

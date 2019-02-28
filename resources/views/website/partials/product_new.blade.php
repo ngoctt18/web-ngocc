@@ -2,7 +2,7 @@
 	<div class="products_top col-xs-12 col-sm-12">
 		<div id="productlist01" class="products_block exclusive block" >
 			<h4 class="page-subheading ">
-				Sản phẩm bán chạy
+				<a href="{{ route('web.best_seller') }}">Sản phẩm bán chạy</a>
 			</h4>
 			<div class="block_content">
 				<div class="product_list_owl">
@@ -31,7 +31,7 @@
 												</a>
 											</div>
 											<div class="wishlist">
-												<a class="btn btn-outline btn-wishlist" href="#">
+												<a class="btn btn-outline btn-wishlist" href="{{ route('web.wishlist') }}">
 													<i class="fa fa-heart"></i>
 													<span>Add to Wishlist</span>
 												</a>

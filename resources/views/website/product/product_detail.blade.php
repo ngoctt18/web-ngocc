@@ -4,6 +4,7 @@
 <style type="text/css">
 #thumbs_list .thumb_item { width: 99px; float: left; }
 input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 15px; max-width: 100%; }
+.btn-wishlist {background-color: #ea254b;}
 </style>
 @endsection
 @section('content')
@@ -42,7 +43,10 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                     <div class="review">
                                         <span class="shopify-product-reviews-badge" data-id="1119719620"></span>
                                     </div>
-                                    <h5 class="brand" itemprop="brand"><span>Thương hiệu: </span><a href="" title="">{{$product->brand}}</a></h5>
+                                    <h5 class="brand" itemprop="brand">
+                                        <span>Thương hiệu: </span>
+                                        <a href="{{ route('web.distribute', [$product->distribute->id, $product->distribute->slug]) }}" style=" color: #59bd5a; ">{{$product->distribute->name}}</a>
+                                    </h5>
                                     <div class="product-description rte" itemprop="description">
                                         {!!$product->description!!}
                                     </div>
@@ -142,7 +146,9 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                         </form>
                                         @endif
                                     </div>
-                                    <div class="line-product"></div>
+                                    <div class="line-product">
+                                        <img src="{{ asset('images/tro_gia_20k_don_di_tinh_1.png') }}">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -153,188 +159,203 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                         <li style=" border-bottom: 3px solid #59bd56; ">
                                             <a href="#idTab1" data-toggle="tab">More info</a>
                                         </li>
-                                    <!-- <li>
-                                        <a href="#idTab2" data-toggle="tab">Reviews</a>
-                                    </li> -->
-                                </ul>
-                                <div class="tab-content">
-                                    <section id="idTab1" class="{{-- tab-pane --}} page-product-box">
-                                        <div class="rte">
-                                            <span>{!! $product->intro !!}</span>
-                                        </div>
-                                    </section>
-                                    <section id="idTab2" class="tab-pane page-product-box">
-                                        <div id="shopify-product-reviews" data-id="1119719620">
-                                            <style scoped>
-                                            .spr-container {
-                                                padding: 24px;
-                                                border-color: #ECECEC;
-                                            }
-                                            .spr-review, .spr-form {
-                                                border-color: #ECECEC;
-                                            }
-                                        </style>
-                                        <div class="spr-container">
-                                            <div class="spr-header">
-                                                <h2 class="spr-header-title">Customer Reviews</h2>
-                                                <div class="spr-summary" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
-                                                    <meta itemprop="itemreviewed" content="Commo habita lacus aenean consequat sagittis" />
-                                                    <meta itemprop="votes" content="1" />
-                                                    <span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating" class="spr-starrating spr-summary-starrating">
-                                                        <meta itemprop="average" content="5.0" />
-                                                        <meta itemprop="best" content="5" />
-                                                        <meta itemprop="worst" content="1" />
-                                                        <i class='spr-icon spr-icon-star' style=''></i><i class='spr-icon spr-icon-star' style=''></i><i class='spr-icon spr-icon-star' style=''></i><i class='spr-icon spr-icon-star' style=''></i><i class='spr-icon spr-icon-star' style=''></i>
-                                                    </span>
-                                                    <span class="spr-summary-caption">
-                                                        <span class='spr-summary-actions-togglereviews'>Based on 1 review</span>
-                                                    </span>
-                                                    <span class="spr-summary-actions">
-                                                        <a href='#' class='spr-summary-actions-newreview' onclick='SPR.toggleForm(1119719620);return false'>Write a review</a>
-                                                    </span>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <section id="idTab1" class="{{-- tab-pane --}} page-product-box">
+                                            <div class="rte">
+                                                <span>{!! $product->intro !!}</span>
+                                            </div>
+                                        </section>
+                                        <section id="idTab2" class="tab-pane page-product-box">
+                                            <div id="shopify-product-reviews" data-id="1119719620">
+                                                <style scoped>
+                                                .spr-container {
+                                                    padding: 24px;
+                                                    border-color: #ECECEC;
+                                                }
+                                                .spr-review, .spr-form {
+                                                    border-color: #ECECEC;
+                                                }
+                                            </style>
+                                            <div class="spr-container">
+                                                <div class="spr-header">
+                                                    <h2 class="spr-header-title">Customer Reviews</h2>
+                                                    <div class="spr-summary" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+                                                        <meta itemprop="itemreviewed" content="Commo habita lacus aenean consequat sagittis" />
+                                                        <meta itemprop="votes" content="1" />
+                                                        <span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating" class="spr-starrating spr-summary-starrating">
+                                                            <meta itemprop="average" content="5.0" />
+                                                            <meta itemprop="best" content="5" />
+                                                            <meta itemprop="worst" content="1" />
+                                                            <i class='spr-icon spr-icon-star' style=''></i><i class='spr-icon spr-icon-star' style=''></i><i class='spr-icon spr-icon-star' style=''></i><i class='spr-icon spr-icon-star' style=''></i><i class='spr-icon spr-icon-star' style=''></i>
+                                                        </span>
+                                                        <span class="spr-summary-caption">
+                                                            <span class='spr-summary-actions-togglereviews'>Based on 1 review</span>
+                                                        </span>
+                                                        <span class="spr-summary-actions">
+                                                            <a href='#' class='spr-summary-actions-newreview' onclick='SPR.toggleForm(1119719620);return false'>Write a review</a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="spr-content">
+                                                    <div class='spr-form' id='form_1119719620' style='display: none'></div>
+                                                    <div class='spr-reviews' id='reviews_1119719620' ></div>
                                                 </div>
                                             </div>
-                                            <div class="spr-content">
-                                                <div class='spr-form' id='form_1119719620' style='display: none'></div>
-                                                <div class='spr-reviews' id='reviews_1119719620' ></div>
-                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="more_info_block">
+                                        <ul class="nav nav-tabs tab-info page-product-heading">
+                                            <li style=" border-bottom: 3px solid #59bd56; ">
+                                                <a href="#idTab3" data-toggle="tab">Thông tin thương hiệu</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <section id="idTab3" class="page-product-box">
+                                                <div class="rte">
+                                                    <span>{!! $product->distribute->description !!}</span>
+                                                </div>
+                                            </section>
                                         </div>
                                     </div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fb-comments" data-href="http://localhost:8000/homepage/product/14/sua-hat-oc-cho" data-width="600px" data-numposts="5"></div>
-                    <div class="productpage col-xs-12 col-sm-12 col-lg-12">
-                        <div id="productrelated01" class="products_block exclusive block" >
-                            <h4 class="page-subheading ">
-                                <span>Sản phẩm liên quan</span>
-                            </h4>
-                            <div class="block_content">
-                                <div class="product_list_owl">
-                                    <div class="owl-carousel slide">
-                                        @foreach($productsRelate as $product_relate)
-                                        <div class="item">
-                                            <div class="product_block  ">
-                                                <div class="product-container text-left product-block">
-                                                    <div class="product-image-container image">
-                                                        <a class="product_img_link" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="{{$product_relate->name}}">
-                                                            <img class="replace-2x img-responsive" src="{{$product_relate->ThumbProduct??asset("images/products/product2.jpg")}}" alt="{{$product_relate->name}}">
-                                                            <span class="product-additional" data-idproduct="1119718980">
-                                                                <img class="replace-2x img-responsive" alt="{{$product_relate->name}}" src="{{$product_relate->ThumbProductDetails[0]??asset("images/products/product3.jpg")}}">
-                                                            </span>
-                                                        </a>
-                                                        @if($product_relate->discount != '0')
-                                                        <span class="sale-box">
-                                                            <span class="label-sale label">Sale</span>
-                                                        </span>
-                                                        @endif
-                                                        <div class="tool-funtion">
-                                                            <div class="quickview">
-                                                                <a class="quick-view btn btn-outline " href="#quick-view-product" data-handle="donec-fringilla" title="+ Quick View">
-                                                                    <i class="fa fa-plus"></i>
-                                                                    <span>+ Quick View</span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="wishlist">
-                                                                <a class="btn btn-outline btn-wishlist" href="">
-                                                                    <i class="fa fa-heart"></i>
-                                                                    <span>Add to Wishlist</span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="view_detail">
-                                                                <a class="btn lnk_view btn-outline" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="View">
-                                                                    <i class="fa fa-eye"></i><span>View product</span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-meta">
-                                                        <h5 class="name">
-                                                            <a class="product-name" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="{{$product_relate->name}}">{{$product_relate->name}}</a>
-                                                        </h5>
-                                                        <div class="review">
-                                                            <span class="shopify-product-reviews-badge" data-id="1119718980"></span>
-                                                        </div>
-                                                        <div class="content_price">
-                                                            <span class="price product-price sale-price">
-                                                                <span class='money'>{{number_format($product_relate->price-$product_relate->price*$product_relate->discount/100,0,",",".")}}₫</span>
-                                                            </span>
-                                                            @if($product_relate->discount != '0')
-                                                            <span class="old-price product-price">
-                                                                <span class='money'>
-                                                                    {{number_format($product_relate->price,0,",",".")}}₫
-                                                                </span>
-                                                            </span>
-                                                            @endif
-                                                        </div>
-                                                        <div class="functional-buttons clearfix">
-                                                            <div class="cart">
-                                                                <div class="action">
-                                                                    <!-- <form action="" method="post" enctype="multipart/form-data" class="form-ajaxtocart"> -->
-                                                                        <!-- <input type="hidden" name="id" value="4214856452" /> -->
-                                                                        <a class=" btn btn-outline button ajax_addtocart" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="{{$product_relate->name}}">
-                                                                            <span class="fa fa-shopping-cart"></span>
-                                                                            <span class="select_options">Mua ngay</span>
-                                                                        </a>
-                                                                        <!-- </form> -->
+                                </div>
+
+
+
+                                <div class="productpage col-xs-12 col-sm-12 col-lg-12">
+                                    <div id="productrelated01" class="products_block exclusive block" >
+                                        <h4 class="page-subheading ">
+                                            <span>Sản phẩm liên quan</span>
+                                        </h4>
+                                        <div class="block_content">
+                                            <div class="product_list_owl">
+                                                <div class="owl-carousel slide">
+                                                    @foreach($productsRelate as $product_relate)
+                                                    <div class="item">
+                                                        <div class="product_block  ">
+                                                            <div class="product-container text-left product-block">
+                                                                <div class="product-image-container image">
+                                                                    <a class="product_img_link" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="{{$product_relate->name}}">
+                                                                        <img class="replace-2x img-responsive" src="{{$product_relate->ThumbProduct??asset("images/products/product2.jpg")}}" alt="{{$product_relate->name}}">
+                                                                        <span class="product-additional" data-idproduct="1119718980">
+                                                                            <img class="replace-2x img-responsive" alt="{{$product_relate->name}}" src="{{$product_relate->ThumbProductDetails[0]??asset("images/products/product3.jpg")}}">
+                                                                        </span>
+                                                                    </a>
+                                                                    @if($product_relate->discount != '0')
+                                                                    <span class="sale-box">
+                                                                        <span class="label-sale label">Sale</span>
+                                                                    </span>
+                                                                    @endif
+                                                                    <div class="tool-funtion">
+                                                                        <div class="quickview">
+                                                                            <a class="quick-view btn btn-outline " href="#quick-view-product" data-handle="donec-fringilla" title="+ Quick View">
+                                                                                <i class="fa fa-plus"></i>
+                                                                                <span>+ Quick View</span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="wishlist">
+                                                                            <a class="btn btn-outline btn-wishlist" href="{{ route('web.wishlist') }}">
+                                                                                <i class="fa fa-heart"></i>
+                                                                                <span>Add to Wishlist</span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="view_detail">
+                                                                            <a class="btn lnk_view btn-outline" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="View">
+                                                                                <i class="fa fa-eye"></i><span>View product</span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-meta">
+                                                                    <h5 class="name">
+                                                                        <a class="product-name" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="{{$product_relate->name}}">{{$product_relate->name}}</a>
+                                                                    </h5>
+                                                                    <div class="review">
+                                                                        <span class="shopify-product-reviews-badge" data-id="1119718980"></span>
+                                                                    </div>
+                                                                    <div class="content_price">
+                                                                        <span class="price product-price sale-price">
+                                                                            <span class='money'>{{number_format($product_relate->price-$product_relate->price*$product_relate->discount/100,0,",",".")}}₫</span>
+                                                                        </span>
+                                                                        @if($product_relate->discount != '0')
+                                                                        <span class="old-price product-price">
+                                                                            <span class='money'>
+                                                                                {{number_format($product_relate->price,0,",",".")}}₫
+                                                                            </span>
+                                                                        </span>
+                                                                        @endif
+                                                                    </div>
+                                                                    <div class="functional-buttons clearfix">
+                                                                        <div class="cart">
+                                                                            <div class="action">
+                                                                                <!-- <form action="" method="post" enctype="multipart/form-data" class="form-ajaxtocart"> -->
+                                                                                    <!-- <input type="hidden" name="id" value="4214856452" /> -->
+                                                                                    <a class=" btn btn-outline button ajax_addtocart" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="{{$product_relate->name}}">
+                                                                                        <span class="fa fa-shopping-cart"></span>
+                                                                                        <span class="select_options">Mua ngay</span>
+                                                                                    </a>
+                                                                                    <!-- </form> -->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
-                                            @endforeach
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <script type="text/javascript">
-                                $(document).ready(function() {
+                                        <script type="text/javascript">
+                                            $(document).ready(function() {
 
-                                 $('#productrelated01 .owl-carousel').each(function(){
-                                  $(this).owlCarousel({
-                                   items : 3,
-                                   lazyLoad : true,
-                                   navigation : true,
-                                   addClassActive: true,
-                                   afterInit : SetOwlCarouselFirstLast,
-                                   afterAction : SetOwlCarouselFirstLast,
+                                             $('#productrelated01 .owl-carousel').each(function(){
+                                              $(this).owlCarousel({
+                                               items : 3,
+                                               lazyLoad : true,
+                                               navigation : true,
+                                               addClassActive: true,
+                                               afterInit : SetOwlCarouselFirstLast,
+                                               afterAction : SetOwlCarouselFirstLast,
 
-                                   itemsDesktop: [1199, 2],
-                                   itemsDesktopSmall: [979, 2],
-                                   itemsTablet: [768, 2],
-                                   itemsTabletSmall: [480, 1],
-                                   itemsMobile: [360, 1],
+                                               itemsDesktop: [1199, 2],
+                                               itemsDesktopSmall: [979, 2],
+                                               itemsTablet: [768, 2],
+                                               itemsTabletSmall: [480, 1],
+                                               itemsMobile: [360, 1],
 
-                                   navigationText : ["Prev", "Next"]
-                               }); 
-                              });
-                                 function SetOwlCarouselFirstLast(el){
-                                  el.find(".owl-item").removeClass("first");
-                                  el.find(".owl-item.active").first().addClass("first");
+                                               navigationText : ["Prev", "Next"]
+                                           }); 
+                                          });
+                                             function SetOwlCarouselFirstLast(el){
+                                              el.find(".owl-item").removeClass("first");
+                                              el.find(".owl-item.active").first().addClass("first");
 
-                                  el.find(".owl-item").removeClass("last");
-                                  el.find(".owl-item.active").last().addClass("last");
-                              };
+                                              el.find(".owl-item").removeClass("last");
+                                              el.find(".owl-item.active").last().addClass("last");
+                                          };
 
-                          });
-                      </script>
+                                      });
+                                  </script>
+                              </div>
+                          </div>
+                      </div>
                   </div>
               </div>
           </div>
-      </div>
-  </div>
-</div>
-</section>
-<script>
-    function selectCallback(variant, selector) {
-    	var addToCart = jQuery("#AddToCart"),
-    	productPrice = jQuery(".product-right-column #ProductPrice"),
-    	comparePrice = jQuery(".product-right-column .price-product-detail .old-price");
-    	if (variant) {
-    		if (variant.available) {
+      </section>
+      <script>
+        function selectCallback(variant, selector) {
+         var addToCart = jQuery("#AddToCart"),
+         productPrice = jQuery(".product-right-column #ProductPrice"),
+         comparePrice = jQuery(".product-right-column .price-product-detail .old-price");
+         if (variant) {
+          if (variant.available) {
                  // We have a valid product variant, so enable the submit button
                  addToCart.removeClass('disabled').removeAttr('disabled');
                  $(addToCart).find("span").text("Add to Cart");

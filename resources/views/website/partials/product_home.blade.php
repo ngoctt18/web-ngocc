@@ -35,7 +35,7 @@
                                                             </a>
                                                         </div>
                                                         <div class="wishlist">
-                                                            <a class="btn btn-outline btn-wishlist" href="account/login.html">
+                                                            <a class="btn btn-outline btn-wishlist" href="{{ route('web.wishlist') }}">
                                                                 <i class="fa fa-heart"></i>
                                                                 <span>Add to Wishlist</span>
                                                             </a>
@@ -69,7 +69,7 @@
                                                     <div class="functional-buttons clearfix">
                                                         <div class="cart">
                                                             <div class="action">
-                                                                <form action="{{ route('web.add_cart',[$product->id,$product->slug]) }}" method="post" class="form-ajaxtocart">
+                                                                <form action="{{ route('web.add_cart',[$product->id,$product->slug]) }}" method="POST" class="form-ajaxtocart">
                                                                     {{csrf_field()}}
                                                                     <input type="hidden" name="quantity" value="1" />
                                                                     <button type="submit" class=" btn btn-outline button ajax_addtocart">

@@ -1,7 +1,7 @@
 
 <div id="products_sider_block" class="block products_block nopadding block-highlight">
    <h4 class="title_block">
-      <a href="#" title="SPECIAL OFFERS">Giảm giá mạnh</a>
+      <a href="{{ route('web.best_discount') }}" title="best discount">Giảm giá mạnh</a>
    </h4>
    <div class="block_content products-block">
       <ul class="products products-block">
@@ -31,8 +31,8 @@
          @endforeach
       </ul>
       <div class="lnk">
-         <a href="collections/frontpage.html" title="SPECIAL OFFERS" class="btn btn-sm btn-outline">
-            <span>All best sellers</span>
+         <a href="{{ route('web.best_discount') }}" title="best discount" class="btn btn-sm btn-outline">
+            <span>All Best Discount</span>
          </a>
       </div>
    </div>

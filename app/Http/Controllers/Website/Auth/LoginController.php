@@ -56,6 +56,10 @@ class LoginController extends Controller
             Cart::instance('default')->restore(Auth::user()->email);
             Cart::instance('wishlist')->restore('wishlist_'.Auth::user()->email);
 
+            // Lưu luôn các instance vào db
+            Cart::instance('default')->store(Auth::user()->email);
+            Cart::instance('wishlist')->store('wishlist_'.Auth::user()->email);
+
             Session::flash('success', 'Đăng nhập thành công.');
             return redirect()->back();
         }

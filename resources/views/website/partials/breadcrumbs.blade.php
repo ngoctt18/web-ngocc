@@ -3,14 +3,14 @@
         <nav role="navigation" aria-label="breadcrumbs">
             <ol class="breadcrumb" itemscope itemtype="">
                 <li itemprop="itemListElement" itemscope itemtype="">
-                    <a href="{{ route('web.homepage') }}" title="Back to the frontpage" itemprop="item">
+                    <a href="{{ route('web.homepage') }}" title="Back to the homepage" itemprop="item">
                         <span itemprop="name">Home</span>
                     </a>
                 </li>
 
                 @isset(($breadcrumb->catagory->catagoryType))
                 <li itemprop="itemListElement" itemscope itemtype="">
-                    <a href="" title="Back to the frontpage" itemprop="item">
+                    <a href="" title="Back to the catagory type tpage" itemprop="item">
                         <span itemprop="name">{{$breadcrumb->catagory->catagoryType->name}}</span>
                     </a>
                 </li>
@@ -18,7 +18,7 @@
 
                 @isset(($breadcrumb->catagory))
                 <li itemprop="itemListElement" itemscope itemtype="">
-                    <a href="" title="Back to the frontpage" itemprop="item">
+                    <a href="" title="Back to the catagory page" itemprop="item">
                         <span itemprop="name">{{$breadcrumb->catagory->name}}</span>
                     </a>
                 </li>
