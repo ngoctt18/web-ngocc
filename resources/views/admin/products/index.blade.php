@@ -71,6 +71,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				@if (count($products))
 				@foreach($products as $product)
 				<tr role="row" class="align-middle">
 					<td>{{ index_row($products, $loop->index) }}</td>
@@ -93,6 +94,11 @@
 					</td>
 				</tr>
 				@endforeach
+				@else
+				<tr role="row" class="align-middle">
+					<td colspan="8" class="text-center">Không có sản phẩm nào.</td>
+				</tr>
+				@endif
 			</tbody>
 		</table>
 	</div>

@@ -70,6 +70,17 @@
 				</select>
 				<small class="text-danger">{{ $errors->first('status') }}</small>
 			</div>
+			@if ($user->verified == '0')
+			<div class="form-group">
+				<label for="verified">Kích hoạt tài khoản</label>
+				<select class="form-control" style="width: 20%;" name="verified" id="verified">
+					<!-- <option>Chọn trạng thái</option> -->
+					<option value="0" {{old('verified',$user->verified) == '0' ? 'selected' : ''}}>Chưa được kích hoạt</option>
+					<option value="1" {{old('verified',$user->verified) == '1' ? 'selected' : ''}}>Kích hoạt tài khoản</option>
+				</select>
+				<small class="text-danger">{{ $errors->first('verified') }}</small>
+			</div>
+			@endif
 		</div>
 		<!-- /.box-body -->
 

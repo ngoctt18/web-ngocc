@@ -21,4 +21,18 @@ class Order extends Model
 	public function orderDetails(){
 		return $this->hasMany(OrderDetail::class, 'order_id', 'id');
 	}
+
+
+	// scope
+	public function scopeSearchDateFrom($query, $value)
+	{
+		$date = date_create_from_format('d/m/Y', $value)->format('Y-m-d');
+		return $query->whereDate('created_at', '>=', $date);
+	}
+
+	public function scopeSearchDateTo($query, $value)
+	{
+		$date = date_create_from_format('d/m/Y', $value)->format('Y-m-d');
+		return $query->whereDate('created_at', '<=', $date);
+	}
 }

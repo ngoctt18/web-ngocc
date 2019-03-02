@@ -3,9 +3,11 @@
 @section('title', 'Quản lý đơn hàng')
 
 @section('styles')
-
-<link rel="stylesheet" href="{{ asset('../../bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
-
+<!-- bootstrap datepicker -->
+<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+<style type="text/css">
+span.err_dateTo { color: #d00202; font-size: 12px; }
+</style>
 @endsection
 
 @section('content')
@@ -17,13 +19,38 @@
 <div class="box box-success">
 	<div class="box-header">
 		<h3 class="box-title"></h3>
-		<form action="" method="GET">
+		<form action="" method="GET" id="formSearch">
 			<div class="row">
 				<div class="col-xs-4">
 					<label for="name">Tên khách hàng</label>
 					<input id="name" name="name" value="{{ old('name', request('name')) }}" type="text" class="form-control input-sm" placeholder="Tên khách hàng">
 				</div>
-				<div class="col-xs-3">
+				<div class="col-xs-2">
+					<div class="form-group">
+						<label>From date:</label>
+						<div class="input-group date">
+							<div class="input-group-addon">
+								<i class="fa fa-calendar"></i>
+							</div>
+							<input name="dateFrom" type="text" class="form-control pull-right input-sm" id="datepickerFrom" value="{{request('dateFrom')}}">
+						</div>
+						<!-- /.input group -->
+					</div>
+				</div>
+				<div class="col-xs-2">
+					<div class="form-group">
+						<label>To date:</label>
+						<div class="input-group date">
+							<div class="input-group-addon">
+								<i class="fa fa-calendar"></i>
+							</div>
+							<input name="dateTo" type="text" class="form-control pull-right input-sm" id="datepickerTo" value="{{request('dateTo')}}">
+						</div>
+						<span class="err_dateTo"></span>
+						<!-- /.input group -->
+					</div>
+				</div>
+				<div class="col-xs-2">
 					<label for="status">Trạng thái</label>
 					<select id="status" class="form-control input-sm" name="status">
 						<option value="">Chọn trạng thái</option>
@@ -32,15 +59,6 @@
 						<option value="2" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Thành công</option>
 						<option value="3" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Không thành công</option>
 					</select>
-				</div>
-				<div class="col-xs-3">
-					<label for="name">Ngày order</label>
-					<div class="input-group">
-						<div class="input-group-addon">
-							<i class="fa fa-calendar"></i>
-						</div>
-						<input type="text" class="form-control input-sm pull-right" id="reservation">
-					</div>
 				</div>
 				<div class="col-xs-2">
 					<label for="">&nbsp;</label>
@@ -61,12 +79,14 @@
 					<th>Tổng tiền</th>
 					<th>Ngày đặt</th>
 					<th>Trạng thái</th>
+					<th>Xóa</th>
 				</tr>
 			</thead>
 			<tbody>
+				@if (count($orders))
 				@foreach($orders as $order)
 				<tr role="row" class="align-middle">
-					<td><a href="{{ route('admin.orders.show', ['id' => $order->id], false) }}" class="">{{$order->id}}</a></td>
+					<td><a href="{{ route('admin.orders.show', ['id' => $order->id], false) }}" class="">DH00{{$order->id}}</a></td>
 					<td>{{$order->name}}</td>
 					<td>{{str_limit($order->address, 100, '...')}}</td>
 					<td>{{$order->phone}}</td>
@@ -83,11 +103,16 @@
 						{{"Vận chuyển thất bại"}}
 						@endif
 					</td>
-					{{-- <td>
+					<td>
 						<a href="{{ route('admin.orders.destroy', ['id' => $order->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-					</td> --}}
+					</td>
 				</tr>
 				@endforeach
+				@else
+				<tr role="row" class="align-middle">
+					<td colspan="8" class="text-center">Không có đơn hàng nào.</td>
+				</tr>
+				@endif
 			</tbody>
 		</table>
 	</div>
@@ -119,10 +144,47 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('../../bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<!-- bootstrap datepicker -->
+<script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dist/js/jquery.validate.min.js') }}"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#reservation').daterangepicker()
+		$('#datepickerFrom, #datepickerTo').datepicker({
+			format: 'dd/mm/yyyy', 
+			autoclose: true
+		});
+
+		// Thời gian vào nghề phải lớn hơn ngày sinh
+		var checkSubmit = false;
+		$('input[name="dateFrom"], input[name="dateTo"]').change(function(event) {
+			event.preventDefault();
+			var dateFrom = $('input[name="dateFrom"]').val();
+			var dateTo = $('input[name="dateTo"]').val();
+			// console.log(dateFrom);
+			// console.log(dateTo);
+			if (dateFrom != '' && dateTo != '') {
+				var tmpDateFom = dateFrom.split("/");
+				var tmpDateTo = dateTo.split("/");
+				var from = new Date(tmpDateFom[2], tmpDateFom[1] - 1, tmpDateFom[0]);
+				var to = new Date(tmpDateTo[2], tmpDateTo[1] - 1, tmpDateTo[0]);
+				console.log('from: '+from+'-to: '+to);
+				if (from.getTime() >= to.getTime()) {
+					$('span.err_dateTo').text('Thời gian sau phải lớn hơn thời gian trước.');
+					// $(this).focus();
+					checkSubmit = true;
+				} else {
+					$('span.err_dateTo').text('');
+					checkSubmit = false;
+				}
+			}
+		});
+
+		$("#formSearch").submit(function(e){
+			if (checkSubmit) {
+				$('input[name="dateFrom"]').focus();
+				e.preventDefault();
+			}
+		});
 	});
 </script>
 @endsection

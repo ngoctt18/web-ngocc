@@ -10,9 +10,33 @@ use Session;
 
 class OrderController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
-		$orders = Order::latest()->paginate();
+		$name = $request->query('name', NULL);
+		$dateFrom = $request->query('dateFrom', NULL);
+		$dateTo = $request->query('dateTo', NULL);
+		$status = $request->query('status', NULL);
+
+		$orders = Order::query();
+		if ($name != NULL) {
+			$orders = $orders->where('name', 'LIKE', '%'.$name.'%');
+		}
+		if ($dateFrom != NULL) {
+			$orders = $orders->SearchDateFrom($dateFrom);
+		}
+		if ($dateTo != NULL) {
+			$orders = $orders->SearchDateTo($dateTo);
+		}
+		if ($status != NULL) {
+			$orders = $orders->where('status', $status);
+		}
+		$orders = $orders->latest()->paginate()
+		->appends([
+			'name' => $name,
+			'dateFrom' => $dateFrom,
+			'dateTo' => $dateTo,
+			'status' => $status,
+		]);
 		return view('admin.orders.index', compact('orders'));
 	}
 

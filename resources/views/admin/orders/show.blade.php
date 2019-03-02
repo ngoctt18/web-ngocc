@@ -41,10 +41,10 @@
 			</div>
 			<!-- /.col -->
 			<div class="col-sm-4 invoice-col">
-				<b>Invoice #00{{$order->id}}</b><br>
+				<b>Invoice DH00{{$order->id}}</b><br>
 				<br>
-				<b>Order ID:</b> 4F3S8J<br>
-				<b>Payment Due:</b> 2/22/2014<br>
+				<b>Order ID:</b> DH00{{$order->id}}<br>
+				<b>Ngày đặt:</b> 2/22/2014<br>
 				<b>Account:</b> 968-34567
 			</div>
 			<!-- /.col -->
@@ -61,7 +61,7 @@
 							<th>Sản phẩm</th>
 							<th>Số lượng</th>
 							<th>Đơn giá</th>
-							<th>Giảm giá</th>
+							{{-- <th>Giảm giá</th> --}}
 							<th>Thành tiền</th>
 						</tr>
 					</thead>
@@ -69,10 +69,13 @@
 						@foreach($order->orderDetails as $key => $detail)
 						<tr>
 							<td>{{$key+1}}</td>
-							<td>{{$detail->product->name}}</td>
+							<td>
+								<img src="{{$detail->product->ThumbProduct}}" alt="{{$detail->product->name}}" style=" width: 90px; height: auto; ">
+								 {{$detail->product->name}}
+							</td>
 							<td>{{$detail->quantity}}</td>
 							<td>{{number_format($detail->product->price,0,",",".")}} ₫</td>
-							<td>{{$detail->product->discount}}%</td>
+							{{-- <td>{{$detail->product->discount}}%</td> --}}
 							<td>{{number_format(($detail->quantity*$detail->product->price)-($detail->quantity*$detail->product->price*$detail->product->discount/100),0,",",".")}} ₫</td>
 						</tr>
 						@endforeach
@@ -100,21 +103,17 @@
 				<div class="table-responsive">
 					<table class="table">
 						<tr>
-							<th>Vận chuyển:</th>
+							<th>Tạm tính:</th>
+							<td>{{number_format($order->sum_money,0,",",".")}} ₫</td>
+						</tr>
+						<tr>
+							<th>Phí vận chuyển:</th>
 							<td>Free</td>
 						</tr>
 						<tr>
-							<th style="width:50%">Tổng tiền:</th>
-							<td>{{number_format($order->sum_money,0,",",".")}} ₫</td>
+							<th>Thành tiền:</th>
+							<th>{{number_format($order->sum_money,0,",",".")}} ₫</th>
 						</tr>
-						<!-- <tr>
-							<th>Tax (9.3%)</th>
-							<td>$10.34</td>
-						</tr> -->
-						<!-- <tr>
-							<th>Total:</th>
-							<td>$265.24</td>
-						</tr> -->
 					</table>
 				</div>
 			</div>
@@ -123,7 +122,7 @@
 		<!-- /.row -->
 
 		<!-- this row will not appear when printing -->
-		<div class="row no-print">
+		<!-- <div class="row no-print">
 			<div class="col-xs-12">
 				<a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
 				<button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
@@ -132,7 +131,7 @@
 					<i class="fa fa-download"></i> Generate PDF
 				</button>
 			</div>
-		</div>
+		</div> -->
 	</section>
 	<!-- /.content -->
 	<div class="clearfix"></div>

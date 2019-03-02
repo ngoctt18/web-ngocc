@@ -62,6 +62,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				@if (count($users))
 				@foreach($users as $user)
 				<tr role="row" class="align-middle">
 					<td>{{ index_row($users, $loop->index) }}</td>
@@ -71,6 +72,9 @@
 					<td>{{ str_limit($user->email, 22, '...') }}</td>
 					<td>{{ str_limit($user->address, 40, '...') }}</td>
 					<td>
+						{{-- @if ($user->verified == '0')
+						{{"Chưa kích hoạt"}}
+						@elseif ($user->verified == '1') --}}
 						@if($user->status == '0')
 						{{"Tạm dừng hoạt động"}}
 						@elseif($user->status == '1')
@@ -78,6 +82,7 @@
 						@elseif($user->status == '2')
 						{{"Dừng hoạt động"}}
 						@endif
+						{{-- @endif --}}
 					</td>
 					<td>{{$user->created_at->format('d/m/Y')}}</td>
 					<td>
@@ -86,6 +91,11 @@
 					</td>
 				</tr>
 				@endforeach
+				@else
+				<tr role="row" class="align-middle">
+					<td colspan="8" class="text-center">Không có khách hàng nào.</td>
+				</tr>
+				@endif
 			</tbody>
 		</table>
 	</div>

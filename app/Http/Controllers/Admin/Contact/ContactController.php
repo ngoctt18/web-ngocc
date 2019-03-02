@@ -9,9 +9,16 @@ use Session;
 
 class ContactController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
-		$contacts = Contact::latest()->paginate();
+		$name = $request->get('name', NULL);
+		$contacts = Contact::query();
+		if ($name != NULL) {
+			$contacts = $contacts->where('name', 'LIKE', '%'.$name.'%');
+		}
+		$contacts = $contacts->latest()->paginate()->appends([
+			'name' => $name,
+		]);
 		return view('admin.contacts.index', compact('contacts'));
 	}
 

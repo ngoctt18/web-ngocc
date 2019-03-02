@@ -8,6 +8,7 @@ use App\User;
 use App\Http\Requests\Admin\StoreUserRequest;
 use App\Http\Requests\Admin\UpdateUserRequest;
 use Session;
+use Carbon;
 
 class UserController extends Controller
 {
@@ -73,6 +74,14 @@ class UserController extends Controller
         // Update password nếu nó ko rỗng. còn ko thì ko động tới
 		if ($request->password_confirm != null) {
 			$user->update(['password' => $request->password_confirm]);
+		}
+		// Nếu chọn kích hoạt tài khoản
+		if ($request->verified == '1') {
+			$user->update([
+				'verified' => '1',
+				'verified_at' => now(),
+				'verification_code' => null,
+			]);
 		}
 		Session::flash('success', 'Cập nhật khách hàng thành công');
 		return redirect()->route('admin.users.index');

@@ -31,13 +31,17 @@ label.label-register { margin-top: 20px !important; }
 					<input type="text" name="username" id="username" class="form-control" placeholder="UserName"  autocapitalize="words" value="{{old('username')}}">
 					<label class="error">{{ $errors->first('username') }}</label>
 					
+					<label for="phone" class="label-register">Phone <span class="red">*</span></label>
+					<input type="text" name="phone" id="phone" placeholder="Phone" class="form-control "  autocorrect="off" autocapitalize="off" value="{{old('phone')}}">
+					<label class="error">{{ $errors->first('phone') }}</label>
+					
 					<label for="email" class="label-register">Email <span class="red">*</span></label>
 					<input type="email" name="email" id="email" placeholder="Email" class="form-control "  autocorrect="off" autocapitalize="off" value="{{old('email')}}">
 					<label class="error">{{ $errors->first('email') }}</label>
 					
-					<label for="phone" class="label-register">Phone <span class="red">*</span></label>
-					<input type="text" name="phone" id="phone" placeholder="Phone" class="form-control "  autocorrect="off" autocapitalize="off" value="{{old('phone')}}">
-					<label class="error">{{ $errors->first('phone') }}</label>
+					<label for="address" class="label-register">Địa chỉ <span class="red">*</span></label>
+					<input type="text" name="address" id="address" placeholder="Địa chỉ" class="form-control "  autocorrect="off" autocapitalize="off" value="{{old('address')}}">
+					<label class="error">{{ $errors->first('address') }}</label>
 					
 					<label for="password" class="label-register">Password <span class="red">*</span></label>
 					<input type="password" name="password" id="password" placeholder="Password" class="form-control ">
@@ -84,15 +88,19 @@ label.label-register { margin-top: 20px !important; }
 					_username: true,
 					minlength: 6
 				},
+				phone: {
+					required: true,
+					minlength: 10,
+					maxlength: 10,
+				},
 				email: {
 					required: true,
 					_email: true,
 					email: true,
 				},
-				phone: {
+				address: {
 					required: true,
-					minlength: 10,
-					maxlength: 10,
+					maxlength: 200,
 				},
 				password: {
 					required: true,
@@ -116,15 +124,19 @@ label.label-register { margin-top: 20px !important; }
 					_username: "UserName không đúng định dạng.",
 					minlength: "UserName lớn hơn 6 ký tự"
 				},
+				phone: {
+					required: "Số điện thoại không được để trống.",
+					minlength: "Số điện thoại lớn hơn 10 ký tự.",
+					maxlength: "Số điện thoại nhỏ hơn 10 ký tự.",
+				},
 				email: {
 					required: "Email không được để trống.",
 					_email: "Email không đúng định dạng.",
 					email: "Email không đúng định dạng.",
 				},
-				phone: {
-					required: "Số điện thoại không được để trống.",
-					minlength: "Số điện thoại lớn hơn 10 ký tự.",
-					maxlength: "Số điện thoại nhỏ hơn 10 ký tự.",
+				address: {
+					required: "Địa chỉ không được để trống.",
+					maxlength: "Địa chỉ nhỏ hơn 200 ký tự.",
 				},
 				password: {
 					required: "Mật khẩu không được để trống.",

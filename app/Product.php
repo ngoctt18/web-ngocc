@@ -52,6 +52,7 @@ class Product extends Model implements HasMedia
 		return  $thumb;
 	}
 
+
 	public function getThumbProductDetailsAttribute(){
 		$thumb = optional($this->getMedia('product_details'))->map(function (\Spatie\MediaLibrary\Models\Media $media) {
 			return $media->getFullUrl('thumb');

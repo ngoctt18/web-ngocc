@@ -52,6 +52,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				@if (count($catagoryTypes))
 				@foreach($catagoryTypes as $catagoryType)
 				<tr role="row" class="align-middle">
 					<td>{{ index_row($catagoryTypes, $loop->index) }}</td>
@@ -70,6 +71,11 @@
 					</td>
 				</tr>
 				@endforeach
+				@else
+				<tr role="row" class="align-middle">
+					<td colspan="5" class="text-center">Không có nhóm danh mục nào.</td>
+				</tr>
+				@endif
 			</tbody>
 		</table>
 	</div>

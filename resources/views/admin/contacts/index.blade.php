@@ -10,6 +10,22 @@
 <div class="box box-success">
 	<div class="box-header">
 		<h3 class="box-title"></h3>
+		<form action="" method="GET">
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="name">Tên khách hàng</label>
+					<input id="name" name="name" value="{{ old('name', request('name')) }}" type="text" class="form-control input-sm" placeholder="Tên khách hàng">
+				</div>
+				<div class="col-xs-3">
+				</div>
+				<div class="col-xs-3">
+				</div>
+				<div class="col-xs-2">
+					<label for="">&nbsp;</label>
+					<button type="submit" class="btn btn-block btn-info btn-sm">Tìm kiếm</button>
+				</div>
+			</div>
+		</form>
 	</div>
 	<!-- /.box-header -->
 	<div class="box-body">
@@ -26,6 +42,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				@if (count($contacts))
 				@foreach($contacts as $contact)
 				<tr role="row" class="align-middle">
 					<td>{{ index_row($contacts, $loop->index) }}</td>
@@ -40,6 +57,11 @@
 					</td>
 				</tr>
 				@endforeach
+				@else
+				<tr role="row" class="align-middle">
+					<td colspan="7" class="text-center">Không có lời nhắn nào.</td>
+				</tr>
+				@endif
 			</tbody>
 		</table>
 	</div>

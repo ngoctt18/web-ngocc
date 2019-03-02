@@ -3,7 +3,7 @@
 <head>
   @include('admin.partials.head')
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue fixed sidebar-mini">
   <div class="admin_loader"></div>
   <div class="wrapper">
     <!-- header -->

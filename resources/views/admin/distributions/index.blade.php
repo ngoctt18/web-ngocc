@@ -56,6 +56,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				@if (count($distributions))
 				@foreach($distributions as $distribute)
 				<tr role="row" class="align-middle">
 					<td>{{ index_row($distributions, $loop->index) }}</td>
@@ -63,7 +64,7 @@
 					<td>{{ str_limit($distribute->email, 22, '...') }}</td>
 					<td>{{$distribute->phone}}</td>
 					<td>{{ str_limit($distribute->address, 40, '...') }}</td>
-					<td>{{ str_limit($distribute->description, 40, '...') }}</td>
+					<td>{{ str_limit(strip_tags(html_entity_decode($distribute->description)), 40, '...') }}</td>
 					<td>
 						@if($distribute->status == '0')
 						{{"Tạm dừng hoạt động"}}
@@ -80,6 +81,11 @@
 					</td>
 				</tr>
 				@endforeach
+				@else
+				<tr role="row" class="align-middle">
+					<td colspan="9" class="text-center">Không có nhà phân phối nào.</td>
+				</tr>
+				@endif
 			</tbody>
 		</table>
 	</div>

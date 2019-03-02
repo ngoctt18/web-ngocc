@@ -115,7 +115,7 @@ class LoginController extends Controller
         $user->save();
 
         Session::flash('confirmRegistered', 'XÁC NHẬN EMAIL THÀNH CÔNG. ');
-        return view('website.auth.registered', compact('total','news_popular','catagoriesTypes'));
+        return view('website.auth.confirmed', compact('total','news_popular','catagoriesTypes'));
     }
 
     public function signUpEmail(Request $request)

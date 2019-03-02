@@ -73,6 +73,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				@if (count($news))
 				@foreach($news as $item)
 				<tr role="row" class="align-middle">
 					<td>{{ index_row($news, $loop->index) }}</td>
@@ -103,6 +104,11 @@
 					</td>
 				</tr>
 				@endforeach
+				@else
+				<tr role="row" class="align-middle">
+					<td colspan="9" class="text-center">Không có bài viết nào.</td>
+				</tr>
+				@endif
 			</tbody>
 		</table>
 	</div>
