@@ -5,7 +5,7 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
 {{-- <link href='{{ asset('http://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,300,300italic') }}' rel='stylesheet' type='text/css'> --}}
-<link rel="stylesheet" href="{{ asset('css/font.css') }}">
+<link rel="stylesheet" href="{{ asset('css/font_website.css') }}">
 <link href="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/fonts.scss2946.css?14233272639774211042') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/ajaxify.scss2946.css?14233272639774211042') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/animate2946.css?14233272639774211042') }}" rel="stylesheet" type="text/css" media="all" />

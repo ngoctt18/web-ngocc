@@ -17,7 +17,7 @@
                                     <div id="map-canvas" class="gmap" style="min-height:120px; width:100%; height: 100%;"></div>
                                  </div>
                               </div>
-                              <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true&amp;amp;region=US"></script>
+                              {{-- <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true&amp;amp;region=US"></script> --}}
                            </div>
                         </div>
                      </section>
