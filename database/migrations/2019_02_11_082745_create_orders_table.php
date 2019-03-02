@@ -19,8 +19,8 @@ class CreateOrdersTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('address');
-            $table->date('input_date');
-            $table->date('delivery_date')->nullable();
+            $table->timestamp('input_date');
+            $table->timestamp('delivery_date')->nullable();
             $table->unsignedInteger('sum_money');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

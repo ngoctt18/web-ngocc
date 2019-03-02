@@ -30,7 +30,7 @@ class NewsController extends Controller
 		if ($status != NULL) {
 			$news = $news->where('status', $status);
 		}
-		$news = $news->latest()->paginate()->appends([
+		$news = $news->where('author_id', Auth::id())->latest()->paginate()->appends([
 			'title' => $title,
 			'tag_id' => $tag_id,
 			'status' => $status,
@@ -125,7 +125,7 @@ class NewsController extends Controller
 		if ($status != NULL) {
 			$news = $news->where('status', $status);
 		}
-		$news = $news->onlyTrashed()->latest()->paginate()->appends([
+		$news = $news->where('author_id', Auth::id())->onlyTrashed()->latest()->paginate()->appends([
 			'title' => $title,
 			'tag_id' => $tag_id,
 			'status' => $status,

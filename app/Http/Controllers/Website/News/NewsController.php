@@ -70,10 +70,10 @@ class NewsController extends Controller
 	{
 		$news = News::findOrFail($id);
 		// count view
-		$sessionView = Session::get('count_views_'.$news->id);
+		$newsView = Session::get('news_views_'.$news->id);
 		// nếu chưa có session
-		if (!$sessionView) { 
-			Session::put('count_views_'.$news->id, 1); // Tạo, Set giá trị cho session
+		if (!$newsView) { 
+			Session::put('news_views_'.$news->id, 1); // Tạo, Set giá trị cho session
 			$news->increment('count_views'); // Tăng lần view lên 
 		}
 		// Event::fire('news.view', $news);
@@ -88,6 +88,7 @@ class NewsController extends Controller
 			return $q->whereIn('name', $news->tags->pluck('name')); 
 		})
 		->where('id', '!=', $id) // So you won't fetch same post
+		->latest()
 		->take(5)
 		->get();
 

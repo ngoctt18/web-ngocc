@@ -56,6 +56,14 @@ class WebsiteController extends Controller
 		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$breadcrumb = $product;
 
+		// count view
+		$productView = Session::get('product_views_'.$product->id);
+		// nếu chưa có session
+		if (!$productView) { 
+			Session::put('product_views_'.$product->id, 1); // Tạo, Set giá trị cho session
+			$product->increment('count_views'); // Tăng lần view lên 
+		}
+
 		return view('website.product.product_detail', compact('product','catagories','productsRelate','catagoriesTypes','breadcrumb','contents','total','news_popular','inWishlist'));
 	}
 

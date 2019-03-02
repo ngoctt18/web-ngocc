@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Thông tin chi tết đơn hàng')
+@section('title', 'Thông tin chi tết đơn hàng DH00'.$order->id)
 
 @section('content')
 
@@ -13,39 +13,92 @@
 			<div class="col-xs-12">
 				<h2 class="page-header">
 					<i class="fa fa-globe"></i> Invoice
-					<small class="pull-right">Date: {{$order->created_at->format('d/m/Y')}}</small>
+					<small class="pull-right">Date: {{$order->input_date->format('d/m/Y')}}</small>
 				</h2>
 			</div>
 			<!-- /.col -->
 		</div>
+		
 		<!-- info row -->
 		<div class="row invoice-info">
 			<div class="col-sm-4 invoice-col">
-				Người đặt
-				<address>
-					<strong>{{$order->user->name}}</strong><br>
-					<strong>Email: </strong>{{$order->user->email}}<br>
-					<strong>Điện thoại: </strong>{{$order->user->phone}}<br>
-					<strong>Địa chỉ: </strong>{{$order->user->address}}<br>
-				</address>
+				<table class="table table-bordred table-striped">
+					<thead>
+						<tr>
+							<th colspan="2">Người đặt</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Họ tên: </th>
+							<td>{{$order->user->name}}</td>
+						</tr>
+						<tr>
+							<th>Email: </th>
+							<td>{{$order->user->email}}</td>
+						</tr>
+						<tr>
+							<th>Điện thoại: </th>
+							<td>{{$order->user->phone}}</td>
+						</tr>
+						<tr>
+							<th>Địa chỉ: </th>
+							<td>{{$order->user->address}}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<!-- /.col -->
 			<div class="col-sm-4 invoice-col">
-				Người nhận
-				<address>
-					<strong>{{$order->name}}</strong><br>
-					<strong>Email: </strong>{{$order->email}}<br>
-					<strong>Điện thoại: </strong>{{$order->phone}}<br>
-					<strong>Địa chỉ: </strong>{{$order->address}}<br>
-				</address>
+				<table class="table table-bordred table-striped">
+					<thead>
+						<tr>
+							<th colspan="2">Người nhận</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Họ tên: </th>
+							<td>{{$order->name}}</td>
+						</tr>
+						<tr>
+							<th>Email: </th>
+							<td>{{$order->email}}</td>
+						</tr>
+						<tr>
+							<th>Điện thoại: </th>
+							<td>{{$order->phone}}</td>
+						</tr>
+						<tr>
+							<th>Địa chỉ: </th>
+							<td>{{$order->address}}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<!-- /.col -->
 			<div class="col-sm-4 invoice-col">
-				<b>Invoice DH00{{$order->id}}</b><br>
-				<br>
-				<b>Order ID:</b> DH00{{$order->id}}<br>
-				<b>Ngày đặt:</b> 2/22/2014<br>
-				<b>Account:</b> 968-34567
+				<table class="table table-bordred table-striped">
+					<thead>
+						<tr>
+							<th colspan="2">Invoice DH00{{$order->id}}</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Order ID: </th>
+							<td>DH00{{$order->id}}</td>
+						</tr>
+						<tr>
+							<th>Ngày đặt: </th>
+							<td>{{$order->input_date->format('d/m/Y')}}</td>
+						</tr>
+						<tr>
+							<th>Account: </th>
+							<td>968-34567</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<!-- /.col -->
 		</div>
@@ -58,6 +111,7 @@
 					<thead>
 						<tr>
 							<th>#</th>
+							<th>Hình ảnh</th>
 							<th>Sản phẩm</th>
 							<th>Số lượng</th>
 							<th>Đơn giá</th>
@@ -71,7 +125,9 @@
 							<td>{{$key+1}}</td>
 							<td>
 								<img src="{{$detail->product->ThumbProduct}}" alt="{{$detail->product->name}}" style=" width: 90px; height: auto; ">
-								 {{$detail->product->name}}
+							</td>
+							<td>
+								{{$detail->product->name}}
 							</td>
 							<td>{{$detail->quantity}}</td>
 							<td>{{number_format($detail->product->price,0,",",".")}} ₫</td>
@@ -89,12 +145,44 @@
 		<div class="row">
 			<!-- accepted payments column -->
 			<div class="col-xs-6">
-				<p class="lead">Phương thức thanh toán:</p>
-				<img src="../../dist/img/credit/visa.png" alt="Visa">
-				<img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-				<img src="../../dist/img/credit/american-express.png" alt="American Express">
-				<img src="../../dist/img/credit/paypal2.png" alt="Paypal">
-
+				<table class="table table-bordred table-striped">
+					<thead>
+					</thead>
+					<tbody>
+						<tr>
+							<th><span class="{{-- lead --}}">Lưu ý: </span></th>
+							<td>{{$order->note}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="row">
+					<form action="{{ route('admin.orders.update', [$order->id]) }}" method="POST">
+						@csrf @method('PUT')
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="status">Trạng thái</label>
+								<select class="form-control" name="status" id="status">
+									<option value="0" {{old('status', $order->status) == '0' ? 'selected' : ''}}>Chờ xử lý</option>
+									<option value="1" {{old('status', $order->status) == '1' ? 'selected' : ''}}>Đang vận chuyển</option>
+									<option value="2" {{old('status', $order->status) == '2' ? 'selected' : ''}}>Vận chuyển thành công</option>
+									<option value="3" {{old('status', $order->status) == '3' ? 'selected' : ''}}>Vận chuyển thất bại</option>
+								</select>
+								<small class="text-danger">{{ $errors->first('status') }}</small>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="">&nbsp;</label> <br>
+								<button type="submit" class="btn btn-info">Cập nhật trạng thái</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<br>
+				<img src="{{ asset('dist/img/credit/visa.png') }}" alt="Visa">
+				<img src="{{ asset('dist/img/credit/mastercard.png') }}" alt="Mastercard">
+				<img src="{{ asset('dist/img/credit/american-express.png') }}" alt="American Express">
+				<img src="{{ asset('dist/img/credit/paypal2.png') }}" alt="Paypal">
 			</div>
 			<!-- /.col -->
 			<div class="col-xs-6">

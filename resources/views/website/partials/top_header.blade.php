@@ -40,7 +40,7 @@
                   </li>
                   @if(Auth::check())
                   <li>
-                     <a class="account" href="#" title="{{Auth::user()->name}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a>
+                     <a class="account" href="{{ route('web.users', ['username' => Auth::user()->username]) }}" title="{{Auth::user()->name}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a>
                   </li>
                   <li>
                      <a class="account" href="{{ route('web.logout') }}" title="Logout">

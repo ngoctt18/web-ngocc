@@ -34,6 +34,7 @@ class CreateProductsTable extends Migration
             // 0: hết hàng, 1: còn hàng
             // Số lượt mua hàng
             $table->unsignedInteger('count_buys')->default(0);
+            $table->unsignedInteger('count_views')->default(0);
             $table->timestamps();
         });
     }

@@ -40,23 +40,16 @@ class OrderController extends Controller
 		return view('admin.orders.index', compact('orders'));
 	}
 
-	public function edit(Order $order)
-	{
-		return view('admin.orders.edit', compact('order'));
-	}
-
 	public function show(Order $order)
 	{
 		return view('admin.orders.show', compact('order'));
 	}
 
-	public function update(UpdateDistributeRequest $request, Order $order)
+	public function update(Request $request, Order $order)
 	{
-		$data = $request->all();
-		// dd($data);
-		$order->update($data);
-		Session::flash('success', 'Cập nhật đơn hàng thành công');
-		return redirect()->route('admin.orders.index');
+		$order->update($request->all());
+		Session::flash('success', 'Cập nhật trạng thái đơn hàng thành công');
+		return redirect()->back();
 	}
 
 	public function destroy(Order $order)

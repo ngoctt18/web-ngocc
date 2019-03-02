@@ -11,16 +11,13 @@
 |
 */
 
-
-
-
-
 Route::middleware(['auth:web'])->group(function(){
 	Route::middleware(['checkCartEmpty'])->group(function(){
 		Route::get('checkout', 'ShoppingController@checkout')->name('checkout');
 		Route::post('checkout', 'ShoppingController@storeCheckout')->name('checkout.store');
 	});
 
+	Route::get('users/{username}', 'Auth\UserController@index')->name('users');
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 });
 
@@ -71,4 +68,7 @@ Route::get('news/author/{username}', 'News\NewsController@author')->name('news.a
 
 Route::get('search', 'Search\SearchController@index')->name('search');
 Route::get('autocomplete', 'Search\SearchController@autocomplete')->name('search.autocomplete');
+
+
+
 

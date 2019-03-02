@@ -32,7 +32,7 @@ span.err_dateTo { color: #d00202; font-size: 12px; }
 							<div class="input-group-addon">
 								<i class="fa fa-calendar"></i>
 							</div>
-							<input name="dateFrom" type="text" class="form-control pull-right input-sm" id="datepickerFrom" value="{{request('dateFrom')}}">
+							<input name="dateFrom" type="text" class="form-control pull-right input-sm" id="datepickerFrom" value="{{request('dateFrom')}}" placeholder="dd/mm/YYYY">
 						</div>
 						<!-- /.input group -->
 					</div>
@@ -44,7 +44,7 @@ span.err_dateTo { color: #d00202; font-size: 12px; }
 							<div class="input-group-addon">
 								<i class="fa fa-calendar"></i>
 							</div>
-							<input name="dateTo" type="text" class="form-control pull-right input-sm" id="datepickerTo" value="{{request('dateTo')}}">
+							<input name="dateTo" type="text" class="form-control pull-right input-sm" id="datepickerTo" value="{{request('dateTo')}}" placeholder="dd/mm/YYYY">
 						</div>
 						<span class="err_dateTo"></span>
 						<!-- /.input group -->
@@ -91,7 +91,7 @@ span.err_dateTo { color: #d00202; font-size: 12px; }
 					<td>{{str_limit($order->address, 100, '...')}}</td>
 					<td>{{$order->phone}}</td>
 					<td>{{number_format($order->sum_money,0,",",".")}} ₫</td>
-					<td>{{$order->created_at->format('d/m/Y')}}</td>
+					<td>{{$order->input_date->format('d/m/Y')}}</td>
 					<td>
 						@if($order->status == '0')
 						{{"Chờ xử lý"}}

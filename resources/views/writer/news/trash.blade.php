@@ -55,7 +55,7 @@
 					<th>#</th>
 					<th>Tiêu đề</th>
 					<th>Nội dung</th>
-					<th>Người đăng</th>
+					{{-- <th>Người đăng</th> --}}
 					<th>Tags</th>
 					<th>View</th>
 					<th>Trạng thái</th>
@@ -70,7 +70,7 @@
 					<td>{{ index_row($news, $loop->index) }}</td>
 					<td>{{ str_limit($item->title, 70, '...') }}</td>
 					<td>{{ str_limit(strip_tags(html_entity_decode($item->content)), 100, '...') }}</td>
-					<td>{{ $item->author->username ?? 'Admin' }}</td>
+					{{-- <td>{{ $item->author->username ?? 'Admin' }}</td> --}}
 					<td>
 						@foreach ($item->tags as $tag)
 						{{$tag->name}}

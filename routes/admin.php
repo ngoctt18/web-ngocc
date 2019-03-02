@@ -32,7 +32,7 @@ Route::middleware(['auth:admin'])->group(function(){
 	// Upload một file ảnh lên thư mục tạm trên server.
 	Route::post('uploadImage', 'Product\ProductController@uploadImage')->name('uploadImage');
 	Route::resource('users', 'User\UserController');
-	Route::resource('orders', 'Order\OrderController')->except(['create','store']);
+	Route::resource('orders', 'Order\OrderController')->except(['create','store','edit']);
 	Route::resource('contacts', 'Contact\ContactController')->only(['index','destroy']);
 	Route::post('contacts-detail', 'Contact\ContactController@contactDetail')->name('contact_detail');
 

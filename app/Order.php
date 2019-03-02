@@ -13,6 +13,11 @@ class Order extends Model
 	];
 
 	public $timestamps = true;
+	
+	protected $dates = [
+		'input_date',
+		'delivery_date',
+	];
 
 	public function user(){
 		return $this->belongsTo(User::class, 'user_id', 'id')->withDefault();

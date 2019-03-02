@@ -34,6 +34,12 @@ class User extends Authenticatable implements HasMedia
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public $timestamps = true;
+    
+    protected $dates = [
+        'verified_at',
+    ];
     
     // Defining A Mutator
     public function setPasswordAttribute($value){
