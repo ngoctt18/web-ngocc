@@ -58,7 +58,7 @@ class LoginController extends Controller
         // dd($loginInfo);
         if (Auth::guard('writer')->attempt($loginInfo, $request->input('remember', false))) {
             Session::flash('success', 'Đăng nhập thành công.');
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('writer.dashboard');
         }
         // return back()->withInput($request->only('email', 'remember'));
     }
@@ -83,6 +83,6 @@ class LoginController extends Controller
             'password' => $request->re_password,
         ]);
         Session::flash('success', 'Thay đổi mật khẩu thành công!');
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('writer.dashboard');
     }
 }

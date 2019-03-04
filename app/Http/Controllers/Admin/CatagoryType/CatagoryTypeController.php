@@ -41,7 +41,7 @@ class CatagoryTypeController extends Controller
 		$data['slug'] = $request->name;
 		// dd($data);
 		CatagoriesType::create($data);
-		Session::flash('success', 'Tạo loại danh mục thành công');
+		Session::flash('success', 'Tạo nhóm danh mục thành công');
 		return redirect()->route('admin.catagory-types.index');
 	}
 
@@ -56,14 +56,14 @@ class CatagoryTypeController extends Controller
 		$data['slug'] = $request->name;
 		// dd($data);
 		$catagoryType->update($data);
-		Session::flash('success', 'Cập nhật loại danh mục thành công');
+		Session::flash('success', 'Cập nhật nhóm danh mục thành công');
 		return redirect()->route('admin.catagory-types.index');
 	}
 
 	public function destroy(CatagoriesType $catagoryType)
 	{
 		$catagoryType->delete();
-		Session::flash('success', 'Xoá loại danh mục thành công');
+		Session::flash('success', 'Xoá nhóm danh mục thành công');
 		return redirect()->route('admin.catagory-types.index');
 	}
 }

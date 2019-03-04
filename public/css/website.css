@@ -25,4 +25,5 @@ ul.pagination-sm { margin: 10px !important; }
 .price_checked a:before { content: "\f046" !important; color: #59bd56 !important; }
 .price_checked a { color: #59bd56 !important; }
 
-h1, h2, h3, h4, h5 { font-family: tahoma !important; }
+h1, h2, h3, h4, h5 { font-family: tahoma !important;}
+.slide-caption h3 {font-family: Brandon !important;}

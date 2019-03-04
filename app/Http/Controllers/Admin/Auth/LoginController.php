@@ -65,7 +65,7 @@ class LoginController extends Controller
         ];
         if (Auth::guard('admin')->attempt($loginInfo, $request->input('remember', false))) {
             Session::flash('success', 'Đăng nhập thành công.');
-            return redirect()->back();
+            return redirect()->route('admin.dashboard');
         }
         return back()->withInput($request->only('phone', 'remember'));
     }
