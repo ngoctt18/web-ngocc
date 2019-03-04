@@ -114,6 +114,8 @@ class ShoppingController extends Controller
 					$thatProduct->update(['count_buys' => $newQty]);
 					OrderDetail::create([
 						'quantity' => $item->qty, 
+						'price' => $item->model->price,
+						'discount' => $item->model->discount,
 						'product_id' => $item->id, 
 						'order_id' => $order->id, 
 					]);
@@ -200,18 +202,18 @@ class ShoppingController extends Controller
 	// storeCartByUser in database
 	public function storeCartByUser()
 	{
-		if (Auth::check()) {
-			DB::table('shoppingcart')->where('identifier', Auth::user()->email)->delete();
-			Cart::instance('default')->store(Auth::user()->email);
-		}
+		// if (Auth::check()) {
+		// 	DB::table('shoppingcart')->where('identifier', Auth::user()->email)->delete();
+		// 	Cart::instance('default')->store(Auth::user()->email);
+		// }
 	}
 
 	// storeWishlistByUser in database
 	public function storeWishlistByUser()
 	{
-		if (Auth::check()) {
-			DB::table('shoppingcart')->where('identifier', 'wishlist_'.Auth::user()->email)->delete();
-			Cart::instance('wishlist')->store('wishlist_'.Auth::user()->email);
-		}
+		// if (Auth::check()) {
+		// 	DB::table('shoppingcart')->where('identifier', 'wishlist_'.Auth::user()->email)->delete();
+		// 	Cart::instance('wishlist')->store('wishlist_'.Auth::user()->email);
+		// }
 	}
 }

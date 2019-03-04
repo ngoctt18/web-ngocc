@@ -100,6 +100,7 @@ label.label-register { margin-top: 20px !important; }
 				},
 				address: {
 					required: true,
+					minlength: 20,
 					maxlength: 200,
 				},
 				password: {
@@ -136,6 +137,7 @@ label.label-register { margin-top: 20px !important; }
 				},
 				address: {
 					required: "Địa chỉ không được để trống.",
+					minlength: "Địa chỉ lớn hơn 20 ký tự.",
 					maxlength: "Địa chỉ nhỏ hơn 200 ký tự.",
 				},
 				password: {

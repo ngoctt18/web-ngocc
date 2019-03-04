@@ -12,7 +12,7 @@
                   <div class="blog-item item col-md-12 col-xs-12 col-sp-12">
                      <div class="media-body clearfix">
                         <div class="image">
-                           <img src="{{ $news->ImageNews??asset('cdn.shopify.com/s/files/1/0928/4804/files/b1_medium693b.jpg?11360329962432831771') }}" title="{{ $news->title }}" class="img-responsive replace-2x" alt="{{ $news->title }}" />
+                           <img src="{{ $news->ThumbNews??asset('cdn.shopify.com/s/files/1/0928/4804/files/b1_medium693b.jpg?11360329962432831771') }}" title="{{ $news->title }}" class="img-responsive replace-2x" alt="{{ $news->title }}" />
                         </div>
                         <div class="blog-meta">
                         </div>

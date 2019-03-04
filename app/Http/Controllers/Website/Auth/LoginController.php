@@ -53,12 +53,12 @@ class LoginController extends Controller
 		// return $loginInfo;
     	if (Auth::attempt($loginInfo, $request->input('remember', false))) {
             // Khôi phục giỏ hàng của user
-            Cart::instance('default')->restore(Auth::user()->email);
-            Cart::instance('wishlist')->restore('wishlist_'.Auth::user()->email);
+            // Cart::instance('default')->restore(Auth::user()->email);
+            // Cart::instance('wishlist')->restore('wishlist_'.Auth::user()->email);
 
             // Lưu luôn các instance vào db
-            Cart::instance('default')->store(Auth::user()->email);
-            Cart::instance('wishlist')->store('wishlist_'.Auth::user()->email);
+            // Cart::instance('default')->store(Auth::user()->email);
+            // Cart::instance('wishlist')->store('wishlist_'.Auth::user()->email);
 
             Session::flash('success', 'Đăng nhập thành công.');
             return redirect()->back();

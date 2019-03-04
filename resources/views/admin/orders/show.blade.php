@@ -115,7 +115,7 @@
 							<th>Sản phẩm</th>
 							<th>Số lượng</th>
 							<th>Đơn giá</th>
-							{{-- <th>Giảm giá</th> --}}
+							<th>Giảm giá</th>
 							<th>Thành tiền</th>
 						</tr>
 					</thead>
@@ -130,9 +130,9 @@
 								{{$detail->product->name}}
 							</td>
 							<td>{{$detail->quantity}}</td>
-							<td>{{number_format($detail->product->price,0,",",".")}} ₫</td>
-							{{-- <td>{{$detail->product->discount}}%</td> --}}
-							<td>{{number_format(($detail->quantity*$detail->product->price)-($detail->quantity*$detail->product->price*$detail->product->discount/100),0,",",".")}} ₫</td>
+							<td>{{number_format($detail->price,0,",",".")}} ₫</td>
+							<td>{{$detail->discount}}%</td>
+							<td>{{number_format(($detail->quantity*$detail->price)-($detail->quantity*$detail->price*$detail->discount/100),0,",",".")}} ₫</td>
 						</tr>
 						@endforeach
 					</tbody>

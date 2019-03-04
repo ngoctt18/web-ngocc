@@ -54,7 +54,7 @@ class UserController extends Controller
 		if($request->hasFile('avatar')){
 			$user->addMediaFromRequest('avatar')->toMediaCollection('user_avatar');
 		}
-		Session::flash('success', 'Tạo khách hàng thành công');
+		Session::flash('success', 'Tạo khách hàng thành công.');
 		return redirect()->route('admin.users.index');
 	}
 
@@ -83,14 +83,14 @@ class UserController extends Controller
 				'verification_code' => null,
 			]);
 		}
-		Session::flash('success', 'Cập nhật khách hàng thành công');
+		Session::flash('success', 'Cập nhật khách hàng thành công.');
 		return redirect()->route('admin.users.index');
 	}
 
 	public function destroy(User $user)
 	{
 		$user->delete();
-		Session::flash('success', 'Xoá khách hàng thành công');
+		Session::flash('success', 'Xoá khách hàng thành công.');
 		return redirect()->route('admin.users.index');
 	}
 }

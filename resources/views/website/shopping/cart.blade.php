@@ -107,7 +107,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 							</div>
 							<div class="cpro_item col-xs-12 col-sm-1 col-md-1">
 								<div class="cpro_item_inner">
-									<a href="{{ route('web.del_item',['id'=>$item->rowId]) }}" class="cart__remove" data-id="4214855428">
+									<a href="{{ route('web.del_item',['id'=>$item->rowId]) }}" class="cart__remove" data-id="4214855428" onclick="return confirm('Bạn có muộn xóa sản phẩm này?')">
 										<small>Remove</small>
 									</a>
 								</div>
