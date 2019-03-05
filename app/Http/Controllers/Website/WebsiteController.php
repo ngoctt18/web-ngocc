@@ -25,7 +25,7 @@ class WebsiteController extends Controller
 
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$catagories = Catagory::where('status', '1')->get();
-		$products = Product::where('status', '1')->inRandomOrder()->take(6)->get();
+		$products = Product::where('status', '1')->latest()->take(6)->get();
 		$productsSpecial = Product::where('status', '1')->orderBy('discount','DESC')->take(4)->get();
 		$productsNew = Product::where('status', '1')->orderBy('count_buys','DESC')->take(8)->get();
 		
@@ -146,6 +146,17 @@ class WebsiteController extends Controller
 		$breadcrumb = 'Best Discount';
 
 		return view('website.pages.best-discount', compact('total','catagoriesTypes','breadcrumb','news_popular','products'));
+	}
+
+	public function latestProduct()
+	{
+		$total = Cart::subtotal(0,'','.');
+		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+		$products = Product::where('status', '1')->latest()->take(9)->get();
+		$breadcrumb = 'Best Discount';
+
+		return view('website.pages.latest-product', compact('total','catagoriesTypes','breadcrumb','news_popular','products'));
 	}
 
 	

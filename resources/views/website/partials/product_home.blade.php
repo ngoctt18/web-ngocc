@@ -2,7 +2,7 @@
     <div class="col-xs-12 col-sm-12">
         <div id="productlist02" class="products_block exclusive block" >
             <h4 class="page-subheading ">
-                FEATURED PRODUCTS
+                <a href="{{ route('web.latest_product') }}">Sản phẩm mới nhất</a>
             </h4>
             <div class="block_content">
                 <div class="carousel slide" id="product_list_0002">

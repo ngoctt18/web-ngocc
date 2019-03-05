@@ -45,6 +45,7 @@ Route::get('catagories/{id}/{name}', 'WebsiteController@Catagories')->name('cata
 Route::get('distribute/{id}/{name}', 'WebsiteController@Distribute')->name('distribute');
 Route::get('best-seller', 'WebsiteController@bestSeller')->name('best_seller');
 Route::get('best-discount', 'WebsiteController@bestDiscount')->name('best_discount');
+Route::get('latest-product', 'WebsiteController@latestProduct')->name('latest_product');
 
 
 Route::post('add-to-cart/{id}/{name}', 'ShoppingController@addToCart')->name('add_cart');
