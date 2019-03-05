@@ -22,7 +22,7 @@
                         <span class="cart-title">Shopping cart</span>
                         <span id="CartCount">{{Cart::instance('default')->count()}}</span>
                         <span>items - </span>
-                        <span id="CartCost"><span class='money'>{{Cart::instance('default')->subtotal(0,'','.')}}₫</span></span>
+                        <span id="CartMoney"><span class='money'>{{Cart::instance('default')->subtotal(0,'','.')}}₫</span></span>
                      </div>
                   </a>
                </div>

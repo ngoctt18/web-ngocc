@@ -54,10 +54,11 @@ span.err_dateTo { color: #d00202; font-size: 12px; }
 					<label for="status">Trạng thái</label>
 					<select id="status" class="form-control input-sm" name="status">
 						<option value="">Chọn trạng thái</option>
-						<option value="0" {{old('status', request('status')) == '0' ? 'selected' : ''}}>Xử lý</option>
-						<option value="1" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Đang vận chuyển</option>
-						<option value="2" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Thành công</option>
-						<option value="3" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Không thành công</option>
+						<option value="0" {{old('status', request('status')) == '0' ? 'selected' : ''}}>Đang chờ xử lý</option>
+						<option value="1" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Đang giao hàng</option>
+						<option value="2" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Giao hàng thành công</option>
+						<option value="3" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Giao hàng thất bại</option>
+						<option value="3" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Đã hủy</option>
 					</select>
 				</div>
 				<div class="col-xs-2">
@@ -86,7 +87,7 @@ span.err_dateTo { color: #d00202; font-size: 12px; }
 				@if (count($orders))
 				@foreach($orders as $order)
 				<tr role="row" class="align-middle">
-					<td><a href="{{ route('admin.orders.show', ['id' => $order->id], false) }}" class="">DH00{{$order->id}}</a></td>
+					<td><a href="{{ route('admin.orders.show', ['id' => $order->id], false) }}" class="">#DH00{{$order->id}}</a></td>
 					<td>{{$order->name}}</td>
 					<td>{{str_limit($order->address, 100, '...')}}</td>
 					<td>{{$order->phone}}</td>
@@ -94,13 +95,15 @@ span.err_dateTo { color: #d00202; font-size: 12px; }
 					<td>{{$order->input_date->format('d/m/Y')}}</td>
 					<td>
 						@if($order->status == '0')
-						{{"Chờ xử lý"}}
+						{{"Đang chờ xử lý"}}
 						@elseif($order->status == '1')
-						{{"Đang vận chuyển"}}
+						{{"Đang giao hàng"}}
 						@elseif($order->status == '2')
-						{{"Vận chuyển thành công"}}
+						{{"Giao hàng thành công"}}
 						@elseif($order->status == '3')
-						{{"Vận chuyển thất bại"}}
+						{{"Giao hàng thất bại"}}
+						@elseif($order->status == '4')
+						{{"Đã hủy"}}
 						@endif
 					</td>
 					<td>

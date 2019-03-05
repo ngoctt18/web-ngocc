@@ -36,6 +36,8 @@ input.custom-file-input {
 .custom-file-input:active::before {
 	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
+.blockPassword {transition: 0.1s; display: none;}
+
 </style>
 @endsection
 
@@ -76,15 +78,20 @@ input.custom-file-input {
 					<label class="error">{{ $errors->first('address') }}</label>
 					<br>
 
-					<label for="password" class="label-register">Password <span class="red">*</span></label>
-					<input type="password" name="password" id="password" placeholder="Password" class="form-control ">
-					<label class="error">{{ $errors->first('password') }}</label>
+					<input type="checkbox" id="chkChangePassword"> <label for="chkChangePassword" class="label-register">Thay đổi mật khẩu </label>
+					<br>
+					<div class="blockPassword">
+						<label for="password" class="label-register">Password <span class="red">*</span></label>
+						<input type="password" name="password" id="password" placeholder="Password" class="form-control ">
+						<label class="error">{{ $errors->first('password') }}</label>
+						<br>
+
+						<label for="password_confirm" class="label-register">Password Confirm <span class="red">*</span></label>
+						<input type="password" name="password_confirm" id="password_confirm" placeholder="Password Confirm" class="form-control ">
+						<label class="error">{{ $errors->first('password_confirm') }}</label>
+					</div>
 					<br>
 
-					<label for="password_confirm" class="label-register">Password Confirm <span class="red">*</span></label>
-					<input type="password" name="password_confirm" id="password_confirm" placeholder="Password Confirm" class="form-control ">
-					<label class="error">{{ $errors->first('password_confirm') }}</label>
-					<br>
 
 					<p class="marT25">
 						<input type="submit" value="Cập nhật" class="btn btn-warning">
@@ -135,6 +142,10 @@ input.custom-file-input {
 			e.wrap('<form>').parent('form').trigger('reset');
 			e.unwrap();
 		}
+
+		$('#chkChangePassword').click(function(){
+			$('.blockPassword').slideToggle();
+		});
 		
 		$("#formUpdateInfoUser").validate({
 			rules: {

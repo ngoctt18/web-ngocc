@@ -21,6 +21,7 @@ Route::middleware(['auth:web'])->group(function(){
 	Route::put('users/{username}', 'Auth\UserController@postUpdateInfo')->name('post_update_info');
 	Route::get('users/{username}/orders', 'Auth\UserController@orders')->name('orders');
 	Route::get('users/{username}/orders-detail/{order_id}', 'Auth\UserController@ordersDetail')->name('orders_detail');
+	Route::put('users/{username}/orders-detail/{order_id}/cancel', 'Auth\UserController@ordersCancel')->name('orders_cancel');
 	Route::get('users/{username}/address', 'Auth\UserController@address')->name('address');
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 });

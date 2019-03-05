@@ -40,7 +40,7 @@ li.parent.dropdown.active > a { color: #59bd56; }
 													</span>
 												</a>
 											</li>
-											<li class="parent dropdown @if (Route::currentRouteName() == 'web.orders') {{" active"}} @endif">
+											<li class="parent dropdown @if (Route::currentRouteName() == 'web.orders' || Route::currentRouteName() == 'web.orders_detail') {{" active"}} @endif">
 												<a href="{{ route('web.orders', [$user->username]) }}" title="Quản lý đơn hàng">
 													<span class="menu-icon has-icon menu-icon-2">
 														<span class="menu-title">Quản lý đơn hàng</span>

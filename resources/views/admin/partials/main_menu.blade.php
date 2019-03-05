@@ -18,8 +18,11 @@ $menus_admin = [
         'type' => 'multi', 'name' => 'Quản lý đơn hàng', 'icon' => 'fa fa-cart-plus',
         'children' => [
             ['type' => 'single', 'route' => 'admin.orders.index', 'icon' => '', 'name' => 'Danh sách đơn hàng'],
-            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Danh sách '],
-            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Thiết lập '],
+            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đơn chờ xử lý'],
+            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đơn đang giao'],
+            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đơn giao thành công'],
+            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đơn giao thất bại'],
+            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đơn đã hủy'],
         ]
     ],
     ['type' => 'single', 'route' => 'admin.contacts.index', 'icon' => 'fa fa-commenting-o', 'name' => 'Quản lý lời nhắn'],

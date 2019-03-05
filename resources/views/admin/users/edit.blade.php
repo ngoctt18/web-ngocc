@@ -52,12 +52,12 @@
 			</div>
 			<div class="form-group">
 				<label for="password">Mật khẩu</label>
-				<input type="password" class="form-control" id="password" placeholder="password" name="password" value="{{old('password')}}">
+				<input type="password" class="form-control" id="password" placeholder="password" name="password" value="">
 				<small class="text-danger">{{ $errors->first('password') }}</small>
 			</div>
 			<div class="form-group">
 				<label for="password_confirm">Xác nhận mật khẩu</label>
-				<input type="password" class="form-control" id="password_confirm" placeholder="Xác nhận mật khẩu" name="password_confirm" value="{{old('password_confirm')}}">
+				<input type="password" class="form-control" id="password_confirm" placeholder="Xác nhận mật khẩu" name="password_confirm" value="">
 				<small class="text-danger">{{ $errors->first('password_confirm') }}</small>
 			</div>
 			<div class="form-group">

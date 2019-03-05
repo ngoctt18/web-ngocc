@@ -24,8 +24,8 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('sum_money');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->enum('status',[0, 1, 2, 3])->default(0);
-            // 0: Xử lý, 1: đang vận chuyển, 2: thành công, 3: không thành công
+            $table->enum('status',[0, 1, 2, 3, 4])->default(0);
+            // 0: Đang chờ xử lý, 1: Đang giao hàng, 2: Giao hàng thành công, 3: Giao hàng thất bại, 4: Đã hủy
             $table->string('note')->nullable();
 
             $table->timestamps();

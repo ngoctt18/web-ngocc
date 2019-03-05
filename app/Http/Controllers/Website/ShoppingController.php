@@ -66,14 +66,16 @@ class ShoppingController extends Controller
 	{
 		$qty = $request->get('qty');
 		$rowId = $request->get('rowId');
-		Cart::update($rowId, $qty); // Will update the quantity
-		$price = Cart::get($rowId)->subtotal(0,'','.');
-		$total = Cart::subtotal(0,'','.');
+		Cart::instance('default')->update($rowId, $qty); // Will update the quantity
+		$price = Cart::instance('default')->get($rowId)->subtotal(0,'','.');
+		$total = Cart::instance('default')->subtotal(0,'','.');
+		$num_item = Cart::instance('default')->count();
 
 		$this->storeCartByUser();
 		return response()->json([
 			'price' => $price, 
-			'total' => $total
+			'total' => $total,
+			'num_item' => $num_item,
 		]);
 	}
 

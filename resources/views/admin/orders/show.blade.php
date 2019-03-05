@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Thông tin chi tết đơn hàng DH00'.$order->id)
+@section('title', 'Thông tin chi tết đơn hàng #DH00'.$order->id)
 
 @section('content')
 
@@ -81,13 +81,13 @@
 				<table class="table table-bordred table-striped">
 					<thead>
 						<tr>
-							<th colspan="2">Invoice DH00{{$order->id}}</th>
+							<th colspan="2">Invoice #DH00{{$order->id}}</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<th>Order ID: </th>
-							<td>DH00{{$order->id}}</td>
+							<td>#DH00{{$order->id}}</td>
 						</tr>
 						<tr>
 							<th>Ngày đặt: </th>
@@ -162,10 +162,10 @@
 							<div class="form-group">
 								<label for="status">Trạng thái</label>
 								<select class="form-control" name="status" id="status">
-									<option value="0" {{old('status', $order->status) == '0' ? 'selected' : ''}}>Chờ xử lý</option>
-									<option value="1" {{old('status', $order->status) == '1' ? 'selected' : ''}}>Đang vận chuyển</option>
-									<option value="2" {{old('status', $order->status) == '2' ? 'selected' : ''}}>Vận chuyển thành công</option>
-									<option value="3" {{old('status', $order->status) == '3' ? 'selected' : ''}}>Vận chuyển thất bại</option>
+									<option value="0" {{old('status', $order->status) == '0' ? 'selected' : ''}}>Đang chờ xử lý</option>
+									<option value="1" {{old('status', $order->status) == '1' ? 'selected' : ''}}>Đang giao hàng</option>
+									<option value="2" {{old('status', $order->status) == '2' ? 'selected' : ''}}>Giao hàng thành công</option>
+									<option value="3" {{old('status', $order->status) == '3' ? 'selected' : ''}}>Giao hàng thất bại</option>
 								</select>
 								<small class="text-danger">{{ $errors->first('status') }}</small>
 							</div>

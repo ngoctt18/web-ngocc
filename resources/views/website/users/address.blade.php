@@ -16,7 +16,7 @@
 
 			</div>
 
-			<p><a href="/account/addresses">View Addresses (2)</a></p>
+			<p><a href="">View Addresses (2)</a></p>
 		</div>
 	</div>
 </div>

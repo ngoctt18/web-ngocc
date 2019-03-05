@@ -180,8 +180,11 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 					// console.log(data.responseText);
 					// console.log('data: '+data['price']);
 					// console.log('data: '+data['total']);
-					$(_self).closest('.list_product_cart').find('.subtotal').text(data['price']);
-					$(_self).closest('#formCart').find('.total_money').text(data['total']);
+					$(_self).closest('.list_product_cart').find('.subtotal').text(data['price']+'₫');
+					$(_self).closest('#formCart').find('.total_money').text(data['total']+'₫');
+					$('#CartCount').text(data['num_item']);
+					$('#CartMoney').text(data['total']+'₫');
+
 					$('.website_loader').fadeOut();
 				},
 				error: function(data){

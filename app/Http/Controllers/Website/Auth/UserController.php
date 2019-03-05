@@ -52,11 +52,11 @@ class UserController extends Controller
 	{
 		if ($username === Auth::user()->username) {
 			$user = User::whereUsername($username)->firstOrFail();
-			// return $user->orders;
+			$orders = $user->orders()->latest()->get();
 			$total = Cart::subtotal(0,'','.');
 			$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 			$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
-			return view('website.users.orders', compact('total','news_popular','catagoriesTypes','user'));
+			return view('website.users.orders', compact('total','news_popular','catagoriesTypes','user','orders'));
 		} else {
 			return redirect()->route('web.404');
 		}
@@ -86,6 +86,18 @@ class UserController extends Controller
 			$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 			$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 			return view('website.users.address', compact('total','news_popular','catagoriesTypes','user'));
+		} else {
+			return redirect()->route('web.404');
+		}
+	}
+
+	public function ordersCancel($username, $order_id)
+	{
+		if ($username === Auth::user()->username) {
+			$order = Order::findOrFail($order_id);
+			$order->update(['status' => '4']);
+			Session::flash('success', 'Hủy đơn hàng thành công.');
+			return redirect()->route('web.orders', [$username]);
 		} else {
 			return redirect()->route('web.404');
 		}
