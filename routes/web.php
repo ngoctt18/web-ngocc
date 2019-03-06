@@ -27,6 +27,7 @@ Route::middleware(['auth:web'])->group(function(){
 });
 
 
+
 Route::get('/', 'WebsiteController@homepage')->name('homepage');
 
 Route::get('login', 'Auth\LoginController@showUserLoginForm')->name('login');
