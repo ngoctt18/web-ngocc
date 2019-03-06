@@ -24,7 +24,7 @@
 				<div class="form-group">
 					<label for="catagory_id">Danh mục sản phẩm</label>
 					<select class="form-control" style="width: 40%;" name="catagory_id">
-						<option>Chọn Danh mục sản phẩm</option>
+						<option value="">Chọn Danh mục sản phẩm</option>
 						@foreach($catagories as $catagory)
 						<option value="{{$catagory->id}}" {{old('catagory_id',$product->catagory_id) == $catagory->id ? 'selected' : ''}}>{{$catagory->name}}</option>
 						@endforeach
@@ -59,7 +59,7 @@
 				<div class="form-group">
 					<label for="distribution_id">Nhà phân phối</label>
 					<select class="form-control" style="width: 40%;" name="distribution_id">
-						<option>Chọn Nhà phân phối</option>
+						<option value="">Chọn Nhà phân phối</option>
 						@foreach($distributions as $distribute)
 						<option value="{{$distribute->id}}" {{old('distribution_id',$product->distribution_id) == $distribute->id ? 'selected' : ''}}>{{$distribute->name}}</option>
 						@endforeach
@@ -79,7 +79,7 @@
 				<div class="form-group">
 					<label for="status">Trạng thái</label>
 					<select class="form-control" style="width: 40%;" name="status" id="status">
-						<option>Chọn trạng thái</option>
+						<option value="">Chọn trạng thái</option>
 						<option value="1" {{old('status',$product->status) == '1' ? 'selected' : ''}}>Còn hàng</option>
 						<option value="0" {{old('status',$product->status) == '0' ? 'selected' : ''}}>Hết hàng</option>
 					</select>

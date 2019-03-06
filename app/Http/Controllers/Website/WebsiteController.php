@@ -85,6 +85,7 @@ class WebsiteController extends Controller
 
 	public function Catagories($id, Request $request)
 	{
+		$catagory_id = $id;
 		$contents = Cart::content();
 		$total = Cart::subtotal(0,'','.');
 		$price = $request->query('price', NULL);
@@ -95,7 +96,7 @@ class WebsiteController extends Controller
 		$productsSpecial = Product::where('status', '1')->orderBy('discount','DESC')->take(4)->get();
 		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		
-		return view('website.catagories.catagories', compact('catagoriesTypes','products','breadcrumb','productsSpecial','catagories','contents','total','news_popular'));
+		return view('website.catagories.catagories', compact('catagoriesTypes','products','breadcrumb','productsSpecial','catagories','contents','total','news_popular','catagory_id'));
 	}
 
 	public function contact()

@@ -3,16 +3,17 @@
 @section('title', $user->name."'s Profile")
 
 @section('styles')
-<style type="text/css">
+{{-- <style type="text/css">
 li.parent.dropdown.active { background: #363a40; } 
 li.parent.dropdown.active > a { color: #59bd56; }
-</style>
+</style> --}}
 
 @yield('user_styles')
 
 @endsection
 
 @section('content')
+@include('website.partials.breadcrumbs')
 <div id="account-page">
 	<div class="container">
 		<div class="account-box">

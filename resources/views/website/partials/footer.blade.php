@@ -65,7 +65,7 @@
                                  </a>
                               </li>
                               <li class="rss">
-                                 <a target="_blank" href="http://www.your-shop.com/feed/" title="AP-MILK-STORE on RSS" class="btn-tooltip" data-original-title="RSS">
+                                 <a target="_blank" href="" title="AP-MILK-STORE on RSS" class="btn-tooltip" data-original-title="RSS">
                                     <i class="fa fa-rss"></i>
                                     <span>RSS</span>
                                  </a>
@@ -122,17 +122,19 @@
                                  <h4 class="title_block">Account</h4>
                                  <div class="block_content">
                                     <ul style="" class="toggle-footer list-group bullet">
+                                       @if (Auth::check())
                                        <li class="item">
-                                          <a href="account/login.html" title="Your account">Your account</a>
+                                          <a href="{{ route('web.users', Auth::user()->username) }}" title="Your account">Your account</a>
+                                       </li>
+                                       @endif
+                                       <li class="item">
+                                          <a href="{{ route('web.checkout') }}" title="Checkout">Checkout</a>
                                        </li>
                                        <li class="item">
-                                          <a href="cart.html" title="Checkout">Checkout</a>
+                                          <a href="{{ route('web.login') }}" title="Login">Login</a>
                                        </li>
                                        <li class="item">
-                                          <a href="account/login.html" title="Login">Login</a>
-                                       </li>
-                                       <li class="item">
-                                          <a href="account/register.html" title="Register">Register</a>
+                                          <a href="{{ route('web.register') }}" title="Register">Register</a>
                                        </li>
                                     </ul>
                                  </div>
@@ -144,16 +146,16 @@
                                  <div class="block_content">
                                     <ul style="" class="toggle-footer list-group bullet">
                                        <li class="item">
-                                          <a href="pages/about-us.html" title="About Us">About Us</a>
+                                          <a href="" title="About Us">About Us</a>
                                        </li>
                                        <li class="item">
-                                          <a href="pages/frontpage.html" title="Contact Us">Contact Us</a>
+                                          <a href="{{ route('web.contact') }}" title="Contact Us">Contact Us</a>
                                        </li>
                                        <li class="item">
-                                          <a href="pages/privacy-policy.html" title="Terms & Conditions">Terms & Conditions</a>
+                                          <a href="" title="Terms & Conditions">Terms & Conditions</a>
                                        </li>
                                        <li class="item">
-                                          <a href="pages/faq.html" title="Faq">Faq</a>
+                                          <a href="" title="Faq">Faq</a>
                                        </li>
                                     </ul>
                                  </div>
@@ -165,16 +167,16 @@
                                  <div class="block_content">
                                     <ul style="" class="toggle-footer list-group bullet">
                                        <li class="item">
-                                          <a href="search.html" title="Search">Search</a>
+                                          <a href="{{ route('web.search') }}" title="Search">Search</a>
                                        </li>
                                        <li class="item">
-                                          <a href="pages/about-us.html" title="About Us">About Us</a>
+                                          <a href="" title="About Us">About Us</a>
                                        </li>
                                        <li class="item">
-                                          <a href="pages/typo.html" title="Typo">Typo</a>
+                                          <a href="" title="Typo">Typo</a>
                                        </li>
                                        <li class="item">
-                                          <a href="blogs/news.html" title="Blog">Blog</a>
+                                          <a href="{{ route('web.news') }}" title="Blog">Blog</a>
                                        </li>
                                     </ul>
                                  </div>

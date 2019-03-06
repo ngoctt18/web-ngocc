@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Quản lý đơn hàng')
+@section('title', 'Đơn hàng giao thất bại')
 
 @section('styles')
 <!-- bootstrap datepicker -->
@@ -51,15 +51,7 @@ span.err_dateTo { color: #d00202; font-size: 12px; }
 					</div>
 				</div>
 				<div class="col-xs-2">
-					<label for="status">Trạng thái</label>
-					<select id="status" class="form-control input-sm" name="status">
-						<option value="">Chọn trạng thái</option>
-						<option value="0" {{old('status', request('status')) == '0' ? 'selected' : ''}}>Đang chờ xử lý</option>
-						<option value="1" {{old('status', request('status')) == '1' ? 'selected' : ''}}>Đang giao hàng</option>
-						<option value="2" {{old('status', request('status')) == '2' ? 'selected' : ''}}>Giao hàng thành công</option>
-						<option value="3" {{old('status', request('status')) == '3' ? 'selected' : ''}}>Giao hàng thất bại</option>
-						<option value="4" {{old('status', request('status')) == '4' ? 'selected' : ''}}>Đã hủy</option>
-					</select>
+					
 				</div>
 				<div class="col-xs-2">
 					<label for="">&nbsp;</label>

@@ -10,15 +10,23 @@
 
                 @isset(($breadcrumb->catagory->catagoryType))
                 <li itemprop="itemListElement" itemscope itemtype="">
-                    <a href="" title="Back to the catagory type tpage" itemprop="item">
+                    <a href="{{ route('web.catagory_types', [$breadcrumb->catagory->catagoryType->id, $breadcrumb->catagory->catagoryType->name]) }}" title="Back to the catagory type tpage" itemprop="item">
                         <span itemprop="name">{{$breadcrumb->catagory->catagoryType->name}}</span>
+                    </a>
+                </li>
+                @endisset
+
+                @isset(($breadcrumb->catagoryType))
+                <li itemprop="itemListElement" itemscope itemtype="">
+                    <a href="{{ route('web.catagory_types', [$breadcrumb->catagoryType->id, $breadcrumb->catagoryType->name]) }}" title="Back to the catagory type tpage" itemprop="item">
+                        <span itemprop="name">{{$breadcrumb->catagoryType->name}}</span>
                     </a>
                 </li>
                 @endisset
 
                 @isset(($breadcrumb->catagory))
                 <li itemprop="itemListElement" itemscope itemtype="">
-                    <a href="" title="Back to the catagory page" itemprop="item">
+                    <a href="{{ route('web.catagories', [$breadcrumb->catagory->id, $breadcrumb->catagory->name]) }}" title="Back to the catagory page" itemprop="item">
                         <span itemprop="name">{{$breadcrumb->catagory->name}}</span>
                     </a>
                 </li>

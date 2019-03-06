@@ -26,7 +26,7 @@ class StoreDistributeRequest extends FormRequest
         return [
             'name' => 'required|unique:distributions,name', 
             'email' => 'required|unique:distributions,email|email', 
-            'phone' => 'required|unique:distributions,phone|regex:/(0)[0-9]{9}/',
+            'phone' => 'required|unique:distributions,phone|regex:/^(0)\d{9}\b/',
             'address' => 'required|max:200', 
             'description' => 'required', 
             'status' => 'required', 

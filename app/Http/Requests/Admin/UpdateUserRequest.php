@@ -25,9 +25,9 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|max:30',
-            'username' => 'required|alpha_num|unique:users,username,'.request('id'),
-            'phone' => 'required|regex:/(0)[0-9]{9}/|unique:users,phone,'.request('id'),
-            'email' => 'required|email|unique:users,email,'.request('id'),
+            'username' => 'required|unique:users,username,'.request('id').'|alpha_num',
+            'phone' => 'required|unique:users,phone,'.request('id').'|regex:/^(0)\d{9}\b/',
+            'email' => 'required|unique:users,email,'.request('id').'|email',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3072',
             'address' => 'required|max:200',
             'status' => 'required',

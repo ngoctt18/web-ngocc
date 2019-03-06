@@ -21,13 +21,18 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 
                                 <div class="product-left-column col-xs-12 col-sm-12 col-md-5">
                                     <div id="image-block" class="clearfix">
                                         <span id="view_full_size">
-                                            <img id="proimage" class="img-responsive" itemprop="image" src="{{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$product->name}}" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039" />
+                                            <img id="proimage" class="img-responsive" itemprop="image" src="{{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$product->name}}" data-zoom-image="" />
                                         </span>
                                     </div>
                                     <div id="views_block" class="clearfix ">
                                         <div id="thumbs_list">
                                             <div id="thumblist">
-                                                @for($i=0;$i<4;$i++)
+                                                <div id="thumbnail_0" class="thumb_item ">
+                                                    <a href="javascript:void(0)" data-imageid="3051930052" data-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_large.jpg?v=1439571039" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039"  title="Commo habita lacus aenean consequat sagittis">
+                                                        <img class="img-responsive img_detail" id="thumb_0" src="{{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$product->name}}" itemprop="image" />
+                                                    </a>
+                                                </div>
+                                                @for($i=0;$i<3;$i++)
                                                 <div id="thumbnail_{{$i+1}}" class="thumb_item ">
                                                     <a href="javascript:void(0)" data-imageid="3051930052" data-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_large.jpg?v=1439571039" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039"  title="Commo habita lacus aenean consequat sagittis">
                                                         <img class="img-responsive img_detail" id="thumb_{{$i+1}}" src="{{$product->ThumbProductDetails[$i]??asset('images/products/product'.($i+1).'.jpg')}}" alt="{{$product->name}}" itemprop="image" />

@@ -18,11 +18,11 @@ $menus_admin = [
         'type' => 'multi', 'name' => 'Quản lý đơn hàng', 'icon' => 'fa fa-cart-plus',
         'children' => [
             ['type' => 'single', 'route' => 'admin.orders.index', 'icon' => '', 'name' => 'Danh sách đơn hàng'],
-            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đơn chờ xử lý'],
-            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đơn đang giao'],
-            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đơn giao thành công'],
-            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đơn giao thất bại'],
-            ['type' => 'single', 'route' => '', 'icon' => '', 'name' => 'Đơn đã hủy'],
+            ['type' => 'single', 'route' => 'admin.orders.orders_pending', 'icon' => '', 'name' => 'Đơn hàng chờ xử lý'],
+            ['type' => 'single', 'route' => 'admin.orders.orders_deliver', 'icon' => '', 'name' => 'Đơn hàng đang giao'],
+            ['type' => 'single', 'route' => 'admin.orders.orders_success', 'icon' => '', 'name' => 'Giao thành công'],
+            ['type' => 'single', 'route' => 'admin.orders.orders_error', 'icon' => '', 'name' => 'Giao thất bại'],
+            ['type' => 'single', 'route' => 'admin.orders.orders_cancel', 'icon' => '', 'name' => 'Đơn hàng đã hủy'],
         ]
     ],
     ['type' => 'single', 'route' => 'admin.contacts.index', 'icon' => 'fa fa-commenting-o', 'name' => 'Quản lý lời nhắn'],

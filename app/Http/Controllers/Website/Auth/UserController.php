@@ -24,7 +24,8 @@ class UserController extends Controller
 			$total = Cart::subtotal(0,'','.');
 			$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 			$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
-			return view('website.users.profile', compact('total','news_popular','catagoriesTypes','user'));
+			$breadcrumb = $username."'s Profile";
+			return view('website.users.profile', compact('total','news_popular','catagoriesTypes','user','breadcrumb'));
 		} else {
 			return redirect()->route('web.404');
 		}
@@ -56,7 +57,8 @@ class UserController extends Controller
 			$total = Cart::subtotal(0,'','.');
 			$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 			$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
-			return view('website.users.orders', compact('total','news_popular','catagoriesTypes','user','orders'));
+			$breadcrumb = 'Your orders';
+			return view('website.users.orders', compact('total','news_popular','catagoriesTypes','user','orders','breadcrumb'));
 		} else {
 			return redirect()->route('web.404');
 		}
@@ -71,7 +73,8 @@ class UserController extends Controller
 			$total = Cart::subtotal(0,'','.');
 			$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 			$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
-			return view('website.users.orders_detail', compact('total','news_popular','catagoriesTypes','user','order'));
+			$breadcrumb = 'Order detail #DH00'.$order_id;
+			return view('website.users.orders_detail', compact('total','news_popular','catagoriesTypes','user','order','breadcrumb'));
 		} else {
 			return redirect()->route('web.404');
 		}
@@ -85,7 +88,8 @@ class UserController extends Controller
 			$total = Cart::subtotal(0,'','.');
 			$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 			$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
-			return view('website.users.address', compact('total','news_popular','catagoriesTypes','user'));
+			$breadcrumb = 'Your address';
+			return view('website.users.address', compact('total','news_popular','catagoriesTypes','user','breadcrumb'));
 		} else {
 			return redirect()->route('web.404');
 		}

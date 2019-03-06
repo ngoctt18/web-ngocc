@@ -26,7 +26,7 @@ class UpdateDistributeRequest extends FormRequest
         return [
             'name' => 'required|unique:distributions,name,'.request('id'), 
             'email' => 'required|email|unique:distributions,email,'.request('id'), 
-            'phone' => 'required|regex:/(0)[0-9]{9}/|unique:distributions,phone,'.request('id'),
+            'phone' => 'required|regex:/^(0)\d{9}\b/|unique:distributions,phone,'.request('id'),
             'address' => 'required|max:200', 
             'description' => 'required', 
             'status' => 'required', 

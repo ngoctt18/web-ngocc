@@ -27,3 +27,6 @@ ul.pagination-sm { margin: 10px !important; }
 
 h1, h2, h3, h4, h5 { font-family: tahoma !important;}
 .slide-caption h3 {font-family: Brandon !important;}
+
+li.parent.dropdown.active { background: #363a40; } 
+li.parent.dropdown.active > a { color: #59bd56; }

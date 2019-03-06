@@ -25,8 +25,8 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => 'required|max:30',
-            'username' => 'required|alpha_num|unique:users,username',
-            'phone' => 'required|unique:users,phone|regex:/(0)[0-9]{9}/',
+            'username' => 'required|unique:users,username|alpha_num',
+            'phone' => 'required|unique:users,phone|regex:/^(0)\d{9}\b/',
             'email' => 'required|unique:users,email|email',
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:3072',
             'address' => 'required|max:200',

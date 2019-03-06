@@ -19,7 +19,7 @@ return [
     'after_or_equal'       => ':attribute phải lớn hơn hoặc bằng :date.',
     'alpha'                => 'The :attribute may only contain letters.',
     'alpha_dash'           => 'The :attribute may only contain letters, numbers, and dashes.',
-    'alpha_num'            => 'The :attribute may only contain letters and numbers.',
+    'alpha_num'            => ':attribute chỉ có thể chứa các chữ cái và số..',
     'array'                => ':attribute phải là mảng.',
     'before'               => ':attribute phải nhỏ hơn :date.',
     'before_or_equal'      => ':attribute phải nhỏ hơn hoặc bằng :date.',
