@@ -1,6 +1,6 @@
 
 
-BÁO CÁO THIẾU  kết luận và tài liệu tham khảo
+- done: BÁO CÁO THIẾU  kết luận và tài liệu tham khảo
 Thống kê doanh thu theo tuần, ngày tháng,
 Xuất hóa đơn ra file, In báo cáo hóa đơn bán hàng
 Giảm số lượng hàng khi bán

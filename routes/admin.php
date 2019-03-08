@@ -29,15 +29,18 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::delete('forcedelete/{news}', 'News\NewsController@forcedelete')->name('news.forcedelete');
 	Route::resource('news', 'News\NewsController');
 	
-	// Upload một file ảnh lên thư mục tạm trên server.
+	// Ajax Upload một file ảnh lên thư mục tạm trên server.
 	Route::post('uploadImage', 'Product\ProductController@uploadImage')->name('uploadImage');
 	Route::resource('users', 'User\UserController');
+
 	Route::resource('orders', 'Order\OrderController')->except(['create','store','edit']);
 	Route::get('orders-pending', 'Order\OrderController@ordersPending')->name('orders.orders_pending');
 	Route::get('orders-deliver', 'Order\OrderController@ordersDeliver')->name('orders.orders_deliver');
 	Route::get('orders-success', 'Order\OrderController@ordersSuccess')->name('orders.orders_success');
 	Route::get('orders-error', 'Order\OrderController@ordersError')->name('orders.orders_error');
 	Route::get('orders-cancel', 'Order\OrderController@ordersCancel')->name('orders.orders_cancel');
+	Route::get('orders/report/{id}', 'Order\OrderController@generateReport')->name('orders.report');
+	Route::get('orders/print/{id}', 'Order\OrderController@generatePrint')->name('orders.print');
 
 	Route::resource('contacts', 'Contact\ContactController')->only(['index','destroy']);
 	Route::post('contacts-detail', 'Contact\ContactController@contactDetail')->name('contact_detail');

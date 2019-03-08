@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
 use Session;
+use PDF;
 
 
 class OrderController extends Controller
@@ -209,4 +210,26 @@ class OrderController extends Controller
 		]);
 		return view('admin.orders.orders-cancel', compact('orders'));
 	}
+
+	public function generatePrint($id)
+	{
+		$order = Order::findOrFail($id);
+		return view('admin.orders.print', compact('order'));
+	}
+
+	// download PDF
+	public function generateReport($id)
+	{
+		$order = Order::findOrFail($id);
+		// return view('admin.orders.report', compact('order'));
+
+		$pdf = PDF::loadView('admin.orders.report', compact('order'));
+
+		$file = 'don_hang_#DH00'.$id.'.pdf';
+
+		return $pdf->download($file);
+	}
+
+
+
 }

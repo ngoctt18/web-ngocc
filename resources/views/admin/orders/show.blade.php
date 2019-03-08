@@ -13,7 +13,7 @@
 			<div class="col-xs-12">
 				<h2 class="page-header">
 					<i class="fa fa-globe"></i> Invoice
-					<small class="pull-right">Date: {{$order->input_date->format('d/m/Y')}}</small>
+					<small class="pull-right">Date: {{$order->input_date->format('H:i - d/m/Y')}}</small>
 				</h2>
 			</div>
 			<!-- /.col -->
@@ -38,7 +38,7 @@
 							<td>{{$order->user->email}}</td>
 						</tr>
 						<tr>
-							<th>Điện thoại: </th>
+							<th>Phone: </th>
 							<td>{{$order->user->phone}}</td>
 						</tr>
 						<tr>
@@ -66,7 +66,7 @@
 							<td>{{$order->email}}</td>
 						</tr>
 						<tr>
-							<th>Điện thoại: </th>
+							<th>Phone: </th>
 							<td>{{$order->phone}}</td>
 						</tr>
 						<tr>
@@ -96,6 +96,22 @@
 						<tr>
 							<th>Account: </th>
 							<td>968-34567</td>
+						</tr>
+						<tr>
+							<th>Trạng thái: </th>
+							<td>
+								@if($order->status == '0')
+								{{"Đang chờ xử lý"}}
+								@elseif($order->status == '1')
+								{{"Đang giao hàng"}}
+								@elseif($order->status == '2')
+								{{"Giao hàng thành công"}}
+								@elseif($order->status == '3')
+								{{"Giao hàng thất bại"}}
+								@elseif($order->status == '4')
+								{{"Đã hủy"}}
+								@endif
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -155,6 +171,11 @@
 						</tr>
 					</tbody>
 				</table>
+				@if ($order->status == '4')
+				<div class="alert alert-danger" style="width: 70%;">
+					Khách hàng đã hủy đơn hàng này.
+				</div>
+				@else
 				<div class="row">
 					<form action="{{ route('admin.orders.update', [$order->id]) }}" method="POST">
 						@csrf @method('PUT')
@@ -178,6 +199,7 @@
 						</div>
 					</form>
 				</div>
+				@endif
 				<br>
 				<img src="{{ asset('dist/img/credit/visa.png') }}" alt="Visa">
 				<img src="{{ asset('dist/img/credit/mastercard.png') }}" alt="Mastercard">
@@ -210,16 +232,17 @@
 		<!-- /.row -->
 
 		<!-- this row will not appear when printing -->
-		<!-- <div class="row no-print">
+		<div class="row no-print">
 			<div class="col-xs-12">
-				<a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-				<button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
-				</button>
-				<button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+				<br>
+				<a href="{{ route('admin.orders.print', [$order->id]) }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+				{{-- <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment --}}
+				{{-- </button> --}}
+				<a href="{{ route('admin.orders.report', [$order->id]) }}" target="_blank" class="btn btn-primary pull-right" style="margin-right: 5px;">
 					<i class="fa fa-download"></i> Generate PDF
-				</button>
+				</a>
 			</div>
-		</div> -->
+		</div>
 	</section>
 	<!-- /.content -->
 	<div class="clearfix"></div>
