@@ -16,6 +16,7 @@ Auth::routes();
 
 Route::middleware(['auth:admin'])->group(function(){
 	Route::get('dashboard', 'DashboardController@admin')->name('dashboard');
+	Route::get('chartRangeDay', 'DashboardController@chartRangeDay')->name('dashboard.chart_range_day');
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 	// 
@@ -48,7 +49,6 @@ Route::middleware(['auth:admin'])->group(function(){
     // Thay đổi mật khẩu user đang đăng nhập
 	Route::post('checkPassword', 'Auth\LoginController@checkPassword')->name('check_password');
 	Route::post('changePassword', 'Auth\LoginController@changePassword')->name('change_password');
-
 
 
 

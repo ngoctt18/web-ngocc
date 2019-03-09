@@ -40,4 +40,22 @@ class Order extends Model
 		$date = date_create_from_format('d/m/Y', $value)->format('Y-m-d');
 		return $query->whereDate('created_at', '<=', $date);
 	}
+
+	// Get pdf invoice
+	public function getPdf($type = 'stream')
+	{
+		$pdf = app('dompdf.wrapper')->loadView('admin.orders.order-pdf', ['order' => $this]);
+
+		if ($type == 'stream') {
+			return $pdf->stream('invoice_#DH00'.$this->id.'.pdf', ['order' => $this]);
+		}
+		if ($type == 'download') {
+			return $pdf->download('invoice_#DH00'.$this->id.'.pdf', ['order' => $this]);
+		}
+	}
+
+	// public function getInputDate($value='')
+	// {
+	// 	# code...
+	// }
 }

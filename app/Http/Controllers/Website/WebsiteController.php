@@ -160,5 +160,41 @@ class WebsiteController extends Controller
 		return view('website.pages.latest-product', compact('total','catagoriesTypes','breadcrumb','news_popular','products'));
 	}
 
-	
+	public function signUpEmail(Request $request)
+	{
+		$total = Cart::subtotal(0,'','.');
+		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
+		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
+
+        // sign up email
+		$sessionSignUp = Session::get('signUpEmail');
+        // nếu chưa có session
+        // if (!$sessionSignUp) { 
+            Session::put('signUpEmail', 1); // Tạo, Set giá trị cho session
+
+            $this->validate($request,
+            	[
+            		'email' => 'required|email|unique:subscribes,email',
+            	],
+            	[
+            		'required' => ':attribute Không được để trống',
+            		'email' => ':attribute Không đúng định dạng',
+            		'max' => ':attribute Không được lớn hơn :max',
+            		'unique' => ':attribute này đã được đăng ký rồi',
+            	],
+            	[
+            		'email' => 'Email',
+            	]
+
+            );
+            Subscribe::create($request->all());
+            Session::flash('signUpEmailOK', 'ĐĂNG KÝ NHẬN TIN TỨC QUA EMAIL THÀNH CÔNG. ');
+        // } else {
+            // Session::flash('signUpEmailDuplicate', 'BẠN ĐÃ ĐĂNG KÝ NHẬN TIN TỨC QUA EMAIL RỒI. ');
+        // }
+            return view('website.emails.sign_up_email', compact('total','news_popular','catagoriesTypes'));
+        }
+
+        
+        
 }

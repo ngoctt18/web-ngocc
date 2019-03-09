@@ -88,7 +88,7 @@ class OrderController extends Controller
 			'dateTo' => $dateTo,
 			'status' => $status,
 		]);
-		return view('admin.orders.orders-pending', compact('orders'));
+		return view('admin.orders.orders-type.orders-pending', compact('orders'));
 	}
 
 	public function ordersDeliver(Request $request)
@@ -118,7 +118,7 @@ class OrderController extends Controller
 			'dateTo' => $dateTo,
 			'status' => $status,
 		]);
-		return view('admin.orders.orders-deliver', compact('orders'));
+		return view('admin.orders.orders-type.orders-deliver', compact('orders'));
 	}
 
 	public function ordersSuccess(Request $request)
@@ -148,7 +148,7 @@ class OrderController extends Controller
 			'dateTo' => $dateTo,
 			'status' => $status,
 		]);
-		return view('admin.orders.orders-success', compact('orders'));
+		return view('admin.orders.orders-type.orders-success', compact('orders'));
 	}
 
 	public function ordersError(Request $request)
@@ -178,7 +178,7 @@ class OrderController extends Controller
 			'dateTo' => $dateTo,
 			'status' => $status,
 		]);
-		return view('admin.orders.orders-error', compact('orders'));
+		return view('admin.orders.orders-type.orders-error', compact('orders'));
 	}
 
 	public function ordersCancel(Request $request)
@@ -208,7 +208,7 @@ class OrderController extends Controller
 			'dateTo' => $dateTo,
 			'status' => $status,
 		]);
-		return view('admin.orders.orders-cancel', compact('orders'));
+		return view('admin.orders.orders-type.orders-cancel', compact('orders'));
 	}
 
 	public function generatePrint($id)
@@ -220,14 +220,11 @@ class OrderController extends Controller
 	// download PDF
 	public function generateReport($id)
 	{
-		$order = Order::findOrFail($id);
-		// return view('admin.orders.report', compact('order'));
-
-		$pdf = PDF::loadView('admin.orders.report', compact('order'));
-
-		$file = 'don_hang_#DH00'.$id.'.pdf';
-
-		return $pdf->download($file);
+		$order = Order::find($id);
+		
+		return $order->getPdf('download');	// Returns the PDF as download
+		// return $order->getPdf();	// Returns stream default
+		// return view('admin.orders.order-pdf', compact('order'));
 	}
 
 

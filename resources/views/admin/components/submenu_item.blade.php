@@ -1,6 +1,8 @@
 @if(optional($menu)['type'] === 'single')
     <li {{ active_class_menu($menu) }}>
-        <a href="{{ get_link_route($menu['route']) }}">{{ $menu['name'] }}</a>
+        <a href="{{ get_link_route($menu['route']) }}">
+            <i class="fa fa-circle-o"></i>{{ $menu['name'] }}
+        </a>
     </li>
 @elseif(optional($menu)['type'] === 'multi')
     <li class="treeview {{ active_class_menu($menu) }}">

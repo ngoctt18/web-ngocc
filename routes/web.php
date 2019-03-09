@@ -37,7 +37,7 @@ Route::get('register', 'Auth\LoginController@showUserRegisterForm')->name('regis
 Route::post('register', 'Auth\LoginController@userRegister');
 // Route::get('registered', 'Auth\LoginController@userRegistered')->name('registered');
 Route::get('confirm/{token}', 'Auth\LoginController@confirmRegistered')->name('confirm');
-Route::post('sign-up', 'Auth\LoginController@signUpEmail')->name('sign_up_email');
+Route::post('sign-up', 'WebsiteController@signUpEmail')->name('sign_up_email');
 
 
 Route::get('product/{id}/{name}', 'WebsiteController@productDetail')->name('product_detail');

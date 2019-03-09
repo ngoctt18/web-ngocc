@@ -1,10 +1,5 @@
 <?php
 
-function GitPull(){
-    $cmd = "sh /home/vpet/web/dev.vpet.3fgroup.vn/public_html/github.sh";
-    exec($cmd,$output);
-    print_r($output);
-}
 function index_row($paginator, $index){
     $page = request('page') < 1 ? 0 : request('page') - 1;
     return $paginator->perPage() * $page + $index + 1;

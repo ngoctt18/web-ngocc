@@ -236,11 +236,12 @@
 			<div class="col-xs-12">
 				<br>
 				<a href="{{ route('admin.orders.print', [$order->id]) }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-				{{-- <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment --}}
-				{{-- </button> --}}
+				@if ($order->status == '4')
+				@else
 				<a href="{{ route('admin.orders.report', [$order->id]) }}" target="_blank" class="btn btn-primary pull-right" style="margin-right: 5px;">
 					<i class="fa fa-download"></i> Generate PDF
 				</a>
+				@endif
 			</div>
 		</div>
 	</section>
