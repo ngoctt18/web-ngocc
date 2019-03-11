@@ -65,7 +65,8 @@ class UserController extends Controller
 
 	public function update(User $user, UpdateUserRequest $request)
 	{
-		$user->update($request->all());
+		$user->update($request->except(['password', 'password_confirm', 'verified']));
+		// dd($request->except(['password', 'password_confirm', 'verified']));
         // Cập nhật đại diện (nếu có)
 		if($request->hasFile('avatar')){
 			$user->clearMediaCollection('user_avatar');

@@ -16,6 +16,7 @@ class DashboardController extends Controller
 {
 	public function admin()
 	{
+		// return now();
 		$userCount = User::all()->count();
 		$orderCount = Order::all()->count();
 		$productCount = Product::all()->count();
