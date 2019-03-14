@@ -11,8 +11,17 @@ use App\Catagory;
 use App\Distribute;
 use Session;
 
+// use App\Services\ImageUploadService;
+
 class ProductController extends Controller
 {
+
+	// public function __construct()
+	// {
+	// 	$this->imageUploadService = new ImageUploadService();
+	// }
+
+
 	public function index(Request $request)
 	{
 		$name = $request->query('name', NULL);
@@ -74,6 +83,12 @@ class ProductController extends Controller
 				}
 			}
 		}
+
+		// if($request->has('product_avatar')) {
+		// 	$dir = 'uploads/products';
+		// 	$image = $this->imageUploadService->upload($request->file('product_avatar'), $dir);
+		// 	$product->update(['image' => $image]);
+		// }
 
 		Session::flash('success', 'Tạo sản phẩm thành công');
 		return redirect()->route('admin.products.index');
