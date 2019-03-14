@@ -48,7 +48,7 @@ class OrderController extends Controller
 
 	public function update(Request $request, Order $order)
 	{
-		$order->update($request->all());
+		$order->update(['status' => $request->status]);
 		Session::flash('success', 'Cập nhật trạng thái đơn hàng thành công');
 		return redirect()->back();
 	}

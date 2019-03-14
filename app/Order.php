@@ -11,13 +11,14 @@ class Order extends Model
 	protected $fillable = [
 		'name', 'phone', 'email', 'address', 'input_date', 'delivery_date', 'sum_money', 'user_id', 'status', 'note', 
 	];
-
-	public $timestamps = true;
 	
 	protected $dates = [
 		'input_date',
 		'delivery_date',
 	];
+
+	public $timestamps = true;
+	
 
 	public function user(){
 		return $this->belongsTo(User::class, 'user_id', 'id')->withDefault();
