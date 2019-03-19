@@ -14,7 +14,7 @@
 		</h2>
 	</center>
 	
-	<strong>Thanks!</strong>
+	<strong>Thanks for using the site!</strong>
 
 
 	
