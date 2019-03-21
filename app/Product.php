@@ -67,6 +67,22 @@ class Product extends Model implements HasMedia
 		return  $thumb;
 	}
 
+	// ----- Accessor cho cột tùy ý -----
+	public function getNameSlugAttribute(){
+		return str_slug($this->attributes['name']);
+	}
+
+	
+
+	// Test storage_path and public_path
+	public function getStoragePathAttribute($value='')
+	{
+		return storage_path();
+	}
+	public function getPublicPathAttribute($value='')
+	{
+		return public_path();
+	}
 
 
     // Relationships

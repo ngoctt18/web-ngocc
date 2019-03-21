@@ -14,7 +14,7 @@
 Route::redirect('/', '/admin/dashboard')->name('index');
 Auth::routes();
 
-Route::middleware(['auth:admin'])->group(function(){
+Route::middleware(['auth:admin', 'optimizeImages'])->group(function(){
 	Route::get('dashboard', 'DashboardController@admin')->name('dashboard');
 	Route::get('chartRangeDay', 'DashboardController@chartRangeDay')->name('dashboard.chart_range_day');
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');

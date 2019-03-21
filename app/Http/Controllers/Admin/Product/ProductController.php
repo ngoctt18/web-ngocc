@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Admin\Product;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+// use App\Services\ImageUploadService;
 use App\Http\Requests\Admin\StoreProductRequest;
 use App\Http\Requests\Admin\UpdateProductRequest;
 use App\Product;
 use App\Catagory;
 use App\Distribute;
 use Session;
-
-// use App\Services\ImageUploadService;
 
 class ProductController extends Controller
 {
@@ -86,7 +85,7 @@ class ProductController extends Controller
 
 		// if($request->has('product_avatar')) {
 		// 	$dir = 'uploads/products';
-		// 	$image = $this->imageUploadService->upload($request->file('product_avatar'), $dir);
+		// 	$image = $this->imageUploadService->handleUploadedImage($request->file('product_avatar'), $dir);
 		// 	$product->update(['image' => $image]);
 		// }
 

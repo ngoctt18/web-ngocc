@@ -4,7 +4,7 @@ namespace App\Services;
 
 class ImageUploadService
 {
-    public function upload($image, $dir)
+    public function handleUploadedImage($image, $dir)
     {
         if(!is_null($image)) {
             $filename = $this->generateFilename($image);
@@ -18,6 +18,6 @@ class ImageUploadService
 
     private function generateFilename($image) {
         $extension = $image->getClientOriginalExtension();
-        return uniqid().'.'.$extension;
+        return uniqid().'_'.$extension;
     }
 }
