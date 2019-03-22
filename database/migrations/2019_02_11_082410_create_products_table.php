@@ -32,8 +32,11 @@ class CreateProductsTable extends Migration
             $table->foreign('distribution_id')->references('id')->on('distributions')->onDelete('cascade');
             $table->enum('status',[0, 1])->default(1);
             // 0: hết hàng, 1: còn hàng
+            // Số lượng hàng còn trong kho
+            $table->unsignedInteger('qty_remain')->default(100);
             // Số lượt mua hàng
             $table->unsignedInteger('count_buys')->default(0);
+            // Số lượt xem sản phẩm
             $table->unsignedInteger('count_views')->default(0);
             $table->timestamps();
         });

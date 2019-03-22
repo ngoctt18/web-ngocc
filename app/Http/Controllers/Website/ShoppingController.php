@@ -15,13 +15,14 @@ use Session;
 use Cart;
 use Auth;
 use DB;
+use App\Services\UpdateQtyBuyProduct;
 
 class ShoppingController extends Controller
 {
 
 	public function __construct()
 	{
-
+		$this->updateQtyBuyProduct = new UpdateQtyBuyProduct();
 	}
 
 	public function addToCart(Request $request, $id)
@@ -110,10 +111,8 @@ class ShoppingController extends Controller
 			// return $order;
 			if (count($contents) >0) {
 				foreach ($contents as $key => $item) {
-					$thatProduct = Product::findOrFail($item->id);
-					$oldQty = $thatProduct->count_buys;
-					$newQty = $oldQty + $item->qty;
-					$thatProduct->update(['count_buys' => $newQty]);
+					$this->updateQtyBuyProduct->handleUpdateQtyBuyProduct($item->id, $item->qty);
+
 					OrderDetail::create([
 						'quantity' => $item->qty, 
 						'price' => $item->model->price,

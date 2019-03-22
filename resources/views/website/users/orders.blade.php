@@ -2,13 +2,13 @@
 
 @section('user_styles')
 <style type="text/css">
-.order_id {color: #0089ff;}
-.table-hover tbody tr td {
-	padding: 20px 19px;
-	color: #242424;
-	vertical-align: top;
-}
-.box-content { padding: 10px !important; }
+	.order_id {color: #0089ff;}
+	.table-hover tbody tr td {
+		padding: 20px 19px;
+		color: #242424;
+		vertical-align: top;
+	}
+	.box-content { padding: 10px !important; }
 </style>
 @endsection
 
@@ -44,7 +44,7 @@
 						{{$order->input_date->format('d/m/Y')}}
 					</td>
 					<td>
-						{{$order->orderDetails->first()->product->name}}
+						{{$order->orderDetails->first()->product->name ?? ''}}
 						@if ($order->orderDetails->count() > 1)
 						... và 
 						{{$order->orderDetails->count()}} sản phẩm khác
