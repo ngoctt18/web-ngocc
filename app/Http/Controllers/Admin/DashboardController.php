@@ -37,7 +37,7 @@ class DashboardController extends Controller
 		->orderBy('date', 'ASC')
 		->get([
 			DB::raw('Date(input_date) as date'),
-			DB::raw('COUNT(*) as value')
+			DB::raw('COUNT(*) as orders')
 		]);
 		return $stats;
 	}

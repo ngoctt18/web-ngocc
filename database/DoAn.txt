@@ -3,7 +3,7 @@
 - done: BÁO CÁO THIẾU  kết luận và tài liệu tham khảo
 - done: Thống kê doanh thu theo tuần, ngày tháng,
 - done: Xuất hóa đơn ra file, In báo cáo hóa đơn bán hàng
-Giảm số lượng hàng khi bán
+- done: Giảm số lượng hàng khi bán
 Thống kê ds KH mua hàng nhiều 
 
 

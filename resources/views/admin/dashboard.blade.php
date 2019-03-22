@@ -82,7 +82,7 @@
             <!-- Thống kê đơn hàng -->
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Thống kê đơn hàng</h3>
+                    <h3 class="box-title"><a href="{{ route('admin.orders.index') }}">Tất cả đơn hàng</a></h3>
                 </div>
                 <div class="box-body">
                     <canvas id="pieChart" style="height:250px"></canvas>
@@ -96,7 +96,7 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Thống kê theo tuần</h3>
+                    <h3 class="box-title">Thống kê số đơn hàng theo ngày</h3>
                 </div>
                 <div class="box-body">
                     <ul class="nav nav-pills ranges">
@@ -203,7 +203,7 @@
             data: [0, 0], // Set initial data (ideally you would provide an array of default data)
             barColors: ['#00a65a'],
             xkey: 'date', // Set the key for X-axis
-            ykeys: ['value'], // Set the key for Y-axis
+            ykeys: ['orders'], // Set the key for Y-axis
             labels: ['Orders'], // Set the label when bar is rolled over
         });
         // Request initial data for the past 7 days:

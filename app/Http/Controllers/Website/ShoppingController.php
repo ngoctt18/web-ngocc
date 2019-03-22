@@ -111,15 +111,18 @@ class ShoppingController extends Controller
 			// return $order;
 			if (count($contents) >0) {
 				foreach ($contents as $key => $item) {
-					$this->updateQtyBuyProduct->handleUpdateQtyBuyProduct($item->id, $item->qty);
-
-					OrderDetail::create([
-						'quantity' => $item->qty, 
-						'price' => $item->model->price,
-						'discount' => $item->model->discount,
-						'product_id' => $item->id, 
-						'order_id' => $order->id, 
-					]);
+					// Nếu sl còn lại của sp lớn hơn sl mua thì mới cho mua
+					if ($item->model->qty_remain > $item->qty) {
+						// Xử lý giảm sl sp còn qty_remain, tăng count_buys và count_views
+						$this->updateQtyBuyProduct->handleUpdateQtyBuyProduct($item->id, $item->qty);
+						OrderDetail::create([
+							'quantity' => $item->qty, 
+							'price' => $item->model->price,
+							'discount' => $item->model->discount,
+							'product_id' => $item->id, 
+							'order_id' => $order->id, 
+						]);
+					}
 				}
 			}
           	// del

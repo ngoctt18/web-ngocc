@@ -20,17 +20,17 @@
   <link rel="stylesheet" href="{{ asset('css/font_admin.css') }}">
   {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> --}}
   <style>
-  .forgot-box-body{
-    display: none;
-    background: #fff;
-    padding: 20px;
-    border-top: 0;
-    color: #666;
-  }
-  .help-block-forgot{
-    color:red;
-  }
-</style>
+    .forgot-box-body{
+      display: none;
+      background: #fff;
+      padding: 20px;
+      border-top: 0;
+      color: #666;
+    }
+    .help-block-forgot{
+      color:red;
+    }
+  </style>
 </head>
 <body class="hold-transition login-page">
   <div class="login-box">
