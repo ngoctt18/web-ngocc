@@ -4,7 +4,7 @@
 
 @section('styles')
 <style type="text/css">
-input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 100%; }
+	input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 100%; }
 </style>
 @endsection
 
@@ -93,7 +93,7 @@ input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 1
 										<input type="number" class="js-qty__num" value="" min="1" data-id="4214855428" aria-label="quantity" pattern="[0-9]*" name="quantity" id="updates_4214855428">
 										<button type="button" class="js-qty__adjust js-qty__adjust--plus" data-id="4214855428" data-qty="31">+</button>
 									</div> -->
-									<input type="number" id="Quantity" name="quantity" value="{{$item->qty}}" min="1" class="quantity-selector" rowId="{{$item->rowId}}" pattern="[0-9]+" oninput="validity.valid||(value='');">
+									<input type="number" id="Quantity" name="quantity" value="{{$item->qty}}" min="1" class="quantity-selector" rowId="{{$item->rowId}}" pattern="[0-9]+" oninput="validity.valid||(value='');" @if ($item->qty >= $item->model->qty_remain) disabled @endif>
 								</div>
 							</div>
 							<div class="cpro_item col-xs-12 col-sm-2 col-md-2">

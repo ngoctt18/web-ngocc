@@ -31,13 +31,28 @@ class DashboardController extends Controller
   		// Get the number of days to show data for, with a default of 7
 		$days = $request->get('days', 7);
 		$range = Carbon\Carbon::now()->subDays($days);
-		$stats = DB::table('orders')
-		->where('input_date', '>=', $range)
+		$stats = Order::where('input_date', '>=', $range)
 		->groupBy('date')
 		->orderBy('date', 'ASC')
 		->get([
-			DB::raw('Date(input_date) as date'),
+			DB::raw('DATE_FORMAT(input_date, "%d/%m/%Y") as date'),
 			DB::raw('COUNT(*) as orders')
+		]);
+		return $stats;
+	}
+
+	public function chartRevenueRangeDay(Request $request)
+	{
+  		// Get the number of days to show data for, with a default of 7
+		$days = $request->get('days', 7);
+		// return $days;
+		$range = Carbon\Carbon::now()->subDays($days);
+		$stats = Order::where('input_date', '>=', $range)
+		->groupBy('date')
+		->orderBy('date', 'ASC')
+		->get([
+			DB::raw('DATE(input_date) as date'),
+			DB::raw('SUM(sum_money) as revenue'),
 		]);
 		return $stats;
 	}

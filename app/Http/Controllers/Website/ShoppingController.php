@@ -122,10 +122,13 @@ class ShoppingController extends Controller
 							'product_id' => $item->id, 
 							'order_id' => $order->id, 
 						]);
+					} else {
+						// Nếu hết hàng thì trừ tiền đó trog order tổng
+						$order->decrement('sum_money', $item->model->price*$item->qty);
 					}
 				}
 			}
-          	// del
+          	// del Cart
 			Cart::instance('default')->destroy();
 
 		} catch (Exception $e) {

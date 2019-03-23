@@ -155,7 +155,7 @@ class WebsiteController extends Controller
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$products = Product::where('status', '1')->latest()->take(9)->get();
-		$breadcrumb = 'Best Discount';
+		$breadcrumb = 'Latest Products';
 
 		return view('website.pages.latest-product', compact('total','catagoriesTypes','breadcrumb','news_popular','products'));
 	}
@@ -197,4 +197,4 @@ class WebsiteController extends Controller
 
         
         
-}
+    }

@@ -16,7 +16,11 @@ Auth::routes();
 
 Route::middleware(['auth:admin', 'optimizeImages'])->group(function(){
 	Route::get('dashboard', 'DashboardController@admin')->name('dashboard');
+	// Chart
 	Route::get('chartRangeDay', 'DashboardController@chartRangeDay')->name('dashboard.chart_range_day');
+	Route::get('chartRevenueRangeDay', 'DashboardController@chartRevenueRangeDay')->name('dashboard.chart_revenue_range_day');
+
+
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 	// 

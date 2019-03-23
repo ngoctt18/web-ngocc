@@ -111,6 +111,25 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Thống kê doanh thu theo ngày</h3>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-pills revenueRanges">
+                        <li class="active"><a href="#" data-range='7'>7 Days</a></li>
+                        <li><a href="#" data-range='30'>30 Days</a></li>
+                        <li><a href="#" data-range='60'>60 Days</a></li>
+                        <li><a href="#" data-range='90'>90 Days</a></li>
+                    </ul>
+                    <div class="chart" id="revenue-container" style="height: 300px;"></div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
 </section>
 @endsection
 @section('scripts')
@@ -218,6 +237,50 @@
             requestData(days, chart);
         });
 
-});
+
+        // ----- Thống kê doanh thu theo ngày -----
+        // Create a function that will handle AJAX requests
+        function requestRevenueData(days, revenueChart){
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: "{{ route('admin.dashboard.chart_revenue_range_day') }}", // This is the URL to the API
+                data: {days: days}
+            })
+            .done(function( data ) {
+                // console.log('data: '+data);
+                // When the response to the AJAX request comes back render the chart with new data
+                revenueChart.setData(data);
+            })
+            .fail(function() {
+                // If there is no communication between the server, show an error
+                alert( "error occured" );
+            });
+        }
+
+        var revenueChart = new Morris.Area({
+            element: 'revenue-container',
+            resize: true,
+            data: [ {date: '2019 Q1', revenue: 2666}, ],
+            xkey: 'date',
+            ykeys: ['revenue'],
+            labels: ['Revenue'],
+            lineColors: ['#3c8dbc', '#a0d0e0'],
+            hideHover: 'auto'
+        });
+        // Request initial data for the past 7 days:
+        requestRevenueData(7, revenueChart);
+        $('ul.revenueRanges a').click(function(e){
+            e.preventDefault();
+            $('ul.revenueRanges li').removeClass('active');
+            $(this).closest('li').addClass('active');
+            // Get the number of days from the data attribute
+            var days = $(this).attr('data-range');
+            // console.log('days: '+days);
+            // Request the data and render the chart using our handy function
+            requestRevenueData(days, revenueChart);
+        });
+
+    });
 </script>
 @endsection
