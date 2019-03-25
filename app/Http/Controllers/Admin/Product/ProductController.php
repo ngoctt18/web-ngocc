@@ -156,14 +156,39 @@ class ProductController extends Controller
 		$request->validate([
 			'image' => 'required|image'
 		]);
-		$pathDirectory = storage_path(\App\Product::TMP_DIRECTORY);
-		$imageFile = $request->file('image');
-		$fileName = time().'-'.$imageFile->getClientOriginalName();
-		$fileUpload = $imageFile->move($pathDirectory, $fileName);
+		$pathDirectory = storage_path(\App\Product::TMP_DIRECTORY);	// đường dẫn thư mục tạm
+		$imageFile = $request->file('image');	// Get ảnh đó
+		$fileName = time().'-'.$imageFile->getClientOriginalName();	// Tạo tên ảnh - unique
+		$fileUpload = $imageFile->move($pathDirectory, $fileName); // Di chuyển ảnh đến thư mục tạm vs tên ảnh - unique
+
+
+		// Tối ưu ảnh tinyPNG
+		try {
+			\Tinify\setKey(env("TINIFY_APIKEY"));
+			$source = \Tinify\fromFile($pathDirectory.'/'.$fileName);
+			$source->toFile($pathDirectory.'/'.$fileName); 
+		} catch(\Tinify\AccountException $e) {
+		    // Verify your API key and account limit.
+			return redirect('images/create')->with('error', $e->getMessage());
+		} catch(\Tinify\ClientException $e) {
+		    // Check your source image and request options.
+			return redirect('images/create')->with('error', $e->getMessage());
+		} catch(\Tinify\ServerException $e) {
+		    // Temporary issue with the Tinify API.
+			return redirect('images/create')->with('error', $e->getMessage());
+		} catch(\Tinify\ConnectionException $e) {
+		    // A network connection error occurred.
+			return redirect('images/create')->with('error', $e->getMessage());
+		} catch(Exception $e) {
+		    // Something else went wrong, unrelated to the Tinify API.
+			return redirect('images/create')->with('error', $e->getMessage());
+		}
+
+
 		if(!$fileUpload) abort(500);
 		return response()->json([
 			'filename' => $fileName,
-			'url' => asset('storage/tmp-share-images/'.$fileName)
+			'url' => asset('storage/tmp-share-images/'.$fileName),
 		]);
 	}
 }

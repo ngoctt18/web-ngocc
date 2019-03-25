@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	$(document).ready(function() {
+	// $(document).ready(function() {
 		// Chọn hình ảnh thì upload lên thư mục tạm trên server luôn
 		$('.product_details, .product_avatar').bind('change', function(event) {
 			event.preventDefault();
@@ -9,9 +9,9 @@
 			if(file_size>3*1024*1024) {
 				alert('Ảnh không được quá 3MB. Hãy chọn ảnh khác');
 				reset_form_element($(this));
-				$(this).closest('.upload-image').find('img').attr('src', 'http://via.placeholder.com/200x200');
 				$(_self).closest('.upload-image').find('.images').removeAttr('value');
 				$(_self).closest('.upload-image').find('.index').removeAttr('value');
+				$(_self).closest('.upload-image').find('img').attr('src', 'http://via.placeholder.com/200x200');
 				return false;
 			} else {
 				// Kích thước chuẩn thì thực hiện ajax
@@ -51,5 +51,5 @@
 			e.wrap('<form>').parent('form').trigger('reset');
 			e.unwrap();
 		}
-	});
+	// });
 </script>
