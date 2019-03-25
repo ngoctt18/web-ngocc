@@ -119,7 +119,7 @@ class ProductController extends Controller
         // Xóa các ảnh cũ đã chọn thay đổi
 		$indexs = $request->index;
 		$mediaOld = \Spatie\MediaLibrary\Models\Media::where([
-			'model_id' => $product->id, 
+			'model_id' => $product->id,
 			'collection_name' => 'product_details',
 		])->get();
 		foreach($indexs as $index){
@@ -166,7 +166,7 @@ class ProductController extends Controller
 		try {
 			\Tinify\setKey(env("TINIFY_APIKEY"));
 			$source = \Tinify\fromFile($pathDirectory.'/'.$fileName);
-			$source->toFile($pathDirectory.'/'.$fileName); 
+			$source->toFile($pathDirectory.'/'.$fileName);
 		} catch(\Tinify\AccountException $e) {
 		    // Verify your API key and account limit.
 			return redirect('images/create')->with('error', $e->getMessage());

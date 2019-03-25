@@ -47,7 +47,7 @@ class LoginController extends Controller
     public function userLogin(LoginWebsiteRequest $request)
     {
     	$loginInfo = [
-    		'phone' => $request->phone, 
+    		'phone' => $request->phone,
     		'password' => $request->password
     	];
 		// return $loginInfo;
@@ -118,5 +118,5 @@ class LoginController extends Controller
         return view('website.auth.confirmed', compact('total','news_popular','catagoriesTypes'));
     }
 
-    
+
 }
