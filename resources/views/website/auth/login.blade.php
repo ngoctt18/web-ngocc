@@ -4,11 +4,13 @@
 
 @section('styles')
 <style type="text/css">
-.red {color: red;}
-span.error { color: #b30e0e; font-weight: 500; margin-top: 1px; }
-#login-page .login-box .form-control { margin: 0; }
-p.lost_password { margin-top: 15px !important; }
-label.label-login { margin-top: 20px !important; }
+	.red {color: red;}
+	span.error { color: #b30e0e; font-weight: 500; margin-top: 1px; }
+	#login-page .login-box .form-control { margin: 0; }
+	p.lost_password { margin-top: 15px !important; }
+	label.label-login { margin-top: 20px !important; }
+	.btn-github:hover { color: #fff !important; background: #444; } 
+	.btn-github:hover .fa-github { color: #fff; }
 </style>
 @endsection
 
@@ -25,8 +27,8 @@ label.label-login { margin-top: 20px !important; }
 						{{ csrf_field() }}
 						<h1>Login</h1>
 
-						<label for="CustomerEmail" class="label-login">Phone <span class="red">*</span></label>
-						<input type="text" name="phone" id="CustomerEmail" placeholder="Phone" class="account_input form-control " autocorrect="off" autocapitalize="off" autofocus="" value="{{old('phone')}}" required="">
+						<label for="CustomerEmail" class="label-login">Email or Phone <span class="red">*</span></label>
+						<input type="text" name="phone" id="CustomerEmail" placeholder="Email or Phone " class="account_input form-control " autocorrect="off" autocapitalize="off" autofocus="" value="{{old('phone')}}" required="">
 						@if($errors->has('phone'))
 						<span class="help-block error">{{ $errors->first('phone') }}</span>
 						@endif
@@ -48,6 +50,31 @@ label.label-login { margin-top: 20px !important; }
 								</span>
 							</button>
 						</p>
+						<p style=" margin-bottom: 5px; "><label class="label-login">Sign In with social</label></p>
+						<div class="socialsharing_product no-print">
+							<ul class="social-sharing list-unstyled">
+								<li>
+									<a class="btn btn-facebook" href="{{ route('web.login.social', ['facebook']) }}">
+										<i class="fa fa-facebook"></i> facebook
+									</a>
+								</li>
+								<li>
+									<a class="btn btn-google-plus" href="{{ route('web.login.social', ['google']) }}">
+										<i class="fa fa-google-plus"></i> Google+
+									</a>
+								</li>
+								<li>
+									<a class="btn btn-github" href="{{ route('web.login.social', ['github']) }}">
+										<i class="fa fa-github"></i> Github
+									</a>
+								</li>
+								<li>
+									<a class="btn btn-twitter" href="{{ route('web.login.social', ['twitter']) }}">
+										<i class="fa fa-twitter"></i> Twitter
+									</a>
+								</li>
+							</ul>
+						</div>
 						<a href="{{ route('web.homepage') }}">
 							<span>
 								<i class="fa fa-long-arrow-left"></i>&nbsp;
@@ -59,12 +86,11 @@ label.label-login { margin-top: 20px !important; }
 				<div id="RecoverPasswordForm" style="display: none;">
 					<h2>Reset your password</h2>
 					<p>We will send you an email to reset your password.</p>
-					<form method="post" action="/account/recover" accept-charset="UTF-8"><input type="hidden" name="form_type" value="recover_customer_password"><input type="hidden" name="utf8" value="✓">
-
-
-						<label for="RecoverEmail" class="label-login">Email Address</label>
-						<input type="email" value="" name="email" id="RecoverEmail" class="form-control" placeholder="Email Address" autocorrect="off" autocapitalize="off">
-						<p>
+					<form method="post" action="" accept-charset="UTF-8">
+						{{ csrf_field() }}
+						<label for="RecoverEmail" class="label-login">Email Address <span class="red">*</span></label>
+						<input type="email" value="" name="email" id="RecoverEmail" class="form-control" placeholder="Email Address" autocorrect="off" autocapitalize="off" required="">
+						<p style=" margin-top: 5px; ">
 							<input type="submit" class="btn btn-outline" value="Submit">
 						</p>
 						<button type="button" id="HideRecoverPasswordLink" class="text-link btn btn-outline-inverse">

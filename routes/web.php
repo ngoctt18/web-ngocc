@@ -33,6 +33,10 @@ Route::get('/', 'WebsiteController@homepage')->name('homepage');
 Route::get('login', 'Auth\LoginController@showUserLoginForm')->name('login');
 Route::post('post-login', 'Auth\LoginController@userLogin')->name('post_login');
 
+// Social login
+Route::get('login/redirect/{social}', 'Auth\SocialAuthController@redirect')->name('login.social');
+Route::get('login/callback/{social}', 'Auth\SocialAuthController@callback');
+
 Route::get('register', 'Auth\LoginController@showUserRegisterForm')->name('register');
 Route::post('register', 'Auth\LoginController@userRegister');
 // Route::get('registered', 'Auth\LoginController@userRegistered')->name('registered');

@@ -46,12 +46,15 @@ class LoginController extends Controller
 
     public function userLogin(LoginWebsiteRequest $request)
     {
-    	$loginInfo = [
-    		'phone' => $request->phone,
-    		'password' => $request->password
-    	];
-		// return $loginInfo;
-    	if (Auth::attempt($loginInfo, $request->input('remember', false))) {
+        // Kiểm tra xem thông tin đăng nhập là email hay là chuỗi
+        $login_type = filter_var($request->phone, FILTER_VALIDATE_EMAIL ) ? 'email' : 'phone';
+        // Thêm vào request data 
+        $request->merge([
+            $login_type => $request->phone,
+        ]);
+
+        // dd( $request->all());
+        if (Auth::attempt($request->only($login_type, 'password'), $request->input('remember', false))) {
             // Khôi phục giỏ hàng của user
             // Cart::instance('default')->restore(Auth::user()->email);
             // Cart::instance('wishlist')->restore('wishlist_'.Auth::user()->email);
@@ -63,12 +66,18 @@ class LoginController extends Controller
             Session::flash('success', 'Đăng nhập thành công.');
             return redirect()->back();
         }
-        return back()->withInput($request->only('phone', 'remember'));
-    }
+        
+        return redirect()->back()
+        ->withInput($request->only('phone', 'remember'))
+        ->withErrors([
+            'phone' => 'These credentials do not match our records.',
+        ]);
+    } 
+
 
     public function logout(Request $request){
-    	Auth::logout();
-    	return redirect()->guest('/homepage/login');
+        Auth::logout();
+        return redirect()->guest('/homepage/login');
     }
 
 

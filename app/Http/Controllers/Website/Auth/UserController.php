@@ -34,7 +34,7 @@ class UserController extends Controller
 	public function postUpdateInfo(UpdateInfoUserRequest $request, $username)
 	{
 		$user = User::whereUsername($username)->firstOrFail();
-		$user->update($request->all());
+		$user->update($request->except(['password', 'password_confirm', 'verified']));
         // Update password nếu nó ko rỗng. còn ko thì ko động tới
 		if ($request->password_confirm != null) {
 			$user->update(['password' => $request->password_confirm]);

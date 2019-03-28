@@ -26,8 +26,8 @@ class LoginWebsiteRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'bail|required|exists:users,phone',
-            'password' => 'required|min:6'
+            'phone' => 'required',
+            'password' => 'required'
         ];
     }
     
@@ -35,8 +35,17 @@ class LoginWebsiteRequest extends FormRequest
         if($validator->fails()) return;
 
         $validator->after(function($validator){
-            $user = User::where('phone', request('phone'))->first();
-            // dd(request('phone'));
+            $login_type = filter_var(request('phone'), FILTER_VALIDATE_EMAIL ) ? 'email' : 'phone';
+            // dd($login_type);
+            if ($login_type === 'email') {
+                $user = User::where('email', request('phone'))->first();
+            } elseif ($login_type === 'phone') {
+                $user = User::where('phone', request('phone'))->first();
+            }
+            if (!$user) {
+                $validator->errors()->add('phone', 'Email hoặc số điện thoại không tồn tại.');
+                return;
+            }
             if(!$user->isVerified()){
                 $validator->errors()->add('phone', 'Tài khoản chưa được kích hoạt.');
                 return;

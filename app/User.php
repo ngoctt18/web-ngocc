@@ -80,6 +80,11 @@ class User extends Authenticatable implements HasMedia
         return $this->status == 1;
     }
 
+    public static function generateAPIToken(){
+        return str_random(60);
+    }
 
+
+    
 
 }

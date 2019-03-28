@@ -40,4 +40,29 @@ return [
         ],
     ],
 
+    'facebook' => [
+        'client_id' => env('FACEBOOK_APP_ID', '2233734240234108'),
+        'client_secret' => env('FACEBOOK_APP_SECRET', '777af889a647028e04274ec16b1f6c86'),
+        'redirect' => env('FACEBOOK_APP_CALLBACK_URL', 'https://localhost:8000/homepage/login/callback/facebook'),
+    ],
+
+    'github' => [
+        'client_id' => env('GITHUB_APP_ID', 'bc055180e4cf75052340'),
+        'client_secret' => env('GITHUB_APP_SECRET', '038c39c04d399cd2599c7576a2e790a3604fc8b4'),
+        'redirect' => env('GITHUB_APP_CALLBACK_URL', 'http://localhost:8000/homepage/login/callback/github'),
+    ],
+
+    'twitter' => [
+        'client_id' => env('TWITTER_APP_ID'),
+        'client_secret' => env('TWITTER_APP_SECRET'),
+        'redirect' => env('TWITTER_APP_CALLBACK_URL'),
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_APP_ID', '592607575976-vdq531ksbmn4fcm68b86tgvg42t0daii.apps.googleusercontent.com'),
+        'client_secret' => env('GOOGLE_APP_SECRET', 'tPKRXCrfjGqlGmmF4JGsFs2-'),
+        'redirect' => env('GOOGLE_APP_CALLBACK_URL', 'https://localhost:8000/homepage/login/callback/google'),
+    ],
+
+
 ];

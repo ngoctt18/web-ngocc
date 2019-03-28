@@ -13,8 +13,8 @@
         "fideloper/proxy": "^4.0",
         "gloudemans/shoppingcart": "^2.6",
         "laravel/framework": "5.7.*",
+        "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
-        "spatie/laravel-image-optimizer": "^1.4",
         "spatie/laravel-medialibrary": "^7.0.0",
         "tinify/tinify": "^1.5"
     },

@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('username')->unique();
-            $table->string('phone')->unique();
+            $table->string('phone')->unique()->nullable();
             $table->string('images')->nullable();
             // $table->unsignedInteger('level');
             $table->string('password');
@@ -28,6 +28,10 @@ class CreateUsersTable extends Migration
             $table->date('verified_at')->nullable();
             $table->enum('status',[0, 1, 2])->default(1);
             // 0: Tạm dừng hoạt động, 1: Đang hoạt động, 2: Dừng hoạt động
+
+            // Đăng nhập bằng MXH
+            $table->string('provider_id')->nullable();
+            $table->string('provider')->nullable();
             
             $table->rememberToken();
             $table->timestamps();
