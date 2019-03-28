@@ -43,7 +43,7 @@ return [
     'facebook' => [
         'client_id' => env('FACEBOOK_APP_ID', '2233734240234108'),
         'client_secret' => env('FACEBOOK_APP_SECRET', '777af889a647028e04274ec16b1f6c86'),
-        'redirect' => env('FACEBOOK_APP_CALLBACK_URL', 'https://localhost:8000/homepage/login/callback/facebook'),
+        'redirect' => env('FACEBOOK_APP_CALLBACK_URL', 'http://localhost:8000/homepage/login/callback/facebook'),
     ],
 
     'github' => [
@@ -59,9 +59,9 @@ return [
     ],
 
     'google' => [
-        'client_id' => env('GOOGLE_APP_ID', '592607575976-vdq531ksbmn4fcm68b86tgvg42t0daii.apps.googleusercontent.com'),
-        'client_secret' => env('GOOGLE_APP_SECRET', 'tPKRXCrfjGqlGmmF4JGsFs2-'),
-        'redirect' => env('GOOGLE_APP_CALLBACK_URL', 'https://localhost:8000/homepage/login/callback/google'),
+        'client_id' => env('GOOGLE_APP_ID', '747088189355-ovu2rm0uqno6ekc9vrlir726knubpik2.apps.googleusercontent.com'),
+        'client_secret' => env('GOOGLE_APP_SECRET', 'ZBZY450bn8GBALgStU5-x7ab'),
+        'redirect' => env('GOOGLE_APP_CALLBACK_URL', 'http://localhost:8000/homepage/login/callback/google'),
     ],
 
 
