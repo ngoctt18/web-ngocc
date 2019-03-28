@@ -80,9 +80,6 @@ class LoginController extends Controller
         return redirect()->guest('/homepage/login');
     }
 
-
-
-
     public function showUserRegisterForm()
     {
         $total = Cart::subtotal(0,'','.');

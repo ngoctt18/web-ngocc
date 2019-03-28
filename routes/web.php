@@ -37,6 +37,10 @@ Route::post('post-login', 'Auth\LoginController@userLogin')->name('post_login');
 Route::get('login/redirect/{social}', 'Auth\SocialAuthController@redirect')->name('login.social');
 Route::get('login/callback/{social}', 'Auth\SocialAuthController@callback');
 
+// Forget password
+Route::post('forget-pass', 'Auth\ForgetPasswordController@forgetPassword')->name('forget_pass');
+
+
 Route::get('register', 'Auth\LoginController@showUserRegisterForm')->name('register');
 Route::post('register', 'Auth\LoginController@userRegister');
 // Route::get('registered', 'Auth\LoginController@userRegistered')->name('registered');

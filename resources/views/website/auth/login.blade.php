@@ -19,10 +19,7 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6">
 			<div class="login-box">
-				<div class="note form-success" id="ResetSuccess" style="display:none;">
-					We've sent you an email with a link to update your password.
-				</div>
-				<div id="CustomerLoginForm">
+				<div id="CustomerLoginForm" style="@if($errors->has('email')) display: none; @else display: block; @endif">
 					<form method="post" action="{{ route('web.post_login') }}" id="customer_login" accept-charset="UTF-8">
 						{{ csrf_field() }}
 						<h1>Login</h1>
@@ -83,13 +80,21 @@
 						</a>
 					</form>
 				</div>
-				<div id="RecoverPasswordForm" style="display: none;">
+
+				<div id="RecoverPasswordForm" style="@if($errors->has('email')) display: block; @else display: none; @endif">
+
+					<div class="note form-success" id="ResetSuccess" style="display:none;">
+						We've sent you an email with a link to update your password.
+					</div>
 					<h2>Reset your password</h2>
 					<p>We will send you an email to reset your password.</p>
-					<form method="post" action="" accept-charset="UTF-8">
+					<form method="post" action="{{ route('web.forget_pass') }}" accept-charset="UTF-8">
 						{{ csrf_field() }}
 						<label for="RecoverEmail" class="label-login">Email Address <span class="red">*</span></label>
-						<input type="email" value="" name="email" id="RecoverEmail" class="form-control" placeholder="Email Address" autocorrect="off" autocapitalize="off" required="">
+						<input type="email" value="{{old('email')}}" name="email" id="RecoverEmail" class="form-control" placeholder="Email Address" autocorrect="off" autocapitalize="off" required="">
+						@if($errors->has('email'))
+						<span class="help-block error">{{ $errors->first('email') }}</span>
+						@endif
 						<p style=" margin-top: 5px; ">
 							<input type="submit" class="btn btn-outline" value="Submit">
 						</p>
@@ -104,6 +109,7 @@
 
 			</div>
 		</div>
+
 		<div class="col-xs-12 col-sm-6 col-md-6">
 			<div class="register-box">
 				<h3>Create Account</h3>
