@@ -33,7 +33,7 @@ class SocialAuthController extends Controller
 			return Response::json([
 				'message' => 'Vui lòng cho phép xem email.',
 				'error' => 'Email not null',
-				'redirect' => route('api.social.login', [$social]),
+				'redirect' => route('web.login.social', [$social]),
 			], 404);
 		}
 

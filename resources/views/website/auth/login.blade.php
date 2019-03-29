@@ -9,8 +9,12 @@
 	#login-page .login-box .form-control { margin: 0; }
 	p.lost_password { margin-top: 15px !important; }
 	label.label-login { margin-top: 20px !important; }
-	.btn-github:hover { color: #fff !important; background: #444; } 
-	.btn-github:hover .fa-github { color: #fff; }
+	.btn-social, .fa-social {color: #fff !important;}
+	.btn-social:hover {opacity: 0.9; border: 1px solid #000 !important;}
+	.btn-github {background: #444;}
+	.btn-facebook {background: #435F9F;}
+	.btn-google-plus {background: #E04B34;}
+	.btn-twitter {background: #00AAF0;}
 </style>
 @endsection
 
@@ -47,27 +51,27 @@
 								</span>
 							</button>
 						</p>
-						<p style=" margin-bottom: 5px; "><label class="label-login">Sign In with social</label></p>
+						<p style=" margin-bottom: 5px; "><label class="label-login"><i class="fa fa-long-arrow-right"></i>&nbsp; Sign In with social </label></p>
 						<div class="socialsharing_product no-print">
 							<ul class="social-sharing list-unstyled">
 								<li>
-									<a class="btn btn-facebook" href="{{ route('web.login.social', ['facebook']) }}">
-										<i class="fa fa-facebook"></i> facebook
+									<a class="btn btn-social btn-facebook" href="{{ route('web.login.social', ['facebook']) }}">
+										<i class="fa fa-social fa-facebook"></i> Facebook
 									</a>
 								</li>
 								<li>
-									<a class="btn btn-google-plus" href="{{ route('web.login.social', ['google']) }}">
-										<i class="fa fa-google-plus"></i> Google+
+									<a class="btn btn-social btn-google-plus" href="{{ route('web.login.social', ['google']) }}">
+										<i class="fa fa-social fa-google-plus"></i> Google+
 									</a>
 								</li>
 								<li>
-									<a class="btn btn-github" href="{{ route('web.login.social', ['github']) }}">
-										<i class="fa fa-github"></i> Github
+									<a class="btn btn-social btn-github" href="{{ route('web.login.social', ['github']) }}">
+										<i class="fa fa-social fa-github"></i> Github
 									</a>
 								</li>
 								<li>
-									<a class="btn btn-twitter" href="{{ route('web.login.social', ['twitter']) }}">
-										<i class="fa fa-twitter"></i> Twitter
+									<a class="btn btn-social btn-twitter" href="{{ route('web.login.social', ['twitter']) }}">
+										<i class="fa fa-social fa-twitter"></i> Twitter
 									</a>
 								</li>
 							</ul>

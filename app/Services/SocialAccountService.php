@@ -16,8 +16,8 @@ class SocialAccountService
         ->where('provider_id', $providerUser->getId())
         ->first();
 
-        // dump('providerUser');
-        // dump($providerUser);
+        dump('providerUser');
+        dump($providerUser);
 
         // Nếu user của social này đã đăng ký rồi
         if ($account) {
@@ -31,6 +31,14 @@ class SocialAccountService
         if ($accEmail) {
             // dump('Đã trùng email');
             return $accEmail;
+        }
+
+        $accUsername = User::where('username', str_slug($providerUser->getName(), '-'))
+        ->first();
+        // Nếu user có username ntn đã đky rồi
+        if ($accUsername) {
+            // dump('Đã trùng username');
+            return $accUsername;
         }
 
         // User chưa đăng ký
