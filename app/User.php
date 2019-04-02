@@ -84,7 +84,10 @@ class User extends Authenticatable implements HasMedia
         return str_random(60);
     }
 
-
+    public function isOnline()
+    {
+        return cache()->has('user_online_'.$this->id);
+    }
     
 
 }

@@ -72,6 +72,7 @@ class NewsController extends Controller
 		// count view
 		$newsView = Session::get('news_views_'.$news->id);
 		// nếu chưa có session
+		// if (!Session::has('news_views_'.$news->id)) {
 		if (!$newsView) { 
 			Session::put('news_views_'.$news->id, 1); // Tạo, Set giá trị cho session
 			$news->increment('count_views'); // Tăng lần view lên 

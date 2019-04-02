@@ -10,6 +10,7 @@ use App\Catagory;
 use App\CatagoriesType;
 use App\Contact;
 use App\News;
+use App\User;
 use Cart;
 use Auth;
 use Session;
@@ -29,7 +30,8 @@ class WebsiteController extends Controller
 		$productsSpecial = Product::where('status', '1')->orderBy('discount','DESC')->take(4)->get();
 		$productsNew = Product::where('status', '1')->orderBy('count_buys','DESC')->take(8)->get();
 		
-		return view('website.homepage', compact('products','catagories','productsNew','catagoriesTypes','productsSpecial','contents','total','news_popular'));
+		$users = User::all();
+		return view('website.homepage', compact('products','catagories','productsNew','catagoriesTypes','productsSpecial','contents','total','news_popular','users'));
 	}
 
 	public function productDetail($id)

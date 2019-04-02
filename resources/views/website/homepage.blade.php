@@ -29,6 +29,23 @@
 					@include('website.partials.product_home')
 
 					@include('website.partials.banner_bot')
+
+					<div class="row ">
+						<div class="col-md-offset-1 col-xs-9 col-sm-9">
+							<div class="block-index user_online">
+								<b>User online: </b>
+								@if ($users)
+								<ul>
+									@foreach ($users as $user)
+									@if ($user->isOnline())
+									<li>{{$user->name}}</li>
+									@endif
+									@endforeach
+								</ul>
+								@endif
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
