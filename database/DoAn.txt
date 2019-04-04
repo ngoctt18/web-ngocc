@@ -4,9 +4,9 @@
 - done: Thống kê doanh thu theo tuần, ngày tháng,
 - done: Xuất hóa đơn ra file, In báo cáo hóa đơn bán hàng
 - done: Giảm số lượng hàng khi bán
-Thống kê ds KH mua hàng nhiều 
 Tổng Số lượt người truy cập, sl ng đang truy cập
-Thống kê theo tháng cụ thể
+- Thống kê ds KH mua hàng nhiều 
+- Thống kê theo tháng cụ thể
 
 
 

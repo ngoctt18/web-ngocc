@@ -130,6 +130,20 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Thống kê doanh thu theo tháng</h3>
+                </div>
+                <div class="box-body">
+                    <div class="chart" id="month-line-chart" style="height: 300px;"></div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
 </section>
 @endsection
 @section('scripts')
@@ -141,6 +155,35 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+
+
+
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "{{ route('admin.dashboard.statistics_month') }}",
+            data: null,
+        })
+        .done(function( data ) {
+            // console.log(data);
+            monthLineChart.setData(data);
+        })
+        .fail(function() {
+            alert( "error occured" );
+        });
+
+        var monthLineChart = new Morris.Bar({
+            element: 'month-line-chart',
+            resize: true,
+            data: [0, 0],
+            xkey: 'month',
+            ykeys: ['revenue'],
+            labels: ['Revenue'],
+            lineColors: ['#3c8dbc'],
+            hideHover: 'auto'
+        });
+
+
         // Thống kê đơn hàng
         var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
         var pieChart = new Chart(pieChartCanvas);
@@ -280,6 +323,7 @@
             // Request the data and render the chart using our handy function
             requestRevenueData(days, revenueChart);
         });
+
 
     });
 </script>

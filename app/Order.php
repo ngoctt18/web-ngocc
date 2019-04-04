@@ -55,8 +55,8 @@ class Order extends Model
 		}
 	}
 
-	// public function getInputDate($value='')
-	// {
-	// 	# code...
-	// }
+	public function getInputDateAttribute($value='')
+	{
+		// return $this->attributes['input_date'] = 
+	}
 }

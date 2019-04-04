@@ -17,7 +17,7 @@ class LogUserActivity
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            $expireAt = now()->addMinutes(2);
+            $expireAt = now()->addMinutes(1);
             cache(['user_online_'.Auth::id() => true], $expireAt);
         }
         return $next($request);

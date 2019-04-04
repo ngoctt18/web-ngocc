@@ -38,6 +38,14 @@
 						<option value="2" {{old('status', request('status')) == '2' ? 'selected' : ''}}>Dừng hoạt động</option>
 					</select>
 				</div>
+				{{-- <div class="col-xs-2">
+					<label for="count_buy">Khách hàng mua nhiều</label>
+					<select id="count_buy" class="form-control input-sm" name="count_buy">
+						<option value="">Chọn trạng thái</option>
+						<option value="DESC" {{old('count_buy', request('count_buy')) == 'DESC' ? 'selected' : ''}}>Giảm dần</option>
+						<option value="ASC" {{old('count_buy', request('count_buy')) == 'ASC' ? 'selected' : ''}}>Tăng dần</option>
+					</select>
+				</div> --}}
 				<div class="col-xs-2">
 					<label for="">&nbsp;</label>
 					<button type="submit" class="btn btn-block btn-info btn-sm">Tìm kiếm</button>
@@ -58,6 +66,7 @@
 					<th>Địa chỉ</th>
 					<th>Trạng thái</th>
 					<th>Tham gia</th>
+					<th>Số đơn</th>
 					<th>Hành động</th>
 				</tr>
 			</thead>
@@ -85,6 +94,7 @@
 						{{-- @endif --}}
 					</td>
 					<td>{{$user->created_at->format('d/m/Y')}}</td>
+					<td>{{$user->orders->count()}}</td>
 					<td>
 						<a href="{{ route('admin.users.edit', ['id' => $user->id], false) }}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
 						<a href="{{ route('admin.users.destroy', ['id' => $user->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>

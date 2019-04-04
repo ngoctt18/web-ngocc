@@ -20,10 +20,11 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::get('chartRangeDay', 'DashboardController@chartRangeDay')->name('dashboard.chart_range_day');
 	Route::get('chartRevenueRangeDay', 'DashboardController@chartRevenueRangeDay')->name('dashboard.chart_revenue_range_day');
 
+	Route::get('statistics-month', 'DashboardController@statisticsMonth')->name('dashboard.statistics_month');
+
 
 	Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-
-	// 
+	// Manage
 	Route::resource('catagory-types', 'CatagoryType\CatagoryTypeController');
 	Route::resource('catagories', 'Catagory\CatagoryController');
 	Route::resource('distributions', 'Distribute\DistributeController');
@@ -36,8 +37,8 @@ Route::middleware(['auth:admin'])->group(function(){
 	
 	// Ajax Upload một file ảnh lên thư mục tạm trên server.
 	Route::post('uploadImage', 'Product\ProductController@uploadImage')->name('uploadImage');
-	Route::resource('users', 'User\UserController');
 
+	Route::resource('users', 'User\UserController');
 	Route::resource('orders', 'Order\OrderController')->except(['create','store','edit']);
 	Route::get('orders-pending', 'Order\OrderController@ordersPending')->name('orders.orders_pending');
 	Route::get('orders-deliver', 'Order\OrderController@ordersDeliver')->name('orders.orders_deliver');
@@ -50,7 +51,7 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::resource('contacts', 'Contact\ContactController')->only(['index','destroy']);
 	Route::post('contacts-detail', 'Contact\ContactController@contactDetail')->name('contact_detail');
 
-    // Thay đổi mật khẩu user đang đăng nhập
+    // Thay đổi mật khẩu Admin đang đăng nhập
 	Route::post('checkPassword', 'Auth\LoginController@checkPassword')->name('check_password');
 	Route::post('changePassword', 'Auth\LoginController@changePassword')->name('change_password');
 
