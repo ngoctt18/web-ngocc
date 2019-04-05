@@ -14,7 +14,12 @@ class SearchController extends Controller
 	public function index(Request $request)
 	{
 		$query = $request->query('query', NULL);
-		$data = Product::where('name', 'LIKE', '%'.$query.'%')->get();
+		$data = Product::query();
+		if ($query != NULL) {
+			$data = $data->where('name', 'LIKE', '%'.$query.'%');
+		}
+		$data = $data->latest()->get();
+
 		$total = Cart::subtotal(0,'','.');
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$breadcrumb = 'Search';

@@ -5,6 +5,7 @@
 - done: Xuất hóa đơn ra file, In báo cáo hóa đơn bán hàng
 - done: Giảm số lượng hàng khi bán
 Tổng Số lượt người truy cập, sl ng đang truy cập
+Chức năng bình luận
 - Thống kê ds KH mua hàng nhiều 
 - Thống kê theo tháng cụ thể
 
