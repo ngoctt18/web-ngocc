@@ -1,10 +1,10 @@
 <form method="GET" action="">
-   <div id="catalog_block" class="block ajax-filter block_shopby">
-      <h4 class="title_block">
-         Giá
-      </h4>
-      <div style="" class="block_content">
-         <!-- SHOP BY SIZE -->
+ <div id="catalog_block" class="block ajax-filter block_shopby">
+  <h4 class="title_block">
+   Giá
+ </h4>
+ <div style="" class="block_content">
+   <!-- SHOP BY SIZE -->
       <!-- <div class="catalog_filters">
          <div class="catalog_subtitle_heading">
             <span class="catalog_subtitle">Size</span>
@@ -26,31 +26,31 @@
                <a href="frontpage/xl.html" title="Narrow selection to products matching tag XL">XL</a>
             </li>
          </ul>
-      </div> -->
-      <!-- SHOP BY PRICE -->
-      <div class="catalog_filters">
+       </div> -->
+       <!-- SHOP BY PRICE -->
+       <div class="catalog_filters">
          <div class="catalog_subtitle_heading">
-            <span class="catalog_subtitle"></span>
-         </div>
-         <ul id="ul_catalog_price" class="col-md-12 catalog_filter_ul list-unstyled">
-            <li class="advanced-filter {{request('price') == 200000 ? 'price_checked' : ''}}" data-group="Price" data-handle="under-50">
-               <a href="{{Request::url().'?price=200000'}}" title="Narrow selection to products matching tag Under $50">Dưới 200.000₫</a>
-            </li>
-            <li class="advanced-filter {{request('price') == 200000300000 ? 'price_checked' : ''}}" data-group="Price" data-handle="50-100">
-               <a href="{{Request::url().'?price=200000300000'}}" title="Narrow selection to products matching tag $50 - $100">200.000₫ - 300.000₫</a>
-            </li>
-            <li class="advanced-filter {{request('price') == 300000400000 ? 'price_checked' : ''}}" data-group="Price" data-handle="100-200">
-               <a href="{{Request::url().'?price=300000400000'}}" title="Narrow selection to products matching tag $100 - $200">300.000₫ - 400.000₫</a>
-            </li>
-            <li class="advanced-filter {{request('price') == 400000500000 ? 'price_checked' : ''}}" data-group="Price" data-handle="200-400">
-               <a href="{{Request::url().'?price=400000500000'}}" title="Narrow selection to products matching tag $200 - $400">400.000₫ - 500.000₫</a>
-            </li>
-            <li class="advanced-filter {{request('price') == 500000 ? 'price_checked' : ''}}" data-group="Price" data-handle="above-400">
-               <a href="{{Request::url().'?price=500000'}}" title="Narrow selection to products matching tag  Above $400">Trên 500.000₫</a>
-            </li>
-         </ul>
-      </div>
-      <!-- SHOP BY Color -->
+          <span class="catalog_subtitle"></span>
+        </div>
+        <ul id="ul_catalog_price" class="col-md-12 catalog_filter_ul list-unstyled">
+          <li class="advanced-filter {{request('price') == 200000 ? 'price_checked' : ''}}" data-group="Price" data-handle="under-50">
+           <a href="{{Request::url().'?price=200000'}}" title="Narrow selection to products matching tag Under $50">Dưới 200.000₫</a>
+         </li>
+         <li class="advanced-filter {{request('price') == 200000300000 ? 'price_checked' : ''}}" data-group="Price" data-handle="50-100">
+           <a href="{{Request::url().'?price=200000300000'}}" title="Narrow selection to products matching tag $50 - $100">200.000₫ - 300.000₫</a>
+         </li>
+         <li class="advanced-filter {{request('price') == 300000400000 ? 'price_checked' : ''}}" data-group="Price" data-handle="100-200">
+           <a href="{{Request::url().'?price=300000400000'}}" title="Narrow selection to products matching tag $100 - $200">300.000₫ - 400.000₫</a>
+         </li>
+         <li class="advanced-filter {{request('price') == 400000500000 ? 'price_checked' : ''}}" data-group="Price" data-handle="200-400">
+           <a href="{{Request::url().'?price=400000500000'}}" title="Narrow selection to products matching tag $200 - $400">400.000₫ - 500.000₫</a>
+         </li>
+         <li class="advanced-filter {{request('price') == 500000 ? 'price_checked' : ''}}" data-group="Price" data-handle="above-400">
+           <a href="{{Request::url().'?price=500000'}}" title="Narrow selection to products matching tag  Above $400">Trên 500.000₫</a>
+         </li>
+       </ul>
+     </div>
+     <!-- SHOP BY Color -->
      <!--  <div class="catalog_filters">
         <div class="catalog_subtitle_heading">
            <span class="catalog_subtitle">Color</span>
@@ -89,7 +89,7 @@
               <a href="frontpage/blue.html" title="Narrow selection to products matching tag blue">Blue</a>
            </li>
         </ul>
-     </div> -->
+      </div> -->
+    </div>
   </div>
-</div>
 </form>

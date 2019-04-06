@@ -30,3 +30,9 @@ h1, h2, h3, h4, h5 { font-family: tahoma !important;}
 
 li.parent.dropdown.active { background: #363a40; } 
 li.parent.dropdown.active > a { color: #59bd56; }
+
+ul.typeahead.dropdown-menu { left: unset !important; right: 0 !important; }
+.search-bar ul.typeahead.dropdown-menu { left: unset !important; right: 0 !important; width: 100%; }
+
+
+
