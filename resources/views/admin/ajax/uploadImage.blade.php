@@ -18,7 +18,7 @@
 				var _token = $('input[name="_token"]').val();
 				var image = $(this).prop('files')[0];
 				var index = $(this).closest('.index').index();
-				console.log('index: '+index);
+				// console.log('index: '+index);
 
 				var dataSend = new FormData();
 				dataSend.append('_token', _token);

@@ -164,24 +164,24 @@ class ProductController extends Controller
 
 		// Tối ưu ảnh tinyPNG
 		try {
-			\Tinify\setKey(env("TINIFY_APIKEY"));
+			\Tinify\setKey(env('TINIFY_APIKEY', 'bSLFdSwc89G5bGZTG9Hp6dFR81HCLmCB'));
 			$source = \Tinify\fromFile($pathDirectory.'/'.$fileName);
 			$source->toFile($pathDirectory.'/'.$fileName);
 		} catch(\Tinify\AccountException $e) {
 		    // Verify your API key and account limit.
-			return redirect('images/create')->with('error', $e->getMessage());
+			return $e->getMessage();
 		} catch(\Tinify\ClientException $e) {
 		    // Check your source image and request options.
-			return redirect('images/create')->with('error', $e->getMessage());
+			return $e->getMessage();
 		} catch(\Tinify\ServerException $e) {
 		    // Temporary issue with the Tinify API.
-			return redirect('images/create')->with('error', $e->getMessage());
+			return $e->getMessage();
 		} catch(\Tinify\ConnectionException $e) {
 		    // A network connection error occurred.
-			return redirect('images/create')->with('error', $e->getMessage());
+			return $e->getMessage();
 		} catch(Exception $e) {
 		    // Something else went wrong, unrelated to the Tinify API.
-			return redirect('images/create')->with('error', $e->getMessage());
+			return $e->getMessage();
 		}
 
 

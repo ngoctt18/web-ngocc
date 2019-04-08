@@ -18,12 +18,12 @@
 				{{ csrf_field() }}
 				<div class="form-group">
 					<label for="name">Tên sản phẩm</label>
-					<input type="text" class="form-control" id="name" placeholder="Tên sản phẩm" name="name" value="{{old('name')}}">
+					<input type="text" class="form-control" id="name" placeholder="Tên sản phẩm" name="name" value="{{old('name')}}" required="">
 					<small class="text-danger">{{ $errors->first('name') }}</small>
 				</div>
 				<div class="form-group">
 					<label for="catagory_id">Danh mục sản phẩm</label>
-					<select class="form-control" style="width: 40%;" name="catagory_id">
+					<select class="form-control" style="width: 40%;" name="catagory_id" required="">
 						<option value="">Chọn Danh mục sản phẩm</option>
 						@foreach($catagories as $catagory)
 						<option value="{{$catagory->id}}" {{old('catagory_id') == $catagory->id ? 'selected' : ''}}>{{$catagory->name}}</option>
@@ -35,7 +35,7 @@
 					<label for="product_avatar">Ảnh đại diện</label>
 					<div class="upload-image">
 						<img src="http://via.placeholder.com/200x200" alt="">
-						<input class="product_avatar" type="file" accept="image/*" >
+						<input class="product_avatar" type="file" accept="image/*" required="">
 						<input type="hidden" name="product_avatar" class="images" value="" />
 					</div>
 					<label id="product_avatar-error" class="error" for="product_avatar"></label>
@@ -43,22 +43,22 @@
 				</div>
 				<div class="form-group">
 					<label for="price">Giá</label>
-					<input type="number" class="form-control" id="price" placeholder="Giá" name="price" value="{{old('price')}}" min="0">
+					<input type="number" class="form-control" id="price" placeholder="Giá" name="price" value="{{old('price')}}" min="0" required="">
 					<small class="text-danger">{{ $errors->first('price') }}</small>
 				</div>
 				<div class="form-group">
 					<label for="discount">Giảm giá</label>
-					<input type="number" class="form-control" id="discount" placeholder="Giảm giá" name="discount" value="{{old('discount')}}" min="0">
+					<input type="number" class="form-control" id="discount" placeholder="Giảm giá" name="discount" value="{{old('discount')}}" min="0" required="">
 					<small class="text-danger">{{ $errors->first('discount') }}</small>
 				</div>
 				<div class="form-group">
 					<label for="brand">Thương hiệu</label>
-					<input type="text" class="form-control" id="brand" placeholder="Thương hiệu" name="brand" value="{{old('brand')}}">
+					<input type="text" class="form-control" id="brand" placeholder="Thương hiệu" name="brand" value="{{old('brand')}}" required="">
 					<small class="text-danger">{{ $errors->first('brand') }}</small>
 				</div>
 				<div class="form-group">
 					<label for="distribution_id">Nhà phân phối</label>
-					<select class="form-control" style="width: 40%;" name="distribution_id">
+					<select class="form-control" style="width: 40%;" name="distribution_id" required="">
 						<option value="">Chọn Nhà phân phối</option>
 						@foreach($distributions as $distribute)
 						<option value="{{$distribute->id}}" {{old('distribution_id') == $distribute->id ? 'selected' : ''}}>{{$distribute->name}}</option>
@@ -68,17 +68,17 @@
 				</div>
 				<div class="form-group">
 					<label for="description">Mô tả ngắn</label>
-					<textarea class="form-control" rows="4" id="description" placeholder="Mô tả ngắn" name="description" >{{old('description')}}</textarea>
+					<textarea class="form-control" rows="4" id="description" placeholder="Mô tả ngắn" name="description" required="">{{old('description')}}</textarea>
 					<small class="text-danger">{{ $errors->first('description') }}</small>
 				</div>
 				<div class="form-group">
 					<label for="intro">Giới thiệu sản phẩm</label>
-					<textarea class="form-control" rows="4" id="intro" placeholder="Giới thiệu sản phẩm" name="intro" >{{old('intro')}}</textarea>
+					<textarea class="form-control" rows="4" id="intro" placeholder="Giới thiệu sản phẩm" name="intro" required="">{{old('intro')}}</textarea>
 					<small class="text-danger">{{ $errors->first('intro') }}</small>
 				</div>
 				<div class="form-group">
 					<label for="status">Trạng thái</label>
-					<select class="form-control" style="width: 40%;" name="status" id="status">
+					<select class="form-control" style="width: 40%;" name="status" id="status" required="">
 						<option value="">Chọn trạng thái</option>
 						<option value="1" {{old('status') == '1' ? 'selected' : ''}}>Còn hàng</option>
 						<option value="0" {{old('status') == '0' ? 'selected' : ''}}>Hết hàng</option>
