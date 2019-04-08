@@ -54,9 +54,4 @@ class Order extends Model
 			return $pdf->download('invoice_#DH00'.$this->id.'.pdf', ['order' => $this]);
 		}
 	}
-
-	public function getInputDateAttribute($value='')
-	{
-		// return $this->attributes['input_date'] = 
-	}
 }

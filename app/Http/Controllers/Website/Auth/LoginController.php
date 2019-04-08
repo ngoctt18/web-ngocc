@@ -77,7 +77,7 @@ class LoginController extends Controller
 
     public function logout(Request $request){
         Auth::logout();
-        return redirect()->guest('/homepage/login');
+        return redirect()->guest('/login');
     }
 
     public function showUserRegisterForm()

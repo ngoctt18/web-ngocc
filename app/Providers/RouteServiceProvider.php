@@ -59,7 +59,7 @@ class RouteServiceProvider extends ServiceProvider
              // Thêm tiền tố cho name route
              ->name('web.')
              // Thêm tiền tố cho URL 
-             ->prefix('homepage')
+             // ->prefix('homepage')
              // File route đích
              ->group(base_path('routes/web.php'));
     }

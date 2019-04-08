@@ -69,8 +69,8 @@ class Handler extends ExceptionHandler
         if ($request->is('writer') || $request->is('writer/*')) {
             return redirect()->guest('/writer/login');
         }
-        if ($request->is('homepage') || $request->is('homepage/*')) {
-            return redirect()->guest('/homepage/login');
+        if ($request->is('') || $request->is('/*')) {
+            return redirect()->guest('/login');
         }
         return redirect()->guest(route('web.login'));
     }

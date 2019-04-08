@@ -8,6 +8,7 @@ use App\Product;
 use App\Distribute;
 use App\Catagory;
 use App\CatagoriesType;
+use App\Subscribe;
 use App\Contact;
 use App\News;
 use App\User;
