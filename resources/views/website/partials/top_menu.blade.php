@@ -36,7 +36,7 @@
                            <div class="dropdown-menu-inner">
                               <div class="mega-col-inner">
                                  <ul>
-                                    @foreach($catagoriesType->catagories as $catagory)
+                                    @foreach($catagoriesType->catagories->where('status', '1') as $catagory)
                                     <li class="">
                                        <a class="" href="{{ route('web.catagories',['id'=>$catagory->id,'name'=>$catagory->slug]) }}" title="Left Sidebar Grid">
                                           <span class="">{{$catagory->name}}</span>
