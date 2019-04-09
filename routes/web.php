@@ -27,24 +27,20 @@ Route::middleware(['LogUserActivity'])->group(function(){
 		Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 	});
 
-
-
 	Route::get('/', 'WebsiteController@homepage')->name('homepage');
-
 	Route::get('login', 'Auth\LoginController@showUserLoginForm')->name('login');
 	Route::post('post-login', 'Auth\LoginController@userLogin')->name('post_login');
 
-// Social login
+	// Social login
 	Route::get('login/redirect/{social}', 'Auth\SocialAuthController@redirect')->name('login.social');
 	Route::get('login/callback/{social}', 'Auth\SocialAuthController@callback');
 
-// Forget password
+	// Forget password
 	Route::post('forget-pass', 'Auth\ForgetPasswordController@forgetPassword')->name('forget_pass');
-
 
 	Route::get('register', 'Auth\LoginController@showUserRegisterForm')->name('register');
 	Route::post('register', 'Auth\LoginController@userRegister');
-// Route::get('registered', 'Auth\LoginController@userRegistered')->name('registered');
+	// Route::get('registered', 'Auth\LoginController@userRegistered')->name('registered');
 	Route::get('confirm/{token}', 'Auth\LoginController@confirmRegistered')->name('confirm');
 	Route::post('sign-up', 'WebsiteController@signUpEmail')->name('sign_up_email');
 

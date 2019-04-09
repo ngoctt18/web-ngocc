@@ -29,13 +29,13 @@ class SocialAuthController extends Controller
 		$socialUser = Socialite::driver($social)->user();
 
 
-		if ($socialUser->email == null) {
-			return Response::json([
-				'message' => 'Vui lòng cho phép xem email.',
-				'error' => 'Email not null',
-				'redirect' => route('web.login.social', [$social]),
-			], 404);
-		}
+		// if ($socialUser->email == null) {
+		// 	return Response::json([
+		// 		'message' => 'Vui lòng cho phép xem email.',
+		// 		'error' => 'Email not null',
+		// 		'redirect' => route('web.login.social', [$social]),
+		// 	], 404);
+		// }
 
 		// Service SocialAccountService để xử lý tạo mới user hoặc get user từ database
 		$user = SocialAccountService::createOrGetUser($socialUser, $social);
@@ -44,11 +44,9 @@ class SocialAuthController extends Controller
 
 		// dump('user');
 		// dump($user);
-
+		
+		// Auth::attempt(['phone' => '0987193299', 'password' => '0987193299']);
 		Auth::login($user, true);
-        //Tạo ra access  token sử dụng để xác thực api.
-		$thisUser = Auth::user();
-		$thisUser->update(['api_token' => User::generateAPIToken()]);
 
 		// dump('thisUser');
 		// dump($thisUser);

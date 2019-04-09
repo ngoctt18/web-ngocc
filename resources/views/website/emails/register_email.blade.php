@@ -15,6 +15,7 @@
 	</center>
 	
 	<strong>Thanks for using the site!</strong>
+	<strong>http://milkstore.com/</strong>
 
 
 	

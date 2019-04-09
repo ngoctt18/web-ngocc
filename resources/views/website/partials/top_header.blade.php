@@ -36,9 +36,9 @@
                      <a id="wishlist-total" title="Wishlist" href="{{ route('web.wishlist') }}"><i class="fa fa-list-alt"></i> Wishlist</a>
                   </li>
                   <li>
-                     <a href="{{ route('web.cart') }}" title="My Cart"><i class="fa fa-share"></i> Check Out</a>
+                     <a href="{{ route('web.checkout') }}" title="My Cart"><i class="fa fa-share"></i> Check Out</a>
                   </li>
-                  @if(Auth::check())
+                  @if(Auth::guard('web')->check())
                   <li>
                      <a class="account" href="{{ route('web.users', ['username' => Auth::user()->username]) }}" title="{{Auth::user()->name}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a>
                   </li>

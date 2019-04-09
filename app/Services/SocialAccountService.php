@@ -21,7 +21,7 @@ class SocialAccountService
 
         // Nếu user của social này đã đăng ký rồi
         if ($account) {
-            // dump('Đã đăng ký qua social');
+            dump('Đã đăng ký qua social');
             return $account;
         }
 
@@ -29,7 +29,7 @@ class SocialAccountService
         ->first();
         // Nếu user có email ntn đã đky rồi
         if ($accEmail) {
-            // dump('Đã trùng email');
+            dump('Đã trùng email');
             return $accEmail;
         }
 
@@ -37,7 +37,7 @@ class SocialAccountService
         ->first();
         // Nếu user có username ntn đã đky rồi
         if ($accUsername) {
-            // dump('Đã trùng username');
+            dump('Đã trùng username');
             return $accUsername;
         }
 
@@ -45,13 +45,13 @@ class SocialAccountService
         $user = User::create([
             'name' => $providerUser->getName(),
             'username' => str_slug($providerUser->getName(), '-'),
-            'password' => $providerUser->token,
+            'password' => '1234560',
             'email' => $providerUser->getEmail(),
             'provider_id' => $providerUser->getId(),
             'provider' => $social,
         ]);
 
-        // dump('User tạo mới');
+        dump('User tạo mới');
         return $user;
         
     }

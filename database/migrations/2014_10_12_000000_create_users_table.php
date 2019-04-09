@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('images')->nullable();
             // $table->unsignedInteger('level');
             $table->string('password');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('address')->nullable();
             $table->boolean('verified')->default(false);
             $table->string('verification_code')->nullable();

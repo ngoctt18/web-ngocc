@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Writer\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -75,19 +75,5 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-    }
-
-    public function showWriterRegisterForm()
-    {
-        // return view('auth.register', ['url' => 'writer']);
-    }
-    
-    protected function createWriter(CreateWriterRequest $request)
-    {
-        // $this->validator($request->all())->validate();
-        // dd($request->all());
-        $writer = Writer::create($request->all());
-        Session::flash('success', 'Đăng ký thành công. Vui lòng đăng nhập.');
-        return redirect()->route('writer.login');
     }
 }

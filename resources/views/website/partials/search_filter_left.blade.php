@@ -15,11 +15,10 @@
         </div>
         <ul id="ul_catalog_price" class="col-md-12 catalog_filter_ul_ list-unstyled">
           @foreach($catagories as $key => $catagory)
-          <li class="advanced-filter {{request('cat_id') == $catagory->id ? 'price_checked' : ''}}" >
-            <input type="checkbox" value="{{$catagory->id}}" name="cat_id" id="cat_id_{{$key}}" {{request('cat_id') == $catagory->id ? 'selected' : ''}}> <label for="cat_id_{{$key}}">{{$catagory->name}}</label>
+          <li class="advanced-filter {{request('cat_id[]') == $catagory->id ? 'price_checked' : ''}}" >
+            <input type="checkbox" value="{{$catagory->id}}" name="cat_id[]" id="cat_id_{{$key}}" {{in_array($catagory->id, Request::query('cat_id', NULL)) ? 'checked' : ''}}> <label for="cat_id_{{$key}}">{{$catagory->name}}</label>
           </li>
           @endforeach
-          {{request('cat_id')}}
         </ul>
       </div>
     </div>
