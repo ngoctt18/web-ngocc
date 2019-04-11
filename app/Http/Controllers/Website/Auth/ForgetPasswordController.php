@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Website\ForgetPasswordRequest;
+use App\Http\Requests\Website\UpdateForgetPasswordRequest;
 use App\PasswordReset;
 use App\User;
 use App\Jobs\SendEmailForgetPassJob;
@@ -69,7 +70,7 @@ class ForgetPasswordController extends Controller
 		}
 	}
 
-	public function postChangePassword(Request $request,$token){
+	public function postChangePassword(UpdateForgetPasswordRequest $request,$token){
 		$clause = PasswordReset::where('token', $token)->first();
 		if($clause){
             // Token tồn tại trong vòng 1 ngày.
@@ -77,20 +78,10 @@ class ForgetPasswordController extends Controller
 			$timeNow = time();
 			if($timeCreate > $timeNow){
 				$user = User::where('email',$clause->email)->first();
-				$validator = Validator::make($request->all(), [
-					'password' => 'required|confirmed|min:6|max:20|regex:/^[a-zA-Z0-9]+$/'
-				]);
-				if ($validator->fails()) 
-				{
-					return back();
-				}
-				else
-				{
-					$user->password = $request->password;
-					$user->save();
-					$clause->delete();
-					return redirect()->route('web.get.change-password.success');
-				}
+				$user->password = $request->password;
+				$user->save();
+				$clause->delete();
+				return redirect()->route('web.get.change-password.success');
 			}else{
 				$clause->delete();
 				return redirect()->route('web.get.change-password.error');

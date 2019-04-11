@@ -17,7 +17,7 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="{{ asset('css/font_admin.css') }}">
 </head>
 <body class="hold-transition login-page">
   <div class="login-box">
@@ -27,7 +27,7 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
       <p class="login-box-msg">Đổi mật khẩu thành công</p>
-      <p><a href="{{ route('web.homepage') }}">Trang chủ</a></p>
+      <p>Quay về <a href="{{ route('web.homepage') }}">Trang chủ</a> để tiếp tục mua sắm.</p>
     </div>
     <!-- /.login-box-body -->
   </div>

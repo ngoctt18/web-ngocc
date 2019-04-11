@@ -69,6 +69,9 @@
 				@endforeach
 			</tbody>
 		</table>
+		<div class="pagination">
+			{{ $orders->links('admin.paginations.pagination_sm') }}
+		</div>
 		@else
 		<p>You haven't placed any orders yet.</p>
 		@endif

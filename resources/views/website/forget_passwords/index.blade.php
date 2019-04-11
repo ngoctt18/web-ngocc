@@ -17,7 +17,11 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="{{ asset('css/font_admin.css') }}">
+  <style type="text/css">
+    .red {color: red;}
+    span.error { color: #b30e0e; font-weight: 500; margin-top: 1px; }
+  </style>
 </head>
 <body class="hold-transition login-page">
   <div class="login-box">
@@ -31,18 +35,24 @@
       <form action="" method="POST">
         {{ csrf_field() }}
         <div class="form-group has-feedback">
-          <label for="">Mật khẩu mới</label>
+          <label for="">Mật khẩu mới <span class="red">*</span></label>
           <input type="password" name="password" class="form-control" placeholder="Mật khẩu mới">
+          <span class="help-block error">{{ $errors->first('password') }}</span>
+
         </div>
         <div class="form-group has-feedback">
-          <label for="">Nhập lại mật khẩu</label>
+          <label for="">Nhập lại mật khẩu <span class="red">*</span></label>
           <input type="password" name="password_confirmation" class="form-control" placeholder="Nhập lại mật khẩu">
+          <span class="help-block error">{{ $errors->first('password_confirmation') }}</span>
+
         </div>
         <div class="row">
-          <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Đổi</button>
+          <div class="col-xs-5">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Đổi mật khẩu</button>
           </div>
         </div>
+        <br>
+        <p>Quay về trang <a href="{{ route('web.login') }}">Đăng nhập</a></p>
       </form>
 
     </div>
