@@ -37,6 +37,11 @@ Route::middleware(['LogUserActivity'])->group(function(){
 
 	// Forget password
 	Route::post('forget-pass', 'Auth\ForgetPasswordController@forgetPassword')->name('forget_pass');
+	Route::get('/change-password/{token}','Auth\ForgetPasswordController@getChangePassword')->name('get.change-password');
+	Route::post('/change-password/{token}','Auth\ForgetPasswordController@postChangePassword')->name('post.change-password');
+	Route::get('/change/error','Auth\ForgetPasswordController@getError')->name('get.change-password.error');
+	Route::get('/change/success','Auth\ForgetPasswordController@getSuccess')->name('get.change-password.success');
+
 
 	Route::get('register', 'Auth\LoginController@showUserRegisterForm')->name('register');
 	Route::post('register', 'Auth\LoginController@userRegister');
@@ -81,7 +86,15 @@ Route::middleware(['LogUserActivity'])->group(function(){
 	Route::get('search', 'Search\SearchController@index')->name('search');
 	Route::get('autocomplete', 'Search\SearchController@autocomplete')->name('search.autocomplete');
 
+
+	Route::get('/mail', function(){
+		$user = App\User::find(1);
+		$findUser = App\User::find(1);
+		// return view('website.forget_passwords.mail', compact('user'));
+		return view('website.emails.register_email', compact('user', 'findUser'));
+	});
 });
+
 
 
 

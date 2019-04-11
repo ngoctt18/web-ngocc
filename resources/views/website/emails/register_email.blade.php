@@ -4,19 +4,20 @@
 	<title>Confirm Email</title>
 </head>
 <body>
-	
-	<p>Congrats! You are Successfully registered to my Website</p>
-	<p>To activate your account, please click the link below</p>
-	
-	<center>
-		<h2 style="padding: 23px;background: #b3deb8a1;border-bottom: 6px green solid;">
-			<a href="{{ route('web.confirm', ['token' => $user->verification_code]) }}">Confirm Email</a>
-		</h2>
-	</center>
-	
-	<strong>Thanks for using the site!</strong>
-	<strong>http://milkstore.com/</strong>
+	<div class="wrapper" style=" width: 650px; margin: 0 auto; font-family: tahoma;">
 
+		<h3 style=" color: #0000a0; ">Congrats! You are Successfully registered to my Website</h3>
+		<p>Hi <strong>{{$user->name}}</strong>,</p>
+		<p>To activate your account, please click the link below</p>
+
+		<p>
+			<a style="color:#ffffff;text-decoration:none;background-color:#3572b0;border-top:11px solid #3572b0;border-bottom:11px solid #3572b0;border-left:20px solid #3572b0;border-right:20px solid #3572b0;border-radius:5px;display:inline-block;" href="{{ route('web.confirm', ['token' => $user->verification_code]) }}"> Confirm Email</a>
+		</p>
+
+		<p>Thanks for using the site!</p>
+		<p><a href="{{env('APP_URL')}}">{{env('APP_URL')}}</a></p>
+
+	</div>
 
 	
 </body>

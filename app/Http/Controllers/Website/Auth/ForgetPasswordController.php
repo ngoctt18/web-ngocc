@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Website\ForgetPasswordRequest;
 use App\PasswordReset;
+use App\User;
+use App\Jobs\SendEmailForgetPassJob;
+use Validator;
 
 class ForgetPasswordController extends Controller
 {
@@ -16,27 +19,92 @@ class ForgetPasswordController extends Controller
 		$findUser = PasswordReset::where('email', $email)->first();
         //Tạo ra token dùng để đổi mật khẩu.
 		if ($findUser) {
-			$findUser->update('token', str_random(40));
+			$timeCreate = strtotime($findUser->updated_at.' + 5 minutes');
+			$timeNow = time();
+			// Nếu thời gian hiện tại nhỏ hơn tgian +5p thì tạm ko cho gửi nữa
+			if ($timeCreate > $timeNow) {
+				return redirect()->route('web.login', ['email_sent' => 'true', 'email' => $email])
+				->withInput()
+				->withErrors(['Vui lòng đợi 5 phút mới được gửi tiếp.']);
+			} else {
+				$findUser->update(['token' => str_random(40)]);
+			}
 		} else {
-			PasswordReset:create([
+			$findUser = PasswordReset::create([
 				'email' => $email,
 				'token' => str_random(40),
 			]);
 		}
+
 		try {
-			$validator->errors()->add('email', 'Đã gửi link đổi mật khẩu về email.');
-            //Trả về json cho client.
-			return response()->json([
-				'message' => 'Đã gửi link đổi mật khẩu về email',
-				'error' => null
-			], 200);
+			// Send email
+			$user = User::whereEmail($findUser->email)->first();
+        	// This method gets called automatically after a user is forget pass
+			dispatch(new SendEmailForgetPassJob($findUser, $user));
+        	// queue send email
+			return redirect()->route('web.login', ['email_sent' => 'true', 'email' => $email])
+			->withInput()
+			->withErrors(['Đã gửi link đổi mật khẩu về email.']);
 		}catch(Exception $ex){
-            //Trả về json cho client.
-			return response()->json([
-				'message' => null,
-				'error' => $ex->getMessage()
-			], 401);
+			return redirect()->route('web.login', ['email_sent' => 'true', 'email' => $email])
+			->withInput()
+			->withErrors([$ex->getMessage()]);
 		}
 		
+	}
+
+	public function getChangePassword($token){
+		$clause = PasswordReset::where('token', $token)->first();
+		if($clause){
+			$timeCreate = strtotime($clause->updated_at.' + 1 days');
+			$timeNow = time();
+			if($timeCreate > $timeNow){
+				return view('website.forget_passwords.index');
+			}else{
+				$clause->delete();
+				return redirect()->route('web.get.change-password.error');
+			}
+		}else{
+			return redirect()->route('web.get.change-password.error');
+		}
+	}
+
+	public function postChangePassword(Request $request,$token){
+		$clause = PasswordReset::where('token', $token)->first();
+		if($clause){
+            // Token tồn tại trong vòng 1 ngày.
+			$timeCreate = strtotime($clause->updated_at.' + 1 days');
+			$timeNow = time();
+			if($timeCreate > $timeNow){
+				$user = User::where('email',$clause->email)->first();
+				$validator = Validator::make($request->all(), [
+					'password' => 'required|confirmed|min:6|max:20|regex:/^[a-zA-Z0-9]+$/'
+				]);
+				if ($validator->fails()) 
+				{
+					return back();
+				}
+				else
+				{
+					$user->password = $request->password;
+					$user->save();
+					$clause->delete();
+					return redirect()->route('web.get.change-password.success');
+				}
+			}else{
+				$clause->delete();
+				return redirect()->route('web.get.change-password.error');
+			}
+		}else{
+			return redirect()->route('web.get.change-password.error');
+		}
+	}
+
+	public function getSuccess(){
+		return view('website.forget_passwords.success');
+	}
+
+	public function getError(){
+		return view('website.forget_passwords.error');
 	}
 }

@@ -18,10 +18,13 @@ class ForgetPasswordMail extends Mailable
      */
     // $subject default là tiêu đề của Email
     public $subject = "Forget your password.";
+    protected $findUser;
+    protected $user;
 
-    public function __construct()
+    public function __construct($findUser, $user)
     {
-        //
+        $this->findUser = $findUser;
+        $this->user = $user;
     }
 
     /**
@@ -32,6 +35,6 @@ class ForgetPasswordMail extends Mailable
     public function build()
     {
         // View hiển thị email trên gmail.com
-        return $this->view('website.forget_passwords.mail');
+        return $this->view('website.forget_passwords.mail', ['user' => $this->user, 'findUser' => $this->findUser]);
     }
 }

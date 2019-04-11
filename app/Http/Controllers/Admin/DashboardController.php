@@ -32,6 +32,7 @@ class DashboardController extends Controller
 		$days = $request->get('days', 7);
 		$range = Carbon\Carbon::now()->subDays($days);
 		$stats = Order::where('input_date', '>=', $range)
+		->where('status', '2')
 		->groupBy('date')
 		->orderBy('date', 'ASC')
 		->get([
@@ -49,6 +50,7 @@ class DashboardController extends Controller
 		// return $days;
 		$range = Carbon\Carbon::now()->subDays($days);
 		$stats = Order::where('input_date', '>=', $range)
+		->where('status', '2')
 		->groupBy('date')
 		->orderBy('date', 'ASC')
 		->get([
@@ -64,6 +66,7 @@ class DashboardController extends Controller
 		// $revenueMonth = DB::table('orders')->max('sum_money');
 		$monthly_uploaded_product = DB::table('orders')
 		->select(DB::raw('MONTH(input_date) as month'), DB::raw('SUM(sum_money) as revenue'))
+		->where('status', '2')
 		->groupBy('month')
 		->get();
 		$revenue_year = array(
