@@ -69,6 +69,11 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id', 'id')->whereNull('parent_id');
+    }
+
 
     // Tài khoản đã được xác nhận
     public function isVerified() {

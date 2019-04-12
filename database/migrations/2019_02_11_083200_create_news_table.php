@@ -23,7 +23,7 @@ class CreateNewsTable extends Migration
             // $table->text('hot')->nullable();
             // Số lượt view tin
             $table->unsignedInteger('author_id')->nullable();
-            $table->foreign('author_id')->references('id')->on('writers')->onDelete('cascade');
+            $table->foreign('author_id')->references('id')->on('writers');
             $table->enum('status',[0, 1])->default(1);
             // 0: Ẩn, 1: Hiển thị
             $table->unsignedInteger('count_views')->default(0);

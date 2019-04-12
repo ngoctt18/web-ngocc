@@ -98,6 +98,11 @@ class Product extends Model implements HasMedia
 		return $this->hasOne(OrderDetail::class, 'product_id', 'id');
 	}
 
+	public function comments()
+	{
+		return $this->hasMany(Comment::class, 'product_id', 'id')->whereNull('parent_id')->latest();
+	}
+
 
 	// scope
 	// Tìm sản phẩm theo catagory_type_id

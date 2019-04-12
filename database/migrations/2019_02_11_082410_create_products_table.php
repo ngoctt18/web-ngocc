@@ -27,9 +27,9 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->text('intro')->nullable();
             $table->unsignedInteger('catagory_id');
-            $table->foreign('catagory_id')->references('id')->on('catagories')->onDelete('cascade');
+            $table->foreign('catagory_id')->references('id')->on('catagories');
             $table->unsignedInteger('distribution_id');
-            $table->foreign('distribution_id')->references('id')->on('distributions')->onDelete('cascade');
+            $table->foreign('distribution_id')->references('id')->on('distributions');
             $table->enum('status',[0, 1])->default(1);
             // 0: hết hàng, 1: còn hàng
             // Số lượng hàng còn trong kho

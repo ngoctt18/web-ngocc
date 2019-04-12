@@ -25,6 +25,10 @@ Route::middleware(['LogUserActivity'])->group(function(){
 		Route::put('users/{username}/orders-detail/{order_id}/cancel', 'Auth\UserController@ordersCancel')->name('orders_cancel');
 		Route::get('users/{username}/address', 'Auth\UserController@address')->name('address');
 		Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+
+		// comment
+		Route::post('product/comment', 'CommentController@store')->name('product.comment.store');
 	});
 
 	Route::get('/', 'WebsiteController@homepage')->name('homepage');
@@ -80,11 +84,10 @@ Route::middleware(['LogUserActivity'])->group(function(){
 	Route::get('news/tagged/{slug}', 'News\NewsController@tagged')->name('news.tagged');
 	Route::get('news/author/{username}', 'News\NewsController@author')->name('news.author');
 
-
-
-
 	Route::get('search', 'Search\SearchController@index')->name('search');
 	Route::get('autocomplete', 'Search\SearchController@autocomplete')->name('search.autocomplete');
+
+
 
 
 	Route::get('/mail', function(){

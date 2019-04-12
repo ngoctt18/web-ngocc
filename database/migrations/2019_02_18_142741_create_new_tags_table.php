@@ -16,10 +16,10 @@ class CreateNewTagsTable extends Migration
         Schema::create('new_tags', function (Blueprint $table) {            
             $table->increments('id');
             $table->unsignedInteger('new_id');
-            $table->foreign('new_id')->references('id')->on('news')->onDelete('cascade');
+            $table->foreign('new_id')->references('id')->on('news');
 
             $table->unsignedInteger('tag_id');
-            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags');
             $table->timestamps();
         });
     }

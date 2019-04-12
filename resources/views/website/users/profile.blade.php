@@ -2,41 +2,35 @@
 
 @section('user_styles')
 <style type="text/css">
-.order_id {color: #0089ff;}
-.red {color: red;}
-label.error { color: #e81b1b; font-weight: 500; margin-top: 1px; }
-.custom-file-input::-webkit-file-upload-button {
-	visibility: hidden;
-}
-input.custom-file-input {
-	color: #fff;
-	margin-top: 15px;
-	width: 133px;
-	height: 30px;
-}
-.custom-file-input::before {
-	content: 'Select an images';
-	display: inline-block;
-	background: linear-gradient(top, #f9f9f9, #e3e3e3);
-	border: 1px solid #999;
-	border-radius: 3px;
-	padding: 5px 8px;
-	outline: none;
-	white-space: nowrap;
-	-webkit-user-select: none;
-	cursor: pointer;
-	text-shadow: 1px 1px #fff;
-	font-weight: 700;
-	font-size: 10pt;
-	color: black;
-}
-.custom-file-input:hover::before {
-	border-color: black;
-}
-.custom-file-input:active::before {
-	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-}
-.blockPassword {transition: 0.1s; display: none;}
+	.order_id {color: #0089ff;}
+	.red {color: red;}
+	label.error { color: #e81b1b; font-weight: 500; margin-top: 1px; }
+	input.custom-file-input {
+		color: #fff;
+		margin-top: 15px;
+		width: 133px;
+		height: 30px;
+	}
+	.custom-file-input::before {
+		content: 'Select an images';
+		display: inline-block;
+		background: linear-gradient(top, #f9f9f9, #e3e3e3);
+		border: 1px solid #999;
+		border-radius: 3px;
+		padding: 5px 8px;
+		outline: none;
+		white-space: nowrap;
+		-webkit-user-select: none;
+		cursor: pointer;
+		text-shadow: 1px 1px #fff;
+		font-weight: 700;
+		font-size: 10pt;
+		color: black;
+	}
+	.custom-file-input:hover::before { border-color: black; }
+	.custom-file-input:active::before { background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); }
+	.custom-file-input::-webkit-file-upload-button { visibility: hidden; }
+	.blockPassword {transition: 0.1s; display: none;}
 
 </style>
 @endsection
