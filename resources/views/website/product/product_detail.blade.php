@@ -230,7 +230,22 @@
                                             </li>
                                         </ul>
                                         <div class="tab-content">
-                                            @include('website.product.commentsDisplay', ['comments' => $product->comments, 'product_id' => $product->id])
+                                            <form method="post" action="{{ route('web.product.comment.store') }}" class="formComment hihihih" style="display: block !important;">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <textarea name="body" class="form-control" rows="4" required="" minlength="30" maxlength="250" placeholder="Nội dung bình luận"></textarea>
+                                                    <small class="text-danger err-msg"></small>
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                                                    <input type="hidden" name="parent_id" value="" />
+                                                    <input type="hidden" name="type_comment" value="new_comment" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="submit" class="btn btn-warning btn-reply-comment" value="Reply" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-content">
+                                            @include('website.product.commentsDisplay', ['comments' => $product->comments->sortByDesc('created_at'), 'product_id' => $product->id])
                                         </div>
                                     </div>
                                 </div>

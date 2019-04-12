@@ -24,6 +24,7 @@
                 var body = $(this).find('textarea[name="body"]').val();
                 var product_id = $(this).find('input[name="product_id"]').val();
                 var parent_id = $(this).find('input[name="parent_id"]').val();
+                var type_comment = $(this).find('input[name="type_comment"]').val();
                 var _self = $(this);
 
                 var dataSend = new FormData();
@@ -42,11 +43,15 @@
                     success: function(data){
                         console.log('success');
                         // console.log(data);
-                        $(_self).next('hr').next('.display-replies').prepend(data);
+                        if (type_comment == 'reply_comment') {
+                            $(_self).next('hr').next('.display-replies').prepend(data);
+                            $(_self).hide();
+                        } else if (type_comment == 'new_comment') {
+                            $(_self).closest('.tab-content').next('.tab-content').prepend(data);
+                        }
                         replyComment();
                         formComment();
                         $(_self).trigger("reset");
-                        $(_self).hide();
 
                     },
                     error: function(data){

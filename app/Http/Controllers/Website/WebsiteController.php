@@ -54,9 +54,10 @@ class WebsiteController extends Controller
 		}
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
 		$catagories = Catagory::where('status', '1')->get();
-		$product = Product::with(['comments' => function ($q) {
-			$q->latest();
-		}])->findOrFail($id);
+		// $product = Product::with(['comments' => function ($q) {
+		// 	$q->latest()->get();
+		// }])->findOrFail($id);
+		$product = Product::with('comments')->findOrFail($id);
 		$productsRelate = $product->catagory->product->where('id', '!=', $id);
 		$news_popular = News::where('status', '1')->orderBy('count_views', 'DESC')->take(3)->get();
 		$breadcrumb = $product;
