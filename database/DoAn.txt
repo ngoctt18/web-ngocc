@@ -10,7 +10,14 @@ Tổng Số lượt người truy cập, sl ng đang truy cập
 Chức năng bình luận
 Hoàn thiện báo cáo đồ án 
 Hoàn thiện Slide thuyết trình
-
+1.	Tổng số sản phẩm	69
+2.	Tổng số đơn hàng	40
+3.	Tổng số khách hàng	25
+4.	Tổng số người dùng	10
+1.	Tổng doanh thu	45.000.000đ
+2.	Doanh thu trong tháng	3.500.000đ
+3.	Tổng số đơn hàng trong tháng	4
+4.	Số hàng tồn kho
 
 
 

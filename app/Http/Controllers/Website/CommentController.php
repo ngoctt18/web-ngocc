@@ -10,6 +10,24 @@ class CommentController extends Controller
 {
 	public function store(Request $request)
 	{
+		if (session()->has('check_comment_'.auth()->id())) {
+			$timeCheck = session()->get('check_comment_'.auth()->id()); 
+			// Nếu tgian chưa đủ 30 seconds
+			if ($timeCheck > time()) {
+				return ' - WAIT_MORE';
+			} else {
+				session()->forget('check_comment_'.auth()->id());
+				return ' - FORGET';
+			}
+		} else {
+			// nếu chưa có session
+			// Tạo, Set giá trị cho session bằng time + 30 seconds
+			session()->put('check_comment_'.auth()->id(), strtotime(now().' + 30 seconds')); 
+			return ' - PUT';
+		}
+
+		return ' - OKE';
+
 		$request->validate([
 			'body'=>'required|min:30|max:250',
 		]);

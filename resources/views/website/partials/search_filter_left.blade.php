@@ -1,4 +1,4 @@
-<form method="GET" action="">
+{{-- <form method="GET" action=""> --}}
   <div id="catalog_block" class="block ajax-filter block_shopby">
     <div class="title_block">
       <i class="fa fa-bars"></i>
@@ -16,8 +16,9 @@
         <ul id="ul_catalog_price" class="col-md-12 catalog_filter_ul_ list-unstyled">
           @foreach($catagories as $key => $catagory)
           <li class="advanced-filter {{request('cat_id[]') == $catagory->id ? 'price_checked' : ''}}" >
-            <input type="checkbox" value="{{$catagory->id}}" name="cat_id[]" id="cat_id_{{$key}}" {{in_array($catagory->id, Request::query('cat_id', NULL)) ? 'checked' : ''}}> <label for="cat_id_{{$key}}">{{$catagory->name}}</label>
+            <input type="checkbox" value="{{$catagory->id}}" name="cat_id[]" id="cat_id_{{$key}}" @if (is_array(Request::query('cat_id', NULL))) @if (in_array($catagory->id, Request::query('cat_id', NULL))) {{'checked'}} @else {{''}} @endif @endif> <label for="cat_id_{{$key}}">{{$catagory->name}}</label>
           </li>
+
           @endforeach
         </ul>
       </div>
@@ -84,4 +85,4 @@
       </div> --}}
     </div>
   </div>
-</form>
+{{-- </form> --}}

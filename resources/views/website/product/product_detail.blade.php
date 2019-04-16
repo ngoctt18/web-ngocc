@@ -5,9 +5,9 @@
     #thumbs_list .thumb_item { width: 99px; float: left; }
     input#Quantity { line-height: 15px; font-weight: 600; padding: 10px; font-size: 15px; max-width: 100%; }
     .btn-wishlist {background-color: #ea254b;}
-    img.avatar { width: 60px; max-width: 100%; }
-    .formComment {transition: 0.2s; display: none;}
+    img.avatar { width: 60px; height: 60px;}
     a.reply-comment { margin-left: 20px; }
+    .formComment {transition: 0.2s; display: none;}
 </style>
 @endsection
 @section('content')
@@ -50,7 +50,7 @@
                                     <span class="shopify-product-reviews-badge" data-id="1119719620"></span>
                                 </div>
                                 <h5 class="brand" itemprop="brand">
-                                    <span>Thương hiệu: </span>
+                                    <span>Nhà phân phối: </span>
                                     <a href="{{ route('web.distribute', [$product->distribute->id, $product->distribute->slug]) }}" style=" color: #59bd5a; ">{{$product->distribute->name}}</a>
                                 </h5>
                                 <div class="product-description rte" itemprop="description">
@@ -334,48 +334,48 @@
                                     <script type="text/javascript">
                                         $(document).ready(function() {
 
-                                         $('#productrelated01 .owl-carousel').each(function(){
-                                          $(this).owlCarousel({
-                                           items : 3,
-                                           lazyLoad : true,
-                                           navigation : true,
-                                           addClassActive: true,
-                                           afterInit : SetOwlCarouselFirstLast,
-                                           afterAction : SetOwlCarouselFirstLast,
+                                           $('#productrelated01 .owl-carousel').each(function(){
+                                              $(this).owlCarousel({
+                                                 items : 3,
+                                                 lazyLoad : true,
+                                                 navigation : true,
+                                                 addClassActive: true,
+                                                 afterInit : SetOwlCarouselFirstLast,
+                                                 afterAction : SetOwlCarouselFirstLast,
 
-                                           itemsDesktop: [1199, 2],
-                                           itemsDesktopSmall: [979, 2],
-                                           itemsTablet: [768, 2],
-                                           itemsTabletSmall: [480, 1],
-                                           itemsMobile: [360, 1],
+                                                 itemsDesktop: [1199, 2],
+                                                 itemsDesktopSmall: [979, 2],
+                                                 itemsTablet: [768, 2],
+                                                 itemsTabletSmall: [480, 1],
+                                                 itemsMobile: [360, 1],
 
-                                           navigationText : ["Prev", "Next"]
-                                       }); 
+                                                 navigationText : ["Prev", "Next"]
+                                             }); 
+                                          });
+                                           function SetOwlCarouselFirstLast(el){
+                                              el.find(".owl-item").removeClass("first");
+                                              el.find(".owl-item.active").first().addClass("first");
+
+                                              el.find(".owl-item").removeClass("last");
+                                              el.find(".owl-item.active").last().addClass("last");
+                                          };
+
                                       });
-                                         function SetOwlCarouselFirstLast(el){
-                                          el.find(".owl-item").removeClass("first");
-                                          el.find(".owl-item.active").first().addClass("first");
-
-                                          el.find(".owl-item").removeClass("last");
-                                          el.find(".owl-item.active").last().addClass("last");
-                                      };
-
-                                  });
-                              </script>
+                                  </script>
+                              </div>
                           </div>
                       </div>
-                  </div>
-              </div> <!-- row -->
+                  </div> <!-- row -->
+              </div>
           </div>
-      </div>
-  </section>
-  <script>
-    function selectCallback(variant, selector) {
-     var addToCart = jQuery("#AddToCart"),
-     productPrice = jQuery(".product-right-column #ProductPrice"),
-     comparePrice = jQuery(".product-right-column .price-product-detail .old-price");
-     if (variant) {
-      if (variant.available) {
+      </section>
+      <script>
+        function selectCallback(variant, selector) {
+           var addToCart = jQuery("#AddToCart"),
+           productPrice = jQuery(".product-right-column #ProductPrice"),
+           comparePrice = jQuery(".product-right-column .price-product-detail .old-price");
+           if (variant) {
+              if (variant.available) {
              // We have a valid product variant, so enable the submit button
              addToCart.removeClass('disabled').removeAttr('disabled');
              $(addToCart).find("span").text("Add to Cart");

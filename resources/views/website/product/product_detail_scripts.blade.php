@@ -57,7 +57,7 @@
                     error: function(data){
                         console.log(data);
                         alert('Bình luận không thành công. Vui lòng tải lại trang.');
-                        location.reload();
+                        // location.reload();
                     }
                 });
             });

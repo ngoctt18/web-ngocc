@@ -162,7 +162,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('input[name="quantity"]').bind('change', function () {
-			$('.website_loader').fadeIn();
+			// $('.website_loader').fadeIn();
 			var rowId = $(this).attr('rowId');
 			var qty = $(this).val();
 			var _token = $('input[name="_token"]').val();
@@ -185,12 +185,12 @@
 					$('#CartCount').text(data['num_item']);
 					$('#CartMoney').text(data['total']+'₫');
 
-					$('.website_loader').fadeOut();
+					// $('.website_loader').fadeOut();
 				},
 				error: function(data){
 					console.log('Ajax khong ve!');
 					console.log(data);
-					$('.website_loader').fadeOut();
+					// $('.website_loader').fadeOut();
 				},
 			});
 			
