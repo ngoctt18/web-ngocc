@@ -4,7 +4,6 @@ namespace App\Services;
 
 use Laravel\Socialite\Contracts\User as ProviderUser;
 use App\User;
-use Response;
 
 class SocialAccountService
 {
@@ -16,43 +15,36 @@ class SocialAccountService
         ->where('provider_id', $providerUser->getId())
         ->first();
 
-        dump('providerUser');
-        dump($providerUser);
-
-        // Nếu user của social này đã đăng ký rồi
         if ($account) {
-            dump('Đã đăng ký qua social');
-            return $account;
+            return $account->user;
+        } else {
+            $userEmail = User::whereEmail($providerUser->getEmail())->first();
+
+            if ($userEmail) {
+                dump('Đã trùng Email');
+                return $userEmail;
+            }
+
+            
+            $accUsername = User::where('username', str_slug($providerUser->getName(), '-'))
+            ->first();
+            if ($accUsername) {
+                dump('Đã trùng username');
+                return $accUsername;
+            }
+
+            // User chưa đăng ký
+            $user = User::create([
+                'name' => $providerUser->getName(),
+                'username' => str_slug($providerUser->getName(), '-'),
+                'password' => '1234560',
+                'email' => $providerUser->getEmail(),
+                'provider_id' => $providerUser->getId(),
+                'provider' => $social,
+            ]);
+
+            dump('User tạo mới');
+            return $user;
         }
-
-        $accEmail = User::where('email', $providerUser->getEmail())
-        ->first();
-        // Nếu user có email ntn đã đky rồi
-        if ($accEmail) {
-            dump('Đã trùng email');
-            return $accEmail;
-        }
-
-        $accUsername = User::where('username', str_slug($providerUser->getName(), '-'))
-        ->first();
-        // Nếu user có username ntn đã đky rồi
-        if ($accUsername) {
-            dump('Đã trùng username');
-            return $accUsername;
-        }
-
-        // User chưa đăng ký
-        $user = User::create([
-            'name' => $providerUser->getName(),
-            'username' => str_slug($providerUser->getName(), '-'),
-            'password' => '1234560',
-            'email' => $providerUser->getEmail(),
-            'provider_id' => $providerUser->getId(),
-            'provider' => $social,
-        ]);
-
-        dump('User tạo mới');
-        return $user;
-        
     }
 }

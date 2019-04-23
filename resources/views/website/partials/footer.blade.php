@@ -24,14 +24,14 @@
                      <div class="block_aboutshop block">
                         <div class="block_content">
                            <ul class="list__address">
-                              <li><i class="fa fa-home "></i>12345 Gravida Street, California, USA.</li>
+                              <li><i class="fa fa-home "></i>Văn Trì, Minh Khai, Bắc Từ Liêm, Hà Nội</li>
                            </ul>
                            <h3 class="title_block">ABOUT US</h3>
                            <div class="about">
-                              Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae.
+                              Hệ thống siêu thị sữa Milk Store cung cấp sản phẩm an toàn, chính hãng, chất lượng tốt, giá cả cạnh tranh nhất trên thị trường.
                               <ul class="list__address">
-                                 <li><i class="fa fa-phone "></i>(+84) 0123 456 789</li>
-                                 <li><i class="fa fa-envelope "></i>hello@example.com</li>
+                                 <li><i class="fa fa-phone "></i>0975853528</li>
+                                 <li><i class="fa fa-envelope "></i>trantuanngoctn97@gmail.com</li>
                               </ul>
                            </div>
                         </div>
@@ -187,7 +187,7 @@
                      <div id="powered" class="powered ">
                         <div class="row">
                            <div class="col-md-6 col-sm-12 col-xs-12">
-                              <p class="text-center">&copy; Copyright 2019 AP-MILK-STORE.</p>
+                              <p class="text-center">&copy; Copyright {{ now()->year }} AP-MILK-STORE.</p>
                               <p class="text-center"><a href="#">Powered by decemberr18</a></p>
                            </div>
                            <div class="col-md-6 col-sm-12 col-xs-12">

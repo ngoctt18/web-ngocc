@@ -1,5 +1,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#747474">
+<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
 <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}" type="text/javascript"></script>
 <!-- Theme css ================================================================ -->
 <!-- Font Awesome -->
