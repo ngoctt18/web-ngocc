@@ -42,7 +42,11 @@
                     data: dataSend,
                     success: function(data){
                         console.log('success');
-                        // console.log(data);
+                        console.log(data);
+                        if (data == 'WAIT_MORE') {
+                            alert('Vui lòng đợi thêm 30 giây trước khi bình luận.');
+                            return false;
+                        }
                         if (type_comment == 'reply_comment') {
                             $(_self).next('hr').next('.display-replies').prepend(data);
                             $(_self).hide();
