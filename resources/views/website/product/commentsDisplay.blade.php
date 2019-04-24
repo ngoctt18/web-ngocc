@@ -1,5 +1,5 @@
 @foreach($comments as $comment)
-<div class="display-comment" @if($comment->parent_id != null) style="margin-left:30px;" @endif>
+<div class="display-comment" @if($comment->parent_id != null) {{-- style="margin-left:30px;" --}} @endif>
     <div class="row">
         <div class="col-md-1">
             <img src="{{$comment->user->ThumbUser}}" class="avatar img-circle">

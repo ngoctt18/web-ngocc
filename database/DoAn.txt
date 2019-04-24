@@ -20,6 +20,24 @@ Hoàn thiện Slide thuyết trình
 4.	Số hàng tồn kho
 
 
+Admin - người quản lý - khách hàng - khách xem.
+
+
+11 Đăng nhập
+22 Đăng kí thành viên
+33 Xem sản phẩm
+44 Tìm kiếm sản phẩm
+55 Sửa thông tin khách hàng
+66 Mua hàng
+
+77 Quản lý đơn hàng
+88 Sử dụng giỏ hàng
+99 Quản lý sản phẩm
+1010 Quản lý khách hàng
+•	11  Quản lý tin tức
+
+
+
 
 
 
