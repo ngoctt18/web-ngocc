@@ -53,7 +53,7 @@ label.label-register { margin-top: 20px !important; }
 					
 					<p class="marT25">
 						<input type="submit" value="Đăng ký" class="btn btn-outline">
-						<a href="{{ route('web.login') }}" class="btn btn-outline pull-right">Login</a>
+						<a href="{{ route('web.login') }}" class="btn btn-warning pull-right">Login</a>
 					</p>
 					<a class="link-back" href="{{ route('web.homepage') }}">
 						<span>

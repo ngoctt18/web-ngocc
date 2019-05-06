@@ -141,9 +141,9 @@
 							@foreach($order->orderDetails as $key => $detail)
 							<tr>
 								<td>{{$key+1}}</td>
-								<td>
+								{{-- <td>
 									<img src="{{$detail->product->ThumbProduct}}" alt="{{$detail->product->name}}" style=" width: 90px; height: auto; ">
-								</td>
+								</td> --}}
 								<td>
 									{{$detail->product->name}}
 								</td>

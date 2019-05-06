@@ -87,7 +87,16 @@ Route::middleware(['LogUserActivity'])->group(function(){
 	Route::get('search', 'Search\SearchController@index')->name('search');
 	Route::get('autocomplete', 'Search\SearchController@autocomplete')->name('search.autocomplete');
 
-
+	Route::get('/updateDateOrder', function(){
+		$orders = App\Order::all();
+		foreach ($orders as $order) {
+			$order->update([
+				'created_at' => $order->input_date,
+				'updated_at' => $order->input_date,
+			]);
+		}
+		dd('updateDateOrder done!');
+	});
 
 
 	Route::get('/mail', function(){

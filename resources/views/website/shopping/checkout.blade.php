@@ -138,11 +138,11 @@
                                 <input placeholder="Apartment, suite, etc. (optional)" autocomplete="shipping address-line2" autocorrect="off" data-trekkie-id="shipping_address2_field" data-backup="address2" class="field__input" size="30" type="text" name="checkout[shipping_address][address2]" id="checkout_shipping_address_address2">
                               </div>
                             </div> -->
-                            <div data-address-field="city" data-autocomplete-field-container="true" class="field field--required">
+                            {{-- <div data-address-field="city" data-autocomplete-field-container="true" class="field field--required">
                               <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_city">Thành phố</label>
-                                <input placeholder="Thành phố" autocomplete="shipping address-level2" autocorrect="off" data-trekkie-id="shipping_city_field" data-backup="city" class="field__input" aria-required="true" size="30" type="text" name="checkout[shipping_address][city]" data-autofocus="true" id="checkout_shipping_address_city" required="">
+                                <input placeholder="Thành phố" autocomplete="shipping address-level2" autocorrect="off" data-trekkie-id="shipping_city_field" data-backup="city" class="field__input" aria-required="true" size="30" type="text" name="checkout[shipping_address][city]" data-autofocus="true" id="checkout_shipping_address_city">
                               </div>
-                            </div>
+                            </div> --}}
                             <div data-address-field="phone" class="field field--optional">
                               <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_phone">Lưu ý dành cho nhân viên giao hàng</label>
                                 <textarea placeholder="Lưu ý dành cho nhân viên giao hàng" autocomplete="shipping tel" data-backup="phone" data-trekkie-id="shipping_phone_field" data-phone-formatter="true" data-phone-formatter-country-select="[name='checkout[shipping_address][country]']" class="field__input field__input--numeric" size="30" type="tel" name="note" id="checkout_shipping_address_phone"></textarea>

@@ -236,12 +236,16 @@
 			<div class="col-xs-12">
 				<br>
 				<a href="{{ route('admin.orders.print', [$order->id]) }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+				&nbsp;
 				@if ($order->status == '4')
 				@else
-				<a href="{{ route('admin.orders.report', [$order->id]) }}" target="_blank" class="btn btn-primary pull-right" style="margin-right: 5px;">
+				<a href="{{ route('admin.orders.report', [$order->id]) }}" target="_blank" class="btn btn-warning" style="margin-left: 5px;">
 					<i class="fa fa-download"></i> Generate PDF
 				</a>
 				@endif
+				<a href="{{ route('admin.orders.index') }}" class="btn btn-primary pull-right" style="margin-right: 5px;">
+					Trở về
+				</a>
 			</div>
 		</div>
 	</section>
