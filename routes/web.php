@@ -29,6 +29,8 @@ Route::middleware(['LogUserActivity'])->group(function(){
 
 		// comment
 		Route::post('product/comment', 'CommentController@store')->name('product.comment.store');
+		Route::post('news/comment', 'CommentController@storeNewsComment')->name('news.comment.store');
+
 	});
 
 	Route::get('/', 'WebsiteController@homepage')->name('homepage');

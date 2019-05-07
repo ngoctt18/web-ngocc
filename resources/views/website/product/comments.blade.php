@@ -9,7 +9,7 @@
             <div class="form-group">
                 <span class="rte" title="{{$comment->created_at->format('H:i:s - d/m/Y')}}">{{$comment->created_at->diffForHumans()}}</span> 
                 @if (auth()->check())
-                <a href="javascript:void(0)" class="reply-comment"><i class="fa fa-share"></i> Reply</a>
+                <a href="javascript:void(0)" class="reply-comment"><i class="fa fa-share"></i> Trả lời</a>
                 @endif
             </div>
             @if (auth()->check())
@@ -23,7 +23,7 @@
                     <input type="hidden" name="type_comment" value="reply_comment" />
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-warning btn-reply-comment" value="Reply" />
+                    <input type="submit" class="btn btn-warning btn-reply-comment" value="Trả lời" />
                 </div>
             </form>
             @endif

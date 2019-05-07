@@ -240,7 +240,7 @@
                                                     <input type="hidden" name="type_comment" value="new_comment" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="submit" class="btn btn-warning btn-reply-comment" value="Reply" />
+                                                    <input type="submit" class="btn btn-warning btn-reply-comment" value="Gửi bình luận" />
                                                 </div>
                                             </form>
                                         </div>
@@ -464,6 +464,7 @@ if (variant && variant.featured_image) {
     });
 </script>
 @endsection
+
 @section('scripts')
 @include('website.product.product_detail_scripts')
 @endsection

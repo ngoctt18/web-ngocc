@@ -4,20 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class CommentNews extends Model
 {
-	protected $table = 'product_comments'; 
+	protected $table = 'news_comments'; 
 
 	protected $fillable = [
-		'user_id', 'product_id', 'parent_id', 'body', 
+		'user_id', 'news_id', 'parent_id', 'body', 
 	];
 
 	public $timestamps = true;
 
     // relationship
-	public function product()
+	public function news()
 	{
-		return $this->belongsTo(Product::class, 'product_id', 'id');
+		return $this->belongsTo(News::class, 'news_id', 'id');
 	}
 
 	public function user()
@@ -27,7 +27,7 @@ class Comment extends Model
 
 	public function replies()
 	{
-		return $this->hasMany(Comment::class, 'parent_id');
+		return $this->hasMany(CommentNews::class, 'parent_id');
 	}
-
+	
 }

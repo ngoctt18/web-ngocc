@@ -50,6 +50,11 @@ class News extends Model implements HasMedia
 		return $this->belongsTo(Writer::class, 'author_id', 'id')->withDefault();
 	}
 
+	public function comments()
+	{
+		return $this->hasMany(CommentNews::class, 'news_id', 'id')->whereNull('parent_id')->latest();
+	}
+
 
 
 

@@ -5,6 +5,8 @@
 @section('styles')
 <style type="text/css">
   .blog-content img { max-width: 100%; max-height: 100%; }
+  a.reply-comment { margin-left: 20px; }
+  .formComment {transition: 0.2s; display: none;}
 </style>
 @endsection
 
@@ -94,6 +96,25 @@
                         @endforeach
                      </div>
                      <hr>
+                     <div class="tab-content">
+                        <form method="post" action="{{ route('web.news.comment.store') }}" class="formComment" style="display: block !important;">
+                            @csrf
+                            <div class="form-group">
+                                <textarea name="body" class="form-control" rows="4" required="" minlength="30" maxlength="250" placeholder="Nội dung bình luận"></textarea>
+                                <small class="text-danger err-msg"></small>
+                                <input type="hidden" name="news_id" value="{{ $news->id }}" />
+                                <input type="hidden" name="parent_id" value="" />
+                                <input type="hidden" name="type_comment" value="new_comment" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-warning btn-reply-comment" value="Gửi bình luận" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-content">
+                        @include('website.news.commentsDisplay', ['comments' => $news->comments->sortByDesc('created_at'), 'news_id' => $news->id])
+                    </div>
+                    <hr>
                      <p class="btn-prenext clearfix">
                         @isset ($previous)
                         <span class="pull-left"><i class="fa fa-angle-double-left"></i> <a href="{{ route('web.news.view', [$previous->id,$previous->slug]) }}" title="{{$previous->title}}">Older Post</a>
@@ -138,4 +159,8 @@
       </div>
    </div>
 </section>
+@endsection
+
+@section('scripts')
+@include('website.news.news_comment_scripts')
 @endsection

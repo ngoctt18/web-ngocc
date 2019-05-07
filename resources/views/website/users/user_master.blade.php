@@ -27,6 +27,7 @@ li.parent.dropdown.active > a { color: #59bd56; }
 							</div>
 							<div class="col-md-9">
 								<h5>{{$user->name}}</h5>
+								<a href="javascript:void(0)"><i class="fa fa-circle" style=" color: #59bd56; "></i> Online</a>
 							</div>
 						</div>
 						<div class="block_content">
