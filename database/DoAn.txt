@@ -1,15 +1,14 @@
-
-
 - done: BÁO CÁO THIẾU  kết luận và tài liệu tham khảo
 - done: Thống kê doanh thu theo tuần, ngày tháng,
 - done: Xuất hóa đơn ra file, In báo cáo hóa đơn bán hàng
 - done: Giảm số lượng hàng khi bán
 - Thống kê ds KH mua hàng nhiều 
 - Thống kê theo tháng cụ thể
+- Chức năng bình luận cho sản phẩm và blog
+- Hoàn thiện báo cáo đồ án 
 Tổng Số lượt người truy cập, sl ng đang truy cập
-Chức năng bình luận
-Hoàn thiện báo cáo đồ án 
 Hoàn thiện Slide thuyết trình
+
 1.	Tổng số sản phẩm	69
 2.	Tổng số đơn hàng	40
 3.	Tổng số khách hàng	25
@@ -19,10 +18,14 @@ Hoàn thiện Slide thuyết trình
 3.	Tổng số đơn hàng trong tháng	4
 4.	Số hàng tồn kho
 
++ Những phần chưa làm được: 
+- Thanh toán trực tuyến,...
+- Chức năng tìm kiếm còn hạn chế
 
-Admin - người quản lý - khách hàng - khách xem.
 
 
++ Actor: Quản trị viên (Admin), người quản lý và khách hàng.
++ Use case:
 11 Đăng nhập
 22 Đăng kí thành viên
 33 Xem sản phẩm
@@ -35,6 +38,8 @@ Admin - người quản lý - khách hàng - khách xem.
 99 Quản lý sản phẩm
 1010 Quản lý khách hàng
 •	11  Quản lý tin tức
+
+
 
 
 
