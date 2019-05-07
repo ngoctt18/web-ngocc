@@ -89,6 +89,11 @@ Route::middleware(['LogUserActivity'])->group(function(){
 	Route::get('search', 'Search\SearchController@index')->name('search');
 	Route::get('autocomplete', 'Search\SearchController@autocomplete')->name('search.autocomplete');
 
+
+
+
+
+	// Test route
 	Route::get('/updateDateOrder', function(){
 		$orders = App\Order::all();
 		foreach ($orders as $order) {
@@ -100,6 +105,32 @@ Route::middleware(['LogUserActivity'])->group(function(){
 		dd('updateDateOrder done!');
 	});
 
+	Route::get('/randomDateComment', function(){
+		$comments = App\Comment::all();
+		foreach ($comments as $comment) {
+			$min = strtotime('2019-03-01 12:12:12');
+			$max = strtotime('2019-05-07 12:12:12');
+			$int = mt_rand($min, $max);
+			$string = date("Y-m-d H:i:s", $int);
+			$comment->update([
+				'created_at' => $string,
+				'updated_at' => $string,
+			]);
+		}
+
+		$commentNews = App\CommentNews::all();
+		foreach ($commentNews as $commentNew) {
+			$min = strtotime('2019-03-01 12:12:12');
+			$max = strtotime('2019-05-07 12:12:12');
+			$int = mt_rand($min, $max);
+			$string = date("Y-m-d H:i:s", $int);
+			$commentNew->update([
+				'created_at' => $string,
+				'updated_at' => $string,
+			]);
+		}
+		dd('randomDateComment done!');
+	});
 
 	Route::get('/mail', function(){
 		$user = App\User::find(1);

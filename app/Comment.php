@@ -9,7 +9,7 @@ class Comment extends Model
 	protected $table = 'product_comments'; 
 
 	protected $fillable = [
-		'user_id', 'product_id', 'parent_id', 'body', 
+		'user_id', 'product_id', 'parent_id', 'body', 'created_at', 'updated_at', 
 	];
 
 	public $timestamps = true;

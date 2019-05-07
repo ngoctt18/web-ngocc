@@ -9,7 +9,7 @@ class CommentNews extends Model
 	protected $table = 'news_comments'; 
 
 	protected $fillable = [
-		'user_id', 'news_id', 'parent_id', 'body', 
+		'user_id', 'news_id', 'parent_id', 'body', 'created_at', 'updated_at', 
 	];
 
 	public $timestamps = true;

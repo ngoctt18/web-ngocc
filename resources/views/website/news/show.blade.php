@@ -5,6 +5,7 @@
 @section('styles')
 <style type="text/css">
   .blog-content img { max-width: 100%; max-height: 100%; }
+  img.avatar { width: 45px; height: 45px;}
   a.reply-comment { margin-left: 20px; }
   .formComment {transition: 0.2s; display: none;}
 </style>
