@@ -191,4 +191,51 @@ class ProductController extends Controller
 			'url' => asset('storage/tmp-share-images/'.$fileName),
 		]);
 	}
+
+	// Thùng rác
+	public function trash(Request $request)
+	{
+		$name = $request->query('name', NULL);
+		$catagory_id = $request->query('catagory_id', NULL);
+		$distribution_id = $request->query('distribution_id', NULL);
+		$status = $request->query('status', NULL);
+		$products = Product::query();
+		if ($name != NULL) {
+			$products = $products->where('name', 'LIKE', '%'.$name.'%');
+		}
+		if ($catagory_id != NULL) {
+			$products = $products->where('catagory_id', $catagory_id);
+		}
+		if ($distribution_id != NULL) {
+			$products = $products->where('distribution_id', $distribution_id);
+		}
+		if ($status != NULL) {
+			$products = $products->where('status', $status);
+		}
+		$catagories = Catagory::where('status', '1')->get();
+		$distributions = Distribute::where('status', '1')->get();
+		$products = $products->onlyTrashed()->latest()->paginate()->appends([
+			'name' => $name,
+			'catagory_id' => $catagory_id,
+			'distribution_id' => $distribution_id,
+			'status' => $status,
+		]);
+		return view('admin.products.trash', compact('products','distributions','catagories'));
+	}
+
+	public function restore($id)
+	{
+		$product = Product::onlyTrashed()->findOrFail($id);
+		$product->restore();
+		Session::flash('success', 'Khôi phục sản phẩm thành công.');
+		return redirect()->route('admin.products.trash');
+	}
+
+	public function forcedelete($id)
+	{
+		$product = Product::onlyTrashed()->findOrFail($id);
+		$product->forcedelete();
+		Session::flash('success', 'Sản phẩm đã được xóa vĩnh viễn.');
+		return redirect()->route('admin.products.trash');
+	}
 }

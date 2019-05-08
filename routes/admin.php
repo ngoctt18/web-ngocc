@@ -28,6 +28,10 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::resource('catagory-types', 'CatagoryType\CatagoryTypeController');
 	Route::resource('catagories', 'Catagory\CatagoryController');
 	Route::resource('distributions', 'Distribute\DistributeController');
+
+	Route::get('products/trashes', 'Product\ProductController@trash')->name('products.trash');
+	Route::get('products/{products}/restore', 'Product\ProductController@restore')->name('products.restore');
+	Route::delete('forcedelete/{products}', 'Product\ProductController@forcedelete')->name('products.forcedelete');
 	Route::resource('products', 'Product\ProductController');
 
 	Route::get('news/trashes', 'News\NewsController@trash')->name('news.trash');

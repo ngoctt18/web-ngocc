@@ -5,7 +5,13 @@ $menus_admin = [
     ['type' => 'single', 'route' => 'admin.catagory-types.index', 'icon' => 'fa fa-server', 'name' => 'Quản lý nhóm danh mục'],
     ['type' => 'single', 'route' => 'admin.catagories.index', 'icon' => 'fa fa-align-justify', 'name' => 'Quản lý danh mục'],
     ['type' => 'single', 'route' => 'admin.distributions.index', 'icon' => 'fa fa-industry', 'name' => 'Quản lý nhà phân phối'],
-    ['type' => 'single', 'route' => 'admin.products.index', 'icon' => 'fa fa-product-hunt', 'name' => 'Quản lý sản phẩm'],
+    [
+        'type' => 'multi', 'name' => 'Quản lý sản phẩm', 'icon' => 'fa fa-product-hunt',
+        'children' => [
+            ['type' => 'single', 'route' => 'admin.products.index', 'icon' => 'fa fa-newspaper-o', 'name' => 'Danh sách sản phẩm'],
+            ['type' => 'single', 'route' => 'admin.products.trash', 'icon' => 'fa fa-trash-o', 'name' => 'Sản phẩm đã xóa'],
+        ]
+    ],
     [
         'type' => 'multi', 'name' => 'Quản lý tin tức', 'icon' => 'fa fa-newspaper-o',
         'children' => [
@@ -55,3 +61,5 @@ $menus_writer = [
     @endforeach
     @endif
 </ul>
+
+{{-- ['type' => 'single', 'route' => 'admin.products.index', 'icon' => 'fa fa-product-hunt', 'name' => 'Quản lý sản phẩm'], --}}
