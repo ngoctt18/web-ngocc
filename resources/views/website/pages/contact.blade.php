@@ -59,24 +59,24 @@
                         <div class="col-md-3 col-sm-12 col-xs-12">
                             <div class="box-contact-info block">
                                 <div class="title_block">
-                                    <span>Contact Information</span>
+                                    <span>Thông tin liên hệ</span>
                                 </div>
                                 <div class="block_content">
                                     <div class="coninfo-des">
-                                        We'd love to hear from you - please use the form to send us your message or ideas. Or simply pop in for a cup of fresh tea and a cookie
+                                        Chúng tôi muốn nghe ý kiến ​​đóng góp của bạn. Vui lòng sử dụng biểu mẫu để gửi cho chúng tôi tin nhắn hoặc ý tưởng của bạn. Hoặc đơn giản là ghé vào để uống một tách trà tươi và bánh quy.
                                     </div>
                                     <ul>
                                         <li class="address">
-                                            <span>123 Main st. Los Angeles, CA, 90012, U.S.A</span>
+                                            <span>Long Hung, Van Giang, Hung Yen, Viet Nam</span>
                                         </li>
                                         <li class="phone">
-                                            <span>Phone: (+386) 40 123 456<br/> Fax: (+386) 40 123 456</span>
+                                            <span>Phone: 0975853528<br/> Fax: 02216275586</span>
                                         </li>
                                         <li class="email">
-                                            <span>yourmail@address.com</span>
+                                            <span>trantuanngoctn97@gmail.com</span>
                                         </li>
                                         <li class="website">
-                                            <span>www.example.com</span>
+                                            <span>milkstore.com</span>
                                         </li>
                                     </ul>
                                 </div>

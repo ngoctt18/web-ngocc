@@ -6,7 +6,7 @@
             <div class="footer-center-wrap">
                <div class="row no-margin">
                   <div class="no-padding footer--left col-md-3 col-sm-12 col-xs-12 " data-wow-delay="100ms">
-                     <section id="googlemap" class="box-googlemap box block">
+                     <!-- <section id="googlemap" class="box-googlemap box block">
                         <h4 class="title_block">
                            <span>Store</span> Locations
                         </h4>
@@ -20,13 +20,13 @@
                               {{-- <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true&amp;amp;region=US"></script> --}}
                            </div>
                         </div>
-                     </section>
+                     </section> -->
                      <div class="block_aboutshop block">
                         <div class="block_content">
                            <ul class="list__address">
                               <li><i class="fa fa-home "></i>Văn Trì, Minh Khai, Bắc Từ Liêm, Hà Nội</li>
                            </ul>
-                           <h3 class="title_block">ABOUT US</h3>
+                           <h3 class="title_block">Về chúng tôi</h3>
                            <div class="about">
                               Hệ thống siêu thị sữa Milk Store cung cấp sản phẩm an toàn, chính hãng, chất lượng tốt, giá cả cạnh tranh nhất trên thị trường.
                               <ul class="list__address">
@@ -37,7 +37,7 @@
                         </div>
                      </div>
                      <div id="social_block" class="social_block block">
-                        <h4 class="title_block">GET SOCIAL</h4>
+                        <h4 class="title_block">Mạng xã hội</h4>
                         <div class="block_content">
                            <ul class="list-unstyled clearfix">
                               <li class="facebook">
@@ -119,7 +119,7 @@
                         <div class="row">
                            <div class="col-md-4 col-sm-4 col-xs-12">
                               <div class="footer-block block" id="block_links_footer_1">
-                                 <h4 class="title_block">Account</h4>
+                                 <h4 class="title_block">Tài khoản</h4>
                                  <div class="block_content">
                                     <ul style="" class="toggle-footer list-group bullet">
                                        @if (Auth::check())
@@ -131,10 +131,10 @@
                                           <a href="{{ route('web.checkout') }}" title="Checkout">Checkout</a>
                                        </li>
                                        <li class="item">
-                                          <a href="{{ route('web.login') }}" title="Login">Login</a>
+                                          <a href="{{ route('web.login') }}" title="Login">Đăng nhập</a>
                                        </li>
                                        <li class="item">
-                                          <a href="{{ route('web.register') }}" title="Register">Register</a>
+                                          <a href="{{ route('web.register') }}" title="Register">Đăng ký</a>
                                        </li>
                                     </ul>
                                  </div>
@@ -142,20 +142,20 @@
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
                               <div class="footer-block block" id="block_links_footer_2">
-                                 <h4 class="title_block">Infomartions</h4>
+                                 <h4 class="title_block">Thông tin</h4>
                                  <div class="block_content">
                                     <ul style="" class="toggle-footer list-group bullet">
                                        <li class="item">
-                                          <a href="" title="About Us">About Us</a>
+                                          <a href="" title="About Us">Về chúng tôi</a>
                                        </li>
                                        <li class="item">
-                                          <a href="{{ route('web.contact') }}" title="Contact Us">Contact Us</a>
+                                          <a href="{{ route('web.contact') }}" title="Contact Us">Liên hệ</a>
                                        </li>
                                        <li class="item">
-                                          <a href="" title="Terms & Conditions">Terms & Conditions</a>
+                                          <a href="" title="Terms & Conditions">Điều khoản và điều kiện</a>
                                        </li>
                                        <li class="item">
-                                          <a href="" title="Faq">Faq</a>
+                                          <a href="" title="FAQ">FAQ</a>
                                        </li>
                                     </ul>
                                  </div>

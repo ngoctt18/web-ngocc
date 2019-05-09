@@ -32,7 +32,7 @@
       </ul>
       <div class="lnk">
          <a href="{{ route('web.best_discount') }}" title="best discount" class="btn btn-sm btn-outline">
-            <span>All Best Discount</span>
+            <span>Hàng giảm giá nhiều</span>
          </a>
       </div>
    </div>

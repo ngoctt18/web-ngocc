@@ -24,6 +24,7 @@
       </p>
    </div>
    @include('website.partials.fb_messenger')
+   @stack('fb_comment')
 </body>
 @include('website.partials.scripts')
 </html>

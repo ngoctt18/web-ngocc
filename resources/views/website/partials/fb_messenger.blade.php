@@ -1,6 +1,7 @@
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 
+<!-- Your customer chat code -->
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -17,8 +18,6 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
-
-<!-- Your customer chat code -->
 <div class="fb-customerchat"
 attribution=setup_tool
 page_id="462500050889257"
@@ -26,6 +25,3 @@ theme_color="#13cf13"
 logged_in_greeting="Hi! Chào mừng bạn đến với Milk Store."
 logged_out_greeting="Hi! Chào mừng bạn đến với Milk Store."></div>
 
-<!-- Comment Facobook -->
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=2233734240234108&autoLogAppEvents=1"></script>
-<div class="website_loader"></div>

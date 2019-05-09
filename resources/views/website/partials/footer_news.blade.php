@@ -1,6 +1,6 @@
 
 <article id="apolloblogs" class="icenter home_blogs block">
-   <h3 class="title_block"><span>Popular News</span></h3>
+   <h3 class="title_block"><span>Bài viết phổ biến</span></h3>
    <div class="block_content">
       <div class="carousel slide" id="blogs">
          <div class="carousel-inner">

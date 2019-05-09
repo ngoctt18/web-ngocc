@@ -19,9 +19,9 @@
                         <span class="fa fa-shopping-cart "></span>
                      </div>
                      <div class="cart-inner media-body">
-                        <span class="cart-title">Shopping cart</span>
+                        <span class="cart-title">Giỏ hàng</span>
                         <span id="CartCount">{{Cart::instance('default')->count()}}</span>
-                        <span>items - </span>
+                        <span>sản phẩm - </span>
                         <span id="CartMoney"><span class='money'>{{Cart::instance('default')->subtotal(0,'','.')}}₫</span></span>
                      </div>
                   </a>
@@ -44,16 +44,16 @@
                   </li>
                   <li>
                      <a class="account" href="{{ route('web.logout') }}" title="Logout">
-                        <i class="fa fa-sign-out"></i> Logout
+                        <i class="fa fa-sign-out"></i> Đăng xuất
                      </a>
                   </li>
                   @else
                   <li>
                      <a class="account" href="{{ route('web.login') }}" title="Login">
-                        <i class="fa fa-sign-in"></i> Sign In
+                        <i class="fa fa-sign-in"></i> Đăng nhập
                      </a>
                      <a class="account" href="{{ route('web.register') }}" title="Register">
-                        <i class="fa fa-user-plus"></i> Sign Up
+                        <i class="fa fa-user-plus"></i> Đăng ký
                      </a>
                   </li>
                   @endif

@@ -17,9 +17,9 @@
 						</div>
 					</div>
 				</div>
-				<h1 class="page-heading product-listing cat-name">Best Discount</h1>
+				<h1 class="page-heading product-listing cat-name">Sản phẩm giảm giá nhiều</h1>
 				<div class="category-heading clearfix">
-					<p>Best discount in all time</p>
+					<p>Tất cả sản phẩm giảm giá/p>
 					</div>
 				</div>
 				<div class="product-border product_list grid">

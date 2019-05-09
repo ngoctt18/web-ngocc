@@ -15,13 +15,13 @@
    </h4>
    <div class="block_content">
       <div class="des_newsletter">
-         Sign up for our newsletter for exclusive updates on contests, new products, and more.
+         Đăng ký nhận bản tin của chúng tôi để cập nhật độc quyền về các khuyến mãi, sản phẩm mới và hơn thế nữa.
       </div>
       <form class="form_newsletter" action="{{ route('web.sign_up_email') }}" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
          @csrf
-         <input type="email" value="" placeholder="Your email ..." name="email" id="mail" class="newsletter-input form-control" aria-label="Your email ..." >
+         <input type="email" value="" placeholder="Email ..." name="email" id="mail" class="newsletter-input form-control" aria-label="Email ..." >
          <button id="subscribe" class="button_mini btn" type="submit">
-            <span>Subscribe →</span>
+            <span>Đăng ký nhận tin tức →</span>
          </button>
       </form>
       <span style=" color: #b50404; ">{{$errors->first('email')}}</span>

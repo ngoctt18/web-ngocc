@@ -13,7 +13,7 @@
                <ul class="nav navbar-nav megamenu">
                   <li class="active">
                      <a class="" href="{{ route('web.homepage') }}" title="Home" target="_self">
-                        <span class="">Home</span>
+                        <span class="">Trang chủ</span>
                      </a>
                   </li>
 
@@ -157,4 +157,4 @@
       </nav>
    </div>
 </div>
-                  <!-- End Menu -->
+<!-- End Menu -->

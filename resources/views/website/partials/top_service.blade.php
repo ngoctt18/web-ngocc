@@ -6,8 +6,8 @@
                <i class="fa fa-truck"></i> 
             </div>
             <div class="media-body">
-               <h4>FREE SHIPPING</h4>
-               <p><em>On orders over 99$</em></p>
+               <h4>Miễn phí vận chuyển</h4>
+               <p><em>Vận chuyển toàn quốc</em></p>
             </div>
          </div>
       </div>
@@ -17,8 +17,8 @@
                <i class="fa fa-gift"></i>
             </div>
             <div class="media-body">
-               <h4>SPECIAL GIFT CART</h4>
-               <p><em>Give the perfect gift</em></p>
+               <h4>Giỏ quà đặc biệt</h4>
+               <p><em>Món quà hoàn hảo</em></p>
             </div>
          </div>
       </div>
@@ -28,8 +28,8 @@
                <i class="fa fa-calendar-o"></i>
             </div>
             <div class="media-body">
-               <h4>DALY PROMOTION</h4>
-               <p><em>Sed ut perspiciatis unde</em></p>
+               <h4>Giảm giá liên tục</h4>
+               <p><em>Khuyến mãi thường xuyên</em></p>
             </div>
          </div>
       </div>
@@ -39,8 +39,8 @@
                <i class="fa fa-comments-o"></i>
             </div>
             <div class="media-body">
-               <h4>24/7 CUSTOMER CARE</h4>
-               <p><em>Hours: 14.0123 456 789</em></p>
+               <h4>Dịch vụ 24/7</h4>
+               <p><em>Chăm sóc chu đáo</em></p>
             </div>
          </div>
       </div>
