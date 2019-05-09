@@ -249,6 +249,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="more_info_block">
+                                        <ul class="nav nav-tabs tab-info page-product-heading">
+                                            <li style=" border-bottom: 3px solid #59bd56; ">
+                                                <a href="#idTab4" data-toggle="tab">Bình luận qua Facebook</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="fb-comments" data-href="{{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}" data-width="1130" data-numposts="5" data-order-by="social"></div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="productpage col-xs-12 col-sm-12 col-lg-12">
                                     <div id="productrelated01" class="products_block exclusive block" >
                                         <h4 class="page-subheading ">

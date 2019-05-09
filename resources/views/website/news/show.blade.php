@@ -96,8 +96,15 @@
                         @endif 
                         @endforeach
                      </div>
-                     <hr>
+                     <br>
                      <div class="tab-content">
+                        <div class="more_info_block">
+                            <ul class="nav nav-tabs tab-info page-product-heading">
+                                <li style="border-bottom: 3px solid #59bd56; margin-bottom: 10px; ">
+                                    <a href="javascript:void(0)" data-toggle="tab">Bình luận bài qua Facebook</a>
+                                </li>
+                            </ul>
+                        </div>
                         <form method="post" action="{{ route('web.news.comment.store') }}" class="formComment" style="display: block !important;">
                             @csrf
                             <div class="form-group">
@@ -114,6 +121,17 @@
                     </div>
                     <div class="tab-content">
                         @include('website.news.commentsDisplay', ['comments' => $news->comments->sortByDesc('created_at'), 'news_id' => $news->id])
+                    </div>
+                    <br>
+                    <div class="more_info_block">
+                        <ul class="nav nav-tabs tab-info page-product-heading">
+                            <li style="border-bottom: 3px solid #59bd56; margin-bottom: 10px; ">
+                                <a href="javascript:void(0)" data-toggle="tab">Bình luận qua Facebook</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="fb-comments" data-href="{{ route('web.news.view', [$news->id,$news->slug]) }}" data-width="757" data-numposts="5" data-order-by="reverse_time"></div>
                     </div>
                     <hr>
                      <p class="btn-prenext clearfix">
@@ -139,7 +157,7 @@
                            </ul>
                         </div>
                         <div class="col-lg-6 col-md-6 col-xs-12">
-                           <h4>Related by Tags</h4>
+                         <h4>Related by Tags</h4>
                            <ul>
                                 @foreach ($news_related as $related)
                                   <li>
