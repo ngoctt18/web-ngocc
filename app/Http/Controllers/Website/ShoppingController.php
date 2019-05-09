@@ -47,6 +47,11 @@ class ShoppingController extends Controller
 	public function getCart()
 	{
 		$contents = Cart::content();
+		foreach ($contents as $key => $item) {
+			if ($item->model->qty_remain <= $item->qty) {
+				Session::flash('error', 'Một số sản phẩm đã hết hàng. Vui lòng xóa bỏ để tiếp tục thanh toán!');
+			}
+		}
 		$total = Cart::subtotal(0,'','.');
 		// return $contents;
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
@@ -83,6 +88,13 @@ class ShoppingController extends Controller
 	public function checkout()
 	{
 		$contents = Cart::content();
+		foreach ($contents as $key => $item) {
+			if ($item->model->qty_remain <= $item->qty) {
+				Session::flash('error', 'Sản phẩm đã hết hàng. Vui lòng xóa bỏ để tiếp tục thanh toán!');
+				Session::flash('product_id', 'Sản phẩm đã hết hàng. Vui lòng xóa bỏ để tiếp tục thanh toán!');
+				return redirect()->route('web.cart');
+			}
+		}
 		$total = Cart::subtotal(0,'','.');
 		// return $contents;
 		$catagoriesTypes = CatagoriesType::where('status', '1')->get();
@@ -94,7 +106,7 @@ class ShoppingController extends Controller
 	{
 		$contents = Cart::content();
 		$total = Cart::subtotal(0,'','.');
-		//                               Cart::store($request->checkout['email']);
+		// Cart::store($request->checkout['email']);
 		// return $request->checkout['shipping_address']['phone'];
 
 		try {
@@ -199,6 +211,29 @@ class ShoppingController extends Controller
 		$this->storeCartByUser();
 		$this->storeWishlistByUser();
 		return redirect()->route('web.wishlist');
+	}
+
+	public function switchToWishlist($rowId)
+	{
+		$cart = Cart::instance('default')->get($rowId);
+		$product = Product::findOrFail($cart->id);
+
+		Cart::instance('wishlist')->add([
+			'id' => $cart->id, 
+			'name' => $product->name, 
+			'qty' => 1, 
+			'price' => $product->price-$product->price*$product->discount/100, 
+			'options' => [
+				'discount' => $product->discount,
+				'price_old' => $product->price,
+			]
+			// Liên kết giỏ hàng với Model Product
+		])->associate('App\Product');
+		Cart::instance('default')->remove($rowId);
+
+		$this->storeCartByUser();
+		$this->storeWishlistByUser();
+		return redirect()->route('web.cart');
 	}
 
 

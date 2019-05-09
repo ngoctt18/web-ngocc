@@ -19,10 +19,12 @@
                         <span class="fa fa-shopping-cart "></span>
                      </div>
                      <div class="cart-inner media-body">
-                        <span class="cart-title">Giỏ hàng</span>
-                        <span id="CartCount">{{Cart::instance('default')->count()}}</span>
-                        <span>sản phẩm - </span>
-                        <span id="CartMoney"><span class='money'>{{Cart::instance('default')->subtotal(0,'','.')}}₫</span></span>
+                        <span class="cart-title">Shopping cart</span>
+                        <span style="font-size: 13px;">
+                           <span id="CartCount">{{Cart::instance('default')->count()}}</span>
+                           <span>sản phẩm - </span>
+                           <span id="CartMoney"><span class='money'>{{Cart::instance('default')->subtotal(0,'','.')}}₫</span></span>
+                        </span>
                      </div>
                   </a>
                </div>

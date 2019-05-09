@@ -41,7 +41,29 @@ Hoàn thiện Slide thuyết trình
 
 
 
-
+$(".block-content .show-more-text a").click(function(e){
+        e.preventDefault();
+        var btn = $(this);
+        var text = $(".product-description .block-content .js-content");
+        if($(this).hasClass("less")){
+            $(".product-description .block-content .js-content").css("height", "");
+        }else{
+            $(".product-description .block-content .js-content").css("height", "auto");
+        }
+        
+        if (btn.hasClass('less')) {
+        	$('body,html').stop().animate({scrollTop: text.offset().top}, 800);
+            btn.removeClass('less');
+            btn.addClass('more');
+            btn.text('Xem chi tiết');
+            text.animate({"height": "600"});
+        } else {
+            btn.addClass('less');
+            btn.removeClass('more');
+            btn.text('Thu nhỏ nôi dung');
+            text.animate({'height': 'auto'});
+        }
+    });
 
 
 

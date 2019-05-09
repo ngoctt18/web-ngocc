@@ -76,14 +76,25 @@
 					<textarea class="form-control" rows="4" id="intro" placeholder="Giới thiệu sản phẩm" name="intro" >{{old('intro',$product->intro)}}</textarea>
 					<small class="text-danger">{{ $errors->first('intro') }}</small>
 				</div>
-				<div class="form-group">
-					<label for="status">Trạng thái</label>
-					<select class="form-control" style="width: 40%;" name="status" id="status">
-						<option value="">Chọn trạng thái</option>
-						<option value="1" {{old('status',$product->status) == '1' ? 'selected' : ''}}>Còn hàng</option>
-						<option value="0" {{old('status',$product->status) == '0' ? 'selected' : ''}}>Hết hàng</option>
-					</select>
-					<small class="text-danger">{{ $errors->first('status') }}</small>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="status">Trạng thái</label>
+							<select class="form-control" name="status" id="status">
+								<option value="">Chọn trạng thái</option>
+								<option value="1" {{old('status',$product->status) == '1' ? 'selected' : ''}}>Còn hàng</option>
+								<option value="0" {{old('status',$product->status) == '0' ? 'selected' : ''}}>Hết hàng</option>
+							</select>
+							<small class="text-danger">{{ $errors->first('status') }}</small>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="qty_remain">Số lượng hàng</label>
+							<input type="number" class="form-control" id="qty_remain" placeholder="Số lượng hàng" name="qty_remain" value="{{old('qty_remain', $product->qty_remain)}}" min="1" required="">
+							<small class="text-danger">{{ $errors->first('qty_remain') }}</small>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- col-md-6 -->

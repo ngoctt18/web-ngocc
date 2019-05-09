@@ -1,6 +1,10 @@
 html { scroll-behavior: smooth; }
 textarea {resize: vertical;}
 
+body {
+	font-family: Tahoma !important;
+}
+
 .website_loader {
 	position: fixed;
 	opacity: 0.95;

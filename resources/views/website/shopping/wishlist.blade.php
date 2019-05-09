@@ -2,6 +2,13 @@
 
 @section('title', 'Your Wish List')
 
+@section('styles')
+<style type="text/css">
+	.cpro_item_inner { font-size: 15px; }
+	.btnAddToCart {color: #004eff;}
+</style>
+@endsection
+
 @section('content')
 @include('website.partials.breadcrumbs')
 <div class="container">
@@ -14,11 +21,11 @@
 						<table class="wishlist-product table table-bordered">
 							<thead>
 								<tr>
-									<th>Product Image</th>
-									<th>Product Name</th>
-									<th class="text-center">Price</th>
-									<th class="text-center">Remove</th>
-									<th class="text-center">Add to Cart</th>
+									<th>#</th>
+									<th>Sản phẩm</th>
+									<th class="text-center">Giá</th>
+									<th class="text-center">Xóa</th>
+									<th class="text-center">Chuyển sang giỏ hàng</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -30,7 +37,7 @@
 											<img src="{{$item->model->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$item->model->name}}" style="width: 96px;height: 100px;margin: 0 auto;display: block;">
 										</a>
 									</td>
-									<td class="product-name">
+									<td class="product-name cpro_item_inner">
 										<a href="{{ route('web.product_detail',[$item->id,$item->model->slug]) }}" class="product-title">{{$item->model->name}}</a>
 									</td>
 									<td class="text-center">
@@ -53,7 +60,7 @@
 										<a href="{{ route('web.del_item_wishlist',['rowId'=> $item->rowId]) }}" style=" padding: 10px 15px; background: burlywood; border-radius: 4px; "><i class="fa fa-trash-o btnRemove"></i></a>
 									</td>
 									<td class="text-center addtocart">
-										<a href="{{ route('web.switch_to_cart', ['rowId' => $item->rowId ]) }}" class="button btnAddToCart">Add to Cart</a>
+										<a href="{{ route('web.switch_to_cart', ['rowId' => $item->rowId ]) }}" class="button btnAddToCart cpro_item_inner">Thêm vào giỏ hàng</a>
 									</td>
 								</tr>
 								@endforeach
@@ -61,7 +68,7 @@
 								<tr>
 									<td colspan="5">
 										<div class="no_product-wishlist">
-											<p>No product in your wishlist</p><p>
+											<p>Bạn chưa có sản phẩm để dành nào cả.</p><p>
 											</p>
 										</div>
 									</td>

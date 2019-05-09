@@ -67,6 +67,7 @@
 					<th>Danh mục</th>
 					<th>Nhà phân phối</th>
 					<th>Trạng thái</th>
+					<th>Số lượng</th>
 					<th>Hành động</th>
 				</tr>
 			</thead>
@@ -75,7 +76,7 @@
 				@foreach($products as $product)
 				<tr role="row" class="align-middle">
 					<td>{{ index_row($products, $loop->index) }}</td>
-					<td>{{$product->name}}</td>
+					<td>{{str_limit($product->name, $limit = 70, $end = '...')}}</td>
 					<td>{{number_format($product->price,0,",",".")}}</td>
 					<td>{{$product->discount}}%</td>
 					{{-- <td>{{$product->brand}}</td> --}}
@@ -88,6 +89,7 @@
 						{{"Còn hàng"}}
 						@endif
 					</td>
+					<td>{{$product->qty_remain}}</td>
 					<td>
 						<a href="{{ route('admin.products.edit', ['id' => $product->id], false) }}" class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a>
 						<a href="{{ route('admin.products.destroy', ['id' => $product->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>

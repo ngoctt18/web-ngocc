@@ -5,6 +5,9 @@
 @section('styles')
 <style type="text/css">
 	input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 100%; }
+	.cpro_item_inner { font-size: 15px; }
+	.run_out { border: 1px solid #ea000061 !important; background: #ff000003; opacity: 0.8; }
+	.cart__remove {color: #004eff;}
 </style>
 @endsection
 
@@ -16,7 +19,14 @@
 			<div id="cart-page" style=" margin-top: 0; ">
 				<form action="{{ route('web.checkout') }}" method="post" novalidate="" class="cart" name="formCart" id="formCart">
 					{{csrf_field()}}
-					<h1 class="page-header">Giỏ hàng <small>(Bạn có {{Cart::count()}} sản phẩm)</small></h1>
+					<h1 class="page-header" style="font-size: 23px !important;">Giỏ hàng <small style="color: #000 !important;">(Bạn có <span id="CartCountInCart">{{Cart::count()}}</span> sản phẩm)</small></h1>
+
+					@if(session()->has('error'))
+					<p class="alert alert-danger cart-empty" style=" margin-bottom: 20px; ">
+						{{ session()->get('error') }}
+					</p>
+					@endif
+
 					@if(count($contents))
 					<div class="page-content">
 						<div class="cart_header_labels clearfix">
@@ -47,13 +57,13 @@
 							</div>
 							<div class="label_item col-xs-12 col-sm-1 col-md-1">
 								<div class="cart_delete last_item">
-									Remove
+									Hành động
 								</div>
 							</div>
 						</div>
 
 						@foreach($contents as $item)
-						<div class="list_product_cart clearfix" data-id="4214855428">
+						<div class="list_product_cart clearfix @if($item->qty>=$item->model->qty_remain) run_out @endif">
 							
 							<div class="cpro_item col-xs-12 col-sm-1 col-md-1">
 								<div class="cpro_item_inner">
@@ -88,12 +98,7 @@
 							</div>
 							<div class="cpro_item text-center col-xs-12 col-sm-3 col-md-1">
 								<div class="cpro_item_inner">
-									<!-- <div class="js-qty">
-										<button type="button" class="js-qty__adjust js-qty__adjust--minus" data-id="4214855428" data-qty="2">−</button>
-										<input type="number" class="js-qty__num" value="" min="1" data-id="4214855428" aria-label="quantity" pattern="[0-9]*" name="quantity" id="updates_4214855428">
-										<button type="button" class="js-qty__adjust js-qty__adjust--plus" data-id="4214855428" data-qty="31">+</button>
-									</div> -->
-									<input type="number" id="Quantity" name="quantity" value="{{$item->qty}}" min="1" class="quantity-selector" rowId="{{$item->rowId}}" pattern="[0-9]+" oninput="validity.valid||(value='');" @if ($item->qty >= $item->model->qty_remain) disabled @endif>
+									<input type="number" id="Quantity" name="quantity" value="{{$item->qty}}" min="1" class="quantity-selector @if ($item->qty >= $item->model->qty_remain) run_out @endif" rowId="{{$item->rowId}}" pattern="[0-9]+" oninput="validity.valid||(value='');">
 								</div>
 							</div>
 							<div class="cpro_item col-xs-12 col-sm-2 col-md-2">
@@ -107,8 +112,13 @@
 							</div>
 							<div class="cpro_item col-xs-12 col-sm-1 col-md-1">
 								<div class="cpro_item_inner">
-									<a href="{{ route('web.del_item',['id'=>$item->rowId]) }}" class="cart__remove" data-id="4214855428" onclick="return confirm('Bạn có muộn xóa sản phẩm này?')">
-										<small>Remove</small>
+									<a href="{{ route('web.del_item',['id'=>$item->rowId]) }}" class="cart__remove" onclick="return confirm('Bạn có muộn xóa sản phẩm này?')">
+										<small>Xóa bỏ</small>
+									</a>
+									<br>
+									<br>
+									<a href="{{ route('web.switch_to_wishlist',['id'=>$item->rowId]) }}" class="cart__remove">
+										<small>Để dành mua sau</small>
 									</a>
 								</div>
 							</div>
@@ -129,9 +139,8 @@
 									</span>
 								</p>
 								<p><em>Shipping &amp; taxes calculated at checkout</em></p>
-								<a class="btn con-ajax-cart btn-outline" href="{{ route('web.homepage') }}" title="Continue shopping">Continue shopping</a>
+								<a class="btn con-ajax-cart btn-outline" href="{{ route('web.homepage') }}" title="Continue shopping">Tiếp tục mua sắm</a>
 								<a href="{{ route('web.checkout') }}" class="btn btn-outline" >Check Out</a>
-								<!-- <input type="submit" name="checkout" class="btn btn-outline" value="Check Out"> -->
 								
 							</div>
 						</div>
@@ -142,6 +151,9 @@
 						{{ session()->get('success') }}
 					</p>
 					@endif
+					<div style=" padding: 15px 0px; text-align: center; ">
+						<img src="{{ asset('images/cart_empty.png') }}">
+					</div>
 					<p class="alert alert-warning cart-empty">Giỏ hàng của bạn còn trống!</p>
 					@endif
 				</form>
@@ -183,6 +195,7 @@
 					$(_self).closest('.list_product_cart').find('.subtotal').text(data['price']+'₫');
 					$(_self).closest('#formCart').find('.total_money').text(data['total']+'₫');
 					$('#CartCount').text(data['num_item']);
+					$('#CartCountInCart').text(data['num_item']);
 					$('#CartMoney').text(data['total']+'₫');
 
 					// $('.website_loader').fadeOut();
@@ -198,3 +211,5 @@
 	});
 </script>
 @endsection
+
+
