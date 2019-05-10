@@ -101,15 +101,15 @@
 							<th>Trạng thái: </th>
 							<td>
 								@if($order->status == '0')
-								{{"Đang chờ xử lý"}}
+								<span class="label label-info">{{"Đang chờ xử lý"}}</span>
 								@elseif($order->status == '1')
-								{{"Đang giao hàng"}}
+								<span class="label label-primary">{{"Đang giao hàng"}}</span>
 								@elseif($order->status == '2')
-								{{"Giao hàng thành công"}}
+								<span class="label label-success">{{"Giao hàng thành công"}}</span>
 								@elseif($order->status == '3')
-								{{"Giao hàng thất bại"}}
+								<span class="label label-danger">{{"Giao hàng thất bại"}}</span>
 								@elseif($order->status == '4')
-								{{"Đã hủy"}}
+								<span class="label label-default">{{"Đã hủy"}}</span>
 								@endif
 							</td>
 						</tr>
@@ -239,13 +239,18 @@
 				&nbsp;
 				@if ($order->status == '4')
 				@else
-				<a href="{{ route('admin.orders.report', [$order->id]) }}" target="_blank" class="btn btn-warning" style="margin-left: 5px;">
+				<a href="{{ route('admin.orders.report', [$order->id]) }}" target="_blank" class="btn btn-default" style="margin-left: 5px;">
 					<i class="fa fa-download"></i> Generate PDF
 				</a>
 				@endif
 				<a href="{{ route('admin.orders.index') }}" class="btn btn-primary pull-right" style="margin-right: 5px;">
 					Trở về
 				</a>
+				@if ($order->status == '0')
+				<a href="{{ route('admin.orders.edit', [$order->id]) }}" class="btn btn-warning pull-right" style="margin-right: 5px;">
+					Sửa đơn hàng này
+				</a>
+				@endif
 			</div>
 		</div>
 	</section>

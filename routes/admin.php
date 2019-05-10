@@ -43,7 +43,7 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::post('uploadImage', 'Product\ProductController@uploadImage')->name('uploadImage');
 
 	Route::resource('users', 'User\UserController');
-	Route::resource('orders', 'Order\OrderController')->except(['create','store','edit']);
+	Route::resource('orders', 'Order\OrderController')->except(['create','store']);
 	Route::get('orders-pending', 'Order\OrderController@ordersPending')->name('orders.orders_pending');
 	Route::get('orders-deliver', 'Order\OrderController@ordersDeliver')->name('orders.orders_deliver');
 	Route::get('orders-success', 'Order\OrderController@ordersSuccess')->name('orders.orders_success');
@@ -51,6 +51,10 @@ Route::middleware(['auth:admin'])->group(function(){
 	Route::get('orders-cancel', 'Order\OrderController@ordersCancel')->name('orders.orders_cancel');
 	Route::get('orders/report/{id}', 'Order\OrderController@generateReport')->name('orders.report');
 	Route::get('orders/print/{id}', 'Order\OrderController@generatePrint')->name('orders.print');
+	// Update quantity in admin cartOrder 
+	Route::post('orders/update-qty', 'Order\OrderController@updateQuantity')->name('update_qty');
+	Route::post('orders/del-item', 'Order\OrderController@delItemInCart')->name('del_item');
+	Route::post('orders/update-order/{id}', 'Order\OrderController@updateOrder')->name('update_order');
 
 	Route::resource('contacts', 'Contact\ContactController')->only(['index','destroy']);
 	Route::post('contacts-detail', 'Contact\ContactController@contactDetail')->name('contact_detail');

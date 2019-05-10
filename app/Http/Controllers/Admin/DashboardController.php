@@ -32,7 +32,7 @@ class DashboardController extends Controller
 		$days = $request->get('days', 7);
 		$range = Carbon\Carbon::now()->subDays($days);
 		$stats = Order::where('input_date', '>=', $range)
-		->where('status', '2')
+		// ->where('status', '2')
 		->groupBy('date')
 		->orderBy('date', 'ASC')
 		->get([
@@ -42,6 +42,7 @@ class DashboardController extends Controller
 		return $stats;
 	}
 
+	// 0: Đang chờ xử lý, 1: Đang giao hàng, 2: Giao hàng thành công, 3: Giao hàng thất bại, 4: Đã hủy
 	// Thống kê Doanh thu theo ngày
 	public function chartRevenueRangeDay(Request $request)
 	{

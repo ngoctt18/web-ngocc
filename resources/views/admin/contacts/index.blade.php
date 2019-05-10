@@ -53,7 +53,7 @@
 					<td>{{$contact->created_at->format('H:i - d/m/Y')}}</td>
 					<td>
 						<a href="javascript:void(0)" idContact="{{$contact->id}}" class="btn btn-success btn-xs btnShowMessages"><i class="fa fa-eye"></i></a>
-						<a href="{{ route('admin.contacts.destroy', ['id' => $contact->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+						{{-- <a href="{{ route('admin.contacts.destroy', ['id' => $contact->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a> --}}
 					</td>
 				</tr>
 				@endforeach

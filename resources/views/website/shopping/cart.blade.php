@@ -6,9 +6,10 @@
 <style type="text/css">
 	input#Quantity { line-height: 15px; font-weight: 600; padding: 5px; max-width: 100%; }
 	.cpro_item_inner { font-size: 15px; }
-	.run_out { border: 1px solid #ea000061 !important; background: #ff000003; opacity: 0.8; }
+	.run_out {outline-color: #ff0000c7; border: 1px solid #ff0000c7 !important; background: #ff000003; opacity: 0.7; }
 	.cart__remove {color: #004eff;}
 	#cart-page .cart-empty {font-size: 15px;margin: 0px;text-align: left;text-transform: none;}
+	.qty0 {outline-color: #ff0000c7; border: 1px solid #ff0000c7;}
 </style>
 @endsection
 
@@ -105,7 +106,7 @@
 							</div>
 							<div class="cpro_item text-center col-xs-12 col-sm-3 col-md-1">
 								<div class="cpro_item_inner">
-									<input type="number" id="Quantity" name="quantity" value="{{$item->qty}}" min="1" class="quantity-selector @if ($item->qty >= $item->model->qty_remain) run_out @endif" rowId="{{$item->rowId}}" pattern="[0-9]+" oninput="validity.valid||(value='');">
+									<input type="number" id="Quantity" name="quantity" value="{{$item->qty}}" min="1" class="quantity-selector @if ($item->qty >= $item->model->qty_remain) run_out @endif" rowId="{{$item->rowId}}" pattern="[0-9]+" oninput="validity.valid||(value='');" required="">
 								</div>
 							</div>
 							<div class="cpro_item col-xs-12 col-sm-2 col-md-2">
@@ -147,7 +148,7 @@
 								</p>
 								<p><em>Shipping &amp; taxes calculated at checkout</em></p>
 								<a class="btn con-ajax-cart btn-outline" href="{{ route('web.homepage') }}" title="Continue shopping">Tiếp tục mua sắm</a>
-								<a href="{{ route('web.checkout') }}" class="btn btn-outline" >Check Out</a>
+								<a href="{{ route('web.checkout') }}" class="btn btn-outline btnCheckOut">Check Out</a>
 								
 							</div>
 						</div>
@@ -184,6 +185,16 @@
 			// $('.website_loader').fadeIn();
 			var rowId = $(this).attr('rowId');
 			var qty = $(this).val();
+			if (qty == 0 || qty == '') {
+				$(this).addClass('qty0');
+				$('.btnCheckOut').attr('disabled', true);
+				$('.btnCheckOut').css('cursor', 'not-allowed');
+				return false;
+			} else {
+				$('.btnCheckOut').attr('disabled', false);
+				$('.btnCheckOut').css('cursor', 'pointer');
+				$(this).removeClass('qty0')
+			}
 			var _token = $('input[name="_token"]').val();
 			var _self = $(this);
 			// console.log('rowId: '+rowId);

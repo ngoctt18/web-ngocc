@@ -116,7 +116,7 @@ class ShoppingController extends Controller
 				'name' => $request->checkout['shipping_address']['first_name'], 
 				'phone' => $request->checkout['shipping_address']['phone'], 
 				'email' => $request->checkout['email'], 
-				'address' => $request->checkout['shipping_address']['address1'].', '.$request->checkout['shipping_address']['city'], 
+				'address' => $request->checkout['shipping_address']['address1'].' '.$request->checkout['shipping_address']['city'], 
 				'input_date' => Carbon\Carbon::now()->toDateTimeString(),
 				'sum_money' => Cart::subtotal(0,'',''), 
 				'user_id' => Auth::id(), 

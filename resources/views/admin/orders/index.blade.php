@@ -6,7 +6,7 @@
 <!-- bootstrap datepicker -->
 <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 <style type="text/css">
-span.err_dateTo { color: #d00202; font-size: 12px; }
+	span.err_dateTo { color: #d00202; font-size: 12px; }
 </style>
 @endsection
 
@@ -80,7 +80,7 @@ span.err_dateTo { color: #d00202; font-size: 12px; }
 					<th>Tổng tiền</th>
 					<th>Ngày đặt</th>
 					<th>Trạng thái</th>
-					<th>Xóa</th>
+					{{-- <th>Xóa</th> --}}
 				</tr>
 			</thead>
 			<tbody>
@@ -95,20 +95,20 @@ span.err_dateTo { color: #d00202; font-size: 12px; }
 					<td>{{$order->input_date->format('d/m/Y')}}</td>
 					<td>
 						@if($order->status == '0')
-						{{"Đang chờ xử lý"}}
+						<span class="label label-info">{{"Đang chờ xử lý"}}</span>
 						@elseif($order->status == '1')
-						{{"Đang giao hàng"}}
+						<span class="label label-primary">{{"Đang giao hàng"}}</span>
 						@elseif($order->status == '2')
-						{{"Giao hàng thành công"}}
+						<span class="label label-success">{{"Giao hàng thành công"}}</span>
 						@elseif($order->status == '3')
-						{{"Giao hàng thất bại"}}
+						<span class="label label-danger">{{"Giao hàng thất bại"}}</span>
 						@elseif($order->status == '4')
-						{{"Đã hủy"}}
+						<span class="label label-default">{{"Đã hủy"}}</span>
 						@endif
 					</td>
-					<td>
+					{{-- <td>
 						<a href="{{ route('admin.orders.destroy', ['id' => $order->id], false) }}" class="btn btn-delete btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-					</td>
+					</td> --}}
 				</tr>
 				@endforeach
 				@else
