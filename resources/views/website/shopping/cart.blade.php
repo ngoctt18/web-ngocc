@@ -8,6 +8,7 @@
 	.cpro_item_inner { font-size: 15px; }
 	.run_out { border: 1px solid #ea000061 !important; background: #ff000003; opacity: 0.8; }
 	.cart__remove {color: #004eff;}
+	#cart-page .cart-empty {font-size: 15px;margin: 0px;text-align: left;text-transform: none;}
 </style>
 @endsection
 
@@ -24,6 +25,12 @@
 					@if(session()->has('error'))
 					<p class="alert alert-danger cart-empty" style=" margin-bottom: 20px; ">
 						{{ session()->get('error') }}
+					</p>
+					@endif
+
+					@if(session()->has('success_cart'))
+					<p class="alert alert-success cart-empty" style=" margin-bottom: 20px; ">
+						{{ session()->get('success_cart') }}
 					</p>
 					@endif
 

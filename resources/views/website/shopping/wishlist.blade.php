@@ -16,6 +16,13 @@
 		<div id="center_column" class="center_column col-sm-12 col-md-12">
 			<div class="wishlist-page">
 				<h1 class="page-header">Wishlist</h1>
+
+				@if(session()->has('success_cart'))
+				<p class="alert alert-success cart-empty" style=" margin-bottom: 20px; ">
+					{{ session()->get('success_cart') }}
+				</p>
+				@endif
+				
 				<div class="page-content">
 					<div class="table-responsive">
 						<table class="wishlist-product table table-bordered">

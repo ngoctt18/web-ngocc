@@ -62,6 +62,8 @@ class ShoppingController extends Controller
 
 	public function delItemInCart($rowId)
 	{
+		$cart = Cart::get($rowId);
+		Session::flash('success_cart', '"'.$cart->model->name.'" đã được xóa khỏi giỏ hàng.');
 		Cart::remove($rowId);
 
 		$this->storeCartByUser();
@@ -187,6 +189,7 @@ class ShoppingController extends Controller
 		Cart::instance('wishlist')->remove($rowId);
 
 		$this->storeWishlistByUser();
+		Session::flash('success_cart', 'Xóa sản phẩm thành công.');
 		return redirect()->route('web.wishlist');
 	}
 
@@ -210,6 +213,7 @@ class ShoppingController extends Controller
 
 		$this->storeCartByUser();
 		$this->storeWishlistByUser();
+		Session::flash('success_cart', '"'.$product->name.'" đã được chuyển sang giỏ hàng.');
 		return redirect()->route('web.wishlist');
 	}
 
@@ -233,6 +237,7 @@ class ShoppingController extends Controller
 
 		$this->storeCartByUser();
 		$this->storeWishlistByUser();
+		Session::flash('success_cart', '"'.$product->name.'" đã được chuyển sang danh sách sản phẩm mua sau.');
 		return redirect()->route('web.cart');
 	}
 
