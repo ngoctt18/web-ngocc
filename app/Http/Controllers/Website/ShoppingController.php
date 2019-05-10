@@ -213,7 +213,7 @@ class ShoppingController extends Controller
 		return redirect()->route('web.wishlist');
 	}
 
-	public function switchToWishlist($rowId)
+	public function switchToWishList($rowId)
 	{
 		$cart = Cart::instance('default')->get($rowId);
 		$product = Product::findOrFail($cart->id);

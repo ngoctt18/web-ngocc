@@ -156,7 +156,7 @@
           <div class="more_info_block">
             <ul class="nav nav-tabs tab-info page-product-heading">
               <li style=" border-bottom: 3px solid #59bd56; ">
-                <a href="#idTab1" data-toggle="tab">More info</a>
+                <a href="#idTab1" data-toggle="tab">Chi tiết sản phẩm</a>
               </li>
             </ul>
             <div class="tab-content">

@@ -4,11 +4,11 @@
 
 @section('styles')
 <style type="text/css">
-#register-page .register-box .form-control { margin: 0; }
-label.error { color: #b30e0e; font-weight: 500; margin-top: 1px; }
-label.label-register { margin-top: 20px !important; }
-.marT25 { margin-top: 25px; }
-.red {color: red;}
+	#register-page .register-box .form-control { margin: 0; }
+	label.error { color: #b30e0e; font-weight: 500; margin-top: 1px; }
+	label.label-register { margin-top: 20px !important; }
+	.marT25 { margin-top: 25px; }
+	.red {color: red;}
 </style>
 @endsection
 
@@ -23,7 +23,7 @@ label.label-register { margin-top: 20px !important; }
 					
 					<h3 class="page-subheading">Thông tin cá nhân</h3>
 
-					<label for="name" class="label-register">Full Name <span class="red">*</span></label>
+					<label for="name" class="label-register">Họ và tên <span class="red">*</span></label>
 					<input type="text" name="name" id="name" class="form-control" placeholder="Full Name"  autocapitalize="words" autofocus value="{{old('name')}}">
 					<label class="error">{{ $errors->first('name') }}</label>
 
@@ -31,7 +31,7 @@ label.label-register { margin-top: 20px !important; }
 					<input type="text" name="username" id="username" class="form-control" placeholder="UserName"  autocapitalize="words" value="{{old('username')}}">
 					<label class="error">{{ $errors->first('username') }}</label>
 					
-					<label for="phone" class="label-register">Phone <span class="red">*</span></label>
+					<label for="phone" class="label-register">Điện thoại <span class="red">*</span></label>
 					<input type="text" name="phone" id="phone" placeholder="Phone" class="form-control "  autocorrect="off" autocapitalize="off" value="{{old('phone')}}">
 					<label class="error">{{ $errors->first('phone') }}</label>
 					
@@ -43,17 +43,17 @@ label.label-register { margin-top: 20px !important; }
 					<input type="text" name="address" id="address" placeholder="Địa chỉ" class="form-control "  autocorrect="off" autocapitalize="off" value="{{old('address')}}">
 					<label class="error">{{ $errors->first('address') }}</label>
 					
-					<label for="password" class="label-register">Password <span class="red">*</span></label>
+					<label for="password" class="label-register">Mật khẩu <span class="red">*</span></label>
 					<input type="password" name="password" id="password" placeholder="Password" class="form-control ">
 					<label class="error">{{ $errors->first('password') }}</label>
 					
-					<label for="password_confirm" class="label-register">Password Confirm <span class="red">*</span></label>
+					<label for="password_confirm" class="label-register">Xác nhận mật khẩu <span class="red">*</span></label>
 					<input type="password" name="password_confirm" id="password_confirm" placeholder="Password Confirm" class="form-control ">
 					<label class="error">{{ $errors->first('password_confirm') }}</label>
 					
 					<p class="marT25">
 						<input type="submit" value="Đăng ký" class="btn btn-outline">
-						<a href="{{ route('web.login') }}" class="btn btn-warning pull-right">Login</a>
+						<a href="{{ route('web.login') }}" class="btn btn-warning pull-right">Đã có tài khoản</a>
 					</p>
 					<a class="link-back" href="{{ route('web.homepage') }}">
 						<span>

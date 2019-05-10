@@ -24,7 +24,7 @@ class ForgetPasswordController extends Controller
 			$timeNow = time();
 			// Nếu thời gian hiện tại nhỏ hơn tgian +5p thì tạm ko cho gửi nữa
 			if ($timeCreate > $timeNow) {
-				return redirect()->route('web.login', ['email_sent' => 'true', 'email' => $email])
+				return redirect()->route('web.login', ['email_sent' => 'true', 'email' => $email, 'wait_more' => 'true'])
 				->withInput()
 				->withErrors(['Vui lòng đợi 5 phút mới được gửi tiếp.']);
 			} else {

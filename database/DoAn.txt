@@ -22,6 +22,9 @@ Hoàn thiện Slide thuyết trình
 - Thanh toán trực tuyến,...
 - Chức năng tìm kiếm còn hạn chế
 
+==> Một biểu đồ lớp chỉ ra cấu trúc tĩnh của các lớp trong hệ thống. Các lớp là đại diện cho các “đối tượng” được xử lý trong hệ thống. Các lớp có thể quan hệ với nhau trong nhiều dạng thức:
+
+==> Biểu đồ tuần tự là biểu đồ dùng để xác định các trình tự diễn ra sự kiện của một nhóm đối tượng nào đó. Nó miêu tả chi tiết các thông điệp được gửi và nhận giữa các đối tượng đồng thời cũng chú trọng đến việc trình tự về mặt thời gian gửi và nhận các thông điệp đó.
 
 
 + Actor: Quản trị viên (Admin), người quản lý và khách hàng.
