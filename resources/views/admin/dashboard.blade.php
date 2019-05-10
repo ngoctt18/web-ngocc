@@ -72,7 +72,7 @@
                     <h3 class="box-title">Hôm nay có gì?</h3>
                 </div>
                 <div class="box-body">
-                    <div class="chart" id="sales-chart" style="height:250px; position: relative;"></div>
+                    <div class="chart" id="sales-chart" style="height:287px; position: relative;"></div>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -96,14 +96,14 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Thống kê số đơn hàng theo ngày</h3>
+                    <h3 class="box-title">Thống kê số đơn hàng gần đây</h3>
                 </div>
                 <div class="box-body">
                     <ul class="nav nav-pills ranges">
-                        <li class="active"><a href="#" data-range='7'>7 Days</a></li>
-                        <li><a href="#" data-range='30'>30 Days</a></li>
-                        <li><a href="#" data-range='60'>60 Days</a></li>
-                        <li><a href="#" data-range='90'>90 Days</a></li>
+                        <li class="active"><a href="#" data-range='7'>7 ngày</a></li>
+                        <li><a href="#" data-range='30'>30 ngày</a></li>
+                        <li><a href="#" data-range='60'>60 ngày</a></li>
+                        <li><a href="#" data-range='90'>90 ngày</a></li>
                     </ul>
                     <div id="stats-container" style="height: 300px;"></div>
                 </div>
@@ -115,14 +115,14 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Thống kê doanh thu theo ngày</h3>
+                    <h3 class="box-title">Thống kê doanh thu gần đây</h3>
                 </div>
                 <div class="box-body">
                     <ul class="nav nav-pills revenueRanges">
-                        <li class="active"><a href="#" data-range='7'>7 Days</a></li>
-                        <li><a href="#" data-range='30'>30 Days</a></li>
-                        <li><a href="#" data-range='60'>60 Days</a></li>
-                        <li><a href="#" data-range='90'>90 Days</a></li>
+                        <li class="active"><a href="#" data-range='7'>7 ngày</a></li>
+                        <li><a href="#" data-range='30'>30 ngày</a></li>
+                        <li><a href="#" data-range='60'>60 ngày</a></li>
+                        <li><a href="#" data-range='90'>90 ngày</a></li>
                     </ul>
                     <div class="chart" id="revenue-container" style="height: 300px;"></div>
                 </div>
