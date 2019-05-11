@@ -227,9 +227,9 @@
 			<div class="row no-print">
 				<div class="col-xs-12">
 					<br>
-					<a href="{{ route('admin.orders.print', [$order->id]) }}" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+					<a href="{{ route('admin.orders.print', [$order->id]) }}" class="btn btn-default"><i class="fa fa-print"></i> In đơn hàng</a>
 					<a href="{{ route('admin.orders.report', [$order->id]) }}" target="_blank" class="btn btn-primary pull-right" style="margin-right: 5px;">
-						<i class="fa fa-download"></i> Generate PDF
+						<i class="fa fa-download"></i> Xuất hóa đơn
 					</a>
 				</div>
 			</div>

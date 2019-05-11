@@ -35,4 +35,19 @@ class StoreUserRequest extends FormRequest
             'password_confirm' => 'required|min:6|same:password',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Tên khách hàng',
+            'username' => 'Username',
+            'phone' => 'Điện thoại',
+            'email' => 'Email',
+            'avatar' => 'Ảnh đại diện',
+            'address' => 'Địa chỉ',
+            'status' => 'Trạng thái',
+            'password' => 'Mật khẩu',
+            'password_confirm' => 'Xác nhận mật khẩu',
+        ];
+    }
 }

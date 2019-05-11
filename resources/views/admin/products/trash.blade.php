@@ -67,7 +67,7 @@
 					<th>Danh mục</th>
 					<th>Nhà phân phối</th>
 					<th>Trạng thái</th>
-					<th>Hành động</th>
+					<th>Khôi phục</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -90,7 +90,7 @@
 					</td>
 					<td>
 						<a href="{{ route('admin.products.restore', ['id' => $product->id], false) }}" class="btn btn-success btn-xs marB5 btnRestore" title="Khôi phục tin tức"><i class="fa fa-recycle"></i></a>
-						<a href="{{ route('admin.products.forcedelete', ['id' => $product->id], false) }}" class="btn btn-delete btn-danger btn-xs marB5" style=" padding: 1px 6px; " title="Xóa tin tức"><i class="fa fa-trash-o"></i></a>
+						{{-- <a href="{{ route('admin.products.forcedelete', ['id' => $product->id], false) }}" class="btn btn-delete btn-danger btn-xs marB5" style=" padding: 1px 6px; " title="Xóa tin tức"><i class="fa fa-trash-o"></i></a> --}}
 					</td>
 				</tr>
 				@endforeach

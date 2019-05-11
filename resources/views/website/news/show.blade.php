@@ -94,6 +94,7 @@
                 @endforeach
               </div>
               <br>
+              @if (auth()->check())
               <div class="tab-content">
                 <div class="more_info_block">
                   <ul class="nav nav-tabs tab-info page-product-heading">
@@ -116,6 +117,7 @@
                   </div>
                 </form>
               </div>
+              @endif
               <div class="tab-content">
                 @include('website.news.commentsDisplay', ['comments' => $news->comments->sortByDesc('created_at'), 'news_id' => $news->id])
               </div>
@@ -128,7 +130,7 @@
                 </ul>
               </div>
               <div class="tab-content">
-                <div class="fb-comments" data-href="{{ route('web.news.view', [$news->id,$news->slug]) }}" data-width="757" data-numposts="5" data-order-by="reverse_time"></div>
+                {{-- <div class="fb-comments" data-href="{{ route('web.news.view', [$news->id,$news->slug]) }}" data-width="757" data-numposts="3" data-order-by="reverse_time"></div> --}}
               </div>
               <hr>
               <p class="btn-prenext clearfix">
@@ -181,6 +183,6 @@
 
 @push('fb_comment')
 <!-- Comment Facobook -->
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=2233734240234108&autoLogAppEvents=1"></script>
-<div class="website_loader"></div>
+{{-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=2233734240234108&autoLogAppEvents=1"></script>
+<div class="website_loader"></div> --}}
 @endpush

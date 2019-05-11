@@ -30,4 +30,14 @@ class StoreCatagoryRequest extends FormRequest
             'status' => 'required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Tên danh mục',
+            'description' => 'Mô tả',
+            'catagory_type_id' => 'Nhóm danh mục',
+            'status' => 'Trạng thái',
+        ];
+    }
 }

@@ -31,4 +31,15 @@ class UpdateNewsRequest extends FormRequest
             'status' => 'required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'Tiêu đề bài viết',
+            'news_image' => 'Ảnh hiển thị',
+            'new_tags' => 'Tags',
+            'content' => 'Nội dung bài viết',
+            'status' => 'Trạng thái',
+        ];
+    }
 }

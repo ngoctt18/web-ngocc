@@ -28,4 +28,12 @@ class StoreCatagoryTypeRequest extends FormRequest
             'status' => 'required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Tên nhóm danh mục',
+            'status' => 'Trạng thái',
+        ];
+    }
 }

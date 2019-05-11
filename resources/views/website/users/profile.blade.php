@@ -49,8 +49,8 @@
 					@endif
 					
 					<input type="hidden" name="id" value="{{$user->id}}">
-					<label for="name" class="label-register">Full Name <span class="red">*</span></label>
-					<input type="text" name="name" id="name" class="form-control" placeholder="Full Name"  autocapitalize="words" value="{{old('name', $user->name)}}">
+					<label for="name" class="label-register">Họ và tên <span class="red">*</span></label>
+					<input type="text" name="name" id="name" class="form-control" placeholder="Họ và tên"  autocapitalize="words" value="{{old('name', $user->name)}}">
 					<label class="error">{{ $errors->first('name') }}</label>
 					<br>
 

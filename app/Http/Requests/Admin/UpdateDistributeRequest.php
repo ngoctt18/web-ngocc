@@ -32,4 +32,16 @@ class UpdateDistributeRequest extends FormRequest
             'status' => 'required', 
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Tên nhà phân phối', 
+            'email' => 'Email', 
+            'phone' => 'Điện thoại',
+            'address' => 'Địa chỉ', 
+            'description' => 'Mô tả', 
+            'status' => 'Trạng thái', 
+        ];
+    }
 }

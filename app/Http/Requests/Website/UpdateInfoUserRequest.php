@@ -31,4 +31,15 @@ class UpdateInfoUserRequest extends FormRequest
             'password_confirm' => 'nullable|min:6|max:12|same:password',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Họ và tên',
+            'username' => 'UserName',
+            'address' => 'Địa chỉ',
+            'password' => 'Password',
+            'password_confirm' => 'Password Confirm',
+        ];
+    }
 }

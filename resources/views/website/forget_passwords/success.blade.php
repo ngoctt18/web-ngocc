@@ -27,7 +27,7 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
       <p class="login-box-msg">Đổi mật khẩu thành công</p>
-      <p>Quay về <a href="{{ route('web.homepage') }}">Trang chủ</a> để tiếp tục mua sắm.</p>
+      <p><a href="{{ route('web.login') }}">Đăng nhập</a> để tiếp tục mua sắm.</p>
     </div>
     <!-- /.login-box-body -->
   </div>

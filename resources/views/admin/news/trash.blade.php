@@ -69,7 +69,7 @@
 					<th>View</th>
 					<th>Trạng thái</th>
 					<th>Thời gian</th>
-					<th>Hành động</th>
+					<th>Khôi phục</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -100,7 +100,7 @@
 					<td>
 						{{-- <a href="{{ route('admin.news.show', ['id' => $item->id], false) }}" class="btn btn-success btn-xs marB5" title="Xem chi tiết" target="_blank"><i class="fa fa-eye"></i></a> --}}
 						<a href="{{ route('admin.news.restore', ['id' => $item->id], false) }}" class="btn btn-success btn-xs marB5 btnRestore" title="Khôi phục tin tức"><i class="fa fa-recycle"></i></a>
-						<a href="{{ route('admin.news.forcedelete', ['id' => $item->id], false) }}" class="btn btn-delete btn-danger btn-xs marB5" style=" padding: 1px 6px; " title="Xóa tin tức"><i class="fa fa-trash-o"></i></a>
+						{{-- <a href="{{ route('admin.news.forcedelete', ['id' => $item->id], false) }}" class="btn btn-delete btn-danger btn-xs marB5" style=" padding: 1px 6px; " title="Xóa tin tức"><i class="fa fa-trash-o"></i></a> --}}
 					</td>
 				</tr>
 				@endforeach

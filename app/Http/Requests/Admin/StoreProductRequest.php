@@ -35,6 +35,24 @@ class StoreProductRequest extends FormRequest
             'catagory_id' => 'required|exists:catagories,id',
             'distribution_id' => 'required|exists:distributions,id',
             'status' => 'required', 
+            'qty_remain' => 'required|numeric',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Tên sản phẩm', 
+            'price' => 'Giá', 
+            'discount' => 'Giảm giá', 
+            'product_avatar' => 'Ảnh đại diện', 
+            'brand' => 'Thương hiệu', 
+            'description' => 'Mô tả ngắn', 
+            'intro' => 'Giới thiệu sản phẩm', 
+            'catagory_id' => 'Danh mục sản phẩm',
+            'distribution_id' => 'Nhà phân phối',
+            'status' => 'Trạng thái', 
+            'qty_remain' => 'Số lượng hàng',
         ];
     }
 }

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('title', 'Trang quản trị')
 @section('styles')
-<link rel="stylesheet" href="../../bower_components/morris.js/morris.css">
+<link rel="stylesheet" href="{{ asset('../../bower_components/morris.js/morris.css') }}">
 @endsection
 @section('content')
 @include('admin.components.messages')

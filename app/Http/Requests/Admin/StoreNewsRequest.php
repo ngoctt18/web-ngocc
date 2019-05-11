@@ -30,4 +30,14 @@ class StoreNewsRequest extends FormRequest
             'content' => 'required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'Tiêu đề bài viết',
+            'news_image' => 'Ảnh hiển thị',
+            'new_tags' => 'Tags',
+            'content' => 'Nội dung bài viết',
+        ];
+    }
 }

@@ -8,6 +8,9 @@
   img.avatar { width: 60px; height: 60px;}
   a.reply-comment { margin-left: 20px; }
   .formComment {transition: 0.2s; display: none;}
+  button#AddToCart { font-size: 20px; }
+  span#AddToCartText { font-size: 18px; }
+  button.btn.btn-outline.btn-wishlist { font-size: 18px; }
 </style>
 @endsection
 @section('content')
@@ -123,9 +126,9 @@
                   <label for="Quantity" class="quantity-selector">Quantity</label>
                   <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
                 </div>
-                <button type="submit" id="AddToCart" class="btn add_to_cart_detail ajax_addtocart" @if($product->status=='0') {{'disabled="disabled"'}}@endif title="Thêm vào giỏ hàng">
+                <button type="submit" id="AddToCart" class="btn add_to_cart_detail ajax_addtocart" @if($product->status=='0') {{'disabled="disabled"'}}@endif title="Đặt mua ngay">
                 <i class="fa fa-shopping-cart"></i>
-                <span id="AddToCartText">Thêm vào giỏ hàng</span>
+                <span id="AddToCartText">Đặt mua ngay</span>
                 </button>
               </form>
             </div>
@@ -229,6 +232,7 @@
                     <a href="#idTab4" data-toggle="tab">Bình luận về sản phẩm</a>
                   </li>
                 </ul>
+                @if (auth()->check())
                 <div class="tab-content">
                   <form method="post" action="{{ route('web.product.comment.store') }}" class="formComment hihihih" style="display: block !important;">
                     @csrf
@@ -244,6 +248,7 @@
                     </div>
                   </form>
                 </div>
+                @endif
                 <div class="tab-content">
                   @include('website.product.commentsDisplay', ['comments' => $product->comments->sortByDesc('created_at'), 'product_id' => $product->id])
                 </div>
@@ -257,7 +262,7 @@
                   </li>
                 </ul>
                 <div class="tab-content">
-                  <div class="fb-comments" data-href="{{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}" data-width="1130" data-numposts="5" data-order-by="social"></div>
+                  {{-- <div class="fb-comments" data-href="{{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}" data-width="1130" data-numposts="3" data-order-by="social"></div> --}}
                 </div>
               </div>
             </div>
@@ -482,6 +487,6 @@
 @endsection
 @push('fb_comment')
 <!-- Comment Facobook -->
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=2233734240234108&autoLogAppEvents=1"></script>
-<div class="website_loader"></div>
+{{-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=2233734240234108&autoLogAppEvents=1"></script>
+<div class="website_loader"></div> --}}
 @endpush
