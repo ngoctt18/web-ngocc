@@ -43,7 +43,7 @@ Hoàn thiện Slide thuyết trình
 •	11  Quản lý tin tức
 
 
-
+https://drive.google.com/open?id=1AMvMhDRYSQEskFTBC8xde40M_7KTxIbS
 $(".block-content .show-more-text a").click(function(e){
         e.preventDefault();
         var btn = $(this);
