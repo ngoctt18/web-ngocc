@@ -136,8 +136,10 @@ Route::middleware(['LogUserActivity'])->group(function(){
 	Route::get('/mail', function(){
 		$user = App\User::find(1);
 		$findUser = App\User::find(1);
+		$order = App\Order::find(304);
 		// return view('website.forget_passwords.mail', compact('user'));
-		return view('website.emails.register_email', compact('user', 'findUser'));
+		// return view('website.emails.register_email', compact('user', 'findUser'));
+		return view('website.emails.order_email', compact('order'));
 	});
 });
 

@@ -9,6 +9,7 @@ use App\Order;
 use Session;
 use PDF;
 use Cart;
+use App\Jobs\SendEmailOrderJob;
 
 
 class OrderController extends Controller
@@ -137,6 +138,14 @@ class OrderController extends Controller
 	public function update(Request $request, Order $order)
 	{
 		$order->update(['status' => $request->status]);
+
+        // This method gets called automatically after a user is registered
+		if ($request->status == '1') {
+			// Chỗ này check sao cho gửi mail 1 lần thui
+			dispatch(new SendEmailOrderJob($order));
+		}
+        // queue send email
+
 		Session::flash('success', 'Cập nhật trạng thái đơn hàng thành công');
 		return redirect()->back();
 	}

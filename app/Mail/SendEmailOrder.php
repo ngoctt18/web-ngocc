@@ -7,17 +7,17 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendEmailRegister extends Mailable
+class SendEmailOrder extends Mailable
 {
     use Queueable, SerializesModels;
 
     // $subject default là tiêu đề của Email
-    public $subject = "Please confirm your email address.";
-    protected $user;
+    public $subject = "Hoá đơn bán hàng - Milk Store";
+    protected $order;
 
-    public function __construct($user)
+    public function __construct($order)
     {
-        $this->user = $user;
+        $this->order = $order;
     }
 
     /**
@@ -28,6 +28,6 @@ class SendEmailRegister extends Mailable
     public function build()
     {
         // View hiển thị email trên gmail.com
-        return $this->view('website.emails.register_email', ['user' => $this->user]);
+        return $this->view('website.emails.order_email', ['order' => $this->order]);
     }
 }
