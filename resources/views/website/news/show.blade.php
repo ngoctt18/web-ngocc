@@ -99,7 +99,7 @@
                 <div class="more_info_block">
                   <ul class="nav nav-tabs tab-info page-product-heading">
                     <li style="border-bottom: 3px solid #59bd56; margin-bottom: 10px; ">
-                      <a href="javascript:void(0)" data-toggle="tab">Bình luận bài qua Facebook</a>
+                      <a href="javascript:void(0)" data-toggle="tab">Bình luận bài viết</a>
                     </li>
                   </ul>
                 </div>

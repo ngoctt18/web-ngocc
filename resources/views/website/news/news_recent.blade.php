@@ -2,7 +2,7 @@
 <div id="right_column" class="column sidebar col-md-4">
    <div class="blog-sidebar" role="complementary">
       <div class="block-sidebar-blog block">
-         <h4 class="title_block">Recent News</h4>
+         <h4 class="title_block">Bài viết gần đây</h4>
          <ul class="list-block list-unstyled block_content">
             @foreach($news_recent as $news)
             <li>
@@ -30,10 +30,10 @@
          </ul>
       </div>
       <div id="blogsidebar-html" class="block-sidebar-blog block">
-         <h4 class="title_block">Sample Text Box</h4>
+         <h4 class="title_block">Blog</h4>
          <div class="block_content">
             <div class="html_des">
-               Create a page in your admin panel with a little bit of content. Then assign that page to the Text Widget section in the Theme Settings of your admin.
+               Tin tức, bài viết về sức khỏe, đời sống.
             </div>
          </div>
       </div>

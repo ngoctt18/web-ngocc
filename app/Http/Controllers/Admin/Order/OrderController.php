@@ -139,10 +139,9 @@ class OrderController extends Controller
 	{
 		$order->update(['status' => $request->status]);
 
-        // This method gets called automatically after a user is registered
 		if ($request->status == '1') {
-			// Chỗ này check sao cho gửi mail 1 lần thui
-			dispatch(new SendEmailOrderJob($order));
+			// Chỗ này phải check sao cho gửi mail 1 lần thui
+			// dispatch(new SendEmailOrderJob($order));
 		}
         // queue send email
 

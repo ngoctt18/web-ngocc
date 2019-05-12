@@ -97,19 +97,18 @@
                            <div class="col-md-4 col-sm-12 col-xs-12">
                               <div id="twitter_block" class="block  inline">
                                  <h4 class="title_block">
-                                    <span>Twitter</span>
+                                    <span>Sản phẩm</span>
                                  </h4>
                                  <div class="block_content">
-                                    <div id="ap-twitter466140917783465984" class="ap-twitter">
-                                    </div>
+                                    <p>Website giới thiệu sản phẩm và bán hàng sữa.</p>
                                  </div>
                               </div>
                            </div>
                            <div class="col-md-4 col-sm-12 col-xs-12">
                               <div class="block instagram-block">
-                                 <h3 class="title-block"><span>Instagram</span></h3>
+                                 <h3 class="title-block"><span></span></h3>
                                  <div class="block-content">
-                                    <div id="instafeed"></div>
+                                    {{-- <div id="instafeed"></div> --}}
                                  </div>
                               </div>
                            </div>

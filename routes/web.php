@@ -110,7 +110,7 @@ Route::middleware(['LogUserActivity'])->group(function(){
 		$comments = App\Comment::all();
 		foreach ($comments as $comment) {
 			$min = strtotime('2019-03-01 12:12:12');
-			$max = strtotime('2019-05-10 12:12:12');
+			$max = strtotime('2019-05-12 10:12:12');
 			$int = mt_rand($min, $max);
 			$string = date("Y-m-d H:i:s", $int);
 			$comment->update([
