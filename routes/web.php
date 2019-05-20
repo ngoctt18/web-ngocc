@@ -141,6 +141,35 @@ Route::middleware(['LogUserActivity'])->group(function(){
 		// return view('website.emails.register_email', compact('user', 'findUser'));
 		return view('website.emails.order_email', compact('order'));
 	});
+
+	Route::get('/test-download', function(App\News $news){
+		// $files = array('favicon.ico', 'index.php', 'robots.txt');
+		// $zip_name = 'huhuhu.zip';
+		// $zip = new ZipArchive();
+		// $zip->open($zip_name, ZipArchive::CREATE);
+		// foreach ($files as $img) {
+		// 	$zip->addFile(public_path().'/'.$img);                       
+		// }
+
+		// Response::download($zip, $zip_name, array(
+		// 	'content-type'          => 'application/zip',
+		// 	'Content-disposition:'  =>  'attachment; filename=filename.zip',
+		// 	'Content-Length:'       => filesize($zip_name)
+		// ));
+
+		// $zip->close();
+		// response()->download($pathToFile, $name, $headers);
+		$news = App\News::all();
+		// $path = $news->getFirstMedia('news_image')->getPath();
+		// return response()->download($path, 'hihihi.png');
+
+		// Let's get some media.
+		$downloads = $news->getMedia('news_image');
+
+        // Download the files associated with the media in a streamed way.
+        // No prob if your files are very large.
+		return Spatie\MediaLibrary\MediaStream::create('my-files.zip')->addMedia($downloads);
+	});
 });
 
 

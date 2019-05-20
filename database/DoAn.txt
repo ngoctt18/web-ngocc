@@ -1,3 +1,4 @@
+Link project: https://github.com/trantuanngoctn97/websitebansua
 - done: BÁO CÁO THIẾU  kết luận và tài liệu tham khảo
 - done: Thống kê doanh thu theo tuần, ngày tháng,
 - done: Xuất hóa đơn ra file, In báo cáo hóa đơn bán hàng
