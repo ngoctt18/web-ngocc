@@ -79,6 +79,24 @@ $(".block-content .show-more-text a").click(function(e){
         }
     });
 
+Đề tài "Xây dựng Website giới thiệu sản phẩm và bán hàng sữa" trên nền tảng PHP, framework Laravel và theo mô hình MVC có thể giúp cho chủ sử dụng có thể quản lý danh mục, quản lý đơn hàng, quản lý thông tin khách hàng đặt mua thông qua việc đăng ký tài khoản và đặt hàng online, quản lí thông tin sản phẩm, các sản phẩm bán chạy và xuất hóa đơn, thống kê doanh thu theo từng ngày, tháng, ... Mục đích của đề tài là xây dựng một Website toàn diện, đầy đủ chức năng, thân thiện với người dùng, hướng tới nhu cầu thiết thực mua sắm, giúp khách hàng có thêm đa dạng sự lựa chọn, giúp cho chủ cửa hàng quản lý cửa hàng dễ dàng hơn, tiết kiệm chi phí quảng cáo, tăng cao tính cạnh tranh thông qua Internet. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -88,6 +106,7 @@ $(".block-content .show-more-text a").click(function(e){
 - Dọn nhà
 - Đi ngủ sớm
 - 
+
 
 
 
