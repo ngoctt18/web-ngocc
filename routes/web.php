@@ -170,6 +170,11 @@ Route::middleware(['LogUserActivity'])->group(function(){
         // No prob if your files are very large.
 		return Spatie\MediaLibrary\MediaStream::create('my-files.zip')->addMedia($downloads);
 	});
+
+	Route::get('soft-delete', function(){
+		$user = App\CommentNews::findOrFail(1);
+		return $user->news;
+	});
 });
 
 
