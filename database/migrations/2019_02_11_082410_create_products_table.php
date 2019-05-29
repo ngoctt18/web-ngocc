@@ -38,6 +38,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('count_buys')->default(0);
             // Số lượt xem sản phẩm
             $table->unsignedInteger('count_views')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

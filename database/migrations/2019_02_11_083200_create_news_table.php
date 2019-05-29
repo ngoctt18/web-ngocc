@@ -27,6 +27,7 @@ class CreateNewsTable extends Migration
             $table->enum('status',[0, 1])->default(1);
             // 0: Ẩn, 1: Hiển thị
             $table->unsignedInteger('count_views')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
