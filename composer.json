@@ -17,7 +17,7 @@
         "laravel/tinker": "^1.0",
         "spatie/laravel-medialibrary": "^7.0.0",
         "tinify/tinify": "^1.5",
-        "fzaninotto/faker": "^1.4",
+        "fzaninotto/faker": "^1.4"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
