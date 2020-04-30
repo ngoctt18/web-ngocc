@@ -1,9 +1,5 @@
 Xong roài :v 
 
-==Link source code: https://github.com/trantuanngoctn97/websitebansua
-
-== Link driver
-https://drive.google.com/open?id=1AMvMhDRYSQEskFTBC8xde40M_7KTxIbS
 
 - done: BÁO CÁO THIẾU  kết luận và tài liệu tham khảo
 - done: Thống kê doanh thu theo tuần, ngày tháng,
