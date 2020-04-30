@@ -30,13 +30,12 @@ class LoginWebsiteRequest extends FormRequest
             'password' => 'required'
         ];
     }
-    
+
     public function withValidator($validator){
         if($validator->fails()) return;
 
         $validator->after(function($validator){
             $login_type = filter_var(request('phone'), FILTER_VALIDATE_EMAIL ) ? 'email' : 'phone';
-            // dd($login_type);
             if ($login_type === 'email') {
                 $user = User::where('email', request('phone'))->first();
             } elseif ($login_type === 'phone') {
@@ -46,10 +45,12 @@ class LoginWebsiteRequest extends FormRequest
                 $validator->errors()->add('phone', 'Email hoặc số điện thoại không tồn tại.');
                 return;
             }
-            if(!$user->isVerified()){
+            // check user đã kích hoạt email sau khi đăng ký hay chưa
+            // có thể bật lên nhưng phải check job gửi email trước
+            /*if(!$user->isVerified()){
                 $validator->errors()->add('phone', 'Tài khoản chưa được kích hoạt.');
                 return;
-            }
+            }*/
             if(!$user->isActive()){
                 $validator->errors()->add('phone', 'Tài khoản hiện không được hoạt động.');
                 return;
