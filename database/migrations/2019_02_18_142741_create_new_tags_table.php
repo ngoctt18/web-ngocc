@@ -13,13 +13,10 @@ class CreateNewTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('new_tags', function (Blueprint $table) {            
+        Schema::create('new_tags', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('new_id');
-            $table->foreign('new_id')->references('id')->on('news');
-
             $table->unsignedInteger('tag_id');
-            $table->foreign('tag_id')->references('id')->on('tags');
             $table->timestamps();
         });
     }

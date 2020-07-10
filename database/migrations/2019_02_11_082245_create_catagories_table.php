@@ -19,7 +19,6 @@ class CreateCatagoriesTable extends Migration
             $table->string('slug');
             $table->text('description')->nullable();
             $table->unsignedInteger('catagory_type_id');
-            $table->foreign('catagory_type_id')->references('id')->on('catagories_types');
             $table->enum('status', [0, 1])->default(1);
             // 0: Ẩn, 1: Hiển thị
             $table->timestamps();
