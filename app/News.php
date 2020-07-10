@@ -13,11 +13,11 @@ class News extends Model implements HasMedia
 	use HasMediaTrait;
 	use SoftDeletes;
 
-	
+
 	protected $table = 'news';
 
 	protected $fillable = [
-		'title', 'slug', 'content', 'author_id', 'status', 'count_views', 
+		'title', 'slug', 'content', 'author_id', 'status', 'count_views',
 	];
 
 	public $timestamps = true;
@@ -38,7 +38,7 @@ class News extends Model implements HasMedia
 	public function setSlugAttribute($value){
 		$this->attributes['slug'] = str_slug($value, "-");
 	}
-	
+
 
 	public function tags()
 	{
@@ -47,7 +47,7 @@ class News extends Model implements HasMedia
 
 	public function author()
 	{
-		return $this->belongsTo(Writer::class, 'author_id', 'id')->withDefault();
+		return $this->belongsTo(Writer::class, 'author_id', 'id')->withDefault()->withDefault();
 	}
 
 	public function comments()

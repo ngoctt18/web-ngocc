@@ -13,19 +13,19 @@ class Product extends Model implements HasMedia
 	use HasMediaTrait;
 	use SoftDeletes;
 
-	
+
 	protected $table = 'products';
 
 	protected $fillable = [
-		'name', 'slug', 'price', 'discount', 'images', 'thumbnail', 'hot', 'warranty', 'brand', 'description', 'intro', 'catagory_id', 'distribution_id', 'status', 'count_buys', 'qty_remain', 'count_views', 
+		'name', 'slug', 'price', 'discount', 'images', 'thumbnail', 'hot', 'warranty', 'brand', 'description', 'intro', 'catagory_id', 'distribution_id', 'status', 'count_buys', 'qty_remain', 'count_views',
 	];
 
 	public $timestamps = true;
 
 	protected $dates = ['deleted_at'];
-	
+
 	const TMP_DIRECTORY = 'app/public/tmp-share-images';
-	
+
     //Media lib.
 	public function registerMediaConversions(Media $media = null)
 	{
@@ -72,7 +72,7 @@ class Product extends Model implements HasMedia
 		return str_slug($this->attributes['name']);
 	}
 
-	
+
 
 	// Test storage_path and public_path
 	public function getStoragePathAttribute($value='')
@@ -95,7 +95,7 @@ class Product extends Model implements HasMedia
 	}
 
 	public function orderDetail(){
-		return $this->hasOne(OrderDetail::class, 'product_id', 'id');
+		return $this->hasOne(OrderDetail::class, 'product_id', 'id')->withDefault();
 	}
 
 	public function comments()
