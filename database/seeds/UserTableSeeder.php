@@ -17,9 +17,9 @@ class UserTableSeeder extends Seeder
            User::create([
               'name' => 'Trần Tuấn Ngọc',
               'username' => 'trantuanngoctn97',
-              'phone' => '0975853528',
+              'phone' => '0987654321',
               'email' => 'trantuanngoc@gmail.com',
-              'password' => '0975853528',
+              'password' => '0987654321',
               'address' => 'Van Giang, Hưng Yên',
               'verified' => true,
           ]);
