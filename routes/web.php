@@ -175,6 +175,15 @@ Route::middleware(['LogUserActivity'])->group(function () {
 
     // clear cache route
     Route::get('clear-cache', 'WebsiteController@clearCache');
+
+    Route::get('storage-link', function () {
+        $result = Illuminate\Support\Facades\Artisan::call('storage:link');
+        dump($result);
+    });
+    Route::get('storage-link-2', function () {
+        $result = shell_exec("php artisan storage:link");
+        dump($result);
+    });
 });
 
 

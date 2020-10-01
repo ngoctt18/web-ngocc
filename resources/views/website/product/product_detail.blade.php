@@ -25,21 +25,21 @@
           <div class="product-left-column col-xs-12 col-sm-12 col-md-5">
             <div id="image-block" class="clearfix">
               <span id="view_full_size">
-              <img id="proimage" class="img-responsive" itemprop="image" src="{{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$product->name}}" data-zoom-image="" />
+              <img id="proimage" class="img-responsive" itemprop="image" src="{{$product->ImageProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$product->name}}" data-zoom-image="" />
               </span>
             </div>
             <div id="views_block" class="clearfix ">
               <div id="thumbs_list">
                 <div id="thumblist">
                   <div id="thumbnail_0" class="thumb_item ">
-                    <a href="javascript:void(0)" data-imageid="3051930052" data-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_large.jpg?v=1439571039" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039"  title="Commo habita lacus aenean consequat sagittis">
-                    <img class="img-responsive img_detail" id="thumb_0" src="{{$product->ThumbProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$product->name}}" itemprop="image" />
+                    <a href="javascript:void(0)" data-imageid="3051930052" data-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_large.jpg?v=1439571039" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039"  title="{{$product->name}}">
+                    <img class="img-responsive img_detail" id="thumb_0" src="{{$product->ImageProduct??asset('cdn.shopify.com/s/files/1/0928/4804/products/p14_large592f.jpg?v=1439571205') }}" alt="{{$product->name}}" itemprop="image" />
                     </a>
                   </div>
                   @for($i=0;$i<3;$i++)
                   <div id="thumbnail_{{$i+1}}" class="thumb_item ">
-                    <a href="javascript:void(0)" data-imageid="3051930052" data-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_large.jpg?v=1439571039" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039"  title="Commo habita lacus aenean consequat sagittis">
-                    <img class="img-responsive img_detail" id="thumb_{{$i+1}}" src="{{$product->ThumbProductDetails[$i]??asset('images/products/product'.($i+1).'.jpg')}}" alt="{{$product->name}}" itemprop="image" />
+                    <a href="javascript:void(0)" data-imageid="3051930052" data-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_large.jpg?v=1439571039" data-zoom-image="//cdn.shopify.com/s/files/1/0928/4804/products/p15_1024x1024.jpg?v=1439571039"  title="{{$product->name}}">
+                    <img class="img-responsive img_detail" id="thumb_{{$i+1}}" src="{{$product->ImageProductDetails[$i]??asset('images/products/product'.($i+1).'.jpg')}}" alt="{{$product->name}}" itemprop="image" />
                     </a>
                   </div>
                   @endfor
@@ -183,7 +183,7 @@
                     <div class="spr-header">
                       <h2 class="spr-header-title">Customer Reviews</h2>
                       <div class="spr-summary" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
-                        <meta itemprop="itemreviewed" content="Commo habita lacus aenean consequat sagittis" />
+                        <meta itemprop="itemreviewed" content="{{$product->name}}" />
                         <meta itemprop="votes" content="1" />
                         <span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating" class="spr-starrating spr-summary-starrating">
                           <meta itemprop="average" content="5.0" />
@@ -350,7 +350,7 @@
               </div>
               <script type="text/javascript">
                 $(document).ready(function() {
-                
+
                    $('#productrelated01 .owl-carousel').each(function(){
                       $(this).owlCarousel({
                          items : 3,
@@ -359,24 +359,24 @@
                          addClassActive: true,
                          afterInit : SetOwlCarouselFirstLast,
                          afterAction : SetOwlCarouselFirstLast,
-                
+
                          itemsDesktop: [1199, 2],
                          itemsDesktopSmall: [979, 2],
                          itemsTablet: [768, 2],
                          itemsTabletSmall: [480, 1],
                          itemsMobile: [360, 1],
-                
+
                          navigationText : ["Prev", "Next"]
-                     }); 
+                     });
                   });
                    function SetOwlCarouselFirstLast(el){
                       el.find(".owl-item").removeClass("first");
                       el.find(".owl-item.active").first().addClass("first");
-                
+
                       el.find(".owl-item").removeClass("last");
                       el.find(".owl-item.active").last().addClass("last");
                   };
-                
+
                 });
               </script>
             </div>
@@ -403,17 +403,17 @@
      $(addToCart).find("span").text("Sold Out");
   }
    // Regardless of stock, update the product price
-   productPrice.html(Shopify.formatMoney(variant.price, "<span class='money'>$</span>"));       
+   productPrice.html(Shopify.formatMoney(variant.price, "<span class='money'>$</span>"));
    // Also update and show the product's compare price if necessary
    if ( variant.compare_at_price > variant.price ) {
       productPrice.addClass("sale-price")
       comparePrice
       .html(Shopify.formatMoney(variant.compare_at_price, "<span class='money'>$</span>"))
-      .show();          
+      .show();
   } else {
       comparePrice.hide();
       productPrice.removeClass("sale-price");
-  }        
+  }
    // BEGIN SWATCHES
    var form = jQuery('#' + selector.domIdPrefix).closest('form');
    for (var i=0,length=variant.options.length; i<length; i++) {
@@ -424,7 +424,7 @@
   }
    // END SWATCHES
    updatePricing();
-   
+
   } else {
   // The variant doesn't exist. Just a safeguard for errors, but disable the submit button anyway
   addToCart.addClass('disabled').attr('disabled', 'disabled');
@@ -448,11 +448,11 @@
   }
   /*end of variant image*/
   };
-  
+
 </script>
 <script type="text/javascript">
   $(document).ready(function() {
-  
+
       $('#productrelated01 .owl-carousel').each(function(){
           $(this).owlCarousel({
               items : 3,
@@ -461,24 +461,24 @@
               addClassActive: true,
               afterInit : SetOwlCarouselFirstLast,
               afterAction : SetOwlCarouselFirstLast,
-  
+
               itemsDesktop: [1199, 2],
               itemsDesktopSmall: [979, 2],
               itemsTablet: [768, 2],
               itemsTabletSmall: [480, 1],
               itemsMobile: [360, 1],
-  
+
               navigationText : ["Prev", "Next"]
-          }); 
+          });
       });
       function SetOwlCarouselFirstLast(el){
           el.find(".owl-item").removeClass("first");
           el.find(".owl-item.active").first().addClass("first");
-  
+
           el.find(".owl-item").removeClass("last");
           el.find(".owl-item.active").last().addClass("last");
       };
-  
+
   });
 </script>
 @endsection
