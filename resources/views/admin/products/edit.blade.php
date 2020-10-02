@@ -42,12 +42,12 @@
 					<small class="text-danger">{{ $errors->first('product_avatar') }}</small>
 				</div>
 				<div class="form-group">
-					<label for="price">Giá</label>
+					<label for="price">Giá (VND)</label>
 					<input type="number" class="form-control" id="price" placeholder="Giá" name="price" value="{{old('price',$product->price)}}" min="0">
 					<small class="text-danger">{{ $errors->first('price') }}</small>
 				</div>
 				<div class="form-group">
-					<label for="discount">Giảm giá</label>
+					<label for="discount">Giảm giá (%)</label>
 					<input type="number" class="form-control" id="discount" placeholder="Giảm giá" name="discount" value="{{old('discount',$product->discount)}}" min="0">
 					<small class="text-danger">{{ $errors->first('discount') }}</small>
 				</div>

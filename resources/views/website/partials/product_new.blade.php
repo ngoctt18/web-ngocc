@@ -13,9 +13,9 @@
 								<div class="product-container text-left product-block">
 									<div class="product-image-container image">
 										<a class="product_img_link" href="{{ route('web.product_detail',['id'=>$product->id,'name'=>$product->slug]) }}" title="{{$product->name}}">
-											<img class="replace-2x img-responsive" src="{{$product->ThumbProduct??asset("images/products/product1.jpg")}}" alt="{{$product->name}}">
+											<img class="replace-2x img-responsive" src="{{$product->ImageProduct??asset("images/products/product1.jpg")}}" alt="{{$product->name}}">
 											<span class="product-additional" data-idproduct="1119718980">
-												<img class="replace-2x img-responsive" alt="{{$product->name}}" src="{{$product->ThumbProductDetails[0]??asset("images/products/product2.jpg")}}">
+												<img class="replace-2x img-responsive" alt="{{$product->name}}" src="{{$product->ImageProductDetails[0]??asset("images/products/product2.jpg")}}">
 											</span>
 										</a>
 										@if($product->discount != '0')

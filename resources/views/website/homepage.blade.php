@@ -8,7 +8,7 @@
 
 <div class="container">
 	<div class="block-index">
-		
+
 		@include('website.partials.top_service')
 		@include('website.partials.product_new')
 
@@ -19,18 +19,18 @@
 
 					@include('website.partials.special_left')
 					@include('website.partials.signup_left')
-					
+
 				</div>
 			</aside>
 			<div id="center_column" class="center_column col-sm-8 col-md-9 no-padding">
 				<div class="center_wrap">
 					@include('website.partials.banner_top')
-					
+
 					@include('website.partials.product_home')
 
 					@include('website.partials.banner_bot')
 
-					<div class="row ">
+					{{--<div class="row ">
 						<div class="col-md-offset-1 col-xs-9 col-sm-9">
 							<div class="block-index user_online">
 								<b>User online: </b>
@@ -45,7 +45,7 @@
 								@endif
 							</div>
 						</div>
-					</div>
+					</div>--}}
 				</div>
 			</div>
 		</div>
@@ -73,7 +73,7 @@
 				itemsMobile: [360, 1],
 
 				navigationText : ["Prev", "Next"]
-			}); 
+			});
 		});
 		function SetOwlCarouselFirstLast(el){
 			el.find(".owl-item").removeClass("first");

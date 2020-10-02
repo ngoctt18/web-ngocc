@@ -280,9 +280,9 @@
                           <div class="product-container text-left product-block">
                             <div class="product-image-container image">
                               <a class="product_img_link" href="{{ route('web.product_detail',['id'=>$product_relate->id,'name'=>$product_relate->slug]) }}" title="{{$product_relate->name}}">
-                              <img class="replace-2x img-responsive" src="{{$product_relate->ThumbProduct??asset("images/products/product2.jpg")}}" alt="{{$product_relate->name}}">
+                              <img class="replace-2x img-responsive" src="{{$product_relate->ImageProduct??asset("images/products/product2.jpg")}}" alt="{{$product_relate->name}}">
                               <span class="product-additional" data-idproduct="1119718980">
-                              <img class="replace-2x img-responsive" alt="{{$product_relate->name}}" src="{{$product_relate->ThumbProductDetails[0]??asset("images/products/product3.jpg")}}">
+                              <img class="replace-2x img-responsive" alt="{{$product_relate->name}}" src="{{$product_relate->ImageProductDetails[0]??asset("images/products/product3.jpg")}}">
                               </span>
                               </a>
                               @if($product_relate->discount != '0')
