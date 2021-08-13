@@ -17,18 +17,19 @@ class AdminTableSeeder extends Seeder
             Admin::create([
                 'name' => 'Admin',
                 'username' => 'admin',
-                'phone' => '123456',
+                'phone' => '0987654321',
                 'email' => 'admin@admin.com',
-                'password' => '1234560',
-                'address' => 'Hưng Yên',
+                'password' => '123456',
+                'address' => 'Ha Noi',
             ]);
         }
+
         // Admin::create([
-        //     'name' => 'Nguyen Dieu Anh',
-        //     'username' => 'ndanh00',
-        //     'phone' => '1234560',
-        //     'email' => 'ndanh00@admin.com',
-        //     'password' => '1234560',
+        //     'name' => 'Anh ND',
+        //     'username' => 'ndanhabc',
+        //     'phone' => '123456789',
+        //     'email' => 'ndanhabc@admin.com',
+        //     'password' => '123456789',
         //     'address' => 'Quảng Ninh',
         // ]);
     }

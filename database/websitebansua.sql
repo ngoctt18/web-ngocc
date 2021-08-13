@@ -50,7 +50,7 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `name`, `username`, `phone`, `images`, `password`, `email`, `address`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'admin', '123456', NULL, '$2y$10$3MY8RQZx2t4G9sTXsJJhiuAZiozh7lPpOEoCbjJIByb.164HM3Wuy', 'admin@admin.com', 'Hưng Yên', '1', 'CLUmjDwPPeaR9Mww05Wiico3lss2mkXLIT950ueTxRNyTUuOGIhr5tTdlt7d', '2019-02-11 23:20:16', '2019-03-03 03:03:27'),
-(2, 'Nguyen Dieu Anh', 'ndanh00', '123456789', NULL, '$2y$10$svc6NE.Det85ruzGKikQguoG.ZRQ0jtbLAXOab/m7TzPS4boyQBJ.', 'ndanh00@admin.com', 'Quảng Ninh', '1', 'wyKXYvUJCfcko2WRRilI1G7dtlVwSUFn6Tov8aYLeQgIqDTc7I2TuESQb0xT', '2019-02-18 07:07:38', '2019-02-18 07:07:38');
+(2, 'Anh ND', 'ndanh', '123456789', NULL, '$2y$10$svc6NE.Det85ruzGKikQguoG.ZRQ0jtbLAXOab/m7TzPS4boyQBJ.', 'ndanh@admin.com', 'Quảng Ninh', '1', 'wyKXYvUJCfcko2WRRilI1G7dtlVwSUFn6Tov8aYLeQgIqDTc7I2TuESQb0xT', '2019-02-18 07:07:38', '2019-02-18 07:07:38');
 
 -- --------------------------------------------------------
 
@@ -139,10 +139,10 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `message`, `created_at`, `updated_at`) VALUES
-(1, 'Tran Van Ngoc', 'ngocngocngoc@sd.ff', '0975853528', 'Tran Van Ngoc LIÊN HỆ VỚI CHÚNG TÔI GỬI LỜI NHẮN We\'d love to hear from you - please use the form to send us your message or ideas. Or simply pop in for a cup of fresh tea and a cookie', '2019-02-18 03:35:01', '2019-02-18 03:35:01'),
-(2, 'Nguyen Dieu Anh', 'ndanh00@gmail.com', '0168997859', 'Hello world!', '2019-02-18 04:00:01', '2019-02-18 04:00:01'),
+(1, 'Tran Van Ngoc', 'ngocngocngoc@sd.ff', '0987651000', 'Tran Van Ngoc LIÊN HỆ VỚI CHÚNG TÔI GỬI LỜI NHẮN We\'d love to hear from you - please use the form to send us your message or ideas. Or simply pop in for a cup of fresh tea and a cookie', '2019-02-18 03:35:01', '2019-02-18 03:35:01'),
+(2, 'Anh ND', 'ndanh@gmail.com', '0168997859', 'Hello world!', '2019-02-18 04:00:01', '2019-02-18 04:00:01'),
 (5, 'ádasdasdasd', 'asasdasd@asdasd.asd', '0975856968', 'ádasdasdasd  asasdasd@asdasd.asd asasdasd@asdasd.asd', '2019-02-26 09:44:28', '2019-02-26 09:44:28'),
-(6, 'Nguyen Dieu Anh', 'annd@gmail.com', '0975845696', 'Good luck and have a nice day :D', '2019-03-06 03:45:24', '2019-03-06 03:45:24');
+(6, 'Anh ND', 'annd@gmail.com', '0975845696', 'Good luck and have a nice day :D', '2019-03-06 03:45:24', '2019-03-06 03:45:24');
 
 -- --------------------------------------------------------
 
@@ -546,22 +546,22 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `name`, `phone`, `email`, `address`, `input_date`, `delivery_date`, `sum_money`, `user_id`, `status`, `note`, `created_at`, `updated_at`) VALUES
-(1, 'Tran Tuan Ngoc', '0975853528', 'tranngoc@gmail.com', 'Van Giang Hung Yen', '2019-03-05 08:21:19', NULL, 1890120, 1, '0', 'Hàng dễ vỡ', '2019-03-02 05:24:49', '2019-03-01 02:42:09'),
-(2, 'Nguyen Dieu Anh', '0975852369', 'ndanh00@gmail.com', 'Ha Logn Quang Ninh', '2019-03-05 08:21:19', NULL, 2022000, 2, '4', 'Giao hàng cẩn thận', '2019-03-05 08:10:43', '2019-03-05 08:10:43'),
-(3, 'Tran Ngoc', '0168958596', 'ngongoc@hg.hh', 'Long Hung Van GIang', '2019-03-05 09:17:31', NULL, 1362000, 1, '4', 'Giao hàng nhanh ', '2019-03-02 05:24:48', '2019-03-05 09:17:31'),
-(4, 'Ngoc TTT', '03216275586', 'ngocttt@gmail.com', '8690 Hand Plaza Apt. 521 West Wilfrid,, AZ 20783-8805', '2019-03-05 08:21:19', NULL, 820800, 22, '0', 'Giao hang Giao hàng nhanh Giao hàng cẩn thận', '2019-03-02 03:25:11', '2019-03-02 03:25:11'),
-(5, 'Dieu Anh', '0974859636', 'ndanh@fas.dd', 'Van Giang, Hung Yen', '2019-03-05 08:21:19', NULL, 583000, 2, '0', 'sadasdasdasd', '2019-03-04 03:23:36', '2019-03-04 03:19:04'),
-(6, 'Nguyen DIeu Anh', '01689978596', 'ndanh@gmail.com', 'Ha Long, Quang Ninh', '2019-03-04 03:24:09', NULL, 578000, 2, '0', 'nte', '2019-03-04 03:24:09', '2019-03-04 03:24:09'),
-(9, 'Nguyen Dieu Anh', '0689748589', 'ndanh@gmail.com', 'Ha LOng, Quang Ninh', '2019-03-05 08:21:19', NULL, 2928000, 2, '4', 'note', '2019-03-05 08:06:32', '2019-03-05 08:06:32'),
-(10, 'Tran Ngoc', '01689974856', 'ndanh@gail.com', 'Long HUng, Van Giang', '2019-03-05 08:21:19', NULL, 1706200, 2, '3', 'note', '2019-03-05 08:05:34', '2019-03-05 08:05:34'),
-(11, 'Nguyễn Diệu Anh', '12345678', 'ndanh00@ndanh00.com', 'Hạ Long, TP Quảng Ninh, Viet Nam', '2019-03-05 08:21:19', NULL, 1065960, 2, '1', 'giao hang can than nhe :D', '2019-03-05 06:24:56', '2019-03-05 06:24:56'),
-(12, 'Nguyễn Diệu Anh', '12345678', 'ndanh00@ndanh00.com', 'Hạ Long, TP Quảng Ninh, Việt Nam này', '2019-03-05 08:22:24', NULL, 1054900, 2, '2', 'Giao từ từ thôi', '2019-03-05 08:17:56', '2019-03-05 08:22:24'),
-(13, 'Trần Tuấn Ngọc', '0975853528', 'trantuanngoc@gmail.com', 'Long Hung, Van Giang, Hưng Yên, Việt Nam này', '2019-03-06 08:03:39', NULL, 991400, 1, '2', 'Giao hàng nhanh', '2019-03-05 09:25:08', '2019-03-06 08:03:39'),
-(14, 'Trần Tuấn Ngọc', '0975853528', 'trantuanngoc@gmail.com', 'Long Hung, Van Giang, Hưng Yên, Việt Nam', '2019-03-06 08:03:37', NULL, 1189200, 1, '1', 'giao hàng sau 3h', '2019-03-06 06:55:18', '2019-03-06 08:03:37'),
-(15, 'Trần Tuấn Ngọc', '0975853528', 'trantuanngoc@gmail.com', 'Long Hung, Van Giang, Hưng Yên, VN', '2019-03-06 08:22:30', NULL, 695400, 1, '2', NULL, '2019-03-06 08:19:21', '2019-03-06 08:22:30'),
-(16, 'Trần Tuấn Ngọc', '0975853528', 'trantuanngoc@gmail.com', 'Long Hung, Van Giang, Hưng Yên, VN', '2019-03-06 08:22:28', NULL, 408000, 1, '2', 'Nhiều sữa tươi', '2019-03-06 08:20:09', '2019-03-06 08:22:28'),
-(17, 'Nguyễn Diệu Anh', '0987193298', 'ndanh00@ndanh00.com', 'Hạ Long, TP Quảng Ninh, VN', '2019-03-06 08:25:09', NULL, 134000, 2, '0', 'Sữa tươi', '2019-03-06 08:25:09', '2019-03-06 08:25:09'),
-(18, 'Nguyễn Diệu Anh', '0987193298', 'ndanh00@ndanh00.com', 'Hạ Long, TP Quảng Ninh, VN', '2019-03-06 08:26:28', NULL, 401200, 2, '0', 'VN', '2019-03-06 08:26:28', '2019-03-06 08:26:28');
+(1, 'TT NgDT', '0987651000', 'tranngoc@gmail.com', 'HN HA NOI', '2019-03-05 08:21:19', NULL, 1890120, 1, '0', 'Hàng dễ vỡ', '2019-03-02 05:24:49', '2019-03-01 02:42:09'),
+(2, 'Anh ND', '0975852369', 'ndanh@gmail.com', 'Ha Logn Quang Ninh', '2019-03-05 08:21:19', NULL, 2022000, 2, '4', 'Giao hàng cẩn thận', '2019-03-05 08:10:43', '2019-03-05 08:10:43'),
+(3, 'Tran Ngoc', '0168958596', 'ngongoc@hg.hh', 'HBT HN', '2019-03-05 09:17:31', NULL, 1362000, 1, '4', 'Giao hàng nhanh ', '2019-03-02 05:24:48', '2019-03-05 09:17:31'),
+(4, 'NgaaTTT', '03216275586', 'ngocttt@gmail.com', '8690 Hand Plaza Apt. 521 West Wilfrid,, AZ 20783-8805', '2019-03-05 08:21:19', NULL, 820800, 22, '0', 'Giao hang Giao hàng nhanh Giao hàng cẩn thận', '2019-03-02 03:25:11', '2019-03-02 03:25:11'),
+(5, 'Dieu Anh', '0974859636', 'ndanh@fas.dd', 'HN, HA NOI', '2019-03-05 08:21:19', NULL, 583000, 2, '0', 'sadasdasdasd', '2019-03-04 03:23:36', '2019-03-04 03:19:04'),
+(6, 'Anh ND', '01689978596', 'ndanh@gmail.com', 'Ha Long, Quang Ninh', '2019-03-04 03:24:09', NULL, 578000, 2, '0', 'nte', '2019-03-04 03:24:09', '2019-03-04 03:24:09'),
+(9, 'Anh ND', '0689748589', 'ndanh@gmail.com', 'Ha LOng, Quang Ninh', '2019-03-05 08:21:19', NULL, 2928000, 2, '4', 'note', '2019-03-05 08:06:32', '2019-03-05 08:06:32'),
+(10, 'Tran Ngoc', '01689974856', 'ndanh@gail.com', 'HBT, HN', '2019-03-05 08:21:19', NULL, 1706200, 2, '3', 'note', '2019-03-05 08:05:34', '2019-03-05 08:05:34'),
+(11, 'Anh ND 2', '12345678', 'ndanh@ndanh.com', 'Hạ Long, TP Quảng Ninh, Viet Nam', '2019-03-05 08:21:19', NULL, 1065960, 2, '1', 'giao hang can than nhe :D', '2019-03-05 06:24:56', '2019-03-05 06:24:56'),
+(12, 'Anh ND 2', '12345678', 'ndanh@ndanh.com', 'Hạ Long, TP Quảng Ninh, Việt Nam này', '2019-03-05 08:22:24', NULL, 1054900, 2, '2', 'Giao từ từ thôi', '2019-03-05 08:17:56', '2019-03-05 08:22:24'),
+(13, 'NgcTN', '0987651000', 'tng24@gmail.com', 'HBT, HN, Hưng Yên, Việt Nam này', '2019-03-06 08:03:39', NULL, 991400, 1, '2', 'Giao hàng nhanh', '2019-03-05 09:25:08', '2019-03-06 08:03:39'),
+(14, 'NgcTN', '0987651000', 'tng24@gmail.com', 'HBT, HN, Hưng Yên, Việt Nam', '2019-03-06 08:03:37', NULL, 1189200, 1, '1', 'giao hàng sau 3h', '2019-03-06 06:55:18', '2019-03-06 08:03:37'),
+(15, 'NgcTN', '0987651000', 'tng24@gmail.com', 'HBT, HN, Hưng Yên, VN', '2019-03-06 08:22:30', NULL, 695400, 1, '2', NULL, '2019-03-06 08:19:21', '2019-03-06 08:22:30'),
+(16, 'NgcTN', '0987651000', 'tng24@gmail.com', 'HBT, HN, Hưng Yên, VN', '2019-03-06 08:22:28', NULL, 408000, 1, '2', 'Nhiều sữa tươi', '2019-03-06 08:20:09', '2019-03-06 08:22:28'),
+(17, 'Anh ND 2', '0980987671', 'ndanh@ndanh.com', 'Hạ Long, TP Quảng Ninh, VN', '2019-03-06 08:25:09', NULL, 134000, 2, '0', 'Sữa tươi', '2019-03-06 08:25:09', '2019-03-06 08:25:09'),
+(18, 'Anh ND 2', '0980987671', 'ndanh@ndanh.com', 'Hạ Long, TP Quảng Ninh, VN', '2019-03-06 08:26:28', NULL, 401200, 2, '0', 'VN', '2019-03-06 08:26:28', '2019-03-06 08:26:28');
 
 -- --------------------------------------------------------
 
@@ -732,7 +732,7 @@ CREATE TABLE `subscribes` (
 --
 
 INSERT INTO `subscribes` (`id`, `email`, `created_at`, `updated_at`) VALUES
-(1, 'trantuanngoctn97@gmail.com', '2019-02-26 06:57:34', '2019-02-26 06:57:34');
+(1, 'tng24tn97@gmail.com', '2019-02-26 06:57:34', '2019-02-26 06:57:34');
 
 -- --------------------------------------------------------
 
@@ -790,8 +790,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `phone`, `images`, `password`, `email`, `address`, `verified`, `verification_code`, `verified_at`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Trần Tuấn Ngọc', 'ngoctt', '0975853528', NULL, '$2y$10$vSaV7glgbCudECZ6rePSZORDf3PqLG1bTE.uFEKvcwy6eimSNk/X.', 'trantuanngoc@gmail.com', 'Long Hung, Van Giang, Hưng Yên', 1, NULL, '2019-02-28 17:00:00', '1', 'YwhKapRSvhZz2tpkDSnWDE95JrAffWiVOnxRSEwbL8dlM05a0m99diJX08Z8', '2019-02-11 23:20:16', '2019-03-06 02:37:30'),
-(2, 'Nguyễn Diệu Anh', 'ndanh00', '0987193298', NULL, '$2y$10$GBvpQeyOsgyJe.5HQ5UNMubuWvvTcf0pvRixHFYygNHVpUL8.Fqay', 'ndanh00@ndanh00.com', 'Hạ Long, TP Quảng Ninh', 1, NULL, '2019-02-28 17:00:00', '1', 'tJwWNBgytHUHq12Pu4aMaDbTiXlpjs2h44WjcHyyucMbvMei0Bd3wu7l6E1X', '2019-02-11 23:20:16', '2019-03-06 08:24:16'),
+(1, 'NgcTN', 'ngoctt', '0987651000', NULL, '$2y$10$vSaV7glgbCudECZ6rePSZORDf3PqLG1bTE.uFEKvcwy6eimSNk/X.', 'tng24@gmail.com', 'HBT, HN, Hưng Yên', 1, NULL, '2019-02-28 17:00:00', '1', 'YwhKapRSvhZz2tpkDSnWDE95JrAffWiVOnxRSEwbL8dlM05a0m99diJX08Z8', '2019-02-11 23:20:16', '2019-03-06 02:37:30'),
+(2, 'Anh ND 2', 'ndanh', '0980987671', NULL, '$2y$10$GBvpQeyOsgyJe.5HQ5UNMubuWvvTcf0pvRixHFYygNHVpUL8.Fqay', 'ndanh@ndanh.com', 'Hạ Long, TP Quảng Ninh', 1, NULL, '2019-02-28 17:00:00', '1', 'tJwWNBgytHUHq12Pu4aMaDbTiXlpjs2h44WjcHyyucMbvMei0Bd3wu7l6E1X', '2019-02-11 23:20:16', '2019-03-06 08:24:16'),
 (3, 'Rico Rodriguez', 'virgiegutmann', '+5108611953992', NULL, '$2y$10$CJVlJiCOwiE/gV11sSfrfOhJGRUXSmG9JyJ4TvuGcUGJqTx1SkZpi', 'aletha74@example.com', '9652 Abernathy Lakes Suite 069 South Sethland, KY 37913-5576', 0, 'ndRo79wDNKU01oyH1AtJKdFjOBK4sn84S2Ls6EoKox7I2LnReEv4sds8qZu8GlSC', NULL, '0', NULL, '2019-02-11 23:20:17', '2019-03-06 07:12:24'),
 (4, 'Mr. Monserrat Nicolas', 'austin17', '03216275585', NULL, '$2y$10$RsqJG.DfMUsBTXWe3F3Q.Ob8w4QnSi.SF1DTNowHZXC63V0Z6RV5u', 'mfritsch@example.net', '8206 Bartoletti Trail\r\nPort Peterberg, KY 88261', 0, 'ndRo79wDNKU01oyH1AtJKdFjOBK4sn84S2Ls6EoKox7I2LnReEv4sds8qZu8GlSC', NULL, '0', NULL, '2019-02-11 23:20:17', '2019-03-06 07:08:46'),
 (5, 'Toney McDermott', 'luettgenalva', '0498512589', NULL, '$2y$10$IO6LMZgFe4oznYpKRtQI5OHmnZNON1ts0rUv.rvmYeGq8ZQnG6C8W', 'shannon09@example.org', '82927 Wisoky Radial Apt. 539  Lake Idellaton, DC 75861', 0, 'ndRo79wDNKU01oyH1AtJKdFjOBK4sn84S2Ls6EoKox7I2LnReEv4sds8qZu8GlSC', NULL, '0', NULL, '2019-02-11 23:20:17', '2019-03-06 07:59:12'),
@@ -808,10 +808,10 @@ INSERT INTO `users` (`id`, `name`, `username`, `phone`, `images`, `password`, `e
 (16, 'Garth Trantow', 'weissnat', '01689936259', NULL, '$2y$10$3eZ2RO2bFSuzkKVflSS/YeoFErlDPLQP4ePhO4xjBIuAiLz8kXkl6', 'fatima.considine@example.org', '765 Leon Ville Apt. 519\r\nNew Talonburgh, KS 76367', 0, 'ndRo79wDNKU01oyH1AtJKdFjOBK4sn84S2Ls6EoKox7I2LnReEv4sds8qZu8GlSC', NULL, '0', NULL, '2019-02-11 23:20:17', '2019-02-20 03:07:40'),
 (20, 'Tên khách hàng', 'Username', '0975859698', NULL, '$2y$10$hHmc8nINchCQEoVPxRh8qOAC9N.SxIelz0VgId3FcVGIfggwtVyoe', 'email@email.com', 'Địa chỉ', 1, NULL, '2019-02-28 17:00:00', '1', NULL, '2019-02-12 09:19:48', '2019-03-01 10:08:35'),
 (21, 'Tran Ngoc User', 'ngocuser', '0975853526', NULL, '$2y$10$usNU3V7A2JXoTyyUtknfqeyUiXNlm8Y4.PUqgjikrfKbyZGOBcYua', 'ngocuser@gmail.cc', '765 Leon Ville Apt. 519\r\nNew Talonburgh, KS 76367', 1, NULL, '2019-02-28 17:00:00', '1', '', '2019-02-25 09:00:09', '2019-03-01 10:08:21'),
-(22, 'Ngoc ttttt', 'ngocttttt', '03216275586', NULL, '$2y$10$dmbBVAXBfomUPI7/cyD26.HmOy7aqsV/0ONYneZwjdcgNvKTKgkmi', 'ngocttt@asdasd.as', '8690 Hand Plaza Apt. 521\r\nWest Wilfrid, AZ 20783-8805', 1, NULL, '2019-02-28 17:00:00', '1', 'QFCyngPbZmQ8PjyMATvt8LMufbtp45MHTwu5t43UZ7V9gLHgAvU8jdchUxo4', '2019-02-25 10:36:51', '2019-03-01 10:06:35'),
+(22, 'NgaaTTTtt', 'ngocttttt', '03216275586', NULL, '$2y$10$dmbBVAXBfomUPI7/cyD26.HmOy7aqsV/0ONYneZwjdcgNvKTKgkmi', 'ngocttt@asdasd.as', '8690 Hand Plaza Apt. 521\r\nWest Wilfrid, AZ 20783-8805', 1, NULL, '2019-02-28 17:00:00', '1', 'QFCyngPbZmQ8PjyMATvt8LMufbtp45MHTwu5t43UZ7V9gLHgAvU8jdchUxo4', '2019-02-25 10:36:51', '2019-03-01 10:06:35'),
 (23, 'ngoc tran van', 'ngocvan', '0978852320', NULL, '$2y$10$kVyS7GkpZgAeVv8BBV7cW.GMbipI.TFqQZbLNIEJXYxXxfRvKRMqW', 'ngcvanavan@gmail.com', '8206 Bartoletti Trail\nPort Peterberg, KY 88261', 1, NULL, '2019-02-28 17:00:00', '1', NULL, '2019-02-25 10:50:30', '2019-02-25 10:54:38'),
-(30, 'Tran Ngoc Unknow', 'trantuanngoctn97', '0975852639', NULL, '$2y$10$jVClT1LqJezQapBlexb/WeFRSp0l/drBtHD1N.wsKcVcHxdeXDcZO', 'trantuanngoctn97@gmail.def', '57323 Zboncak Fort\nNorth Josie, AZ 31371', 1, NULL, '2019-02-28 17:00:00', '1', NULL, '2019-02-26 04:18:35', '2019-02-26 04:19:30'),
-(36, 'Trần Giao Linh', 'giaolinh', '0975852104', NULL, '$2y$10$kaJnWPhnQO0m/FJIwbFJYOyORUuOeaOGOfIbJ.AYC4tyWPg1Mtxxq', 'trantuanngoctn97@gdt.vy', '694 Ines Drive West Jalenburgh, FL 45663', 1, NULL, '2019-03-02 02:57:12', '1', NULL, '2019-03-02 02:56:59', '2019-03-02 02:57:12');
+(30, 'Tran Ngoc Unknow', 'tng24tn97', '0975852639', NULL, '$2y$10$jVClT1LqJezQapBlexb/WeFRSp0l/drBtHD1N.wsKcVcHxdeXDcZO', 'tng24tn97@gmail.def', '57323 Zboncak Fort\nNorth Josie, AZ 31371', 1, NULL, '2019-02-28 17:00:00', '1', NULL, '2019-02-26 04:18:35', '2019-02-26 04:19:30'),
+(36, 'TGTD', 'giaolinh', '0975852104', NULL, '$2y$10$kaJnWPhnQO0m/FJIwbFJYOyORUuOeaOGOfIbJ.AYC4tyWPg1Mtxxq', 'tng24tn97@gdt.vy', '694 Ines Drive West Jalenburgh, FL 45663', 1, NULL, '2019-03-02 02:57:12', '1', NULL, '2019-03-02 02:56:59', '2019-03-02 02:57:12');
 
 -- --------------------------------------------------------
 
@@ -840,8 +840,8 @@ CREATE TABLE `writers` (
 --
 
 INSERT INTO `writers` (`id`, `name`, `username`, `phone`, `images`, `password`, `email`, `address`, `verified`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Trần Ngọc Writer', 'tranngoc', '0389975223', NULL, '$2y$10$q5PIrzcgd88iDh3xVKwBSe5NIiaQPkV5qlrYZ5vC4QD0sHDWdNoUy', 'tranngoc@writer.com', 'Hưng Yên', 1, '1', 'JPONg32OMAd1FHXh2vpT40v1PIw3YoBnkQMDaelmUbQfPVrLrPiXdJjsVKBw', '2019-02-11 23:20:17', '2019-02-11 23:20:17'),
-(2, 'Nguyen Dieu Anh', 'ndanh00', '01689975223', NULL, '$2y$10$ZQHYcvSH0daxJHXS/r1FZ.Dzot4x.pXjROJO0BvqdJqQ3EXDGoas6', 'ndanh00@writer.com', 'Quảng Ninh', 1, '1', 'jadZj5YNtg0Wq3A5fGeCwbCnjhLmNJaOTag7l3Zsg9CRVdahjpWPhvMuE7ax', '2019-02-11 23:20:17', '2019-02-26 10:27:34'),
+(1, 'Trần Ngọc Writer', 'tranngoc', '0989900012', NULL, '$2y$10$q5PIrzcgd88iDh3xVKwBSe5NIiaQPkV5qlrYZ5vC4QD0sHDWdNoUy', 'tranngoc@writer.com', 'Hưng Yên', 1, '1', 'JPONg32OMAd1FHXh2vpT40v1PIw3YoBnkQMDaelmUbQfPVrLrPiXdJjsVKBw', '2019-02-11 23:20:17', '2019-02-11 23:20:17'),
+(2, 'Anh ND', 'ndanh', '01689975223', NULL, '$2y$10$ZQHYcvSH0daxJHXS/r1FZ.Dzot4x.pXjROJO0BvqdJqQ3EXDGoas6', 'ndanh@writer.com', 'Quảng Ninh', 1, '1', 'jadZj5YNtg0Wq3A5fGeCwbCnjhLmNJaOTag7l3Zsg9CRVdahjpWPhvMuE7ax', '2019-02-11 23:20:17', '2019-02-26 10:27:34'),
 (3, 'Quỳnh Như', 'quynhnhu', '0975896326', NULL, '$2y$10$ZQHYcvSH0daxJHXS/r1FZ.Dzot4x.pXjROJO0BvqdJqQ3EXDGoas6', 'quynhnhu@writer.com', 'Nghệ An', 1, '1', 'aWLd6GQhLtsS1JRgcSGuBzQV3eK1XWB9l9TMTOMUWfuLicpMUgBXNz6zprXD', '2019-02-11 23:20:17', '2019-02-11 23:20:17');
 
 --

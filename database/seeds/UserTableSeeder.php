@@ -12,24 +12,24 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::where('username', 'trantuanngoctn97')->first();
+        $user = User::where('username', 'admin')->first();
         if (!$user) {
            User::create([
-              'name' => 'Trần Tuấn Ngọc',
-              'username' => 'trantuanngoctn97',
+              'name' => 'Admin',
+              'username' => 'admin',
               'phone' => '0987654321',
-              'email' => 'trantuanngoc@gmail.com',
+              'email' => 'admin@admin.com',
               'password' => '0987654321',
-              'address' => 'Van Giang, Hưng Yên',
+              'address' => 'Hà Nội, Việt Nam',
               'verified' => true,
           ]);
        }
 
     	// User::create([
-    	// 	'name' => 'Nguyễn Diệu Anh',
-    	// 	'username' => 'ndanh00',
+    	// 	'name' => 'Anh ND',
+    	// 	'username' => 'ndanh',
     	// 	'phone' => '12345678',
-    	// 	'email' => 'ndanh00@ndanh00.com',
+    	// 	'email' => 'ndanh@ndanh.com',
     	// 	'password' => '12345678',
     	// 	'address' => 'Quảng Ninh',
     	// ]);

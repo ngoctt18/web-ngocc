@@ -67,13 +67,13 @@
                                     </div>
                                     <ul>
                                         <li class="address">
-                                            <span>Long Hung, Van Giang, Hung Yen, Viet Nam</span>
+                                            <span>Ha Noi, Viet Nam</span>
                                         </li>
                                         <li class="phone">
-                                            <span>Phone: 0975853528<br/> Fax: 02216275586</span>
+                                            <span>Phone: 02216275586<br/> Fax: 02216275586</span>
                                         </li>
                                         <li class="email">
-                                            <span>trantuanngoctn97@gmail.com</span>
+                                            <span>admin@admin.com</span>
                                         </li>
                                         <li class="website">
                                             <span>milkstore.com</span>

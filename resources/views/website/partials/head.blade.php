@@ -26,6 +26,7 @@
 <link href="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/responsive.scss2946.css?14233272639774211042') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/skins.scss2946.css?14233272639774211042') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/retina-responsive2946.css?14233272639774211042') }}" rel="stylesheet" type="text/css" media="all" />
+{{--<link rel="stylesheet" href="{{ asset('demo4leotheme.com/prestashop/shopifyquickview/resources/ap-quick-viewe9c8.html') }}">--}}
 <link rel="stylesheet" href="{{ asset('cdn.shopify.com/s/files/1/0928/4804/t/2/assets/ap-quick-view-custom2946.css?14233272639774211042') }}">
 
 <link rel="stylesheet" href="{{ asset('css/website.css') }}">

@@ -30,8 +30,8 @@
                            <div class="about">
                               Hệ thống siêu thị sữa Milk Store cung cấp sản phẩm an toàn, chính hãng, chất lượng tốt, giá cả cạnh tranh nhất trên thị trường.
                               <ul class="list__address">
-                                 <li><i class="fa fa-phone "></i>0975853528</li>
-                                 <li><i class="fa fa-envelope "></i>trantuanngoctn97@gmail.com</li>
+                                 <li><i class="fa fa-phone "></i>0987654321</li>
+                                 <li><i class="fa fa-envelope "></i>admin@admin.com</li>
                               </ul>
                            </div>
                         </div>

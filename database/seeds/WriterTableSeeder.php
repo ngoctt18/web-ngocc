@@ -14,15 +14,15 @@ class WriterTableSeeder extends Seeder
     {
     	Writer::create([
     		'name' => 'Trần Ngọc Writer',
-    		'username' => 'ngocwriter',
-    		'phone' => '0987654321',
+    		'username' => 'tranngoc',
+    		'phone' => '0987465780',
     		'email' => 'tranngoc@writer.com',
-    		'password' => '0987654321',
+    		'password' => '0987465780',
     		'address' => 'Hưng Yên',
     		'verified' => true,
     		'status' => 1,
     	]);
-
+        
         // factory(Writer::class, 2)->create();
     }
 }
